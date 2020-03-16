@@ -9,6 +9,10 @@
   - [Слайды](https://altmanea.ru/oop-slides)
   - [Лабораторные](https://altmanea.ru/oop/ru/lab/)
 
+- Объектно-ориентированное программирование (2 семестр)
+  - [Информация](oop2.html)
+  - [Материалы](https://stepik.org/course/64261)
+
 ### Контакты
 
 {% include email.html %}
