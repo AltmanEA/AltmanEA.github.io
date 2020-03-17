@@ -1,3 +1,8 @@
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?162"></script>
+<script type="text/javascript">
+  VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+
 ## Взаимодействие с контейнером docker
 
 ### Задание
@@ -93,3 +98,8 @@
 9. Как настроить отображение каталога виртуальной машины в каталог контейнера docker?
 10. Как настроить отображение папки компьютера в каталог контейнера docker?
 11. Где нужно хранить постоянные данные контейнера, которые бы не терялись при его перезапуске?
+
+<div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script>

@@ -1,3 +1,8 @@
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?162"></script>
+<script type="text/javascript">
+  VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+
 ## Основы git
 
 ### Задание
@@ -66,3 +71,8 @@
 38. Как выгрузить изменения на gitbucket?
 39. В каком случаем может возникнуть конфликт в репозитории?
 40. Как разрешить конфликт в репозитории gitbucket? 
+
+<div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script>

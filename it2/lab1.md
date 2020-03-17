@@ -1,3 +1,8 @@
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?162"></script>
+<script type="text/javascript">
+  VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+
 ## Основы docker
 
 ### Задание
@@ -59,3 +64,8 @@
 8. Как удалить образ или контейнер?
 9.  Какие ключи команды `docker run` вы использовали?
 10. Какие ключи команды `docker rm` вы использовали?
+
+<div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script>
