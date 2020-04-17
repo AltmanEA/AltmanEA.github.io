@@ -19,6 +19,7 @@
 8 | [Компоненты высокого уровня](https://stepik.org/lesson/305974/step/1?unit=287993) | 26.04
 9 | [Введение в redux](https://stepik.org/lesson/305976/step/7?unit=287995) | 10.05
 10 | [React redux](https://stepik.org/lesson/305978/step/11?unit=287997) | 24.05
+
 Примечания:
 
 - сдать лабораторные нужно *до* указанных дат.
