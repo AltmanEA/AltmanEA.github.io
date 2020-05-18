@@ -1,10 +1,3 @@
-<script id="chatBroEmbedCode">
-/* Chatbro Widget Embed Code Start */
-function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','//www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}
-/* Chatbro Widget Embed Code End */
-ChatbroLoader({encodedChatId: '15fqJ'});
-</script>
-
 ### Информация для студентов заочного факультета
 
 <script type="text/javascript">   
@@ -22,3 +15,10 @@ ChatbroLoader({encodedChatId: '15fqJ'});
 
 Во время приема долгов для быстрого обмена сообщениями с преподавателем лучше использовать чат, установленный на этой странице. Другие средства связи (в частности социальные сети) использовать не рекомендуется, все попытки будут игнорироваться.
 
+<!-- BEGIN YAMICHAT CODE {literal} -->
+<script type='text/javascript'>
+(function(){ var widget_id = 'y5ec2158d22e20';
+var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src =
+'//code.yamichat.ru/script/'+widget_id; var ss = document.
+getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
+<!-- {/literal} END YAMICHAT CODE -->
