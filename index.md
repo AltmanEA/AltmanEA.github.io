@@ -19,6 +19,11 @@
 
 ### Контакты
 
-По учебным вопросам следует обращаться по адресу {% include email_edu.html %}.
+<script type="text/javascript">   
+    user = "E.A.Altman";
+    domain = "yandex.ru";
+    document.write('По учебным вопросам следует обращаться по адресу <a href=\"mailto:' + user + '@' + domain + '\">' + 
+                user + '@' + domain + '</a>.');
+</script>.
 
 {% include email.html %}
