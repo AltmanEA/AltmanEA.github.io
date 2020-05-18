@@ -24,6 +24,6 @@
     domain = "yandex.ru";
     document.write('По учебным вопросам следует обращаться по адресу <a href=\"mailto:' + user + '@' + domain + '\">' + 
                 user + '@' + domain + '</a>.');
-</script>.
+</script>
 
 {% include email.html %}
