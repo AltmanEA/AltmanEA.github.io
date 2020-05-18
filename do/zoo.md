@@ -14,11 +14,3 @@
 Вопросы на всех видах приема будут иметь практический характер, т.е. нужно будет выполнит некоторое задание в рамках предмета. Правила приема практических заданий описаны [тут](index.html)
 
 Во время приема долгов для быстрого обмена сообщениями с преподавателем лучше использовать чат, установленный на этой странице. Другие средства связи (в частности социальные сети) использовать не рекомендуется, все попытки будут игнорироваться.
-
-<!-- BEGIN YAMICHAT CODE {literal} -->
-<script type='text/javascript'>
-(function(){ var widget_id = 'y5ec2158d22e20';
-var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src =
-'//code.yamichat.ru/script/'+widget_id; var ss = document.
-getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
-<!-- {/literal} END YAMICHAT CODE -->
