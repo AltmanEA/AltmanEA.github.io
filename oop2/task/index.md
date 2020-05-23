@@ -1,3 +1,9 @@
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?162"></script>
+<script type="text/javascript">
+  VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+
+
 ### Порядок сдачи и защиты курсовой и самостоятельной работы
 
 Для допуска к защите работы нужно выслать на email преподавателя нижеуказанные материалы.
@@ -55,3 +61,8 @@
 | Самигулов      | Адильжан  | База игр   |
 | Хайлов         | Дмитрий   | Аптека     |
 | Шанин          | Максим    | 1-2        |
+
+<div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script>
