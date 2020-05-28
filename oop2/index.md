@@ -16,6 +16,9 @@
 
 [Информация по дистанционному обучению](https://altmanea.ru/do)
 
+[Информация об экзамене](exam).
+
+
 <div id="vk_comments"></div>
 <script type="text/javascript">
 VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});

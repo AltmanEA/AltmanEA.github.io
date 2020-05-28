@@ -3,6 +3,9 @@
   VK.init({apiId: 7147452, onlyWidgets: true});
 </script>
 
+[Домой](https://altmanea.ru)
+[Курс OOP 2](https://altmanea.ru/oop2)
+
 ### Оформление пояснительной записки
 
 Пояснительная записка должна быть оформлена по СТП.
