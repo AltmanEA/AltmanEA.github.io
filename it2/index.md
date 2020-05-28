@@ -28,7 +28,7 @@
 
 *[Информация по дистанционному обучению](https://altmanea.ru/do)*
 
-*[Информация по зачету](exam.html)*
+*[Вопросы к зачету](exam.html)*
 
 <div id="vk_comments"></div>
 <script type="text/javascript">
