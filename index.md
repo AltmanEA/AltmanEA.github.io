@@ -22,8 +22,7 @@
 <script type="text/javascript">   
     user = "E.A.Altman";
     domain = "yandex.ru";
-    document.write('По учебным вопросам следует обращаться по адресу <a href=\"mailto:' + user + '@' + domain + '\">' + 
-                user + '@' + domain + '</a>.');
+    document.write('<p>По учебным вопросам следует обращаться по адресу <a href=\"mailto:' + user + '@' + domain + '\">' +  user + '@' + domain + '</a></p>');
 </script>
 
 {% include email.html %}
