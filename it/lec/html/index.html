@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Основы HTML</title>
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/reveal-js/css/reset.css">
+<link rel="stylesheet" href="/reveal-js/css/reveal.css"><link rel="stylesheet" href="/reveal-js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="/highlight-js/default.min.css">
+    
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+  
+
+    <section>
+
+<section data-shortcode-section>
+<h2 id="html">HTML</h2>
+</section><section>
+<h3 id="структура-html-документа">Структура HTML документа</h3>
+<p><img src="images/html_struct.png" alt=""></p>
+</section><section>
+<h3 id="пример-head">Пример head</h3>
+<p><img src="images/html_head_example.png" alt=""></p>
+</section><section>
+<h3 id="пример-body">Пример body</h3>
+<p><img src="images/html_body_example.png" alt=""></p>
+</section><section>
+<h3 id="атрибуты-и-стили-html">Атрибуты и стили HTML</h3>
+<p><img src="images/html_style.png" alt=""></p>
+</section><section>
+<h3 id="скрипты-html">Скрипты HTML</h3>
+<p><img src="images/html_script.png" alt=""></p>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h2 id="css">CSS</h2>
+</section><section>
+<h3 id="пример">Пример</h3>
+<p><img src="images/css_example.png" alt=""></p>
+</section><section>
+<h3 id="селекторы">Селекторы</h3>
+<ul>
+<li><code>*</code>;</li>
+<li><code>p</code>;</li>
+<li><code>.class</code>;</li>
+<li><code>#id</code>;</li>
+<li><code>[name=&quot;value&quot;]</code>;</li>
+<li><code>:focus</code>.</li>
+</ul>
+</section><section>
+<h3 id="сложные-селекторы">Сложные селекторы</h3>
+<ul>
+<li><code>.h1.h2</code>;</li>
+<li><code>p:before</code>;</li>
+<li><code>ol ol</code>;</li>
+<li><code>ul &gt; ul</code>.</li>
+</ul>
+</section><section>
+<h3 id="значения-атрибутов">Значения атрибутов</h3>
+<ul>
+<li>Текстовые: &ldquo;так&rdquo; или &lsquo;так&rsquo;;</li>
+<li>Размеры:
+<ul>
+<li>px;</li>
+<li>em, rem;</li>
+<li>vw, vh, vmin, vmax.</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h3 id="псевдоклассы">Псевдоклассы</h3>
+<ul>
+<li><code>:active</code>;</li>
+<li><code>:link</code>;</li>
+<li><code>:focus</code>;</li>
+<li><code>:hover</code>;</li>
+<li><code>:visites</code>.</li>
+</ul>
+</section><section>
+<h3 id="псевдоэлементы">Псевдоэлементы</h3>
+<ul>
+<li><code>::after</code>;</li>
+<li><code>::before</code>;</li>
+<li><code>::selection</code>.</li>
+</ul>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h2 id="создание-сайтов">Создание сайтов</h2>
+</section><section>
+<h3 id="способы-создания">Способы создания</h3>
+<ul>
+<li>Текстовый или HTML редактор;</li>
+<li>Динамическая генерация:
+<ul>
+<li>CMS (Content Management System);</li>
+<li>Веб-приложение;</li>
+</ul>
+</li>
+<li>Статическая генерация:
+<ul>
+<li>JAMstack (JavaScript, APIs and Markup).</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h3 id="роли">Роли</h3>
+<ul>
+<li>Программист (клиент, сервер, &hellip;);</li>
+<li>Дизайнер (дизайн, верстка, &hellip;);</li>
+<li>Писатель (автор, редактор, &hellip;).</li>
+</ul>
+</section><section>
+<h3 id="hugo">Hugo</h3>
+<pre><code>hugo new site example
+</code></pre><p><img src="images/hugo_new.png" alt=""></p>
+</section><section>
+<h3 id="тема-для-сайта">Тема для сайта</h3>
+<p><img src="images/hugo_theme.png" alt=""></p>
+</section><section>
+<h3 id="пост">Пост</h3>
+<pre><code>hugo new posts/my-first-post.md
+</code></pre><pre><code>content/posts/my-first-post.md:
+</code></pre><pre><code>---
+title: &quot;My First Post&quot;
+---
+Hello!
+</code></pre></section><section>
+<h3 id="локальный-сервер">Локальный сервер</h3>
+<pre><code>hugo server
+</code></pre><p><img 
+src="images/hugo_post.png" 
+width="60%"
+height=""></p>
+</section><section>
+<h3 id="deploy">Deploy</h3>
+<ul>
+<li>Локальная версия и копирование: <code>hugo</code> ⇒ &ldquo;/public&rdquo; ⇒ хостинг/облако;</li>
+<li>⇒ Система контроля версий ⇒ JAMstack хост (<a href="netlify.com">netlify.com</a>)</li>
+</ul>
+
+</section>
+</section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/reveal-hugo/object-assign.js></script>
+
+<a href="/reveal-js/css/print/" id="print-location" style="display: none;"></a>
+<script type="text/javascript">
+  var printLocationElement = document.getElementById('print-location');
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = printLocationElement.href + (window.location.search.match(/print-pdf/gi) ? 'pdf.css' : 'paper.css');
+  document.getElementsByTagName('head')[0].appendChild(link);
+</script>
+
+<script type="application/json" id="reveal-hugo-site-params">{"theme":"beige"}</script>
+<script type="application/json" id="reveal-hugo-page-params">null</script>
+
+<script src="/reveal-js/js/reveal.js"></script>
+
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+  
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);
+  var revealHugoPageParams = JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams));
+  Reveal.initialize(options);
+</script>
+
+
+  
+  
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/marked.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/zoom-js/zoom.js"></script>
+  
+  
+  <script type="text/javascript" src="/reveal-js/plugin/notes/notes.js"></script>
+
+
+
+    
+    
+  </body>
+</html>

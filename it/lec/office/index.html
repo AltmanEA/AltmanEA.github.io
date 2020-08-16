@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Текстовые процессоры</title>
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/reveal-js/css/reset.css">
+<link rel="stylesheet" href="/reveal-js/css/reveal.css"><link rel="stylesheet" href="/reveal-js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="/highlight-js/default.min.css">
+    
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+  
+
+    <section>
+
+<section data-shortcode-section>
+<h2 id="формат-docx">Формат DOCX</h2>
+</section><section>
+<h3 id="pandoc">PANDOC</h3>
+<p><a href="https://pandoc.org/">pandoc</a> — универсальный конвертор текстовых форматов.</p>
+<pre><code>c:\prog\pandoc\pandoc -o lab2.docx lab2.md
+</code></pre><p>Стили:</p>
+<ul>
+<li>Заголовок X — HeadingX;</li>
+<li>Обычный текст — Normal и First Paragraph;</li>
+<li>&hellip; .</li>
+</ul>
+</section><section>
+<h3 id="шаблон-word-для-pandoc">Шаблон WORD для Pandoc</h3>
+<p>Создание шаблона:</p>
+<pre><code>pandoc -o custom-reference.docx 
+        --print-default-data-file reference.docx
+</code></pre><p>С использованием шаблона:</p>
+<pre><code>pandoc -o lab2.docx lab2.md 
+        --reference-doc=reference.docx
+</code></pre></section><section>
+<h3 id="распаковка-word">Распаковка WORD</h3>
+<p><img src="images/doc_zip.png" alt=""></p>
+</section><section>
+<h3 id="структура-docx">Структура DOCX</h3>
+<p><img 
+src="images/doc_xml.png" 
+width="80%"
+height=""></p>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h2 id="поля-word">Поля Word</h2>
+</section><section>
+<h3 id="типы-полей">Типы полей</h3>
+<p><img src="images/doc_field_type.png" alt="">
+<img src="images/doc_field_auto.png" alt="">
+<img src="images/doc_field_date.png" alt="">
+<img src="images/doc_field_doc.png" alt=""></p>
+</section><section>
+<h3 id="типы-полей-2">Типы полей 2</h3>
+<p><img src="images/doc_field_equ.png" alt="">
+<img src="images/doc_field_link.png" alt="">
+<img src="images/doc_field_num.png" alt=""></p>
+</section><section>
+<h3 id="поле-listnum">Поле ListNum</h3>
+<p><img 
+src="images/doc_field_listnum.png" 
+width="70%"
+height=""></p>
+</section><section>
+<h3 id="поле-ref">Поле REF</h3>
+<p><img src="images/doc_field_ref.png" alt=""></p>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h2 id="списки-и-счетчики">Списки и счетчики</h2>
+</section><section>
+<h3 id="многоуровневый-список-word">Многоуровневый список WORD</h3>
+<p><img 
+src="images/count_doc.png" 
+width="70%"
+height=""></p>
+</section><section>
+<h3 id="ссылки-word">Ссылки WORD</h3>
+<p><img 
+src="images/link_doc.png" 
+width="70%"
+height=""></p>
+</section><section>
+<h3 id="счетчики-html">Счетчики HTML</h3>
+<pre><code>  &lt;style&gt;
+   li { list-style-type: none; } /* Убираем исходную нумерацию у списка */
+   ol { counter-reset: list1; } /* Инициируем счетчик */
+   ol li:before {
+    counter-increment: list1; /* Увеличиваем значение счетчика */
+    content: counter(list1) &quot;. &quot;; /* Выводим число */
+   }
+   ol ol { counter-reset: list2; } /* Инициируем счетчик вложенного списка */
+   ol ol li:before {
+    counter-increment: list2; /* Увеличиваем значение счетчика вложенного списка */
+    content: counter(list1) &quot;.&quot; counter(list2) &quot;. &quot;; /* Выводим число */
+   }
+  &lt;/style&gt;
+</code></pre><p><a href="https://webref.ru/css/counter-reset">https://webref.ru/css/counter-reset</a></p>
+</section><section>
+<h3 id="перечни-html-и-markdown">Перечни HTML и markdown</h3>
+<p>Для перечней используются редакторы или системы сборки.</p>
+<p>Например, расширение «Markdown All in One»:</p>
+<p><img src="images/toc.png" alt=""></p>
+
+</section>
+</section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/reveal-hugo/object-assign.js></script>
+
+<a href="/reveal-js/css/print/" id="print-location" style="display: none;"></a>
+<script type="text/javascript">
+  var printLocationElement = document.getElementById('print-location');
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = printLocationElement.href + (window.location.search.match(/print-pdf/gi) ? 'pdf.css' : 'paper.css');
+  document.getElementsByTagName('head')[0].appendChild(link);
+</script>
+
+<script type="application/json" id="reveal-hugo-site-params">{"theme":"beige"}</script>
+<script type="application/json" id="reveal-hugo-page-params">null</script>
+
+<script src="/reveal-js/js/reveal.js"></script>
+
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+  
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);
+  var revealHugoPageParams = JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams));
+  Reveal.initialize(options);
+</script>
+
+
+  
+  
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/marked.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/zoom-js/zoom.js"></script>
+  
+  
+  <script type="text/javascript" src="/reveal-js/plugin/notes/notes.js"></script>
+
+
+
+    
+    
+  </body>
+</html>
