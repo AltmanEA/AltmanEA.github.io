@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Информационные технологии. Лекции</title>
-    <link>/</link>
+    <link>https://altmanea/it/lec/</link>
     <description>Recent content on Информационные технологии. Лекции</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://altmanea/it/lec/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

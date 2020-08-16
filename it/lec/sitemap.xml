@@ -3,43 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://altmanea/it/lec/categories/</loc>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://altmanea/it/lec/tags/</loc>
   </url>
   
   <url>
-    <loc>/intro/</loc>
+    <loc>https://altmanea/it/lec/intro/</loc>
   </url>
   
   <url>
-    <loc>/figure/</loc>
+    <loc>https://altmanea/it/lec/figure/</loc>
   </url>
   
   <url>
-    <loc>/charcode/</loc>
+    <loc>https://altmanea/it/lec/charcode/</loc>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>https://altmanea/it/lec/</loc>
   </url>
   
   <url>
-    <loc>/html/</loc>
+    <loc>https://altmanea/it/lec/html/</loc>
   </url>
   
   <url>
-    <loc>/office/</loc>
+    <loc>https://altmanea/it/lec/office/</loc>
   </url>
   
   <url>
-    <loc>/techfig/</loc>
+    <loc>https://altmanea/it/lec/techfig/</loc>
   </url>
   
   <url>
-    <loc>/markdown/</loc>
+    <loc>https://altmanea/it/lec/markdown/</loc>
   </url>
   
 </urlset>
