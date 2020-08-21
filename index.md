@@ -14,7 +14,7 @@
 <script type="text/javascript">   
     user = "E.A.Altman";
     domain = "yandex.ru";
-    user1 = "AltmanEA@gmail.com"
+    user1 = "AltmanEA"
     domain1 = "gmail.com"    
     document.write('<p><a href=\"mailto:' + user1 + '@' + domain1 + '\">' +  user1 + '@' + domain1 + '</a> </p>');
     document.write('<p><a href=\"mailto:' + user + '@' + domain + '\">' +  user + '@' + domain + '</a> (для решения учебных вопросов)</p>');
