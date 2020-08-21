@@ -8,9 +8,6 @@
 - Объектно-ориентированное программирование (2 семестр)
   - [Информация](oop2)
   - [Материалы](https://stepik.org/course/64261)
-- [Технологии обработки информации](toi)
-- [Современное программирование](mp)
-- [Прикладное программирование](mp)
 
 [Информация по проведению занятий в дистанционной форме](do)
 
@@ -19,7 +16,7 @@
 <script type="text/javascript">   
     user = "E.A.Altman";
     domain = "yandex.ru";
-    document.write('<p>По учебным вопросам следует обращаться по адресу <a href=\"mailto:' + user + '@' + domain + '\">' +  user + '@' + domain + '</a></p>');
+    document.write('<p><a href=\"mailto:' + user + '@' + domain + '\">' +  user + '@' + domain + '</a> (для решения учебных вопросов</p>');
 </script>
 
 {% include email.html %}
