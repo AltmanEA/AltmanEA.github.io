@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>IntelliJ IDEA</title>
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/oop/lec/reveal-js/css/reset.css">
+<link rel="stylesheet" href="/oop/lec/reveal-js/css/reveal.css"><link rel="stylesheet" href="/oop/lec/reveal-js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="/oop/lec/highlight-js/github.min.css">
+    
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+  
+
+    <section>
+
+<section data-shortcode-section>
+<h2 id="install">Install</h2>
+</section><section>
+<h3 id="openjdk">OpenJDK</h3>
+<img src="images/openJDK.png" width="70%">
+</section><section>
+<h3 id="idea">IDEA</h3>
+<img src="images/idea_download.png" width="70%">
+</section><section>
+<h3 id="project">Project</h3>
+<img src="images/new_project.png" width="60%">
+</section><section>
+<h3 id="project-properties">Project properties</h3>
+<p><img src="images/new_project_props.png" alt=""></p>
+</section><section>
+<h3 id="project-is-made">Project is made</h3>
+<img src="images/new_project_done.png" width="70%">
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h2 id="edit-code">Edit code</h2>
+</section><section>
+<h3 id="source-file">Source file</h3>
+<img src="images/new_kotlin_file.png" width="55%">
+<img src="images/new_kotlin_file_2.png" style="float: right; width=40%">
+</section><section>
+<h3 id="run-program">Run program</h3>
+<img src="images/hello_world_code.png">
+<img src="images/hello_world_run.png" style="float: right">
+<img src="images/hello_world_result.png">
+</section><section>
+<h3 id="smart-code-completion">Smart code completion</h3>
+<p><img src="images/smart_code.png" alt=""></p>
+</section><section>
+<h3 id="error-hint">Error hint</h3>
+<table>
+<tr>
+<td><img src="images/error_help_1.png"></td>
+<td><img src="images/error_help_2.png"></td>
+</tr><tr>
+<td><img src="images/error_help_3.png"></td>
+<td><img src="images/error_help_4.png"></td>
+</tr>
+</table>
+</section><section>
+<h3 id="refactor">Refactor</h3>
+<table>
+<tr>
+<td><img src="images/refactor_1.png"></td>
+<td><img src="images/refactor_2.png"></td>
+</tr>
+</table>
+</section><section>
+<h3 id="reformat">Reformat</h3>
+<table>
+<tr>
+<td><img src="images/reformat_1.png"></td>
+<td><img src="images/reformat_2.png"></td>
+</tr>
+</table>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h2 id="tests">Tests</h2>
+</section><section>
+<h3 id="create-test">Create test</h3>
+<table>
+<tr>
+<td><img src="images/create_test_1.png"></td>
+<td><img src="images/create_test_2.png"></td>
+</tr>
+</table>
+</section><section>
+<h3 id="buildgradle">build.gradle</h3>
+<pre><code class="language-groovy{}" data-lang="groovy{}">dependencies {
+    implementation &quot;org.jetbrains.kotlin:kotlin-stdlib&quot;
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+</code></pre></section><section>
+<h3 id="test-class">Test class</h3>
+<img src="images/test_class.png">
+</section><section>
+<h3 id="test-code">Test code</h3>
+<pre><code class="language-kotlin{}" data-lang="kotlin{}">import org.junit.jupiter.api.Test
+
+internal class MainKtTest {
+
+    @Test
+    fun testDouble(){
+        assert(double(2)==4)
+    }
+}
+</code></pre></section><section>
+<h3 id="test-result">Test result</h3>
+<img src="images/test_result.png">
+</section><section>
+<h3 id="test-error">Test error</h3>
+<img src="images/test_error.png">
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h2 id="debug">Debug</h2>
+</section><section>
+<h3 id="function">Function</h3>
+<pre><code class="language-kotlin{}" data-lang="kotlin{}">fun factorial(n: Int): Int =
+    if (n == 0)
+        1
+    else
+        factorial(n - 1) * n
+</code></pre></section><section>
+<h3 id="import-libs-fun">Import libs fun</h3>
+<img src="images/lib_import.png">
+</section><section>
+<h3 id="breakpoint">Breakpoint</h3>
+<img src="images/breakpoint.png">
+</section><section>
+<h3 id="debug-run">Debug run</h3>
+<img src="images/debug_run.png">
+</section><section>
+<h3 id="debug-state">Debug state</h3>
+<img src="images/debug_state.png">
+</section><section>
+<h3 id="debug-window">Debug window</h3>
+<img src="images/debug_win.png">
+
+</section>
+</section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/oop/lec/reveal-hugo/object-assign.js></script>
+
+<a href="/oop/lec/reveal-js/css/print/" id="print-location" style="display: none;"></a>
+<script type="text/javascript">
+  var printLocationElement = document.getElementById('print-location');
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = printLocationElement.href + (window.location.search.match(/print-pdf/gi) ? 'pdf.css' : 'paper.css');
+  document.getElementsByTagName('head')[0].appendChild(link);
+</script>
+
+<script type="application/json" id="reveal-hugo-site-params">{"highlight_theme":"github","theme":"beige"}</script>
+<script type="application/json" id="reveal-hugo-page-params">null</script>
+
+<script src="/oop/lec/reveal-js/js/reveal.js"></script>
+
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+  
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);
+  var revealHugoPageParams = JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams));
+  Reveal.initialize(options);
+</script>
+
+
+  
+  
+  <script type="text/javascript" src="/oop/lec/reveal-js/plugin/markdown/marked.js"></script>
+  
+  <script type="text/javascript" src="/oop/lec/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/oop/lec/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/oop/lec/reveal-js/plugin/zoom-js/zoom.js"></script>
+  
+  
+  <script type="text/javascript" src="/oop/lec/reveal-js/plugin/notes/notes.js"></script>
+
+
+
+    
+    
+  </body>
+</html>
