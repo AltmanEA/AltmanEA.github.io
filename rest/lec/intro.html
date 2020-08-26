@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Введение</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <section data-markdown data-separator="---">
+                    <script type="text/template">
+### Преподаватель
+
+Альтман Евгений Анатольевич 
+[altmanea.ru](altmanea.ru)
+
+Кафедра АиСУ
+<br> Автоматика и системы управления 
+<br> преподавательская 1-321, 
+<br> доска объявлений 1-328
+
+---
+
+### Материалы
+
+Материалы для занятий: <br> [altmanea.ru/rest](altmanea.ru/rest)
+
+                    </script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder ],
+				audio: {
+					prefix: 'audio/',
+					suffix: '.webm;codecs=opus',
+					autoplay: true,
+					advance: 2000,
+				},
+			});
+		</script>
+	</body>
+</html>
