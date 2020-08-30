@@ -1,0 +1,446 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Основы Kotlin</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
+<script type="text/template">
+
+## Простые данные
+
+~~~
+
+### Объявление. Значения.
+
+```Kotlin
+    val pi:Float = 3.14F    // value	
+```
+
+- значения обрабатываются компилятором как переменные 
+(например, хранятся в памяти данных), однако они не могут изменяться в программе;
+
+- *запрет на изменение позволяет избегать многих ошибок*, 
+поэтому везде, где это возможно, следует использовать значения вместо переменных;
+
+~~~
+
+### Объявление. Переменные.
+
+```Kotlin
+var currentIndex = 0    // variable
+						// тип переменной опущен
+```
+
+*Все, что компилятор может вывести, <br> в коде можно опустить*
+
+~~~
+
+### Числовые типы
+
+| Type   | Byte | Type   | Byte |
+|--------|------|--------|------|
+| Double | 8    | Long   | 8    |
+| Float  | 4    | Int    | 4    |
+|        |      | Short  | 2    |
+|        |      | Byte   | 1    |
+
+Трансляция типов: 
+
+```Kotlin
+val a = 2.0
+val b:  Int = a.toInt()
+```
+
+~~~
+
+### Числовые константы
+
+- Decimals:  123
+- Longs:  123L
+- Hexadecimals:  0x0F
+- Binaries:  0b00001011
+- Doubles:  123.5,  123.5e10
+- Floats:  123.5f
+
+Можно разделять подчеркиванием:
+
+val oneMillion = 1_000_000
+
+~~~
+
+### Операции
+
+| prefix | postfix | infix | assignment | comment    |
+|--------|---------|-------|------------|------------|
+| +a     | a++     | a+b   | a+=b       |            |
+| -a     | a--     | a-b   | a+=b       |            |
+| ++a    |         | a*b   | a*=b       |            |
+| --a    |         | a/b   | a/=b       |            |
+|        |         | a%b   | a%=b       | deprecated |
+
+~~~
+
+### Побитовые операции
+
+- shl(bits)  – signed shift left
+- shr(bits)  – signed shift right
+- ushr(bits)  – unsigned shift right
+- and(bits)  – bitwise and
+- or(bits)  – bitwise or
+- xor(bits)  – bitwise xor
+- inv()  – bitwise inversion
+
+~~~
+
+### Boolean
+
+Константы:
+
+```Kotlin
+true
+false
+```
+
+Операции:
+
+- ||  – логическое ИЛИ (ленивое)
+- &&  – логическое И (ленивое)
+- !  - negation
+
+~~~
+
+### Сравнение
+
+ - a == b
+ - a != b
+ - a < b
+ - a > b
+ - a <= b
+ - a >= b
+
+~~~
+
+### Символы
+
+```Kotlin
+val x = 'c'
+val y = '\n'
+val z = '\u263A'
+
+print(x)
+print(y)
+print(z)
+```
+
+```
+c
+☺
+```
+
+!~~~!
+
+### Составные данные
+
+~~~
+
+### Примитивы и объекты
+
+Числовые данные в Kotlin могут быть реализованы в двух видах:
+
+- *примитивы* – занимают минимум места;
+- *объекты* – обладают большой функциональностью.
+
+~~~
+
+### Массивы
+
+```Kotlin
+val x: IntArray = intArrayOf(1, 2, 3)
+val y: Array< Int > = arrayOf(1, 2, 3)
+val z: Array< Int > = Array(5) { i -> i }
+
+x[0] = z.size
+x[1] = y.last()
+```
+
+- IntArray – массив *примитивов* 
+- Array<Int> – массив *объектов*
+
+~~~
+
+### Структуры данных
+
+```Kotlin
+class Good(val price: Float, val name: String)
+    
+val mail: Good = Good(10F, "mail")
+val awl: Good = Good(20F, "awl")
+
+val total = mail.price + awl.price
+```
+
+~~~
+
+### Диапазоны
+
+```Kotlin
+val r1: IntRange = 1..10
+val r2: IntProgression = 10 downTo 1 step 1
+
+val b1: Boolean = 5 in r1
+val b2: Boolean = 5 !in r2
+```
+
+~~~
+
+### Строки
+
+```Kotlin
+val s1: String = "Hello, world!\n"
+val s2: String = """        - one
+	- two
+"""
+val s3: String = "s1 value is $s1"
+```
+
+!~~~!
+
+## Управляющие конструкции
+
+~~~
+
+### If
+
+```Kotlin
+if (a.rem(2) == 0)
+	print("a is even\n")
+else
+	print("a is odd\n")
+
+val min = if (a < b) a else b
+```
+
+~~~
+
+### When
+
+```Kotlin
+val ageClass = when(age){
+	in 0..17 -> "Underage"
+	in 18..44 -> "Youth"
+	in 45..59 -> "Middle"
+	in 60..74 -> "Elderly"
+	in 75..90 -> "Old"
+	in 90..Int.MAX_VALUE -> "Long-lived"
+	else -> "Fetus"
+}
+```
+
+~~~
+
+### For
+
+```Kotlin
+for(i in 0..5){
+	print(i)
+}
+```
+
+~~~
+
+### While
+
+```Kotlin
+var bits = 10
+while (bits > 0) {
+	val tmp = bits / 2
+	print(bits - 2 * tmp)
+	bits = tmp
+}
+
+print("\nEnter Yes\n")
+do {
+	val x = readLine()
+} while (x != "Yes")
+```
+
+~~~
+
+### Прерывание циклов
+
+Использовать только в случае крайней необходимости:
+
+- continue
+- break
+
+!~~~!
+
+## Функции
+
+~~~
+
+### Объявление и вызов
+
+```Kotlin
+fun greeting(name: String): String {
+	return "Hello $name"
+}
+
+print(greeting("Sheldon"))
+```
+
+~~~
+
+### Аргументы по умолчанию
+
+```Kotlin
+fun greeting(name: String,
+			prefix: String = "Dr."): String {
+	return "Hello $prefix $name\n"
+}
+
+print(greeting("Sheldon"))
+print(greeting("Howard", "Mr"))
+```
+
+~~~
+
+### Именованные аргументы
+
+```Kotlin
+fun greeting(name: String,
+			prefix: String = "Dr.",
+			greeting: String = "Hello"): String {
+	return "Hello $prefix $name\n"
+}
+
+print(greeting("Sheldon", greeting = "Hi"))
+```
+
+~~~
+
+### Функции из одного выражения
+
+```Kotlin
+fun greeting(name: String,
+			prefix: String = "Dr.",
+			greeting: String = "Hello") =
+	"Hello $prefix $name\n"
+```
+
+~~~
+
+### Обобщенные функции
+
+```Kotlin
+fun < T > getMiddle(array: Array< T >) =
+	array[array.size/2]
+
+print(getMiddle< Int >(arrayOf(0, 1, 2)))
+print(getMiddle(arrayOf('a', 'b', 'c')))
+```
+
+~~~
+
+### Функции с хвостовой рекурсией
+
+```Kotlin
+fun sum(arr: Array< Int >): Int =
+    if (arr.isEmpty())
+        0
+    else
+        arr.first() + sum(arr.sliceArray(1 until arr.size))
+
+tailrec fun tailRecSum(arr: Array< Int >, accumulator: Int = 0): Int =
+    if (arr.isEmpty())
+        accumulator
+    else
+        tailRecSum(
+            arr.sliceArray(1 until arr.size),
+            accumulator + arr[0]
+        )
+```
+
+~~~
+
+
+### Лямбда-функции
+
+```Kotlin
+val arr: Array< Int > = Array(10) { it }
+
+val isEven: (Int) -> Boolean = { n: Int -> n.rem(2) == 0 }
+
+val evenArr: Array< Boolean > = Array(10, isEven)
+
+val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y}
+```
+
+~~~
+
+### Функции высших порядков
+
+```Kotlin
+val arr: Array< Int > = Array(10) { it }
+
+val isEven: (Int) -> Boolean = { n: Int -> n.rem(2) == 0 }
+
+val evenArr: List< Int > = arr.filter(isEven)
+
+val oddSquare =
+        arr
+            .filter(isEven)
+            .map { it * it }
+```
+
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				audio: {
+					prefix: 'audio/',
+					suffix: '.webm;codecs=opus',
+					autoplay: false,
+					advance: -1,
+				},
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>
