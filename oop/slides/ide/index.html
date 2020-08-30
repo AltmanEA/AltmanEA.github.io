@@ -16,7 +16,6 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-
                 <section data-markdown data-separator="----" data-separator-vertical="---" > 
 <script type="text/template">
 
@@ -239,6 +238,7 @@ fun factorial(n: Int): Int =
 		<script src="../plugin/audio-slideshow/plugin.js"></script>
 		<script src="../plugin/audio-slideshow/recorder.js"></script>
 		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -247,13 +247,20 @@ fun factorial(n: Int): Int =
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder ],
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
 				audio: {
 					prefix: 'audio/',
 					suffix: '.webm;codecs=opus',
 					autoplay: false,
 					advance: -1,
 				},
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
 			});
 		</script>
 	</body>

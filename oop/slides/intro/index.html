@@ -1,8 +1,6 @@
 <!doctype html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<title>Введение</title>
 
@@ -28,9 +26,9 @@
 
 ### Объектно-ориентированное программирование
 
-1 семестр -- экзамен
+1 семестр – экзамен
 
-2 семестр -- экзамен, курсовая работа
+2 семестр – экзамен, курсовая работа
 
 ---
 
@@ -136,7 +134,7 @@
 
 ### Изучаемые технологии
 
-В 1 семестре -- основы современного объектно-ориентированного программирования на примере языка Kotlin.
+В 1 семестре – основы современного объектно-ориентированного программирования на примере языка Kotlin.
 
 </script>
                 </section>
@@ -151,21 +149,24 @@
 		<script src="../plugin/audio-slideshow/plugin.js"></script>
 		<script src="../plugin/audio-slideshow/recorder.js"></script>
 		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder ],
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
 				audio: {
 					prefix: 'audio/',
-					suffix: '.webm;codecs=opus',
+ 					suffix: '.webm;codecs=opus',
 					autoplay: false,
 					advance: -1,
 				},
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
 			});
 		</script>
 	</body>

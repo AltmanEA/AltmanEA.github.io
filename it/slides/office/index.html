@@ -162,21 +162,24 @@ pandoc -o lab2.docx lab2.md
 		<script src="../plugin/audio-slideshow/plugin.js"></script>
 		<script src="../plugin/audio-slideshow/recorder.js"></script>
 		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder ],
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
 				audio: {
 					prefix: 'audio/',
-					suffix: '.webm;codecs=opus',
+ 					suffix: '.webm;codecs=opus',
 					autoplay: false,
 					advance: -1,
 				},
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
 			});
 		</script>
 	</body>
