@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Лабораторные работы on Разработка REST-сервера</title>
+    <link>https://altmanea.ru/rest/labs/</link>
+    <description>Recent content in Лабораторные работы on Разработка REST-сервера</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    
+	<atom:link href="https://altmanea.ru/rest/labs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1. Среда разработки</title>
+      <link>https://altmanea.ru/rest/labs/lab1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/rest/labs/lab1/</guid>
+      <description>Теоретические сведения Лекция
+Задание   Установите и настройте на своем компьютере среду разработки.
+  Напишите функцию для вычисления площади круга по его адресу.
+Подсказки:
+ аргумент и результат должны быть типа Double; импортируйте константу PI из библиотеки kotlin.math.    Напишите тесты для этой функции.
+  Переименуйте функцию с помощью рефакторинга. Отформатируйте текст с помощью функции среды reformat.
+  Прогоните тесты по шагам в режиме отладки.</description>
+    </item>
+    
+  </channel>
+</rss>
