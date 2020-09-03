@@ -26,47 +26,43 @@
 		<div class="reveal">
 			<div class="slides">
 
-                <section data-markdown data-separator="----" data-separator-vertical="---" > 
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
 <script type="text/template">
 
 ## Инструменты
 
----
+~~~
 
 ### VS code
 
 [https://altmanea.ru/it/slides/charcode/](https://altmanea.ru/it/slides/charcode/)
 
----
+~~~
 
 ### PlantUML
 
 [https://altmanea.ru/it/slides/techfig/#/0/1](https://altmanea.ru/it/slides/techfig/#/0/1)
 
-
-
----
+~~~
 
 ### Работа с PlantUML
 
-Для отрисовки лучше использовать сервер:
+Для создания изображения лучше использовать сервер (при отсутствии интернета – 
+установите сервер локально с помощью [образа](https://hub.docker.com/r/plantuml/plantuml-server) докер.):
 
 ![](images/plantUML_render.png)
-При отсутствии интернета – установите сервер локально с помощью [образа](https://hub.docker.com/r/plantuml/plantuml-server) докер.
 
-
-----
+!~~~!
 
 ## Диаграммы прецедентов
 
----
+~~~
 
 ### Проектируемая система
 
 Спроектируем систему, позволяющую преподавателям учитывать выполнение студентами заданий.
 
-
----
+~~~
 
 ### Идея диаграмм прецедентов
 
@@ -79,7 +75,7 @@
 	- обобщение;
 	- и др.
 
----
+~~~
 
 ### Объекты и отношения
 
@@ -102,7 +98,7 @@
 </div>
 </div>
 
----
+~~~
 
 ### Сокращения
 
@@ -128,7 +124,7 @@
 </div>
 </div>
 
----
+~~~
 
 ### Границы системы
 
@@ -157,7 +153,7 @@
 </div>
 </div>
 
----
+~~~
 
 ### Отношение обобщение
 
@@ -188,7 +184,7 @@
 </div>
 </div>
 
----
+~~~
 
 ### Отношение обобщение
 
@@ -219,7 +215,7 @@
 </div>
 </div>
 
----
+~~~
 
 ### Стереотипы
 
@@ -248,11 +244,193 @@
 </div>
 </div>
 
---- 
+~~~ 
 
 ### Обзор диаграмм прецедентов
 
 ![](images/precedent_6.svg)
+
+!~~~!
+
+## Диаграммы классов
+
+~~~
+
+### Идея диаграмм классов
+
+- Диаграмма показывает классы ООП и их отношения.
+- Класс обозначается прямоугольником с тремя полями: имя, поля, операции
+- Классы могут быть в отношении друг с другом:
+	- ассоциация;
+	- обобщение;
+	- зависимость;
+	- реализация.
+
+~~~
+
+### Составление словаря системы
+
+<div class="container">
+<div class="col" data-markdown>
+
+```
+	hide circle
+	skinparam minClassWidth 170
+
+	class Course{}
+	class Tutor{}
+	class Student{}
+	class Task{}
+	class Type{}
+	class Grade{}
+```
+
+</div>
+<div class="col">
+<img src = "images/class_1.svg">
+</div>
+</div>
+
+~~~
+
+### Отношения классов
+
+<div class="container">
+<div class="col" data-markdown>
+
+```
+class Course {}
+class Person{}
+class Tutor extends Person {}
+class Student extends Person {}
+class Type {}
+class Task {}
+class Grade {}
+
+Course "*" <-- "*" Tutor
+Course "*" <-- "*" Student
+Course "1" <-- "*" Task
+Student "1" <-- "*" Grade
+Task "*" <-- "1" Type
+Task "1" <-- "*" Grade
+```
+
+</div>
+<div class="col">
+<img src = "images/class_2.svg">
+</div>
+</div>
+
+~~~
+
+### Поля классов
+
+<div class="container">
+<div class="col" data-markdown>
+
+```
+class  Course {
+	name: String
+	tutors: Tutor[]
+	students: Student[]
+	tasks : Task[]
+}
+class Person{
+	name: String
+	courses: Course[]
+}
+class Tutor extends Person {
+	post: String    
+}
+...
+```
+
+</div>
+<div class="col">
+<img src = "images/class_3.svg">
+</div>
+</div>
+
+~~~
+
+### Операции и описания классов
+
+<div class="container">
+<div class="col" data-markdown>
+
+```
+class  Course {
+	name: String
+	tutors: Tutor[]
+	students: Student[]
+	tasks : Task[]
+	---
+	addTask(task)
+	addPerson(person)
+	---
+	Хранит данные о 
+	преподавателях, студентах 
+	и задачах одной дисциплины
+}
+```
+
+</div>
+<div class="col">
+<img src = "images/class_4.svg">
+</div>
+</div>
+
+~~~
+
+### Идея диаграмм последовательностей
+
+- Диаграмма показывает последовательность действий для решения задачи (прецедента).
+- Это одна из динамических диаграмм, удобная для определения операций класса.
+- Объектами диаграммы являются:
+	- actor;
+	- object (объекты из ООП, решающие задачу).
+- Объекты диаграммы обмениваются сообщениями, например, вызывают функции других объектов.
+- Объекты диаграммы имеют линии жизни.
+
+~~~
+
+### Пример диаграммы последовательностей
+
+<div class="container">
+<div class="col" data-markdown>
+
+```
+@startuml
+
+actor Tutor
+collections Courses
+
+Tutor -> Courses : get course
+Tutor -> course : setGrade(task, person, grade)
+course -> grade : << create >> 
+activate grade
+course -> task : setGrade
+deactivate grade
+
+@enduml
+```
+
+</div>
+<div class="col">
+<img src = "images/sequence_1.svg">
+</div>
+</div>
+
+~~~
+
+### Замечания по моделированию
+
+- Детализация моделей может быть различной:
+	- при использовании генерации кода прописывают все поля и операции;
+	- для описания архитектуры системы достаточно прописать имена классов и их отношения.
+- Моделирование – итерационный процесс, например:
+	- диаграмма классов уточняется после разработки динамических диаграмм;
+	- диаграммы UML изменяются после разработки кода (иногда кардинально: рефакторинг);
 
 </script>
                 </section>
