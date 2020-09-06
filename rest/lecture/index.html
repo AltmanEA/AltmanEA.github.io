@@ -32,7 +32,12 @@
 
 
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script></head>
+    onload="renderMathInElement(document.body);"></script><script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+
+<script type="text/javascript">
+    VK.init({apiId: 7105937, onlyWidgets: true});
+</script>
+</head>
 <body><div class="container"><header>
 <h1>Разработка REST-сервера</h1>
 
@@ -51,7 +56,10 @@
 
 <br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/rest/" title="Введение"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Введение</a>
 <a class="nav nav-next" href="https://altmanea.ru/rest/labs/" title="Лабораторные работы">Next - Лабораторные работы <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</nav><footer><p align="right">
+</nav><footer><div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script><p align="right">
     <a href="https://altmanea.ru">&copy; Альтман Е. А. 2019-2020</a>
 </p>
 </footer>

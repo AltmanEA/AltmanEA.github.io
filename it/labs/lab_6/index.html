@@ -40,6 +40,11 @@ h1{ color: blue; } В этой записи h1 описывает HTML тег, �
 
 
 <meta itemprop="keywords" content="" />
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+
+<script type="text/javascript">
+    VK.init({apiId: 7105937, onlyWidgets: true});
+</script>
 </head>
 <body><div class="container"><header>
 <h1>Информационные технологии</h1>
@@ -91,7 +96,10 @@ h1{ color: blue; } В этой записи h1 описывает HTML тег, �
 
 <br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/it/labs/lab_5/" title="5. Основы HTML"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 5. Основы HTML</a>
 <a class="nav nav-next" href="https://altmanea.ru/it/labs/lab_7/" title="7. Активные элементы текста">Next - 7. Активные элементы текста <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</nav><footer><p align="right">
+</nav><footer><div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script><p align="right">
     <a href="https://altmanea.ru">&copy; Альтман Е. А. 2019-2020</a>
 </p>
 </footer>
