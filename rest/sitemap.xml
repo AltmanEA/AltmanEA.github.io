@@ -7,11 +7,19 @@
   </url>
   
   <url>
-    <loc>https://altmanea.ru/rest/labs/lab1/</loc>
+    <loc>https://altmanea.ru/rest/labs/uml/</loc>
   </url>
   
   <url>
     <loc>https://altmanea.ru/rest/labs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/rest/self/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/rest/exam/</loc>
   </url>
   
   <url>
