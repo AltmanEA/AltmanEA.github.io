@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Объекты</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
+<script type="text/template">
+
+## Создание объектов
+
+~~~
+
+### Объект и ссылки
+
+<div class="container">
+	<div class="col" data-markdown>
+	<pre class="kotlin"><code>
+val x = intArrayOf(1, 2, 3)
+	</code></pre>
+	</div>
+	<div class="col">
+		<img src = "images/reference.svg", width=500>
+	</div>
+</div>
+
+
+~~~
+
+### Тип объекта
+
+<div><img src = "images/type.svg", width=500></div>
+
+~~~
+
+### Копирование ссылки
+
+<div class="container">
+	<div class="col" data-markdown>
+	<pre class="kotlin"><code>
+val x = intArrayOf(1, 2, 3)
+val y = x
+	</code></pre>
+	</div>
+	<div class="col">
+		<img src = "images/copyRef.svg", width=600>
+	</div>
+</div>
+
+~~~
+
+### Копирование объекта
+
+<div class="container">
+	<div class="col" data-markdown>
+	<pre class="kotlin"><code>
+val x = intArrayOf(1, 2, 3)
+val y = x.copyOf()
+	</code></pre>
+	</div>
+	<div class="col">
+		<img src = "images/copyObject.svg", width=600>
+	</div>
+</div>
+
+!~~~!
+
+## Анализ объектов
+
+~~~
+
+### Сравнение объектов и ссылок
+
+<div class="container">
+	<div class="col" data-markdown>
+	<pre class="kotlin"><code>
+val a = 1 .. 3
+val b = a.start .. a.last
+val c = a
+println(a == b)
+println(a === b)
+println(a == c)
+println(a === c)
+	</code></pre>
+	</div>
+	<div class="col">
+		<pre><code>
+|
+|
+|
+true
+false
+true
+true
+		</code></pre>
+	</div>
+</div>
+
+~~~
+
+### Сравнение массивов
+
+<div class="container">
+	<div class="col" data-markdown>
+	<pre class="kotlin"><code>
+val t1 = arrayOf(1,2)
+val a = arrayOf(t1)
+val b = arrayOf(arrayOf(1,2))
+val c = a
+println(a == b)
+println(a === b)
+println(a == c)
+println(a === c)
+println(a.contentEquals(b))
+println(a.contentEquals(c))
+println(a.contentDeepEquals(b))
+println(a.contentDeepEquals(c))
+	</code></pre>
+	</div>
+	<div class="col">
+		<pre><code>
+|
+|
+|
+|
+false
+false
+true
+true
+false
+true
+true
+true
+		</code></pre>
+	</div>
+</div>
+
+
+~~~
+
+### Связывание
+
+Связывание (binding, dispatch) объекта с его кодом (типом)
+
+- Статическое – по типу ссылки (С++)
+	- не требует хранения типа объекта;
+	- производится во время компиляции.
+- Динамическое - по типу объекта (Kotlin, Java, C\#)
+	- ближе к логике работы с объектами.
+
+~~~
+
+### Очистка памяти
+
+- Явное – вызывается функция уничтожения объекта (деструктор) (С++)
+- Не явное – платформа отслеживает и удаляет не используемые объекты
+ (сборка мусора, garbage collector) 
+
+!~~~!
+
+## Свойства объектов
+
+~~~
+
+### Свойства и функции
+
+<div class="container">
+	<div class="col" data-markdown>
+	<pre class="kotlin"><code>
+import java.awt.Frame
+fun main() {
+	val frame = Frame("Title")
+	frame.setSize(200, 200)
+	frame.isVisible = true
+}
+	</code></pre>
+	</div>
+	<div class="col">
+		<img src = "images/frame.jpg">
+	</div>
+</div>
+
+~~~
+
+### Отношения объектов
+
+<div class="container">
+	<div class="col" data-markdown>
+	<pre class="kotlin"><code>
+val frame = Frame("Title")
+val panel = Panel()
+panel.layout = FlowLayout()
+panel.add(Label("Метка"))
+panel.add(Button("Кнопка"))
+frame.add(panel)
+frame.setSize(200, 200)
+frame.isVisible = true
+	</code></pre>
+	</div>
+	<div class="col">
+		<img src = "images/object_relation.jpg">
+	</div>
+</div>
+
+~~~
+
+### Взаимодействие с объектом
+
+<div class="container">
+	<div class="col" data-markdown>
+	<pre class="kotlin"><code>
+val label = Label("Метка")
+panel.add(label)
+val button = Button("Кнопка")
+panel.add(button)
+var count = 0
+button.addActionListener {
+	count++
+	label.text = count.toString()
+}
+	</code></pre>
+	</div>
+	<div class="col">
+		<img src = "images/object_interaction.jpg">
+	</div>
+</div>
+
+~~~
+
+### Контекст
+
+<div class="container">
+	<div class="col" data-markdown>
+<pre class="kotlin"><code>val panel = Panel().apply {
+	layout = GridLayout(2,2)
+	frame.add(this)
+}
+val label = Label("0").also {
+	panel.add(it)
+}
+var count = 0
+Button("+").run {
+	panel.add(this)
+		this.addActionListener {
+			count++
+			label.text = count.toString()
+		}
+	}
+</code></pre>
+	</div>
+	<div class="col">
+<pre class="kotlin"><code>
+Button("C").let {
+	panel.add(it)
+		it.addActionListener {
+			count=0
+			label.text = count.toString()
+		}
+	}
+with(frame){
+	setSize(200, 200)
+	isVisible = true
+}
+</code></pre>
+	</div>
+</div>
+
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				width: '90%',
+    			height: '100%',
+				// Learn about plugins: https://revealjs.com/plugins/
+				// plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				// audio: {
+				// 	prefix: 'audio/',
+				// 	suffix: '.webm;codecs=opus',
+				// 	autoplay: false,
+				// 	advance: -1,
+				// },
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu ],
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>

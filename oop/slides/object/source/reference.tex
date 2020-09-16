@@ -1,0 +1,25 @@
+\include{shapestyle}
+\begin{document}
+\begin{tikzpicture}
+\node (link) at (0, 0) {Reference};
+\node [link, below=0.5cm] (x) at (link) {x};
+
+\node [right=2cm] (obj) at (link) {Object};	
+\node [data, below=0.5cm] (m0) at (obj) {1};
+\node [data, below=0.5cm] (m1) at (m0) {2};
+\node [data, below=0.5cm] (m2) at (m1) {3};	
+\node [right=0.5cm] at (m0) {x[0]};	
+\node [right=0.5cm] at (m1) {x[1]};	
+\node [right=0.5cm] at (m2) {x[2]};		
+\draw [obj, above=0.5cm](node cs:name=obj, anchor = north west) rectangle +(1.5, -4);	
+\draw [tips, -{Latex[open,length=10pt]}] 
+(node cs:name=x,anchor=east) -- 
+(node cs:name=obj,anchor=west);	
+\end{tikzpicture}
+\end{document}
+
+
+
+
+
+

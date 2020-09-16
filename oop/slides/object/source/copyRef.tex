@@ -1,0 +1,41 @@
+\include{shapestyle}
+\begin{document}
+\begin{tikzpicture}
+\node (link) at (0, 0) {References};
+\node [link, below=0.5cm] (x) at (link) {x};
+
+\node [right=2cm] (obj) at (link) {Object};	
+\node [link, below=0.5cm] (mt) at (obj) {};
+\node [meta, below=0.5cm] (ms) at (mt) {size};
+\node [data, below=0.5cm] (m0) at (ms) {1};
+\node [data, below=0.5cm] (m1) at (m0) {2};
+\node [data, below=0.5cm] (m2) at (m1) {3};	
+\draw [obj, above=0.5cm](node cs:name=obj, anchor = north west) 
+	rectangle +(1.5, -6);	
+\draw [tips, -{Latex[open,length=10pt]}] 
+	(node cs:name=x,anchor=east) -- 
+	(node cs:name=obj,anchor=west);	
+
+\node [right=2cm] (code) at (obj) {Code};
+\node [fun, below=0.5cm] (c0) at (code) {get()};
+\node [fun, below=0.5cm] (c1) at (c0) {set()};
+\node [fun, below=0.5cm] (c2) at (c1) {last()};
+\node [fun, below=0.5cm] (c3) at (c2) {...};
+\draw [obj](node cs:name=code, anchor = north west)+(-0.5,0) 
+	rectangle +(1.4, -6);	
+\draw [tips, -{Latex[open,length=10pt]}] 
+	(node cs:name=mt,anchor=east) -- 
+	(node cs:name=code,anchor=west);
+
+	\node [link, below=0.5cm] (y) at (x) {y};
+	\draw [tips, -{Latex[open,length=10pt]}] 
+		(node cs:name=y,anchor=east) -- 
+		(node cs:name=obj,anchor=west);		
+\end{tikzpicture}
+\end{document}
+
+
+
+
+
+
