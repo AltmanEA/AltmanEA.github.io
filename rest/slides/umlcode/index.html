@@ -33,6 +33,14 @@
 
 ~~~
 
+### Пример проекта
+
+Ниже приведен пример проекта в минимальной версии:
+
+[https://github.com/AltmanEA/GraderMono](https://github.com/AltmanEA/GraderMono)
+
+~~~
+
 ### Идентификация
 
 <pre class="Kotlin"><code>
@@ -144,7 +152,7 @@ class Task(
 
 ### Диаграмма «Выставление оценки»
 
-<img src="images/sequence_1.svg" width=800>
+<img src="images/setGrade.svg" width=800>
 
 ~~~
 
@@ -181,6 +189,44 @@ fun setGrade(
     val grade = Grade(value, date, student)
     task.grades += grade
 }
+</code></pre>
+
+~~~
+
+### Диаграмма «Чтение оценок студента»
+
+<img src="images/readGrades.svg" width=600>
+
+~~~
+
+### Действия Tutor
+
+<pre class="Kotlin"><code>
+@Test
+fun studentGradesTest() {
+	val math = courses["Math"] ?: fail()
+    math.setGrade("Intro", "Penny", 1)
+    math.setGrade("Uml lab", "Penny", 3)
+    math.setGrade("Uml lab", "Penny", 4)
+    val grades = math.studentGrades("Penny")
+    assertEquals(1, grades["Intro"])
+    assertEquals(4, grades["Uml lab"])
+}
+</code></pre>
+
+~~~
+
+### Действия Course
+
+<pre class="Kotlin"><code>
+fun studentGrades(studentName: String) =
+	tasks.map { task ->
+    	val value = task.grades
+        	.filter { it.student.name == studentName }
+            .maxByOrNull { it.value }
+            ?.value ?: 0
+        task.name to value
+    }.toMap()
 </code></pre>
 
 </script>
