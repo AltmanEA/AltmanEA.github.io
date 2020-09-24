@@ -59,5 +59,15 @@
 Задание  Создайте класс Controller: class Controller( var state: State = State() ) { val view = View(this) var checkedCell: Int? = null }  Обновите классы Game и View так, чтобы они работали с классом Controller. Изменив класс View установите фон элементов типа JButton так, чтобы игровое поле выглядело как шахматная доска. В случае, если в объекте класса Controller поле checkedCell не нулевое, установите фон соответствующей кнопки в какой-либо цвет.</description>
     </item>
     
+    <item>
+      <title>5. Иерархия классов</title>
+      <link>https://altmanea.ru/oop/labs/inheritance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop/labs/inheritance/</guid>
+      <description>Теоретические сведения Лекция Исходный проект (каталог d_inheritance)
+Задание  Дополните класс Controller коллекцией ArrayList. Дополните класс View элементом, позволяющим вернуться к предыдущему ходу. Проверьте работоспособность этого элемента на двух играх.   </description>
+    </item>
+    
   </channel>
 </rss>
