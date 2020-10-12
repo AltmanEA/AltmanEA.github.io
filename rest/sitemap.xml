@@ -27,6 +27,10 @@
   </url>
   
   <url>
+    <loc>https://altmanea.ru/rest/project/</loc>
+  </url>
+  
+  <url>
     <loc>https://altmanea.ru/rest/exam/</loc>
   </url>
   
@@ -39,7 +43,15 @@
   </url>
   
   <url>
+    <loc>https://altmanea.ru/rest/project/28/</loc>
+  </url>
+  
+  <url>
     <loc>https://altmanea.ru/rest/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/rest/project/tasks/</loc>
   </url>
   
 </urlset>
