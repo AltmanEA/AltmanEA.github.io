@@ -105,12 +105,75 @@ val total = mail!!.price!! + awl!!.price!!
 
 !~~~!
 
-## Не изменяемые коллекции
+## Разграничение доступа
 
 ~~~
 
-### Общее состояние
+### Пакеты
 
+#### build.gradle
+<pre><code>group 'ru.altmanea.examples'
+version '0.1'</code></pre>
+
+#### Исходный код
+
+<pre class="kotlin"><code>package ru.altmanea.examples.d_inheritance</code></pre>
+
+~~~
+
+### Импорт из пакетов
+
+<pre class="kotlin"><code>import java.awt.Color
+import java.awt.GridLayout
+import javax.swing.JButton
+import javax.swing.JPanel</code></pre>
+
+- Внимательно следите за автоимпортом.
+- Не включайте лишнего.
+- Оптимизируйте с помощью ```CTRL-ALT-O```.
+
+~~~
+
+### Модификаторы доступа
+
+- 
+- private
+- public
+- protected
+- internal
+
+
+
+!~~~!
+
+## Изменяемые коллекции
+
+~~~
+
+### Не изменяемые коллекции
+
+<pre class="kotlin"><code>
+var a: List < Int > = listOf(1, 2, 3)
+	
+a = a.mapIndexed { elem, index ->
+		if (index == 0)
+			0
+		else
+			elem
+	}
+</code></pre>
+
+~~~
+
+### Не изменяемые коллекции
+
+<pre class="kotlin"><code>
+val b: MutableList < Int > = listOf(1, 2, 3) as MutableList < Int >
+	
+b[0] = 0
+</code></pre>
+
+Использовать в случае крайней необходимости.
 
 </script>
                 </section>
