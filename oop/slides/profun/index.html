@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Свойства и функции</title>
+
+		<script type="text/javascript" src="http://livejs.com/live.js"></script>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
+<script type="text/template">
+
+## Функции и операторы
+
+~~~
+
+### Перегрузка операторов
+
+<pre class="kotlin"><code>class Complex(val x: Double, val y: Double) {
+	operator fun plus(other: Complex) =
+		Complex(x + other.x, y + other.y)
+}
+
+val x = Complex(1.0, 2.0)
+val y = x + x
+</code></pre>
+
+~~~
+
+### Унарные операторы
+
+| Выражение | Транслируется в |
+|-----------|-----------------|
+| +a        | a.unaryPlus()   |
+| -a        | a.unaryMinus()  |
+| !a        | a.not()         |
+
+~~~
+
+### Инкремент и декремент
+
+| Выражение | Транслируется в |
+|-----------|-----------------|
+| a++, ++a  | a.inc()         |
+| a--, --a  | a.dec()         |
+
+При постфиксной форме возвращается старое значение, <br> при префиксной – новое.
+
+~~~
+
+### Арифметические операции
+
+| Выражение | Транслируется в                 |
+|-----------|---------------------------------|
+| a + b     | a.plus(b)                       |
+| a - b     | a.minus(b)                      |
+| a * b     | a.times(b)                      |
+| a / b     | a.div(b)                        |
+| a % b     | a.rem(b), a.mod(b) (устаревшее) |
+| a..b      | a.rangeTo(b)                    |
+
+~~~
+
+### Оператор in
+
+| Выражение | Транслируется в                 |
+|-----------|---------------------------------|
+| a in b    | b.contains(a)                   |
+| a !in b   | !b.contains(a)                  |
+
+~~~
+
+### Оператор доступа по индексу
+
+| Выражение            | Транслируется в         |
+|----------------------|-------------------------|
+| a[i]                 | a.get(i)                |
+| a[i, j]              | a.get(i, j)             |
+| a[i_1, ..., i_n]     | a.get(i_1, ..., i_n)    |
+| a[i] = b             | a.set(i, b)             |
+| a[i, j] = b          | a.set(i, j, b)          |
+| a[i_1, ..., i_n] = b | a.set(i_1, ..., i_n, b) |
+
+~~~
+
+### Оператор вызова
+
+| Выражение            | Транслируется в         |
+|----------------------|-------------------------|
+| a()                  | a.invoke()              |
+| a(i)                 | a.invoke(i)             |
+| a(i, j)              | a.invoke(i, j)          |
+| a(i_1, ..., i_n)     | a.invoke(i_1, ..., i_n) |
+
+~~~
+
+### Присвоения с накоплением
+
+| Выражение            | Транслируется в         |
+|----------------------|-------------------------|
+| a += b               | a.plusAssign(b)         |
+| a -= b               | a.minusAssign(b)        |
+| a *= b               | a.timesAssign(b)        |
+| a /= b               | a.divAssign(b)          |
+| a %= b               | a.modAssign(b)          |
+
+~~~
+
+### Операторы равенства и неравенства
+
+| Выражение            | Транслируется в                |
+|----------------------|--------------------------------|
+| a == b               | a?.equals(b) ?: (b === null)   |
+| a != b               | !(a?.equals(b) ?: (b === null) |
+
+~~~
+
+### Операторы сравнений
+
+| Выражение            | Транслируется в         |
+|----------------------|-------------------------|
+| a > b                | a.compareTo(b) > 0      |
+| a < b                | a.compareTo(b) < 0      |
+| a >= b               | a.compareTo(b) >= 0     |
+| a <= b               | a.compareTo(b) <= 0     |
+
+!~~~!
+
+## Методы доступа
+
+~~~
+
+### Геттеры
+
+<pre class="kotlin"><code>val isEmpty: Boolean
+    get() = this.size == 0
+
+a = isEmpty
+a = getIsEmpty()
+</code></pre>
+
+~~~
+
+### Сеттеры
+
+<pre class="kotlin"><code>var counter = 0
+    set(value) {
+        if (value >= 0) 
+            field = value
+    }
+
+counter = 5
+setCounter(10)
+</code></pre>
+
+!~~~!
+
+## Делегирование методов доступа
+
+~~~
+
+### Класс для делегирования
+
+<pre class="Kotlin"><code>import kotlin.reflect.KProperty
+
+	class Delegate {
+		operator fun getValue(
+			thisRef: Any?, 
+			property: KProperty<*>)
+			: String { return "..." } 
+		operator fun setValue(
+			thisRef: Any?, 
+			property: KProperty<*>, 
+			value: String) { ... }
+	}
+	
+	var p: String by Delegate()
+</code></pre>
+
+~~~
+
+### Ленивая инициализация
+
+<pre class="Kotlin"><code>val lazyValue: String by lazy {
+    println("computed!")
+    "Hello"
+}
+
+fun main() {
+    println(lazyValue)
+    println(lazyValue)
+}
+</code></pre>
+
+<pre>
+computed!
+Hello
+Hello
+</pre>
+
+~~~
+
+### Реактивные свойства
+
+<pre class="Kotlin"><code>class User {
+    var name: String by Delegates.observable("< no name >") {
+        prop, old, new ->
+        println("$old -> $new")
+    }
+}
+fun main() {
+    val user = User()
+    user.name = "first"
+    user.name = "second"
+}
+</code></pre>
+
+<pre>
+< no name > -> first
+first -> second
+</pre>
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				width: '90%',
+    			height: '100%',
+				// Learn about plugins: https://revealjs.com/plugins/
+				// plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				// audio: {
+				// 	prefix: 'audio/',
+				// 	suffix: '.webm;codecs=opus',
+				// 	autoplay: false,
+				// 	advance: -1,
+				// },
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu ],
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>
