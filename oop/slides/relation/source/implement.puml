@@ -1,0 +1,12 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam MinClassWidth 150
+
+class A
+class B
+
+A <|.. B
+
+
+@enduml
