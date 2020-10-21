@@ -3,10 +3,10 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>2. Разработка программы по UML диаграммам - Разработка REST-сервера</title>
+<title>4. Разработка ORM - Разработка REST-сервера</title>
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://altmanea.ru/rest//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://altmanea.ru/rest/labs/umlcode/">
+<link rel="canonical" href="https://altmanea.ru/rest/labs/ormcode/">
 <link rel="stylesheet" href="https://altmanea.ru/rest/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://altmanea.ru/rest/css/chroma.min.css">
@@ -15,21 +15,21 @@
 <script src="https://altmanea.ru/rest/js/bundle.js"></script><style>
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
-<meta property="og:title" content="2. Разработка программы по UML диаграммам" />
+<meta property="og:title" content="4. Разработка ORM" />
 <meta property="og:description" content="Теоретические сведения Лекция
-Задание  Разработайте программу по диаграммам UML, спроектированных в предыдущей работе. Можно реализовывать не все функции системы (достаточно реализовать 3 прецедента). Дополнительное задание (на оценку 4 автоматом): реализуйте систему полностью. Дополнительное задание (на оценку 5 автоматом): реализуйте интерфейс командной строки для системы.  " />
+Задание  Переработайте программу из 2 лабораторной работы так, чтобы данные хранились в базе данных. Программа должна использовать фреймворк Kotlin Exposed, реализовывать можно как на уровне DSL, так и на уровне DAO. Можно реализовывать не все функции системы (достаточно реализовать 3 прецедента). Дополнительное задание (на оценку 4 автоматом): реализуйте систему полностью. Дополнительное задание (на оценку 5 автоматом): реализуйте интерфейс командной строки для системы.  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://altmanea.ru/rest/labs/umlcode/" />
+<meta property="og:url" content="https://altmanea.ru/rest/labs/ormcode/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="2. Разработка программы по UML диаграммам"/>
+<meta name="twitter:title" content="4. Разработка ORM"/>
 <meta name="twitter:description" content="Теоретические сведения Лекция
-Задание  Разработайте программу по диаграммам UML, спроектированных в предыдущей работе. Можно реализовывать не все функции системы (достаточно реализовать 3 прецедента). Дополнительное задание (на оценку 4 автоматом): реализуйте систему полностью. Дополнительное задание (на оценку 5 автоматом): реализуйте интерфейс командной строки для системы.  "/>
-<meta itemprop="name" content="2. Разработка программы по UML диаграммам">
+Задание  Переработайте программу из 2 лабораторной работы так, чтобы данные хранились в базе данных. Программа должна использовать фреймворк Kotlin Exposed, реализовывать можно как на уровне DSL, так и на уровне DAO. Можно реализовывать не все функции системы (достаточно реализовать 3 прецедента). Дополнительное задание (на оценку 4 автоматом): реализуйте систему полностью. Дополнительное задание (на оценку 5 автоматом): реализуйте интерфейс командной строки для системы.  "/>
+<meta itemprop="name" content="4. Разработка ORM">
 <meta itemprop="description" content="Теоретические сведения Лекция
-Задание  Разработайте программу по диаграммам UML, спроектированных в предыдущей работе. Можно реализовывать не все функции системы (достаточно реализовать 3 прецедента). Дополнительное задание (на оценку 4 автоматом): реализуйте систему полностью. Дополнительное задание (на оценку 5 автоматом): реализуйте интерфейс командной строки для системы.  ">
+Задание  Переработайте программу из 2 лабораторной работы так, чтобы данные хранились в базе данных. Программа должна использовать фреймворк Kotlin Exposed, реализовывать можно как на уровне DSL, так и на уровне DAO. Можно реализовывать не все функции системы (достаточно реализовать 3 прецедента). Дополнительное задание (на оценку 4 автоматом): реализуйте систему полностью. Дополнительное задание (на оценку 5 автоматом): реализуйте интерфейс командной строки для системы.  ">
 
-<meta itemprop="wordCount" content="44">
+<meta itemprop="wordCount" content="65">
 
 
 
@@ -53,19 +53,19 @@
 </header>
 
 <div class="content-container">
-<main><h1>2. Разработка программы по UML диаграммам</h1>
+<main><h1>4. Разработка ORM</h1>
 <h3 id="теоретические-сведения">Теоретические сведения</h3>
-<p><a href="https://altmanea.ru/rest/slides/umlcode">Лекция</a></p>
+<p><a href="https://altmanea.ru/rest/slides/ormcode">Лекция</a></p>
 <h3 id="задание">Задание</h3>
 <ol>
-<li>Разработайте программу по диаграммам UML, спроектированных в предыдущей работе. Можно реализовывать не все функции системы (достаточно реализовать 3 прецедента).</li>
+<li>Переработайте программу из <a href="../umlcode">2 лабораторной работы</a> так, чтобы данные хранились в базе данных. Программа должна использовать фреймворк Kotlin Exposed, реализовывать можно как на уровне DSL, так и на уровне DAO. Можно реализовывать не все функции системы (достаточно реализовать 3 прецедента).</li>
 <li>Дополнительное задание (на оценку 4 автоматом): реализуйте систему полностью.</li>
 <li>Дополнительное задание (на оценку 5 автоматом): реализуйте интерфейс командной строки для системы.</li>
 </ol>
 <div class="edit-meta">
 
-<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/rest/labs/uml/" title="1. Проектирование на UML"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 1. Проектирование на UML</a>
-<a class="nav nav-next" href="https://altmanea.ru/rest/labs/orm/" title="3. Проектирование ORM">Next - 3. Проектирование ORM <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/rest/labs/orm/" title="3. Проектирование ORM"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 3. Проектирование ORM</a>
+<a class="nav nav-next" href="https://altmanea.ru/rest/self/" title="Самостоятельная работа">Next - Самостоятельная работа <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><div id="vk_comments"></div>
 <script type="text/javascript">
 VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
@@ -87,9 +87,9 @@ VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
   
 <ul class="sub-menu">
 <li class=""><a href="https://altmanea.ru/rest/labs/uml/">1. Проектирование на UML</a></li>
-<li class="active"><a href="https://altmanea.ru/rest/labs/umlcode/">2. Разработка программы по UML диаграммам</a></li>
+<li class=""><a href="https://altmanea.ru/rest/labs/umlcode/">2. Разработка программы по UML диаграммам</a></li>
 <li class=""><a href="https://altmanea.ru/rest/labs/orm/">3. Проектирование ORM</a></li>
-<li class=""><a href="https://altmanea.ru/rest/labs/ormcode/">4. Разработка ORM</a></li>
+<li class="active"><a href="https://altmanea.ru/rest/labs/ormcode/">4. Разработка ORM</a></li>
 </ul>
   
 </li>
