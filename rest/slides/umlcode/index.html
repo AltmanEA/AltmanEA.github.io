@@ -239,22 +239,13 @@ fun studentGrades(studentName: String) =
 		<script src="../plugin/notes/notes.js"></script>
 		<script src="../plugin/markdown/markdown.js"></script>
 		<script src="../plugin/highlight/highlight.js"></script>
-		<script src="../plugin/audio-slideshow/plugin.js"></script>
-		<script src="../plugin/audio-slideshow/recorder.js"></script>
-		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
 		<script src="../plugin/menu/menu.js"></script>
 		<script>
 			Reveal.initialize({
 				hash: true,
 				width: '90%',
     			height: '100%',
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
-				audio: {
-					prefix: 'audio/',
- 					suffix: '.webm;codecs=opus',
-					autoplay: false,
-					advance: -1,
-				},
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu ],
 				menu: {
 					custom: [{
 						title: 'Home',
