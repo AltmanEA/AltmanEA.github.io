@@ -93,11 +93,34 @@ println(pFunc?.call(obj, 5))
 
 ~~~
 
-### В разработке 
+### Определение 
 
-<pre class="kotlin"><code>
+<pre class="kotlin"><code>annotation class Test
 </code></pre>
 
+~~~
+
+### Мета-аннотации
+
+- @Target определяет возможные виды элементов для аннотации (классы, функции, свойства, выражения и т.д.);
+- @Retention определяет, будет ли аннотация храниться в скомпилированном классе;
+- @Repeatable позволяет использовать одну и ту же аннотацию на одном элементе несколько раз;
+
+~~~
+
+### Параметры аннотации
+
+<pre class="kotlin"><code>annotation class ReplaceWith(val expression: String)
+
+annotation class Deprecated(
+	val message: String,
+	val replaceWith: ReplaceWith = ReplaceWith(""))
+	
+@Deprecated(
+	"Эта функция устарела, вместо неё используйте ===", 
+	ReplaceWith("this === other")
+)
+</code></pre>
 
 </script>
                 </section>
