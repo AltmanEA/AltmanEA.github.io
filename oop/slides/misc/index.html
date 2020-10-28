@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Дополнения классов</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
+<script type="text/template">
+
+## Классы данных
+
+~~~
+
+### Определение класса данных
+
+<pre class="kotlin"><code>data class User(val name: String, val age: Int)
+</code></pre>
+
+Генерируются:
+
+- функции <code>equals()</code>/<code>hashCode()</code>;
+- функция <code>toString()</code> в форме "<code>User(name=John, age=42)</code>"
+- компонентные функции для мульти-деклараций (см. далее)
+- функция <code>copy()</code> (см. далее).
+
+~~~
+
+### Мульти-декларация (деструктивное объявление)
+
+<pre class="kotlin"><code>val jane = User("Jane", 35)
+val (name, age) = jane
+</code></pre>
+
+=
+
+<pre class="kotlin"><code>val jane = User("Jane", 35)
+val name = jane.component1()
+val age = jane.component2()
+</code></pre>
+
+Другой пример:
+
+<pre class="kotlin"><code>for ((index, value) in array.withIndex())
+</code></pre>
+
+~~~
+
+### Функция <code>copy()</code>
+
+<pre class="kotlin"><code>fun copy(name: String = this.name, age: Int = this.age) 
+	= User(name, age)
+</code></pre>
+
+<pre class="kotlin"><code>val olderJack = jack.copy(age = 2)
+</code></pre>
+
+!~~~!
+
+## Классы множеств
+
+~~~
+
+### Перечисляемые типы
+
+<pre class="kotlin"><code>enum class Direction {
+	NORTH, SOUTH, WEST, EAST
+}
+</code></pre>
+
+<pre class="kotlin"><code>enum class Color(val rgb: Int) {
+	RED(0xFF0000),
+	GREEN(0x00FF00),
+	BLUE(0x0000FF)
+}
+</code></pre>
+
+~~~
+
+### Изолированные классы
+
+<pre class="kotlin"><code>sealed class Expr
+data class Const(val number: Double) : Expr()
+data class Sum(val e1: Expr, val e2: Expr) : Expr()
+object NotANumber : Expr()
+
+fun eval(expr: Expr): Double = when (expr) {
+	is Const -> expr.number
+	is Sum -> eval(expr.e1) + eval(expr.e2)
+	NotANumber -> Double.NaN
+}
+</code></pre>
+
+Наследники могут быть только в том-же файле, в котором объявлен изолированный класс.
+
+!~~~!
+
+### Вложенные и внутренние классы
+
+~~~
+
+### Вложенные классы
+
+<pre class="kotlin"><code>class Outer {
+	private val bar: Int = 1
+	class Nested {
+		fun foo() = 2
+	}
+}
+
+val demo = Outer.Nested().foo()
+</code></pre>
+
+~~~
+
+### Внутренние классы
+
+<pre class="kotlin"><code>class Outer {
+    private val bar: Int = 1
+    inner class Inner {
+        fun foo() = bar
+    }
+}
+
+val demo = Outer().Inner().foo()
+</code></pre>
+
+!~~~!
+
+## Объекты
+
+~~~
+
+### Анонимные объекты
+
+<pre class="kotlin"><code>window.addMouseListener(object : MouseAdapter() {
+	override fun mouseClicked(e: MouseEvent) {
+		// ...
+	}
+
+	override fun mouseEntered(e: MouseEvent) {
+		// ...
+	}
+})
+</code></pre>
+
+~~~
+
+### Синглтон
+
+<pre class="kotlin"><code>object DataProviderManager {
+    fun registerDataProvider(provider: DataProvider) {
+        // ...
+    }
+
+    val allDataProviders: Collection< DataProvider >
+        get() = // ...
+}
+</code></pre>
+
+~~~
+
+### Объект-компаньон 
+
+<pre class="kotlin"><code>interface Factory< T > {
+	fun create(): T
+}
+
+
+class MyClass {
+	companion object : Factory< MyClass > {
+		override fun create(): MyClass = MyClass()
+	}
+}
+</code></pre>
+
+
+!~~~!
+
+## Расширение классов
+
+~~~
+
+### Функции-расширения
+
+<pre class="kotlin"><code>fun MutableList< Int >.swap(index1: Int, index2: Int) {
+    val tmp = this[index1] // 'this' даёт ссылку на список
+    this[index1] = this[index2]
+    this[index2] = tmp
+}
+</code></pre>
+
+~~~
+
+### Свойства-расширения
+
+<pre class="kotlin"><code>val < T > List< T >.lastIndex: Int
+    get() = size - 1
+</code></pre>
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				width: '90%',
+    			height: '100%',
+				// Learn about plugins: https://revealjs.com/plugins/
+				// plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				// audio: {
+				// 	prefix: 'audio/',
+				// 	suffix: '.webm;codecs=opus',
+				// 	autoplay: false,
+				// 	advance: -1,
+				// },
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu ],
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Работа с классами</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
+<script type="text/template">
+
+## Рефлексия (интроспекция)
+
+~~~
+
+### Типы 
+
+<pre class="kotlin"><code>class Test
+val obj = Test()
+val c1: KClass< Test > = Test::class
+val c2: KClass< out Test > = obj::class
+val jc1: Class< Test > = Test::class.java
+val jc2: Class< Test > = Test::class.java
+val qn: String? = c1.qualifiedName
+val kt: List< KType > = c1.supertypes
+</code></pre>
+
+~~~
+
+### Члены класса 
+
+<pre class="kotlin"><code>class Test(val prop: Int = 0) {
+    fun func(x: Int) = x+1
+}
+</code></pre>
+
+<pre class="kotlin"><code>val pr: KProperty0< Collection< KCallable< * > > > 
+	= Test::class::members
+val members: Collection< KCallable< * > > = pr.get()
+members.forEach{ println(it)}
+</code></pre>
+
+<pre><code>val Test.prop: kotlin.Int
+fun Test.func(kotlin.Int): kotlin.Int
+fun Test.equals(kotlin.Any?): kotlin.Boolean
+fun Test.hashCode(): kotlin.Int
+fun Test.toString(): kotlin.String
+</code></pre>
+
+~~~
+
+### Работа с членам класса
+
+<pre class="kotlin"><code>class Test(val prop: Int = 0) {
+    fun func(x: Int) = x+1
+}
+</code></pre>
+
+<pre class="kotlin"><code>val obj = Test()
+val members = Test::class::members.get()
+val pProp: KProperty1< Test, Int > = Test::prop
+val pFunc: KCallable< * >? = 
+	members.find { it.name=="func" }
+println(pProp.call(obj))
+println(pFunc?.call(obj, 5))
+</code></pre>
+
+<pre><code>0
+6
+</code></pre>
+
+!~~~!
+
+## Аннотации
+
+~~~
+
+### В разработке 
+
+<pre class="kotlin"><code>
+</code></pre>
+
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				width: '90%',
+    			height: '100%',
+				// Learn about plugins: https://revealjs.com/plugins/
+				// plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				// audio: {
+				// 	prefix: 'audio/',
+				// 	suffix: '.webm;codecs=opus',
+				// 	autoplay: false,
+				// 	advance: -1,
+				// },
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu ],
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>
