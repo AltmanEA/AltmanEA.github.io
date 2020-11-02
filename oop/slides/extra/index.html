@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Работа с классами</title>
+		<title>Расширение ООП</title>
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
@@ -121,6 +121,47 @@ annotation class Deprecated(
 	ReplaceWith("this === other")
 )
 </code></pre>
+
+!~~~!
+
+## Исключения
+
+~~~
+
+### Обработка небезопасного кода
+
+<pre class="kotlin"><code>try {
+    // some code
+}
+catch (e: SomeException) {
+    // handler
+}
+finally {
+    // optional finally block
+}</code></pre>
+
+~~~
+
+### Пример
+
+<pre class="kotlin"><code>val a: Int? = try { 
+	parseInt(input) 
+} catch (e: NumberFormatException) { 
+	null 
+}
+</code></pre>
+
+~~~
+
+### Выбрасывание исключений
+
+<pre class="kotlin"><code>fun fail(message: String): Nothing {
+	throw IllegalArgumentException(message)
+}
+
+val s = person.name ?: fail("Name required")
+</code></pre>
+
 
 </script>
                 </section>
