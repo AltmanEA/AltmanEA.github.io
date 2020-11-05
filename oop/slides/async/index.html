@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Асинхронные функции</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
+<script type="text/template">
+
+## Основы
+
+~~~
+
+### [Coroutine](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html)
+
+<pre class="kotlin"><code>import kotlinx.coroutines.*
+
+fun main() {
+	GlobalScope.launch { 
+// launch a new coroutine in background and continue
+// non-blocking delay for 1 second (default time unit is ms)
+		delay(1000L)
+// print after delay
+		println("World!") 
+	}
+// main thread continues while coroutine is delayed
+	println("Hello,")
+// block main thread for 2 seconds to keep JVM alive
+	Thread.sleep(2000L) 
+}
+</code></pre>
+<pre><code>
+Hello,
+World!
+</code></pre>
+
+~~~
+
+### Код без блокировки потока
+
+<pre class="kotlin"><code>fun main() = runBlocking { 
+// start main coroutine
+	GlobalScope.launch { 
+// launch a new coroutine in background and continue
+		delay(1000L)
+		println("World!")
+	}
+// main coroutine continues here immediately
+	println("Hello,")
+	// delaying for 2 seconds to keep JVM alive
+	delay(2000L)
+}
+</code></pre>
+<pre><code>
+Hello,
+World!
+</code></pre>
+
+~~~
+
+### Сценарий: ожидание задачи
+
+<pre class="kotlin"><code>fun main() = runBlocking {
+    val job = GlobalScope.launch {
+// launch a new coroutine and keep a reference to its Job
+        delay(1000L)
+        print("World")
+    }
+    println("Hello,")
+// wait until child coroutine completes}
+    job.join()
+    println("!")
+}
+</code></pre>
+<pre><code>
+Hello,
+World!
+</code></pre>
+
+~~~
+
+### Coroutine Scope
+
+<pre class="kotlin"><code>fun main() = runBlocking { 
+    launch { 
+        delay(200L)
+        println("Task from runBlocking") // 2
+    }
+    coroutineScope { // Creates a coroutine scope
+        launch {
+            delay(500L) 
+            println("Task from nested launch") // 3
+        }
+		delay(100L)
+        println("Task from coroutine scope") // 1
+    }
+    println("Coroutine scope is over") // 4
+}
+</code></pre>
+
+~~~
+
+### Suspending function
+
+<pre class="kotlin"><code>fun main() = runBlocking {
+    launch { doWorld() }
+    println("Hello,")
+}
+
+suspend fun doWorld() {
+    delay(1000L)
+    println("World!")
+}
+</code></pre>
+
+!~~~!
+
+## Отмена выполнения и таймауты
+
+~~~
+
+### Отмена выполнения
+
+<pre class="kotlin"><code>val job = launch {
+    repeat(1000) { i ->
+        println("job: I'm sleeping $i ...")
+        delay(500L)
+    }
+}
+delay(1300L) // delay a bit
+println("main: I'm tired of waiting!")
+job.cancel() // cancels the job
+job.join() // waits for job's completion
+// job.cancelAndJoin()
+println("main: Now I can quit.")
+</code></pre>
+<pre><code>job: I'm sleeping 0 ...
+job: I'm sleeping 1 ...
+job: I'm sleeping 2 ...
+main: I'm tired of waiting!
+main: Now I can quit.
+</code></pre>
+
+~~~
+
+### Кооперативное прерывание
+
+<pre class="kotlin"><code>val start = System.currentTimeMillis()
+	val job = launch(Dispatchers.Default) {
+		var next = start
+		var i = 0
+		while (isActive) { // cancellable computation loop
+			if (System.currentTimeMillis() >= next) {
+				println("job: I'm sleeping ${i++} ...")
+				nextPrintTime += 500L
+			}
+		}
+	}
+	delay(1300L) // delay a bit
+	println("main: I'm tired of waiting!")
+	job.cancelAndJoin() 
+	println("main: Now I can quit.")
+</code></pre>
+<pre><code>job: I'm sleeping 0 ...
+job: I'm sleeping 1 ...
+job: I'm sleeping 2 ...
+main: I'm tired of waiting!
+main: Now I can quit.
+</code></pre>
+
+~~~
+
+### Операции с таймаутом
+
+<pre class="kotlin"><code>withTimeout(1300L) {
+    repeat(1000) { i ->
+        println("I'm sleeping $i ...")
+        delay(500L)
+    }
+}
+</code></pre>
+<pre><code>I'm sleeping 0 ...
+I'm sleeping 1 ...
+I'm sleeping 2 ...
+Exception in thread "main" kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 1300 ms
+</code></pre>
+
+~~~
+
+### Операции с таймаутом без исключений
+
+<pre class="kotlin"><code>val result = withTimeoutOrNull(1300L) {
+    repeat(1000) { i ->
+        println("I'm sleeping $i ...")
+        delay(500L)
+    }
+    "Done"
+}
+println("Result is $result")
+</code></pre>
+<pre><code>I'm sleeping 0 ...
+I'm sleeping 1 ...
+I'm sleeping 2 ...
+Result is null
+</code></pre>
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				width: '90%',
+    			height: '100%',
+				// Learn about plugins: https://revealjs.com/plugins/
+				// plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				// audio: {
+				// 	prefix: 'audio/',
+				// 	suffix: '.webm;codecs=opus',
+				// 	autoplay: false,
+				// 	advance: -1,
+				// },
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu ],
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>
