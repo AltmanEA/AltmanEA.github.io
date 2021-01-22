@@ -5,6 +5,10 @@
     <link>https://altmanea.ru/oop/self/</link>
     <description>Recent content in Самостоятельная работа on Объектно-ориентированное программирование</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language><atom:link href="https://altmanea.ru/oop/self/index.xml" rel="self" type="application/rss+xml" />
+    <language>ru</language>
+    
+	<atom:link href="https://altmanea.ru/oop/self/index.xml" rel="self" type="application/rss+xml" />
+    
+    
   </channel>
 </rss>
