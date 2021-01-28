@@ -30,5 +30,15 @@ python3 -m http.server 8080
 Данная команда запустить веб-сервер, который будет выдавать по протоколу http содержимое текущей папки. Она закончит свое выполнение только после явной остановки сервера (например, с помощью сочетания клавиш Ctrl-C).</description>
     </item>
     
+    <item>
+      <title>3. Установка docker</title>
+      <link>https://altmanea.ru/it2/labs/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/labs/docker/</guid>
+      <description>Введение Целью данной лабораторной работы является знакомство с программой docker.
+Установка docker </description>
+    </item>
+    
   </channel>
 </rss>
