@@ -31,13 +31,30 @@ python3 -m http.server 8080
     </item>
     
     <item>
-      <title>3. Установка docker</title>
+      <title>3. Основы docker</title>
       <link>https://altmanea.ru/it2/labs/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://altmanea.ru/it2/labs/docker/</guid>
       <description>Введение Целью данной лабораторной работы является знакомство с программой docker.
-Установка docker </description>
+Установка docker Прочитайте про инструментарий для установки программ Advanced Packaging Tool и консольный интерфейс к этом инструментарию Apt-Get.
+В терминале виртуальной машины выполните команду, которая обновит информацию о доступных для установки программах:
+sudo apt-get update Примечание: большинство действий apt-get требуют прав администратора (root), команда sudo позволяет выполнять другие команды с такими правами.
+ Установите дополнительные пакеты, которые потребуются для установки docker:</description>
+    </item>
+    
+    <item>
+      <title>4. Настройка ресурсов контейнеров</title>
+      <link>https://altmanea.ru/it2/labs/container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/labs/container/</guid>
+      <description>Введение Целью данной лабораторной работы является изучение взаимодействия контейнеров docker с операционной системой.
+Создание общей папки для контейнера Скачайте образ docker, содержащий средства разработки под linux:
+sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите этот контейнер указав следующие ключи:
+-it -v /home/osboxes/server:/home/osboxesКлюч -v создает общую папку, доступную на виртуальной машине по пути /home/osboxes/server, а в контейнере по пути /home/osboxes.
+На физическом компьютере или виртуальной машине создайте файл hello.c со следующим содержимым:
+ #include &amp;quot;stdio.</description>
     </item>
     
   </channel>
