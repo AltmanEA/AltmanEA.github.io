@@ -7,7 +7,19 @@
   </url>
   
   <url>
+    <loc>https://altmanea.ru/oop-data/lecture/collection/</loc>
+  </url>
+  
+  <url>
     <loc>https://altmanea.ru/oop-data/labs/serialization/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/oop-data/lecture/serialization/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/oop-data/labs/mongo/</loc>
   </url>
   
   <url>
@@ -24,6 +36,10 @@
   
   <url>
     <loc>https://altmanea.ru/oop-data/labs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/oop-data/lecture/</loc>
   </url>
   
 </urlset>
