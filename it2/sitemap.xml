@@ -7,7 +7,15 @@
   </url>
   
   <url>
+    <loc>https://altmanea.ru/it2/lecture/vm/</loc>
+  </url>
+  
+  <url>
     <loc>https://altmanea.ru/it2/labs/share/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/it2/lecture/share/</loc>
   </url>
   
   <url>
@@ -32,6 +40,10 @@
   
   <url>
     <loc>https://altmanea.ru/it2/labs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/it2/lecture/</loc>
   </url>
   
 </urlset>

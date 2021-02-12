@@ -18,6 +18,15 @@
     </item>
     
     <item>
+      <title>1. Установка Ubuntu на виртуальную машину</title>
+      <link>https://altmanea.ru/it2/lecture/vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/vm/</guid>
+      <description>Подготовка к установке Создание виртуальной машины Определение термина виртуальная машина Русификация Ubuntu </description>
+    </item>
+    
+    <item>
       <title>2. Взаимодействие гостевой ОС и хоста</title>
       <link>https://altmanea.ru/it2/labs/share/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -28,6 +37,15 @@
  В терминале виртуальной машины выполните команду:
 python3 -m http.server 8080
 Данная команда запустить веб-сервер, который будет выдавать по протоколу http содержимое текущей папки. Она закончит свое выполнение только после явной остановки сервера (например, с помощью сочетания клавиш Ctrl-C).</description>
+    </item>
+    
+    <item>
+      <title>2. Взаимодействие гостевой ОС и хоста</title>
+      <link>https://altmanea.ru/it2/lecture/share/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/share/</guid>
+      <description>Простой тестовый web-сервер Настройка портов виртуальной машины </description>
     </item>
     
     <item>
