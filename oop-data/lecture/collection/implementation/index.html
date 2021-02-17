@@ -3,10 +3,10 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Лабораторные - Объектно-ориентированное программирование и обработка данных</title>
+<title>3. Реализация коллекций - Объектно-ориентированное программирование и обработка данных</title>
 <meta name="generator" content="Hugo 0.79.0" />
 <link href="https://altmanea.ru/oop-data//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://altmanea.ru/oop-data/labs/">
+<link rel="canonical" href="https://altmanea.ru/oop-data/lecture/collection/implementation/">
 <link rel="stylesheet" href="https://altmanea.ru/oop-data/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://altmanea.ru/oop-data/css/chroma.min.css">
@@ -16,16 +16,22 @@
 <script src="https://altmanea.ru/oop-data/js/bundle.js"></script><style>
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
-<meta property="og:title" content="Лабораторные" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://altmanea.ru/oop-data/labs/" />
+<meta property="og:title" content="3. Реализация коллекций" />
+<meta property="og:description" content="Тема 1 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/oop-data/lecture/collection/implementation/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Лабораторные"/>
-<meta name="twitter:description" content=""/>
-<meta itemprop="name" content="Лабораторные">
-<meta itemprop="description" content="">
+<meta name="twitter:title" content="3. Реализация коллекций"/>
+<meta name="twitter:description" content="Тема 1 "/>
+<meta itemprop="name" content="3. Реализация коллекций">
+<meta itemprop="description" content="Тема 1 ">
+
+<meta itemprop="wordCount" content="2">
+
+
+
+<meta itemprop="keywords" content="" />
 <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
 
 <script type="text/javascript">
@@ -37,25 +43,12 @@
 </header>
 
 <div class="content-container">
-<main><h1>Лабораторные</h1><h2 id="порядок-выполнения-лабораторных-работ">Порядок выполнения лабораторных работ</h2>
-<p>Выполнение лабораторной работы включает в себя:</p>
-<ul>
-<li>предварительное ознакомление с планом работы, повторение лекций и изучение с дополнительных теоретических сведений;</li>
-<li>написание кода, требуемого по заданию;</li>
-<li>оформление отчета по выполненной работе, который включает в себя описание изученных дополнительных сведений, кода с подробными комментариями и результатами его работы и выводов по всей работе;</li>
-<li>представление отчета преподавателю, совместное обсуждение его и выполнение дополнительных заданий.</li>
-</ul>
-<p>Работа считается выполненной только после завершения всех этапов ее выполнения!</p>
-<h2 id="задания-к-лабораторным-работам">Задания к лабораторным работам</h2>
-<ul>
-<li><a href="collection">Коллекции</a></li>
-<li><a href="serialization">Сериализация</a></li>
-<li><a href="mongo">Основы MongoDb</a></li>
-</ul>
+<main><h1>3. Реализация коллекций</h1>
+<h2 id="тема-1">Тема 1</h2>
 <div class="edit-meta">
 
-<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop-data/" title="Введение"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Введение</a>
-<a class="nav nav-next" href="https://altmanea.ru/oop-data/labs/collection/" title="1. Коллекции">Next - 1. Коллекции <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop-data/lecture/collection/type/" title="2. Виды коллекций"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 2. Виды коллекций</a>
+<a class="nav nav-next" href="https://altmanea.ru/oop-data/lecture/serialization/" title="2. Сериализация">Next - 2. Сериализация <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><div id="vk_comments"></div>
 <script type="text/javascript">
 VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
@@ -70,7 +63,7 @@ VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
 <ul>
 <li class=""><a href="https://altmanea.ru/oop-data/">Home</a></li>
 
-<li class="parent active"><a href="https://altmanea.ru/oop-data/labs/">Лабораторные</a>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/">Лабораторные</a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://altmanea.ru/oop-data/labs/collection/">1. Коллекции</a></li>
@@ -80,16 +73,16 @@ VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
   
 </li>
 
-<li class=""><a href="https://altmanea.ru/oop-data/lecture/">Лекции</a>
+<li class="parent"><a href="https://altmanea.ru/oop-data/lecture/">Лекции</a>
   
 <ul class="sub-menu">
 
-<li class=""><a href="https://altmanea.ru/oop-data/lecture/collection/">1. Коллекции</a>
+<li class="parent"><a href="https://altmanea.ru/oop-data/lecture/collection/">1. Коллекции</a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://altmanea.ru/oop-data/lecture/collection/operation/">1. Операции с коллекциями</a></li>
 <li class=""><a href="https://altmanea.ru/oop-data/lecture/collection/type/">2. Виды коллекций</a></li>
-<li class=""><a href="https://altmanea.ru/oop-data/lecture/collection/implementation/">3. Реализация коллекций</a></li>
+<li class="active"><a href="https://altmanea.ru/oop-data/lecture/collection/implementation/">3. Реализация коллекций</a></li>
 </ul>
   
 </li>

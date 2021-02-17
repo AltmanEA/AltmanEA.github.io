@@ -18,13 +18,21 @@
     </item>
     
     <item>
-      <title>1. Коллекции</title>
-      <link>https://altmanea.ru/oop-data/lecture/collection/</link>
+      <title>1. Операции с коллекциями</title>
+      <link>https://altmanea.ru/oop-data/lecture/collection/operation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://altmanea.ru/oop-data/lecture/collection/</guid>
-      <description>Примеры из лекций и входной код для выполнения заданий приведен тут.
-Операции со списками Виды коллекций Реализация коллекций </description>
+      <guid>https://altmanea.ru/oop-data/lecture/collection/operation/</guid>
+      <description>1. Понятие коллекции 2. Коллекция List 3. Функция Map в коллекциях 4. Фильтрация элементов коллекции 5. Поиск элементов в коллекции 6. Свертка коллекции 7. Сложная обработка коллекций 8. Сортировка коллекций </description>
+    </item>
+    
+    <item>
+      <title>2. Виды коллекций</title>
+      <link>https://altmanea.ru/oop-data/lecture/collection/type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/collection/type/</guid>
+      <description>Тема 1 </description>
     </item>
     
     <item>
@@ -57,6 +65,15 @@
       <guid>https://altmanea.ru/oop-data/labs/mongo/</guid>
       <description>Для выполнения этой и некоторых последующих лабораторных работ рекомендуется использовать настроенную виртуальную машину с MongoDb или docker контейнер. Для виртуальной машины не забудьте открыть порт для MongoDb.
  Подключение в MongoDb  </description>
+    </item>
+    
+    <item>
+      <title>3. Реализация коллекций</title>
+      <link>https://altmanea.ru/oop-data/lecture/collection/implementation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/collection/implementation/</guid>
+      <description>Тема 1 </description>
     </item>
     
   </channel>
