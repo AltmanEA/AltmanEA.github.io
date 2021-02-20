@@ -3,7 +3,7 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>2. Взаимодействие гостевой ОС и хоста - Информационные технологии (часть 2)</title>
+<title>2. Взаимодействие виртуальной и физической машины в VirtualBox - Информационные технологии (часть 2)</title>
 <meta name="generator" content="Hugo 0.79.0" />
 <link href="https://altmanea.ru/it2//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://altmanea.ru/it2/lecture/share/">
@@ -16,18 +16,18 @@
 <script src="https://altmanea.ru/it2/js/bundle.js"></script><style>
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
-<meta property="og:title" content="2. Взаимодействие гостевой ОС и хоста" />
-<meta property="og:description" content="Простой тестовый web-сервер Настройка портов виртуальной машины " />
+<meta property="og:title" content="2. Взаимодействие виртуальной и физической машины в VirtualBox" />
+<meta property="og:description" content="Тестовый веб-сервер на Python. Настройка сетевых портов. Общая папка в VirtualBox. Права доступа в Linux. Доступ к общей папке VirtualBox из Linux. Работа с общей папкой VirtualBox. " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://altmanea.ru/it2/lecture/share/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="2. Взаимодействие гостевой ОС и хоста"/>
-<meta name="twitter:description" content="Простой тестовый web-сервер Настройка портов виртуальной машины "/>
-<meta itemprop="name" content="2. Взаимодействие гостевой ОС и хоста">
-<meta itemprop="description" content="Простой тестовый web-сервер Настройка портов виртуальной машины ">
+<meta name="twitter:title" content="2. Взаимодействие виртуальной и физической машины в VirtualBox"/>
+<meta name="twitter:description" content="Тестовый веб-сервер на Python. Настройка сетевых портов. Общая папка в VirtualBox. Права доступа в Linux. Доступ к общей папке VirtualBox из Linux. Работа с общей папкой VirtualBox. "/>
+<meta itemprop="name" content="2. Взаимодействие виртуальной и физической машины в VirtualBox">
+<meta itemprop="description" content="Тестовый веб-сервер на Python. Настройка сетевых портов. Общая папка в VirtualBox. Права доступа в Linux. Доступ к общей папке VirtualBox из Linux. Работа с общей папкой VirtualBox. ">
 
-<meta itemprop="wordCount" content="7">
+<meta itemprop="wordCount" content="27">
 
 
 
@@ -43,11 +43,19 @@
 </header>
 
 <div class="content-container">
-<main><h1>2. Взаимодействие гостевой ОС и хоста</h1>
-<h2 id="простой-тестовый-web-сервер">Простой тестовый web-сервер</h2>
+<main><h1>2. Взаимодействие виртуальной и физической машины в VirtualBox</h1>
+<h2 id="тестовый-веб-сервер-на-python">Тестовый веб-сервер на Python.</h2>
 <iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vT79LP0tlNCw?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="настройка-портов-виртуальной-машины">Настройка портов виртуальной машины</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vNwsZTWI9ugo?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe><div class="edit-meta">
+<h2 id="настройка-сетевых-портов">Настройка сетевых портов.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vNwsZTWI9ugo?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="общая-папка-в-virtualbox">Общая папка в VirtualBox.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vSXJUYQYLrmE?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="права-доступа-в-linux">Права доступа в Linux.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vrVh_8yqGM18?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="доступ-к-общей-папке-virtualbox-из-linux">Доступ к общей папке VirtualBox из Linux.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vFO5pBPw2DSo?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="работа-с-общей-папкой-virtualbox">Работа с общей папкой VirtualBox.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vammpH398Aig?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe><div class="edit-meta">
 
 <br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/it2/lecture/vm/" title="1. Установка Ubuntu на виртуальную машину"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 1. Установка Ubuntu на виртуальную машину</a>
 <a class="nav nav-next" href="https://altmanea.ru/it2/lecture/vm/" title="1. Установка Ubuntu на виртуальную машину">Next - 1. Установка Ubuntu на виртуальную машину <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
@@ -68,6 +76,10 @@ VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
 <li class=""><a href="https://altmanea.ru/it2/labs/">Лабораторные</a>
   
 <ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/it2/labs/vm/">1. Установка Ubuntu на виртуальную машину</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/share/">2. Взаимодействие гостевой ОС и хоста</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/docker/">3. Основы docker</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/container/">4. Настройка ресурсов контейнеров</a></li>
 </ul>
   
 </li>
@@ -76,7 +88,7 @@ VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
   
 <ul class="sub-menu">
 <li class=""><a href="https://altmanea.ru/it2/lecture/vm/">1. Установка Ubuntu на виртуальную машину</a></li>
-<li class="active"><a href="https://altmanea.ru/it2/lecture/share/">2. Взаимодействие гостевой ОС и хоста</a></li>
+<li class="active"><a href="https://altmanea.ru/it2/lecture/share/">2. Взаимодействие виртуальной и физической машины в VirtualBox</a></li>
 </ul>
   
 </li>

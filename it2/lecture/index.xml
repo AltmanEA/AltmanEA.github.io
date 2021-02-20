@@ -16,12 +16,12 @@
     </item>
     
     <item>
-      <title>2. Взаимодействие гостевой ОС и хоста</title>
+      <title>2. Взаимодействие виртуальной и физической машины в VirtualBox</title>
       <link>https://altmanea.ru/it2/lecture/share/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://altmanea.ru/it2/lecture/share/</guid>
-      <description>Простой тестовый web-сервер Настройка портов виртуальной машины </description>
+      <description>Тестовый веб-сервер на Python. Настройка сетевых портов. Общая папка в VirtualBox. Права доступа в Linux. Доступ к общей папке VirtualBox из Linux. Работа с общей папкой VirtualBox. </description>
     </item>
     
   </channel>

@@ -27,6 +27,15 @@
     </item>
     
     <item>
+      <title>2. Взаимодействие виртуальной и физической машины в VirtualBox</title>
+      <link>https://altmanea.ru/it2/lecture/share/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/share/</guid>
+      <description>Тестовый веб-сервер на Python. Настройка сетевых портов. Общая папка в VirtualBox. Права доступа в Linux. Доступ к общей папке VirtualBox из Linux. Работа с общей папкой VirtualBox. </description>
+    </item>
+    
+    <item>
       <title>2. Взаимодействие гостевой ОС и хоста</title>
       <link>https://altmanea.ru/it2/labs/share/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -37,15 +46,6 @@
  В терминале виртуальной машины выполните команду:
 python3 -m http.server 8080
 Данная команда запустить веб-сервер, который будет выдавать по протоколу http содержимое текущей папки. Она закончит свое выполнение только после явной остановки сервера (например, с помощью сочетания клавиш Ctrl-C).</description>
-    </item>
-    
-    <item>
-      <title>2. Взаимодействие гостевой ОС и хоста</title>
-      <link>https://altmanea.ru/it2/lecture/share/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://altmanea.ru/it2/lecture/share/</guid>
-      <description>Простой тестовый web-сервер Настройка портов виртуальной машины </description>
     </item>
     
     <item>
