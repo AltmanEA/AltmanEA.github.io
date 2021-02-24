@@ -29,5 +29,15 @@
  Изучите документацию к классу SimpleDateFormat и создайте формат, который бы выводил дату в таком виде: 2021.01.22. Создайте объект типа ObjectMapper и установите его свойство dateFormat равным созданному формату. Создайте класс Lesson со свойствами name: String и date: Date. Создайте объект этого класса со свойствами, указанными ниже, и выполните его сериализацию в формат JSON.</description>
     </item>
     
+    <item>
+      <title>3 Основы MongoDb</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/</guid>
+      <description>Для выполнения этой и некоторых последующих лабораторных работ рекомендуется использовать настроенную виртуальную машину с MongoDb или docker контейнер. Для виртуальной машины не забудьте открыть порт для MongoDb.
+ Подключение в MongoDb  </description>
+    </item>
+    
   </channel>
 </rss>
