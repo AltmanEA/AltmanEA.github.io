@@ -5,11 +5,7 @@
     <link>https://altmanea.ru/it2/lecture/</link>
     <description>Recent content in Лекции on Информационные технологии (часть 2)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language>
-    
-	<atom:link href="https://altmanea.ru/it2/lecture/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ru</language><atom:link href="https://altmanea.ru/it2/lecture/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1. Установка Ubuntu на виртуальную машину</title>
       <link>https://altmanea.ru/it2/lecture/vm/</link>

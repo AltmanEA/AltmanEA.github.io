@@ -5,11 +5,7 @@
     <link>https://altmanea.ru/it2/</link>
     <description>Recent content in Введение on Информационные технологии (часть 2)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language>
-    
-	<atom:link href="https://altmanea.ru/it2/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ru</language><atom:link href="https://altmanea.ru/it2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1. Установка Ubuntu на виртуальную машину</title>
       <link>https://altmanea.ru/it2/labs/vm/</link>
@@ -19,24 +15,6 @@
       <description>Введение Целью данной лабораторной работы является знакомство с основами работы с виртуальными машинами и графическим интерфейсом операционной системы Ubuntu.
 Установка VirtualBox Скачайте последнюю версию дистрибутива (platform package) VirtualBox для своей операционной системы и установите его. При установке согласитесь на установку дополнительных сетевых драйверов и пакета VirtualBox Extension Pack.
 Создание виртуальной машины с операционной системой Ubuntu. Скачайте со страницы https://www.osboxes.org/ubuntu/ образ виртуальной машины с установленной операционной системой Ubuntu. Поскольку на этой страницы выкладываются образы, в том числе, и тестовых сборок, рекомендуется посмотреть список версий Ubuntu и скачать текущую версию.</description>
-    </item>
-    
-    <item>
-      <title>1. Установка Ubuntu на виртуальную машину</title>
-      <link>https://altmanea.ru/it2/lecture/vm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://altmanea.ru/it2/lecture/vm/</guid>
-      <description>Подготовка к установке Создание виртуальной машины Определение термина виртуальная машина Русификация Ubuntu </description>
-    </item>
-    
-    <item>
-      <title>2. Взаимодействие виртуальной и физической машины в VirtualBox</title>
-      <link>https://altmanea.ru/it2/lecture/share/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://altmanea.ru/it2/lecture/share/</guid>
-      <description>Тестовый веб-сервер на Python. Настройка сетевых портов. Общая папка в VirtualBox. Права доступа в Linux. Доступ к общей папке VirtualBox из Linux. Работа с общей папкой VirtualBox. </description>
     </item>
     
     <item>
@@ -120,6 +98,34 @@ sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите 
       <description>Теоретические сведения Современные проекты во многих случаях выполняются командой разработчиков. Для поддерживание согласованного состояния репозиториев команды обычно используется сервер, который хранить центральный репозиторий.
 СКВ git содержит команды для согласования работы репозиториев (клонирование, синхронизация изменений и др.). Кроме того, специальные серверные системы СКВ на основе git, такие как, например, github.com, предоставляют дополнительные возможности по управлению рабочим процессом создания проекта.
 Создание репозитория на серверах, таких как github.com, производится в web-интерфейсе. Как правило, такой интерфейс содержит в себе инструкцию, достаточную для того, чтобы работать с репозиторием.</description>
+    </item>
+    
+    <item>
+      <title>9. Платформа Java</title>
+      <link>https://altmanea.ru/it2/labs/java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/labs/java/</guid>
+      <description>Установка  Мы будем устанавливать JDK (Java Development Kit, набор для разработки на Java). В состав этого набора входит JRE (Java Runtime Environment, окружение для выполнения Javа, собственно платформа). Если необходимо только запускать программы, то можно установить только JRE.
+ Под Windows  Далее предполагается, что на компьютере, на котором выполняются лабораторные работы, установленна ОС Windows. Если это не так, то часть работы, относящуюся к этой ОС можно выполнить на виртуальной машине.</description>
+    </item>
+    
+    <item>
+      <title>1. Установка Ubuntu на виртуальную машину</title>
+      <link>https://altmanea.ru/it2/lecture/vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/vm/</guid>
+      <description>Подготовка к установке Создание виртуальной машины Определение термина виртуальная машина Русификация Ubuntu </description>
+    </item>
+    
+    <item>
+      <title>2. Взаимодействие виртуальной и физической машины в VirtualBox</title>
+      <link>https://altmanea.ru/it2/lecture/share/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/share/</guid>
+      <description>Тестовый веб-сервер на Python. Настройка сетевых портов. Общая папка в VirtualBox. Права доступа в Linux. Доступ к общей папке VirtualBox из Linux. Работа с общей папкой VirtualBox. </description>
     </item>
     
   </channel>
