@@ -101,6 +101,15 @@ sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите 
     </item>
     
     <item>
+      <title>10. Сборка кроссплатформенных программ</title>
+      <link>https://altmanea.ru/it2/labs/cmake/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/labs/cmake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>9. Платформа Java</title>
       <link>https://altmanea.ru/it2/labs/java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
