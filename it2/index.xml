@@ -18,6 +18,24 @@
     </item>
     
     <item>
+      <title>1. Установка Ubuntu на виртуальную машину</title>
+      <link>https://altmanea.ru/it2/lecture/vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/vm/</guid>
+      <description>Подготовка к установке Создание виртуальной машины Определение термина виртуальная машина Русификация Ubuntu </description>
+    </item>
+    
+    <item>
+      <title>2. Взаимодействие виртуальной и физической машины в VirtualBox</title>
+      <link>https://altmanea.ru/it2/lecture/share/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/share/</guid>
+      <description>Тестовый веб-сервер на Python. Настройка сетевых портов. Общая папка в VirtualBox. Права доступа в Linux. Доступ к общей папке VirtualBox из Linux. Работа с общей папкой VirtualBox. </description>
+    </item>
+    
+    <item>
       <title>2. Взаимодействие гостевой ОС и хоста</title>
       <link>https://altmanea.ru/it2/labs/share/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -44,17 +62,35 @@ sudo apt-get update Примечание: большинство действи
     </item>
     
     <item>
-      <title>4. Настройка ресурсов контейнеров</title>
+      <title>3. Основы docker</title>
+      <link>https://altmanea.ru/it2/lecture/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/docker/</guid>
+      <description>Введение в docker. Менеджер пакетов apt. Установка docker. Замечания по установке docker. Работа с образами. </description>
+    </item>
+    
+    <item>
+      <title>4. Настройка ресурсов контейнеров docker</title>
       <link>https://altmanea.ru/it2/labs/container/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://altmanea.ru/it2/labs/container/</guid>
       <description>Введение Целью данной лабораторной работы является изучение взаимодействия контейнеров docker с операционной системой.
 Создание общей папки для контейнера Скачайте образ docker, содержащий средства разработки под linux:
-sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите этот контейнер указав следующие ключи:
+sudo docker pull gccЗапустите этот контейнер указав следующие ключи:
 -it -v /home/osboxes/server:/home/osboxesКлюч -v создает общую папку, доступную на виртуальной машине по пути /home/osboxes/server, а в контейнере по пути /home/osboxes.
 На физическом компьютере или виртуальной машине создайте файл hello.c со следующим содержимым:
  #include &amp;quot;stdio.</description>
+    </item>
+    
+    <item>
+      <title>4. Настройка ресурсов контейнеров docker</title>
+      <link>https://altmanea.ru/it2/lecture/container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/container/</guid>
+      <description>Создание папки для контейнера docker. Общий исходный код для Windows и контейнера docker. Настройка порта для сервера в контейнере. Виртуальная сеть контейнеров docker. Сетевое взаимодействие (клонирование репозитория) между контейнерами. </description>
     </item>
     
     <item>
@@ -101,15 +137,6 @@ sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите 
     </item>
     
     <item>
-      <title>10. Сборка кроссплатформенных программ</title>
-      <link>https://altmanea.ru/it2/labs/cmake/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://altmanea.ru/it2/labs/cmake/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>9. Платформа Java</title>
       <link>https://altmanea.ru/it2/labs/java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -120,30 +147,12 @@ sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите 
     </item>
     
     <item>
-      <title>1. Установка Ubuntu на виртуальную машину</title>
-      <link>https://altmanea.ru/it2/lecture/vm/</link>
+      <title>10. Сборка кроссплатформенных программ</title>
+      <link>https://altmanea.ru/it2/labs/cmake/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://altmanea.ru/it2/lecture/vm/</guid>
-      <description>Подготовка к установке Создание виртуальной машины Определение термина виртуальная машина Русификация Ubuntu </description>
-    </item>
-    
-    <item>
-      <title>2. Взаимодействие виртуальной и физической машины в VirtualBox</title>
-      <link>https://altmanea.ru/it2/lecture/share/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://altmanea.ru/it2/lecture/share/</guid>
-      <description>Тестовый веб-сервер на Python. Настройка сетевых портов. Общая папка в VirtualBox. Права доступа в Linux. Доступ к общей папке VirtualBox из Linux. Работа с общей папкой VirtualBox. </description>
-    </item>
-    
-    <item>
-      <title>3. Основы docker</title>
-      <link>https://altmanea.ru/it2/lecture/docker/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://altmanea.ru/it2/lecture/docker/</guid>
-      <description>Введение в docker. Менеджер пакетов apt. Установка docker. Замечания по установке docker. Работа с образами. </description>
+      <guid>https://altmanea.ru/it2/labs/cmake/</guid>
+      <description></description>
     </item>
     
   </channel>

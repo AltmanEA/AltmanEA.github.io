@@ -44,14 +44,14 @@ sudo apt-get update Примечание: большинство действи
     </item>
     
     <item>
-      <title>4. Настройка ресурсов контейнеров</title>
+      <title>4. Настройка ресурсов контейнеров docker</title>
       <link>https://altmanea.ru/it2/labs/container/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://altmanea.ru/it2/labs/container/</guid>
       <description>Введение Целью данной лабораторной работы является изучение взаимодействия контейнеров docker с операционной системой.
 Создание общей папки для контейнера Скачайте образ docker, содержащий средства разработки под linux:
-sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите этот контейнер указав следующие ключи:
+sudo docker pull gccЗапустите этот контейнер указав следующие ключи:
 -it -v /home/osboxes/server:/home/osboxesКлюч -v создает общую папку, доступную на виртуальной машине по пути /home/osboxes/server, а в контейнере по пути /home/osboxes.
 На физическом компьютере или виртуальной машине создайте файл hello.c со следующим содержимым:
  #include &amp;quot;stdio.</description>
@@ -101,15 +101,6 @@ sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите 
     </item>
     
     <item>
-      <title>10. Сборка кроссплатформенных программ</title>
-      <link>https://altmanea.ru/it2/labs/cmake/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://altmanea.ru/it2/labs/cmake/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>9. Платформа Java</title>
       <link>https://altmanea.ru/it2/labs/java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -117,6 +108,15 @@ sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите 
       <guid>https://altmanea.ru/it2/labs/java/</guid>
       <description>Установка  Мы будем устанавливать JDK (Java Development Kit, набор для разработки на Java). В состав этого набора входит JRE (Java Runtime Environment, окружение для выполнения Javа, собственно платформа). Если необходимо только запускать программы, то можно установить только JRE.
  Под Windows  Далее предполагается, что на компьютере, на котором выполняются лабораторные работы, установленна ОС Windows. Если это не так, то часть работы, относящуюся к этой ОС можно выполнить на виртуальной машине.</description>
+    </item>
+    
+    <item>
+      <title>10. Сборка кроссплатформенных программ</title>
+      <link>https://altmanea.ru/it2/labs/cmake/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/labs/cmake/</guid>
+      <description></description>
     </item>
     
   </channel>

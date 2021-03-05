@@ -33,5 +33,14 @@
       <description>Введение в docker. Менеджер пакетов apt. Установка docker. Замечания по установке docker. Работа с образами. </description>
     </item>
     
+    <item>
+      <title>4. Настройка ресурсов контейнеров docker</title>
+      <link>https://altmanea.ru/it2/lecture/container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/container/</guid>
+      <description>Создание папки для контейнера docker. Общий исходный код для Windows и контейнера docker. Настройка порта для сервера в контейнере. Виртуальная сеть контейнеров docker. Сетевое взаимодействие (клонирование репозитория) между контейнерами. </description>
+    </item>
+    
   </channel>
 </rss>

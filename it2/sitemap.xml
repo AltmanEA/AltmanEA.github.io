@@ -7,6 +7,14 @@
   </url>
   
   <url>
+    <loc>https://altmanea.ru/it2/lecture/vm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/it2/lecture/share/</loc>
+  </url>
+  
+  <url>
     <loc>https://altmanea.ru/it2/labs/share/</loc>
   </url>
   
@@ -15,7 +23,15 @@
   </url>
   
   <url>
+    <loc>https://altmanea.ru/it2/lecture/docker/</loc>
+  </url>
+  
+  <url>
     <loc>https://altmanea.ru/it2/labs/container/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/it2/lecture/container/</loc>
   </url>
   
   <url>
@@ -35,23 +51,11 @@
   </url>
   
   <url>
-    <loc>https://altmanea.ru/it2/labs/cmake/</loc>
-  </url>
-  
-  <url>
     <loc>https://altmanea.ru/it2/labs/java/</loc>
   </url>
   
   <url>
-    <loc>https://altmanea.ru/it2/lecture/vm/</loc>
-  </url>
-  
-  <url>
-    <loc>https://altmanea.ru/it2/lecture/share/</loc>
-  </url>
-  
-  <url>
-    <loc>https://altmanea.ru/it2/lecture/docker/</loc>
+    <loc>https://altmanea.ru/it2/labs/cmake/</loc>
   </url>
   
   <url>

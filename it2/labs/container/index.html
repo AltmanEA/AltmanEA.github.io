@@ -3,7 +3,7 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>4. Настройка ресурсов контейнеров - Информационные технологии (часть 2)</title>
+<title>4. Настройка ресурсов контейнеров docker - Информационные технологии (часть 2)</title>
 <meta name="generator" content="Hugo 0.79.0" />
 <link href="https://altmanea.ru/it2//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://altmanea.ru/it2/labs/container/">
@@ -16,10 +16,10 @@
 <script src="https://altmanea.ru/it2/js/bundle.js"></script><style>
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
-<meta property="og:title" content="4. Настройка ресурсов контейнеров" />
+<meta property="og:title" content="4. Настройка ресурсов контейнеров docker" />
 <meta property="og:description" content="Введение Целью данной лабораторной работы является изучение взаимодействия контейнеров docker с операционной системой.
 Создание общей папки для контейнера Скачайте образ docker, содержащий средства разработки под linux:
-sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите этот контейнер указав следующие ключи:
+sudo docker pull gccЗапустите этот контейнер указав следующие ключи:
 -it -v /home/osboxes/server:/home/osboxesКлюч -v создает общую папку, доступную на виртуальной машине по пути /home/osboxes/server, а в контейнере по пути /home/osboxes.
 На физическом компьютере или виртуальной машине создайте файл hello.c со следующим содержимым:
  #include &quot;stdio." />
@@ -27,17 +27,17 @@ sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите 
 <meta property="og:url" content="https://altmanea.ru/it2/labs/container/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="4. Настройка ресурсов контейнеров"/>
+<meta name="twitter:title" content="4. Настройка ресурсов контейнеров docker"/>
 <meta name="twitter:description" content="Введение Целью данной лабораторной работы является изучение взаимодействия контейнеров docker с операционной системой.
 Создание общей папки для контейнера Скачайте образ docker, содержащий средства разработки под linux:
-sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите этот контейнер указав следующие ключи:
+sudo docker pull gccЗапустите этот контейнер указав следующие ключи:
 -it -v /home/osboxes/server:/home/osboxesКлюч -v создает общую папку, доступную на виртуальной машине по пути /home/osboxes/server, а в контейнере по пути /home/osboxes.
 На физическом компьютере или виртуальной машине создайте файл hello.c со следующим содержимым:
  #include &quot;stdio."/>
-<meta itemprop="name" content="4. Настройка ресурсов контейнеров">
+<meta itemprop="name" content="4. Настройка ресурсов контейнеров docker">
 <meta itemprop="description" content="Введение Целью данной лабораторной работы является изучение взаимодействия контейнеров docker с операционной системой.
 Создание общей папки для контейнера Скачайте образ docker, содержащий средства разработки под linux:
-sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите этот контейнер указав следующие ключи:
+sudo docker pull gccЗапустите этот контейнер указав следующие ключи:
 -it -v /home/osboxes/server:/home/osboxesКлюч -v создает общую папку, доступную на виртуальной машине по пути /home/osboxes/server, а в контейнере по пути /home/osboxes.
 На физическом компьютере или виртуальной машине создайте файл hello.c со следующим содержимым:
  #include &quot;stdio.">
@@ -58,12 +58,12 @@ sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите 
 </header>
 
 <div class="content-container">
-<main><h1>4. Настройка ресурсов контейнеров</h1>
+<main><h1>4. Настройка ресурсов контейнеров docker</h1>
 <h2 id="введение">Введение</h2>
 <p>Целью данной лабораторной работы является изучение взаимодействия контейнеров docker с операционной системой.</p>
 <h2 id="создание-общей-папки-для-контейнера">Создание общей папки для контейнера</h2>
 <p>Скачайте образ docker, содержащий средства разработки под linux:</p>
-<pre><code>sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27
+<pre><code>sudo docker pull gcc
 </code></pre><p>Запустите этот контейнер указав следующие ключи:</p>
 <pre><code>-it -v /home/osboxes/server:/home/osboxes
 </code></pre><p>Ключ <code>-v</code> создает общую папку, доступную на виртуальной машине по пути <code>/home/osboxes/server</code>, а в контейнере по пути <code>/home/osboxes</code>.</p>
@@ -99,7 +99,7 @@ sudo docker pull kitware/cmake:ci-fedora31-x86_64-2020-04-27Запустите 
 <li>с помощью команды <code>sudo docker ps</code> определите имя контейнера с сервером.</li>
 <li>с помощью команды <code>sudo docker network inspect bridge</code> посмотрите конфигурацию виртуальной сети. В этой конфигурации в разделе <code>Containers</code> найдите контейнер с нужным именем. В параметрах этого контейнера будет примерно такая строчка <code>&quot;IPv4Address&quot;: &quot;172.17.0.3/16&quot;</code>, где <code>172.17.0.3</code> – интересующий нас адрес контейнера сервера.</li>
 </ul>
-<p>Далее создадим локальную копию репозитория и выложим ее на сервер. В терминале контейнера <code>kitware/cmake:ci-fedora31-x86_64-2020-04-27</code> выполните следующие действия:</p>
+<p>Далее создадим локальную копию репозитория и выложим ее на сервер. В терминале контейнера <code>gcc</code> выполните следующие действия:</p>
 <ul>
 <li>
 <p>настройте пользователя системы контроля версий:</p>
@@ -147,13 +147,13 @@ VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
 <li class=""><a href="https://altmanea.ru/it2/labs/vm/">1. Установка Ubuntu на виртуальную машину</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/share/">2. Взаимодействие гостевой ОС и хоста</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/docker/">3. Основы docker</a></li>
-<li class="active"><a href="https://altmanea.ru/it2/labs/container/">4. Настройка ресурсов контейнеров</a></li>
+<li class="active"><a href="https://altmanea.ru/it2/labs/container/">4. Настройка ресурсов контейнеров docker</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/git-basic/">5. Основы GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/git-branch/">6. Ветки в GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/git-merge/">7. Слияние веток</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/git-remote/">8. Удаленные репозитории</a></li>
-<li class=""><a href="https://altmanea.ru/it2/labs/cmake/">10. Сборка кроссплатформенных программ</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/java/">9. Платформа Java</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/cmake/">10. Сборка кроссплатформенных программ</a></li>
 </ul>
   
 </li>
@@ -164,6 +164,7 @@ VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
 <li class=""><a href="https://altmanea.ru/it2/lecture/vm/">1. Установка Ubuntu на виртуальную машину</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/share/">2. Взаимодействие виртуальной и физической машины в VirtualBox</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/docker/">3. Основы docker</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/container/">4. Настройка ресурсов контейнеров docker</a></li>
 </ul>
   
 </li>
