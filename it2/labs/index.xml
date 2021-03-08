@@ -116,7 +116,9 @@ sudo docker pull gccЗапустите этот контейнер указав
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://altmanea.ru/it2/labs/cmake/</guid>
-      <description></description>
+      <description>Программы для сборки Для сборки под Windows потребуются инструменты Build Tools для Visual Studio 2019, которые можно найти на странице https://visualstudio.microsoft.com/ru/downloads/. Также потребуется программа для конфигурации сборки cmake. Для сборки в командной строке предварительно нужно запустить командный файл для Visual Studio Developer Command Prompt (в 2019 версии это команда C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\vsdevcmd).
+Для сборки под Linux рекомендуется запускать следующий контейнер docker:
+sudo docker run -it -v 𝘴𝘩𝘢𝘳𝘦𝘥_𝘧𝘰𝘭𝘥𝘦𝘳:/usr/src/myapp rikorose/gcc-cmakeПример программы В общей папке для компьютеров с операционными системами Linux и Windows (один или оба компьютера – виртуальные машины) создайте папку с проектом и разместите в ней следующие исходные коды:</description>
     </item>
     
   </channel>

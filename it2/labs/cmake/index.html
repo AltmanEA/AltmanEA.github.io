@@ -17,17 +17,23 @@
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
 <meta property="og:title" content="10. Сборка кроссплатформенных программ" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="Программы для сборки Для сборки под Windows потребуются инструменты Build Tools для Visual Studio 2019, которые можно найти на странице https://visualstudio.microsoft.com/ru/downloads/. Также потребуется программа для конфигурации сборки cmake. Для сборки в командной строке предварительно нужно запустить командный файл для Visual Studio Developer Command Prompt (в 2019 версии это команда C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\vsdevcmd).
+Для сборки под Linux рекомендуется запускать следующий контейнер docker:
+sudo docker run -it -v 𝘴𝘩𝘢𝘳𝘦𝘥_𝘧𝘰𝘭𝘥𝘦𝘳:/usr/src/myapp rikorose/gcc-cmakeПример программы В общей папке для компьютеров с операционными системами Linux и Windows (один или оба компьютера – виртуальные машины) создайте папку с проектом и разместите в ней следующие исходные коды:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://altmanea.ru/it2/labs/cmake/" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="10. Сборка кроссплатформенных программ"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="Программы для сборки Для сборки под Windows потребуются инструменты Build Tools для Visual Studio 2019, которые можно найти на странице https://visualstudio.microsoft.com/ru/downloads/. Также потребуется программа для конфигурации сборки cmake. Для сборки в командной строке предварительно нужно запустить командный файл для Visual Studio Developer Command Prompt (в 2019 версии это команда C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\vsdevcmd).
+Для сборки под Linux рекомендуется запускать следующий контейнер docker:
+sudo docker run -it -v 𝘴𝘩𝘢𝘳𝘦𝘥_𝘧𝘰𝘭𝘥𝘦𝘳:/usr/src/myapp rikorose/gcc-cmakeПример программы В общей папке для компьютеров с операционными системами Linux и Windows (один или оба компьютера – виртуальные машины) создайте папку с проектом и разместите в ней следующие исходные коды:"/>
 <meta itemprop="name" content="10. Сборка кроссплатформенных программ">
-<meta itemprop="description" content="">
+<meta itemprop="description" content="Программы для сборки Для сборки под Windows потребуются инструменты Build Tools для Visual Studio 2019, которые можно найти на странице https://visualstudio.microsoft.com/ru/downloads/. Также потребуется программа для конфигурации сборки cmake. Для сборки в командной строке предварительно нужно запустить командный файл для Visual Studio Developer Command Prompt (в 2019 версии это команда C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\vsdevcmd).
+Для сборки под Linux рекомендуется запускать следующий контейнер docker:
+sudo docker run -it -v 𝘴𝘩𝘢𝘳𝘦𝘥_𝘧𝘰𝘭𝘥𝘦𝘳:/usr/src/myapp rikorose/gcc-cmakeПример программы В общей папке для компьютеров с операционными системами Linux и Windows (один или оба компьютера – виртуальные машины) создайте папку с проектом и разместите в ней следующие исходные коды:">
 
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="1008">
 
 
 
@@ -44,6 +50,127 @@
 
 <div class="content-container">
 <main><h1>10. Сборка кроссплатформенных программ</h1>
+<h2 id="программы-для-сборки">Программы для сборки</h2>
+<p>Для сборки под Windows потребуются инструменты Build Tools для Visual Studio 2019, которые можно найти на странице <a href="https://visualstudio.microsoft.com/ru/downloads/">https://visualstudio.microsoft.com/ru/downloads/</a>. Также потребуется программа для конфигурации сборки <a href="https://cmake.org/">cmake</a>. Для сборки в командной строке предварительно нужно запустить командный файл для Visual Studio Developer Command Prompt (в 2019 версии это команда <code>C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\vsdevcmd</code>).</p>
+<p>Для сборки под Linux рекомендуется запускать следующий контейнер docker:</p>
+<pre><code>sudo docker run -it -v 𝘴𝘩𝘢𝘳𝘦𝘥_𝘧𝘰𝘭𝘥𝘦𝘳:/usr/src/myapp rikorose/gcc-cmake
+</code></pre><h2 id="пример-программы">Пример программы</h2>
+<p>В общей папке для компьютеров с операционными системами Linux и Windows (один или оба компьютера – виртуальные машины) создайте папку с проектом и разместите в ней следующие исходные коды:</p>
+<ul>
+<li>в папке <code>src</code> файлы <code>get_os_name.c</code> и <code>main.c</code>;</li>
+<li>в папку <code>include</code> файл <code>get_os_name.h</code>.</li>
+</ul>
+<p>Содержимое файла <code>get_os_name.c</code>:</p>
+<pre><code>#include &quot;get_os_name.h&quot;
+
+char* get_os_name(){
+    #if defined(_WIN32)
+        return &quot;windows&quot;;
+    #elif defined(__linux__)
+        return &quot;linux&quot;;
+    #elif defined(__APPLE__)
+        return &quot;Apple&quot;;
+    #elif defined(BSD)
+        return &quot;BSD&quot;; 
+    #endif
+}
+</code></pre><p>Содержимое файла <code>get_os_name.h</code>:</p>
+<pre><code>#ifndef __GET_OS_NAME_H__
+#define __GET_OS_NAME_H__
+char* get_os_name();
+#endif
+</code></pre><p>Содержимое файла <code>main.c</code>:</p>
+<pre><code>#include &quot;stdio.h&quot;
+#include &quot;get_os_name.h&quot;
+
+int main () {
+    printf(&quot;hello %s\n&quot;, get_os_name());
+}
+</code></pre><p>Соберите пример под Windows:</p>
+<pre><code>cl -I &quot;include&quot; src\main.c src\get_os_name.c
+</code></pre><p>и под Linux:</p>
+<pre><code>gcc -I &quot;include&quot; src/main.c src/get_os_name.c
+</code></pre><p>Проверьте его работоспособность в обеих системах.</p>
+<h2 id="сборка-с-помощью-cmake">Сборка с помощью cmake</h2>
+<p>Создайте новый каталог для изучения примера сборки с помощью cmake и скопируйте в него папки <code>src</code> и <code>include</code> вместе с файлами.</p>
+<p>Добавьте в новый каталог файл <code>CMakeLists.txt</code>:</p>
+<pre><code>cmake_minimum_required(VERSION 3.5)
+project(print_os_name)
+
+add_executable(print_os_target src/main.c src/get_os_name.c)
+
+target_include_directories(print_os_target PRIVATE ${PROJECT_SOURCE_DIR}/include)
+</code></pre><p>В первой строчке <em>конфигурации</em> (программы для cmake) мы задаем минимальную версию cmake. Во второй – имя проекта.</p>
+<p>Функция <code>add_executable</code> добавляет в проект <em>задачу</em> (target, цель) собрать исполняемый файл (программу). Первым аргументом этой функции является имя задачи, последующие аргументы – файлы исходных кодов.</p>
+<p>Функция <code>target_include_directories</code> задает для задачи каталог с включаемыми (include, заголовочными) файлами. Первый аргумент – задача. Далее указывается область действия этой функции (<code>PRIVATE</code> – только указанная задача, <code>PUBLIC</code> – весь проект). После чего указывается каталог.</p>
+<p>В последней строке показано использование переменных cmake. Переменная <code>PROJECT_SOURCE_DIR</code> равна пути к каталогу проекта.</p>
+<h3 id="сборка-под-windows">Сборка под Windows</h3>
+<p>Создайте каталог <code>wbuild</code> и перейдите в него.</p>
+<p>Выполните в нем команду:</p>
+<pre><code>cmake ..
+</code></pre><p>Программа <code>cmake</code> при запуске требует один аргумент – каталог проекта, в котором должен находиться файл <code>CMakeLists.txt</code>. Двоеточие как в Windows, так и в Linux означает родительский каталог по отношению к текущему.</p>
+<p>При выполнении cmake пытается найти в операционной системе средства для сборки программ. После этого найденные средства для сборки тестируются. Далее генерируются конфигурационные файлы для сборки программы с помощью найденных средств сборки. Если на каком-либо этапе произойдет ошибка, то будет выдано соответствующее предупреждение.</p>
+<p>При успешном выполнении cmake создаст в каталоге <code>wbuild</code> файл с именем каждой задачи и расширением <code>.vcxproj</code>. В терминах Visual Studio это называется <em>проектом</em> (<em>project</em>).</p>
+<p>Также в этом каталоге будет создан файл с именем проекта и расширением <code>.sln</code>. В Visual Studio это называется <em>решением</em> (<em>solution</em>). Оно содержит в себе все проекты, соответствующие задачам в cmake, а также некоторые дополнительные проекты.</p>
+<p>Соберите программу с помощью программы:</p>
+<pre><code>msbuild 𝘱𝘳𝘰𝘫𝘦𝘤𝘵 или 𝘴𝘰𝘭𝘶𝘵𝘪𝘰𝘯
+</code></pre><p>По умолчанию будет создана отладочная версия программы, которую можно найти в папке <code>Debug</code>. Можно также создать рабочую версию, указав <code>msbuild</code> ключ <code>-p:Configuration=Release</code> (результат будет в папке <code>Release</code>).</p>
+<h3 id="сборка-под-linux">Сборка под Linux</h3>
+<p>Создайте каталог <code>lbuild</code> и перейдите в него.</p>
+<p>Выполните в нем команду:</p>
+<pre><code>cmake ..
+</code></pre><p>Соберите программу с помощью программы:</p>
+<pre><code>make
+</code></pre><p>Команда make собирает проект в текущей папки (понятие проекта в make и cmake совпадают). В результате получится готовая программа, имя которой совпадает с именем проекта. Запустите и проверьте правильность ее работы.</p>
+<h2 id="статические-библиотеки">Статические библиотеки</h2>
+<p>Код функций из <em>статической</em> библиотеки помещается в файл программы во время ее сборки.</p>
+<p>Создайте новый каталог для изучения примера со статической библиотекой и скопируйте в него папки <code>src</code> и <code>include</code> вместе с файлами.</p>
+<p>Добавьте в новый каталог файл <code>CMakeLists.txt</code>:</p>
+<pre><code>cmake_minimum_required(VERSION 3.5)
+project(print_os_name)
+
+# Create a library
+add_library(get_os_library STATIC src/get_os_name.c)
+target_include_directories(get_os_library PUBLIC ${PROJECT_SOURCE_DIR}/include)
+
+# Create an executable
+add_executable(print_os_name src/main.c)
+target_link_libraries(print_os_name PRIVATE get_os_library)
+</code></pre><p>В данном примере будет две задачи: создание библиотеки и готовой программы.</p>
+<p>Задача создания библиотеки создается функцией <code>add_library</code>. Первый ее аргумент – название задачи, обычно совпадающее с именем библиотеки. Далее указывается тип библиотеки (статическая), после чего указываются файлы исходных кодов.</p>
+<p>Функция <code>target_include_directories</code>, как и в предыдущем примере, задает каталоги с заголовочным файлами. В отличие от предыдущего примера указывается область действия PUBLIC, чтобы подключить эти заголовочные файлы и ко второй задаче (создание программы).</p>
+<p>Функция <code>add_executable</code> используется так же, как и в предыдущем примере.</p>
+<p>Функция <code>target_link_libraries</code> подключает ко второй задаче библиотеку, создаваемую в первой задаче.</p>
+<p>Соберите пример под Windows и под Linux (используя те же команды, что и в предыдущем примере).</p>
+<p>Проверьте правильность работы программ.</p>
+<p>Определите, какие файлы получились в результате выполнения каждой задачи под каждой ОС.</p>
+<p>Попробуйте удалить файлы, полученные в результате выполнения задач по созданию библиотеки, и запустить программы без этих файлов.</p>
+<h2 id="динамические-библиотеки">Динамические библиотеки</h2>
+<p>Код функций из динамической библиотеки помещается в отдельный от программы файл. Функции из таких библиотек компонуются к основной программе во время работы программы (поэтому и называются <em>динамическими</em>). Достоинством динамических библиотек является возможность использовать их одновременно из нескольких программ (отсюда второе название – <em>разделяемые</em> (shared) библиотеки). Их недостаток – необходимость контролировать их наличие в операционной системе и версию.</p>
+<p>Создайте новый каталог для изучения примера со статической библиотекой и скопируйте в него папки <code>src</code> и <code>include</code> вместе с файлами.</p>
+<p>Добавьте в новый каталог файл <code>CMakeLists.txt</code>:</p>
+<pre><code>cmake_minimum_required(VERSION 3.5)
+project(print_os_name)
+
+# Extra lib files for WIN32
+if(WIN32)
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif()
+
+# Create a library
+add_library(get_os_library SHARED src/get_os_name.c)
+target_include_directories(get_os_library PUBLIC ${PROJECT_SOURCE_DIR}/include)
+
+# Create an executable
+add_executable(print_os_name src/main.c)
+target_link_libraries(print_os_name PRIVATE get_os_library)
+</code></pre><p>Отличие конфигураций статически и динамически присоединяемых библиотек заключается в использовании ключевых слов <code>STATIC</code> и <code>SHARED</code> в функции <code>add_library</code>. Для Linux отличия заканчиваются.</p>
+<p>Если сборка ведется под Windows (что проверяется командой <code>if(WIN32)</code>), переменную <code>CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS</code> нужно установить в значение <code>ON</code> с помощью функции <code>set</code>. Это указывает cmake сгенерировать дополнительные файлы.</p>
+<p>В Windows для создания программ, использующие динамические библиотеки, требуются дополнительные файлы для сборки программы. Код самих функций помещается в файлы с расширением <code>.dll</code>, которые используются во время работы. Во время сборки требуются файлы с описанием функций в файле <code>.dll</code> и кодом для доступа к этим функциям.</p>
+<p>Соберите пример под Windows и под Linux (используя те же команды, что и в предыдущем примере).</p>
+<p>Проверьте правильность работы программ.</p>
+<p>Определите, какие файлы получились в результате выполнения каждой задачи под каждой ОС.</p>
+<p>Определите, какие библиотечные файлы необходимы для запуска программ.</p>
 <div class="edit-meta">
 
 <br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/it2/labs/java/" title="9. Платформа Java"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 9. Платформа Java</a>
