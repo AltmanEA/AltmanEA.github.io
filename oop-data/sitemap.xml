@@ -3,11 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://altmanea.ru/oop-data/labs/collection/</loc>
+    <loc>https://altmanea.ru/oop-data/lecture/</loc>
   </url>
   
   <url>
     <loc>https://altmanea.ru/oop-data/lecture/collection/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/oop-data/labs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/oop-data/coursework/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/oop-data/labs/collection/</loc>
   </url>
   
   <url>
@@ -44,14 +56,6 @@
   
   <url>
     <loc>https://altmanea.ru/oop-data/</loc>
-  </url>
-  
-  <url>
-    <loc>https://altmanea.ru/oop-data/labs/</loc>
-  </url>
-  
-  <url>
-    <loc>https://altmanea.ru/oop-data/lecture/</loc>
   </url>
   
 </urlset>
