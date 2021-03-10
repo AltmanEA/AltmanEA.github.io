@@ -7,11 +7,19 @@
   </url>
   
   <url>
+    <loc>https://altmanea.ru/oop-data/coursework/sched/</loc>
+  </url>
+  
+  <url>
     <loc>https://altmanea.ru/oop-data/lecture/collection/</loc>
   </url>
   
   <url>
     <loc>https://altmanea.ru/oop-data/labs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/oop-data/coursework/bib/</loc>
   </url>
   
   <url>
@@ -56,10 +64,6 @@
   
   <url>
     <loc>https://altmanea.ru/oop-data/</loc>
-  </url>
-  
-  <url>
-    <loc>https://altmanea.ru/oop-data/coursework/bib/</loc>
   </url>
   
 </urlset>
