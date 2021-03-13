@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2. Сериализация on Объектно-ориентированное программирование и обработка данных</title>
+    <link>https://altmanea.ru/oop-data/lecture/serialization/</link>
+    <description>Recent content in 2. Сериализация on Объектно-ориентированное программирование и обработка данных</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/lecture/serialization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Понятия сериализации и библиотека jackson</title>
+      <link>https://altmanea.ru/oop-data/lecture/serialization/jackson/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/serialization/jackson/</guid>
+      <description>Введение в сериализацию. Форматы сериализации. Библиотеки для сериализации для Kotlin. Основы библиотеки jackson. Настройка библиотеки Jackson. </description>
+    </item>
+    
+  </channel>
+</rss>

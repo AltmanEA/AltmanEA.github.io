@@ -11,10 +11,6 @@
   </url>
   
   <url>
-    <loc>https://altmanea.ru/oop-data/lecture/collection/</loc>
-  </url>
-  
-  <url>
     <loc>https://altmanea.ru/oop-data/labs/</loc>
   </url>
   
@@ -31,7 +27,15 @@
   </url>
   
   <url>
+    <loc>https://altmanea.ru/oop-data/lecture/collection/</loc>
+  </url>
+  
+  <url>
     <loc>https://altmanea.ru/oop-data/lecture/collection/operation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/oop-data/lecture/serialization/jackson/</loc>
   </url>
   
   <url>
