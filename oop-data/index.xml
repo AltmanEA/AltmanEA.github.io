@@ -45,9 +45,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://altmanea.ru/oop-data/labs/collection/</guid>
-      <description>Примеры из лекций и входной код для выполнения заданий приведен тут.
-В задании требуется самостоятельно изучить отдельные элементы библиотеки коллекций. Для этого рекомендуется в среде набрать название элемента и с помощью сочетания клавиш Ctrl-B открыть исходный код этого элемента. В исходном коде в комментариях приведено описание этого элемента, из которого потом генерируется документация. Этого описания должно быть достаточно для понимания того, что и для чего делает этот элемент.
-Если описания в документации не достаточно то можно попробовать разобраться с исходным кодом, который доступен для библиотечных функций и классов.</description>
+      <description>Примеры из лекций и входной код для выполнения заданий находится в репозитории https://github.com/AltmanEA/edu-collection.
+В задании требуется самостоятельно изучить отдельные элементы библиотеки коллекций. Для этого рекомендуется в среде набрать название элемента и с помощью сочетания клавиш Ctrl-B открыть исходный код этого элемента. В исходном коде в комментариях приведено описание этого элемента, из которого потом генерируется документация. Этого описания должно быть достаточно для понимания того, что и для чего делает этот элемент.</description>
     </item>
     
     <item>
@@ -92,20 +91,10 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://altmanea.ru/oop-data/labs/serialization/</guid>
-      <description>Примеры из лекций и входной код для выполнения заданий приведен тут.
+      <description>Примеры из лекций и входной код для выполнения заданий находится в репозитории https://github.com/AltmanEA/edu-serialization.
 Перед выполнением прочитайте замечания по порядку выполнения заданий и поиску информации из первой работы.
   Библиотека jackson
  Изучите документацию к классу SimpleDateFormat и создайте формат, который бы выводил дату в таком виде: 2021.01.22. Создайте объект типа ObjectMapper и установите его свойство dateFormat равным созданному формату. Создайте класс Lesson со свойствами name: String и date: Date. Создайте объект этого класса со свойствами, указанными ниже, и выполните его сериализацию в формат JSON.</description>
-    </item>
-    
-    <item>
-      <title>3. Основы MongoDb</title>
-      <link>https://altmanea.ru/oop-data/labs/mongo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://altmanea.ru/oop-data/labs/mongo/</guid>
-      <description>Для выполнения этой и некоторых последующих лабораторных работ рекомендуется использовать настроенную виртуальную машину с MongoDb или docker контейнер. Для виртуальной машины не забудьте открыть порт для MongoDb.
- Подключение в MongoDb  </description>
     </item>
     
     <item>
@@ -115,6 +104,43 @@
       
       <guid>https://altmanea.ru/oop-data/lecture/collection/implementation/</guid>
       <description>Обзор коллекций Java. Связанный список. Реализация изменяемых коллекций. Коллекции типа очередь. </description>
+    </item>
+    
+    <item>
+      <title>3.1. Основы MongoDb. Основные операции.</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/crud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/crud/</guid>
+      <description>Создайте коллекцию mongo для класса, реализующего счетчики:
+@Serializabledata class Count(val name: String, val value: Int = 0)Добавьте в коллекцию счетчики &amp;ldquo;Tables&amp;rdquo;, &amp;ldquo;Figures&amp;rdquo;, &amp;ldquo;Equations&amp;rdquo;.
+Изучите оператор инкремента inc и реализуйте функцию, увеличивающую счетчик на единицу:
+ fun incCount(countName: String) Проверьте работу этой функции на следующем примере и сделайте выводы по работе оператора inc.
+incCount(&amp;quot;Tables&amp;quot;)incCount(&amp;quot;Tables&amp;quot;)incCount(&amp;quot;Equations&amp;quot;)incCount(&amp;quot;Listings&amp;quot;)prettyPrintCursor(counts.find())Ознакомьтесь с другими Field Update Operators.
+  Прочитайте про опцию upsert функции update.</description>
+    </item>
+    
+    <item>
+      <title>3.2. Основы MongoDb. Работа с документами.</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/document/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/document/</guid>
+      <description>Напишите функцию, увеличивающую на единицу оценку студента:
+fun incGrade(course: String, studentName: String)Используя функции из лекций, протестируйте ее:
+fillStudentsAndCourse()setGrade(&amp;quot;Math&amp;quot;, &amp;quot;Penny&amp;quot;, 5)setGrade(&amp;quot;Math&amp;quot;, &amp;quot;Sheldon&amp;quot;, 6)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))incGrade(&amp;quot;Math&amp;quot;, &amp;quot;Sheldon&amp;quot;)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))incGrade(&amp;quot;Math&amp;quot;,&amp;quot;Raj&amp;quot;)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))  Прочитайте про операторы in (в kmongo записывается как `in`) и push.
+Реализуйте функцию, которая добавляет студента в список студентов и записывает его на курсы:
+fun addStudent(name: String, group: String, courses: List&amp;lt;String&amp;gt;)Протестируйте ее и сделайте выводы:</description>
+    </item>
+    
+    <item>
+      <title>3.3. Основы MongoDb. Индексы коллекций.</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/indexes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/indexes/</guid>
+      <description>Сформируйте запрос к коллекции population для поиска всех стран, население которых в 2018 году было больше миллиарда.
+Протестируйте выполнение этого запроса с различными вариантами индексов (и без них).</description>
     </item>
     
   </channel>

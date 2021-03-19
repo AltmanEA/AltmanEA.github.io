@@ -17,24 +17,15 @@
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
 <meta property="og:title" content="3. Основы MongoDb" />
-<meta property="og:description" content="Для выполнения этой и некоторых последующих лабораторных работ рекомендуется использовать настроенную виртуальную машину с MongoDb или docker контейнер. Для виртуальной машины не забудьте открыть порт для MongoDb.
- Подключение в MongoDb  " />
-<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
 <meta property="og:url" content="https://altmanea.ru/oop-data/labs/mongo/" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="3. Основы MongoDb"/>
-<meta name="twitter:description" content="Для выполнения этой и некоторых последующих лабораторных работ рекомендуется использовать настроенную виртуальную машину с MongoDb или docker контейнер. Для виртуальной машины не забудьте открыть порт для MongoDb.
- Подключение в MongoDb  "/>
+<meta name="twitter:description" content=""/>
 <meta itemprop="name" content="3. Основы MongoDb">
-<meta itemprop="description" content="Для выполнения этой и некоторых последующих лабораторных работ рекомендуется использовать настроенную виртуальную машину с MongoDb или docker контейнер. Для виртуальной машины не забудьте открыть порт для MongoDb.
- Подключение в MongoDb  ">
-
-<meta itemprop="wordCount" content="30">
-
-
-
-<meta itemprop="keywords" content="" />
+<meta itemprop="description" content="">
 
 </head>
 <body><div class="container"><header>
@@ -42,15 +33,17 @@
 </header>
 
 <div class="content-container">
-<main><h1>3. Основы MongoDb</h1>
-<p>Для выполнения этой и некоторых последующих лабораторных работ рекомендуется использовать настроенную <a href="https://bitnami.com/stack/mongodb/virtual-machine">виртуальную машину</a> с MongoDb или docker контейнер. Для виртуальной машины не забудьте <a href="https://docs.bitnami.com/virtual-machine/faq/administration/use-firewall/">открыть порт</a> для MongoDb.</p>
+<main><h1>3. Основы MongoDb</h1><p>Для выполнения этой и некоторых последующих лабораторных работ рекомендуется использовать настроенную <a href="https://bitnami.com/stack/mongodb/virtual-machine">виртуальную машину</a> с MongoDb или контейнером docker. Для виртуальной машины не забудьте <a href="https://docs.bitnami.com/virtual-machine/faq/administration/use-firewall/">открыть порт</a> для MongoDb командой <code>sudo ufw allow 27017</code>.</p>
+<p>Проект с примерами из лекций находится на странице <a href="https://github.com/AltmanEA/edu-kmongo">https://github.com/AltmanEA/edu-kmongo</a>.</p>
 <ol>
-<li>Подключение в MongoDb</li>
+<li><a href="crud">Основные операции</a></li>
+<li><a href="document">Работа с документами</a></li>
+<li><a href="indexes">Индексы коллекций</a></li>
 </ol>
 <div class="edit-meta">
 
 <br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop-data/labs/serialization/" title="2. Сериализация"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 2. Сериализация</a>
-<a class="nav nav-next" href="https://altmanea.ru/oop-data/coursework/" title="Курсовая работа">Next - Курсовая работа <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="https://altmanea.ru/oop-data/labs/mongo/crud/" title="3.1. Основы MongoDb. Основные операции.">Next - 3.1. Основы MongoDb. Основные операции. <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><p align="center">
     <a href="https://altmanea.ru">&copy; Альтман Е. А. 2021</a>
 </p>
@@ -93,7 +86,16 @@
 <ul class="sub-menu">
 <li class=""><a href="https://altmanea.ru/oop-data/labs/collection/">1. Коллекции</a></li>
 <li class=""><a href="https://altmanea.ru/oop-data/labs/serialization/">2. Сериализация</a></li>
-<li class="active"><a href="https://altmanea.ru/oop-data/labs/mongo/">3. Основы MongoDb</a></li>
+
+<li class="parent active has-sub-menu"><a href="https://altmanea.ru/oop-data/labs/mongo/">3. Основы MongoDb<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/labs/mongo/crud/">3.1. Основы MongoDb. Основные операции.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/mongo/document/">3.2. Основы MongoDb. Работа с документами.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/mongo/indexes/">3.3. Основы MongoDb. Индексы коллекций.</a></li>
+</ul>
+  
+</li>
 </ul>
   
 </li>
