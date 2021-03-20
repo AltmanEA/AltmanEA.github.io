@@ -7,6 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language><atom:link href="https://altmanea.ru/it2/lecture/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Рабочая тетрадь</title>
+      <link>https://altmanea.ru/it2/lecture/workbook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/workbook/</guid>
+      <description>Содержание На каждой странице рабочей тетради необходимо написать свою фамилию и группу. Перед каждым занятием на полях или в отдельной строке по центру тетради нужно поставить его дату.
+В рабочую тетрадь заносится конспект лекций и ответы на вопросы проводимой на лекции проверочной работы.
+В конспект лекций записываются название видео и его основные идеи (тезисы). При необходимости, после просмотра видео на лекции можно уточнить правильность понимания сказанного у преподавателя.
+Вопросы проверочной работы и ответы на них записываются в ту же тетрадь, что и конспект лекций.</description>
+    </item>
+    
+    <item>
       <title>1. Установка Ubuntu на виртуальную машину</title>
       <link>https://altmanea.ru/it2/lecture/vm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
