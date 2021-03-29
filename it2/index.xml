@@ -5,7 +5,11 @@
     <link>https://altmanea.ru/it2/</link>
     <description>Recent content in Введение on Информационные технологии (часть 2)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language><atom:link href="https://altmanea.ru/it2/index.xml" rel="self" type="application/rss+xml" />
+    <language>ru</language>
+    
+	<atom:link href="https://altmanea.ru/it2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Рабочая тетрадь</title>
       <link>https://altmanea.ru/it2/lecture/workbook/</link>
@@ -131,6 +135,15 @@ sudo docker pull gccЗапустите этот контейнер указав
       <description>Теоретические сведения Ветки и указатели на коммиты При работе над проектами часто возникает ситуация при которой существует несколько вариантов проекта. Например, один вариант – это текущая версия проекта, другой вариант – это версия, в которую внесены экспериментальные или логически не завершенные элементы. Особенно часто возникают различные варианты проекта при работе над ним нескольких разработчиков.
 В СКВ различные варианты проекта хранятся в различных ветках (branch).
 При создании проекта существует только одна ветка (один вариант проекта), которая называется master.</description>
+    </item>
+    
+    <item>
+      <title>6. Ветки в GIT</title>
+      <link>https://altmanea.ru/it2/lecture/git-branch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/git-branch/</guid>
+      <description>Понятие веток в системах контроля версий. Создание веток и переход между ними. Отмена операций с ветками и коммитами. </description>
     </item>
     
     <item>

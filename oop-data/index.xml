@@ -5,7 +5,11 @@
     <link>https://altmanea.ru/oop-data/</link>
     <description>Recent content in Введение on Объектно-ориентированное программирование и обработка данных</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/index.xml" rel="self" type="application/rss+xml" />
+    <language>ru</language>
+    
+	<atom:link href="https://altmanea.ru/oop-data/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Рабочая тетрадь</title>
       <link>https://altmanea.ru/oop-data/lecture/workbook/</link>
@@ -106,6 +110,15 @@
 Перед выполнением прочитайте замечания по порядку выполнения заданий и поиску информации из первой работы.
   Библиотека jackson
  Изучите документацию к классу SimpleDateFormat и создайте формат, который бы выводил дату в таком виде: 2021.01.22. Создайте объект типа ObjectMapper и установите его свойство dateFormat равным созданному формату. Создайте класс Lesson со свойствами name: String и date: Date. Создайте объект этого класса со свойствами, указанными ниже, и выполните его сериализацию в формат JSON.</description>
+    </item>
+    
+    <item>
+      <title>3. Библиотека kotlinx.serialization, часть 2.</title>
+      <link>https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/</guid>
+      <description>Интерфейс KSerializer. Сериализация класса Date. Сериализация иерархии классов. Статическое создание полиморфного описания. Сериализация иерархии классов. Динамическое создание полиморфного описания. </description>
     </item>
     
     <item>

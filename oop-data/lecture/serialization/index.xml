@@ -5,7 +5,11 @@
     <link>https://altmanea.ru/oop-data/lecture/serialization/</link>
     <description>Recent content in 2. Сериализация on Объектно-ориентированное программирование и обработка данных</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/lecture/serialization/index.xml" rel="self" type="application/rss+xml" />
+    <language>ru</language>
+    
+	<atom:link href="https://altmanea.ru/oop-data/lecture/serialization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>1. Понятия сериализации и библиотека jackson</title>
       <link>https://altmanea.ru/oop-data/lecture/serialization/jackson/</link>
@@ -22,6 +26,15 @@
       
       <guid>https://altmanea.ru/oop-data/lecture/serialization/kotlinxserial/</guid>
       <description>Пример работы и плагин для библиотеки kotlinx.serialization. Конструкторы классов для сериализации. Сериализация вложенных объектов. Управление сериализацией свойств объектов. Сериализация коллекций (списков, множеств, карт). </description>
+    </item>
+    
+    <item>
+      <title>3. Библиотека kotlinx.serialization, часть 2.</title>
+      <link>https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/</guid>
+      <description>Интерфейс KSerializer. Сериализация класса Date. Сериализация иерархии классов. Статическое создание полиморфного описания. Сериализация иерархии классов. Динамическое создание полиморфного описания. </description>
     </item>
     
   </channel>

@@ -3,10 +3,10 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>1. Понятия сериализации и библиотека jackson - Объектно-ориентированное программирование и обработка данных</title>
+<title>3. Библиотека kotlinx.serialization, часть 2. - Объектно-ориентированное программирование и обработка данных</title>
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://altmanea.ru/oop-data//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://altmanea.ru/oop-data/lecture/serialization/jackson/">
+<link rel="canonical" href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/">
 <link rel="stylesheet" href="https://altmanea.ru/oop-data/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://altmanea.ru/oop-data/css/chroma.min.css">
@@ -16,18 +16,18 @@
 <script src="https://altmanea.ru/oop-data/js/bundle.js"></script><style>
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
-<meta property="og:title" content="1. Понятия сериализации и библиотека jackson" />
-<meta property="og:description" content="Введение в сериализацию. Форматы сериализации. Библиотеки для сериализации для Kotlin. Основы библиотеки jackson. Настройка библиотеки Jackson. " />
+<meta property="og:title" content="3. Библиотека kotlinx.serialization, часть 2." />
+<meta property="og:description" content="Интерфейс KSerializer. Сериализация класса Date. Сериализация иерархии классов. Статическое создание полиморфного описания. Сериализация иерархии классов. Динамическое создание полиморфного описания. " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://altmanea.ru/oop-data/lecture/serialization/jackson/" />
+<meta property="og:url" content="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="1. Понятия сериализации и библиотека jackson"/>
-<meta name="twitter:description" content="Введение в сериализацию. Форматы сериализации. Библиотеки для сериализации для Kotlin. Основы библиотеки jackson. Настройка библиотеки Jackson. "/>
-<meta itemprop="name" content="1. Понятия сериализации и библиотека jackson">
-<meta itemprop="description" content="Введение в сериализацию. Форматы сериализации. Библиотеки для сериализации для Kotlin. Основы библиотеки jackson. Настройка библиотеки Jackson. ">
+<meta name="twitter:title" content="3. Библиотека kotlinx.serialization, часть 2."/>
+<meta name="twitter:description" content="Интерфейс KSerializer. Сериализация класса Date. Сериализация иерархии классов. Статическое создание полиморфного описания. Сериализация иерархии классов. Динамическое создание полиморфного описания. "/>
+<meta itemprop="name" content="3. Библиотека kotlinx.serialization, часть 2.">
+<meta itemprop="description" content="Интерфейс KSerializer. Сериализация класса Date. Сериализация иерархии классов. Статическое создание полиморфного описания. Сериализация иерархии классов. Динамическое создание полиморфного описания. ">
 
-<meta itemprop="wordCount" content="16">
+<meta itemprop="wordCount" content="19">
 
 
 
@@ -39,20 +39,19 @@
 </header>
 
 <div class="content-container">
-<main><h1>1. Понятия сериализации и библиотека jackson</h1>
-<h2 id="введение-в-сериализацию">Введение в сериализацию.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vdVQy0E5r93k?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="форматы-сериализации">Форматы сериализации.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/voS6f5I47xGg?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="библиотеки-для-сериализации-для-kotlin">Библиотеки для сериализации для Kotlin.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vYqO0BuqSlho?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="основы-библиотеки-jackson">Основы библиотеки jackson.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vaB3eFY8m-nQ?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="настройка-библиотеки-jackson">Настройка библиотеки Jackson.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vNPiUCSUWGR0?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe><div class="edit-meta">
+<main><h1>3. Библиотека kotlinx.serialization, часть 2.</h1>
+<h2 id="интерфейс-kserializer">Интерфейс KSerializer.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/v8_vcMWrclE0?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="сериализация-класса-date">Сериализация класса Date.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vxL9HRfeBWVk?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="сериализация-иерархии-классов-статическое-создание-полиморфного-описания">Сериализация иерархии классов. Статическое создание полиморфного описания.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vKs8-N3ilJ3E?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="сериализация-иерархии-классов-динамическое-создание-полиморфного-описания">Сериализация иерархии классов. Динамическое создание полиморфного описания.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vDrWX9UWc0n8?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<div class="edit-meta">
 
-<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop-data/lecture/serialization/" title="2. Сериализация"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 2. Сериализация</a>
-<a class="nav nav-next" href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserial/" title="2. Библиотека kotlinx.serialization">Next - 2. Библиотека kotlinx.serialization <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserial/" title="2. Библиотека kotlinx.serialization"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 2. Библиотека kotlinx.serialization</a>
+<a class="nav nav-next" href="https://altmanea.ru/oop-data/labs/" title="Лабораторные">Next - Лабораторные <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><p align="center">
     <a href="https://altmanea.ru">&copy; Альтман Е. А. 2021</a>
 </p>
@@ -82,9 +81,9 @@
 <li class="parent has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/serialization/">2. Сериализация<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
-<li class="active"><a href="https://altmanea.ru/oop-data/lecture/serialization/jackson/">1. Понятия сериализации и библиотека jackson</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/jackson/">1. Понятия сериализации и библиотека jackson</a></li>
 <li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserial/">2. Библиотека kotlinx.serialization</a></li>
-<li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/">3. Библиотека kotlinx.serialization, часть 2.</a></li>
+<li class="active"><a href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/">3. Библиотека kotlinx.serialization, часть 2.</a></li>
 </ul>
   
 </li>
