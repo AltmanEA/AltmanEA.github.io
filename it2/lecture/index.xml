@@ -5,11 +5,7 @@
     <link>https://altmanea.ru/it2/lecture/</link>
     <description>Recent content in Лекции on Информационные технологии (часть 2)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language>
-    
-	<atom:link href="https://altmanea.ru/it2/lecture/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ru</language><atom:link href="https://altmanea.ru/it2/lecture/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Рабочая тетрадь</title>
       <link>https://altmanea.ru/it2/lecture/workbook/</link>
@@ -74,6 +70,15 @@
       
       <guid>https://altmanea.ru/it2/lecture/git-branch/</guid>
       <description>Понятие веток в системах контроля версий. Создание веток и переход между ними. Отмена операций с ветками и коммитами. </description>
+    </item>
+    
+    <item>
+      <title>7. Объединение веток в GIT</title>
+      <link>https://altmanea.ru/it2/lecture/git-merge/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/git-merge/</guid>
+      <description>Слияние веток. Разрешение конфликта при слиянии веток. Перебазирование веток. Разрешение конфликтов при перебазировании веток. </description>
     </item>
     
   </channel>

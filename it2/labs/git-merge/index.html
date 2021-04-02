@@ -3,8 +3,8 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>7. Слияние веток - Информационные технологии (часть 2)</title>
-<meta name="generator" content="Hugo 0.74.3" />
+<title>7. Объединение веток - Информационные технологии (часть 2)</title>
+<meta name="generator" content="Hugo 0.79.0" />
 <link href="https://altmanea.ru/it2//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://altmanea.ru/it2/labs/git-merge/">
 <link rel="stylesheet" href="https://altmanea.ru/it2/css/theme.min.css">
@@ -16,7 +16,7 @@
 <script src="https://altmanea.ru/it2/js/bundle.js"></script><style>
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
-<meta property="og:title" content="7. Слияние веток" />
+<meta property="og:title" content="7. Объединение веток" />
 <meta property="og:description" content="Теоретические сведения Слияние веток Основная цель создание дополнительных веток – проработать отдельный элемент проекта автономно а затем присоединить его к проекту. Поэтому в большинстве случаев эти ветки в конечном итоге объединяются с веткой master. Процедура объединения веток называется слияние (merge).
 Для слияния текущей ветки с какой-либо другой используется команда
 git merge имя_веткиВ результате выполнения этой команды в текущей ветке появится новый коммит. Этот коммит будет иметь два предка – последние коммиты обоих веток, участвующих в слиянии." />
@@ -24,11 +24,11 @@
 <meta property="og:url" content="https://altmanea.ru/it2/labs/git-merge/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="7. Слияние веток"/>
+<meta name="twitter:title" content="7. Объединение веток"/>
 <meta name="twitter:description" content="Теоретические сведения Слияние веток Основная цель создание дополнительных веток – проработать отдельный элемент проекта автономно а затем присоединить его к проекту. Поэтому в большинстве случаев эти ветки в конечном итоге объединяются с веткой master. Процедура объединения веток называется слияние (merge).
 Для слияния текущей ветки с какой-либо другой используется команда
 git merge имя_веткиВ результате выполнения этой команды в текущей ветке появится новый коммит. Этот коммит будет иметь два предка – последние коммиты обоих веток, участвующих в слиянии."/>
-<meta itemprop="name" content="7. Слияние веток">
+<meta itemprop="name" content="7. Объединение веток">
 <meta itemprop="description" content="Теоретические сведения Слияние веток Основная цель создание дополнительных веток – проработать отдельный элемент проекта автономно а затем присоединить его к проекту. Поэтому в большинстве случаев эти ветки в конечном итоге объединяются с веткой master. Процедура объединения веток называется слияние (merge).
 Для слияния текущей ветки с какой-либо другой используется команда
 git merge имя_веткиВ результате выполнения этой команды в текущей ветке появится новый коммит. Этот коммит будет иметь два предка – последние коммиты обоих веток, участвующих в слиянии.">
@@ -44,7 +44,7 @@
 </header>
 
 <div class="content-container">
-<main><h1>7. Слияние веток</h1>
+<main><h1>7. Объединение веток</h1>
 <h2 id="теоретические-сведения">Теоретические сведения</h2>
 <h3 id="слияние-веток">Слияние веток</h3>
 <p>Основная цель создание дополнительных веток – проработать отдельный элемент проекта автономно а затем присоединить его к проекту. Поэтому в большинстве случаев эти ветки в конечном итоге объединяются с веткой <code>master</code>. Процедура объединения веток называется <strong>слияние</strong> (merge).</p>
@@ -118,7 +118,7 @@ git branch -d task
 <li class=""><a href="https://altmanea.ru/it2/labs/container/">4. Настройка ресурсов контейнеров docker</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/git-basic/">5. Основы GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/git-branch/">6. Ветки в GIT</a></li>
-<li class="active"><a href="https://altmanea.ru/it2/labs/git-merge/">7. Слияние веток</a></li>
+<li class="active"><a href="https://altmanea.ru/it2/labs/git-merge/">7. Объединение веток</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/git-remote/">8. Удаленные репозитории</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/java/">9. Платформа Java</a></li>
 <li class=""><a href="https://altmanea.ru/it2/labs/cmake/">10. Сборка кроссплатформенных программ</a></li>
@@ -136,6 +136,7 @@ git branch -d task
 <li class=""><a href="https://altmanea.ru/it2/lecture/container/">4. Настройка ресурсов контейнеров docker</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-basic/">5. Основы GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-branch/">6. Ветки в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/git-merge/">7. Объединение веток в GIT</a></li>
 </ul>
   
 </li>
