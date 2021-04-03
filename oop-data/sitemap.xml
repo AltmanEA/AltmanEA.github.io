@@ -67,6 +67,10 @@
   </url>
   
   <url>
+    <loc>https://altmanea.ru/oop-data/lecture/mongo/</loc>
+  </url>
+  
+  <url>
     <loc>https://altmanea.ru/oop-data/labs/mongo/</loc>
   </url>
   
@@ -84,6 +88,10 @@
   
   <url>
     <loc>https://altmanea.ru/oop-data/labs/mongo/indexes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://altmanea.ru/oop-data/labs/mongo/pipeline/</loc>
   </url>
   
   <url>

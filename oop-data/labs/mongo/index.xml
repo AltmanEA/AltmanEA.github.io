@@ -5,11 +5,7 @@
     <link>https://altmanea.ru/oop-data/labs/mongo/</link>
     <description>Recent content in 3. Основы MongoDb on Объектно-ориентированное программирование и обработка данных</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language>
-    
-	<atom:link href="https://altmanea.ru/oop-data/labs/mongo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/labs/mongo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>3.1. Основы MongoDb. Основные операции.</title>
       <link>https://altmanea.ru/oop-data/labs/mongo/crud/</link>
@@ -45,6 +41,17 @@ fun addStudent(name: String, group: String, courses: List&amp;lt;String&amp;gt;)
       <guid>https://altmanea.ru/oop-data/labs/mongo/indexes/</guid>
       <description>Сформируйте запрос к коллекции population для поиска всех стран, население которых в 2018 году было больше миллиарда.
 Протестируйте выполнение этого запроса с различными вариантами индексов (и без них).</description>
+    </item>
+    
+    <item>
+      <title>3.4. Основы MongoDb. Конвейерная обработка</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/pipeline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/pipeline/</guid>
+      <description>Создайте классы для студентов, оценок и курсов, аналогичные классам рассмотренным на лекциях. Отличие создаваемых классов должно заключатся в том, что оценки коллекция оценок находится в классе студентов, а в классе оценок хранится информация о курсе, за который получена оценка.
+Создайте коллекции mongo для курсов и студентов, заполнив такими же оценками, как и в примере на лекции.
+  С помощью одной стадии match конвейера фреймворка агрегации найдите в коллекции студентов, не имеющих оценки ниже 4.</description>
     </item>
     
   </channel>
