@@ -6,5 +6,14 @@
     <description>Recent content in 3. Коллекции mongo on Объектно-ориентированное программирование и обработка данных</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language><atom:link href="https://altmanea.ru/oop-data/lecture/mongo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Основные операции.</title>
+      <link>https://altmanea.ru/oop-data/lecture/mongo/crud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/mongo/crud/</guid>
+      <description>Введение в MongoDb. Установление соединения с MongoDb. Хранилища CRUD. Добавление документов в коллекции MongoDb. Чтение документов из MongoDb. Типизированные json запросы в MongoDb. Обновление документов в MongoDb. Удаление документов из коллекций MongoDb. </description>
+    </item>
+    
   </channel>
 </rss>
