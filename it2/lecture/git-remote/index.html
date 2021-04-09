@@ -3,10 +3,10 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>8. Удаленные ветки в GIT - Информационные технологии (часть 2)</title>
+<title>7. Объединение веток в GIT - Информационные технологии (часть 2)</title>
 <meta name="generator" content="Hugo 0.79.0" />
 <link href="https://altmanea.ru/it2//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://altmanea.ru/it2/lecture/git-merge/">
+<link rel="canonical" href="https://altmanea.ru/it2/lecture/git-remote/">
 <link rel="stylesheet" href="https://altmanea.ru/it2/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://altmanea.ru/it2/css/chroma.min.css">
@@ -16,18 +16,18 @@
 <script src="https://altmanea.ru/it2/js/bundle.js"></script><style>
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
-<meta property="og:title" content="8. Удаленные ветки в GIT" />
-<meta property="og:description" content="Создание удаленных веток. Выборка и выкладывание коммитов в удаленные ветки. Разрешение конфликтов в удаленных ветках. Работа с несколькими удаленными ветками. " />
+<meta property="og:title" content="7. Объединение веток в GIT" />
+<meta property="og:description" content="Слияние веток. Разрешение конфликта при слиянии веток. Перебазирование веток. Разрешение конфликтов при перебазировании веток. " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://altmanea.ru/it2/lecture/git-merge/" />
+<meta property="og:url" content="https://altmanea.ru/it2/lecture/git-remote/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="8. Удаленные ветки в GIT"/>
-<meta name="twitter:description" content="Создание удаленных веток. Выборка и выкладывание коммитов в удаленные ветки. Разрешение конфликтов в удаленных ветках. Работа с несколькими удаленными ветками. "/>
-<meta itemprop="name" content="8. Удаленные ветки в GIT">
-<meta itemprop="description" content="Создание удаленных веток. Выборка и выкладывание коммитов в удаленные ветки. Разрешение конфликтов в удаленных ветках. Работа с несколькими удаленными ветками. ">
+<meta name="twitter:title" content="7. Объединение веток в GIT"/>
+<meta name="twitter:description" content="Слияние веток. Разрешение конфликта при слиянии веток. Перебазирование веток. Разрешение конфликтов при перебазировании веток. "/>
+<meta itemprop="name" content="7. Объединение веток в GIT">
+<meta itemprop="description" content="Слияние веток. Разрешение конфликта при слиянии веток. Перебазирование веток. Разрешение конфликтов при перебазировании веток. ">
 
-<meta itemprop="wordCount" content="20">
+<meta itemprop="wordCount" content="14">
 
 
 
@@ -38,19 +38,18 @@
 </header>
 
 <div class="content-container">
-<main><h1>8. Удаленные ветки в GIT</h1>
-<h2 id="создание-удаленных-веток">Создание удаленных веток.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vXENMGOCD-1U?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="выборка-и-выкладывание-коммитов-в-удаленные-ветки">Выборка и выкладывание коммитов в удаленные ветки.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/v57hBD3yyIW0?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="разрешение-конфликтов-в-удаленных-ветках">Разрешение конфликтов в удаленных ветках.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/v6A4iEBxt73s?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="работа-с-несколькими-удаленными-ветками">Работа с несколькими удаленными ветками.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vy5h_hwmWmiU?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<div class="edit-meta">
+<main><h1>7. Объединение веток в GIT</h1>
+<h2 id="слияние-веток">Слияние веток.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/v5yyjM1rRpg8?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="разрешение-конфликта-при-слиянии-веток">Разрешение конфликта при слиянии веток.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vUT2VZVuDTHU?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="перебазирование-веток">Перебазирование веток.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vWNlNgaJdpUk?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="разрешение-конфликтов-при-перебазировании-веток">Разрешение конфликтов при перебазировании веток.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vmGTAY3M_JRA?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe><div class="edit-meta">
 
-<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/it2/lecture/git-remote/" title="7. Объединение веток в GIT"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 7. Объединение веток в GIT</a>
-<a class="nav nav-next" href="https://altmanea.ru/it2/lecture/workbook/" title="Рабочая тетрадь">Next - Рабочая тетрадь <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/it2/lecture/git-branch/" title="6. Ветки в GIT"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 6. Ветки в GIT</a>
+<a class="nav nav-next" href="https://altmanea.ru/it2/lecture/git-merge/" title="8. Удаленные ветки в GIT">Next - 8. Удаленные ветки в GIT <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><p align="right">
     <a href="https://altmanea.ru">&copy; Альтман Е. А. 2020-2021</a>
 </p>
@@ -89,8 +88,8 @@
 <li class=""><a href="https://altmanea.ru/it2/lecture/container/">4. Настройка ресурсов контейнеров docker</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-basic/">5. Основы GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-branch/">6. Ветки в GIT</a></li>
-<li class=""><a href="https://altmanea.ru/it2/lecture/git-remote/">7. Объединение веток в GIT</a></li>
-<li class="active"><a href="https://altmanea.ru/it2/lecture/git-merge/">8. Удаленные ветки в GIT</a></li>
+<li class="active"><a href="https://altmanea.ru/it2/lecture/git-remote/">7. Объединение веток в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/git-merge/">8. Удаленные ветки в GIT</a></li>
 </ul>
   
 </li>

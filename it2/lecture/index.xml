@@ -74,11 +74,20 @@
     
     <item>
       <title>7. Объединение веток в GIT</title>
+      <link>https://altmanea.ru/it2/lecture/git-remote/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/git-remote/</guid>
+      <description>Слияние веток. Разрешение конфликта при слиянии веток. Перебазирование веток. Разрешение конфликтов при перебазировании веток. </description>
+    </item>
+    
+    <item>
+      <title>8. Удаленные ветки в GIT</title>
       <link>https://altmanea.ru/it2/lecture/git-merge/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://altmanea.ru/it2/lecture/git-merge/</guid>
-      <description>Слияние веток. Разрешение конфликта при слиянии веток. Перебазирование веток. Разрешение конфликтов при перебазировании веток. </description>
+      <description>Создание удаленных веток. Выборка и выкладывание коммитов в удаленные ветки. Разрешение конфликтов в удаленных ветках. Работа с несколькими удаленными ветками. </description>
     </item>
     
   </channel>
