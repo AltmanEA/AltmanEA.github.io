@@ -3,10 +3,10 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>1. Понятия сериализации и библиотека jackson - Объектно-ориентированное программирование и обработка данных</title>
+<title>2. Работа с документами. - Объектно-ориентированное программирование и обработка данных</title>
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://altmanea.ru/oop-data//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://altmanea.ru/oop-data/lecture/serialization/jackson/">
+<link rel="canonical" href="https://altmanea.ru/oop-data/lecture/mongo/document/">
 <link rel="stylesheet" href="https://altmanea.ru/oop-data/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://altmanea.ru/oop-data/css/chroma.min.css">
@@ -16,18 +16,18 @@
 <script src="https://altmanea.ru/oop-data/js/bundle.js"></script><style>
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
-<meta property="og:title" content="1. Понятия сериализации и библиотека jackson" />
-<meta property="og:description" content="Введение в сериализацию. Форматы сериализации. Библиотеки для сериализации для Kotlin. Основы библиотеки jackson. Настройка библиотеки Jackson. " />
+<meta property="og:title" content="2. Работа с документами." />
+<meta property="og:description" content="Структура базы данных. Нормализация структуры базы данных. Добавление вложенных объектов в базу данных. Поиск вложенных объектов в базе данных. Обновление массивов в базе данных. " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://altmanea.ru/oop-data/lecture/serialization/jackson/" />
+<meta property="og:url" content="https://altmanea.ru/oop-data/lecture/mongo/document/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="1. Понятия сериализации и библиотека jackson"/>
-<meta name="twitter:description" content="Введение в сериализацию. Форматы сериализации. Библиотеки для сериализации для Kotlin. Основы библиотеки jackson. Настройка библиотеки Jackson. "/>
-<meta itemprop="name" content="1. Понятия сериализации и библиотека jackson">
-<meta itemprop="description" content="Введение в сериализацию. Форматы сериализации. Библиотеки для сериализации для Kotlin. Основы библиотеки jackson. Настройка библиотеки Jackson. ">
+<meta name="twitter:title" content="2. Работа с документами."/>
+<meta name="twitter:description" content="Структура базы данных. Нормализация структуры базы данных. Добавление вложенных объектов в базу данных. Поиск вложенных объектов в базе данных. Обновление массивов в базе данных. "/>
+<meta itemprop="name" content="2. Работа с документами.">
+<meta itemprop="description" content="Структура базы данных. Нормализация структуры базы данных. Добавление вложенных объектов в базу данных. Поиск вложенных объектов в базе данных. Обновление массивов в базе данных. ">
 
-<meta itemprop="wordCount" content="16">
+<meta itemprop="wordCount" content="24">
 
 
 
@@ -39,20 +39,21 @@
 </header>
 
 <div class="content-container">
-<main><h1>1. Понятия сериализации и библиотека jackson</h1>
-<h2 id="введение-в-сериализацию">Введение в сериализацию.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vdVQy0E5r93k?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="форматы-сериализации">Форматы сериализации.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/voS6f5I47xGg?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="библиотеки-для-сериализации-для-kotlin">Библиотеки для сериализации для Kotlin.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vYqO0BuqSlho?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="основы-библиотеки-jackson">Основы библиотеки jackson.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vaB3eFY8m-nQ?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
-<h2 id="настройка-библиотеки-jackson">Настройка библиотеки Jackson.</h2>
-<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vNPiUCSUWGR0?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe><div class="edit-meta">
+<main><h1>2. Работа с документами.</h1>
+<h2 id="структура-базы-данных">Структура базы данных.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/voWUWYgcLuxY?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="нормализация-структуры-базы-данных">Нормализация структуры базы данных.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vfltwQw0QqjM?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="добавление-вложенных-объектов-в-базу-данных">Добавление вложенных объектов в базу данных.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vVMjtf8rsFlU?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="поиск-вложенных-объектов-в-базе-данных">Поиск вложенных объектов в базе данных.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/v6Xe3JzGBumA?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<h2 id="обновление-массивов-в-базе-данных">Обновление массивов в базе данных.</h2>
+<iframe width="560" height="315" src="https://frontend.vh.yandex.ru/player/vb1bJJq-kt1w?from=partner&mute=0&autoplay=0&branding=0" allow="autoplay; fullscreen; accelerometer; gyroscope; picture-in-picture; encrypted-media" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<div class="edit-meta">
 
-<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop-data/lecture/serialization/" title="2. Сериализация"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 2. Сериализация</a>
-<a class="nav nav-next" href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserial/" title="2. Библиотека kotlinx.serialization">Next - 2. Библиотека kotlinx.serialization <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop-data/lecture/mongo/crud/" title="1. Основные операции."><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 1. Основные операции.</a>
+<a class="nav nav-next" href="https://altmanea.ru/oop-data/labs/" title="Лабораторные">Next - Лабораторные <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><p align="center">
     <a href="https://altmanea.ru">&copy; Альтман Е. А. 2021</a>
 </p>
@@ -79,21 +80,21 @@
   
 </li>
 
-<li class="parent has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/serialization/">2. Сериализация<span class="mark opened">-</span></a>
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/serialization/">2. Сериализация<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
-<li class="active"><a href="https://altmanea.ru/oop-data/lecture/serialization/jackson/">1. Понятия сериализации и библиотека jackson</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/jackson/">1. Понятия сериализации и библиотека jackson</a></li>
 <li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserial/">2. Библиотека kotlinx.serialization</a></li>
 <li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/">3. Библиотека kotlinx.serialization, часть 2.</a></li>
 </ul>
   
 </li>
 
-<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/mongo/">3. Коллекции mongo<span class="mark closed">+</span></a>
+<li class="parent has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/mongo/">3. Коллекции mongo<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/crud/">1. Основные операции.</a></li>
-<li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/document/">2. Работа с документами.</a></li>
+<li class="active"><a href="https://altmanea.ru/oop-data/lecture/mongo/document/">2. Работа с документами.</a></li>
 </ul>
   
 </li>

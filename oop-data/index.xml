@@ -5,7 +5,11 @@
     <link>https://altmanea.ru/oop-data/</link>
     <description>Recent content in Введение on Объектно-ориентированное программирование и обработка данных</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/index.xml" rel="self" type="application/rss+xml" />
+    <language>ru</language>
+    
+	<atom:link href="https://altmanea.ru/oop-data/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Рабочая тетрадь</title>
       <link>https://altmanea.ru/oop-data/lecture/workbook/</link>
@@ -130,6 +134,15 @@ fun incGrade(course: String, studentName: String)Используя функц�
 fillStudentsAndCourse()setGrade(&amp;quot;Math&amp;quot;, &amp;quot;Penny&amp;quot;, 5)setGrade(&amp;quot;Math&amp;quot;, &amp;quot;Sheldon&amp;quot;, 6)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))incGrade(&amp;quot;Math&amp;quot;, &amp;quot;Sheldon&amp;quot;)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))incGrade(&amp;quot;Math&amp;quot;,&amp;quot;Raj&amp;quot;)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))  Прочитайте про операторы in (в kmongo записывается как `in`) и push.
 Реализуйте функцию, которая добавляет студента в список студентов и записывает его на курсы:
 fun addStudent(name: String, group: String, courses: List&amp;lt;String&amp;gt;)Протестируйте ее и сделайте выводы:</description>
+    </item>
+    
+    <item>
+      <title>2. Работа с документами.</title>
+      <link>https://altmanea.ru/oop-data/lecture/mongo/document/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/mongo/document/</guid>
+      <description>Структура базы данных. Нормализация структуры базы данных. Добавление вложенных объектов в базу данных. Поиск вложенных объектов в базе данных. Обновление массивов в базе данных. </description>
     </item>
     
     <item>
