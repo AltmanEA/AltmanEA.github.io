@@ -28,5 +28,14 @@
       <description>Структура базы данных. Нормализация структуры базы данных. Добавление вложенных объектов в базу данных. Поиск вложенных объектов в базе данных. Обновление массивов в базе данных. </description>
     </item>
     
+    <item>
+      <title>3. Индексы коллекций.</title>
+      <link>https://altmanea.ru/oop-data/lecture/mongo/indexes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/mongo/indexes/</guid>
+      <description>Коллекция для экспериментов с индексами. Информация о выполнении запроса mongo. Создание индекса. Индексы и запросы по нескольким полям. Сложные индексы. </description>
+    </item>
+    
   </channel>
 </rss>
