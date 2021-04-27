@@ -5,7 +5,11 @@
     <link>https://altmanea.ru/oop-data/</link>
     <description>Recent content in Введение on Объектно-ориентированное программирование и обработка данных</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/index.xml" rel="self" type="application/rss+xml" />
+    <language>ru</language>
+    
+	<atom:link href="https://altmanea.ru/oop-data/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Рабочая тетрадь</title>
       <link>https://altmanea.ru/oop-data/lecture/workbook/</link>
