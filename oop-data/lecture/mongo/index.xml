@@ -5,11 +5,7 @@
     <link>https://altmanea.ru/oop-data/lecture/mongo/</link>
     <description>Recent content in 3. Коллекции mongo on Объектно-ориентированное программирование и обработка данных</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language>
-    
-	<atom:link href="https://altmanea.ru/oop-data/lecture/mongo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/lecture/mongo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1. Основные операции.</title>
       <link>https://altmanea.ru/oop-data/lecture/mongo/crud/</link>
