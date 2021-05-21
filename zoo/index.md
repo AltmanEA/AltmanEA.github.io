@@ -15,5 +15,5 @@
 
 Аттестация и защита курсовых работ проводится в дистанционном формате. Календарь:
 
-<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FOmsk&amp;src=YWx0bWFuZWFAZ21haWwuY29t&amp;src=NGk3ZnZsNnQxbjA4Y3M4ZjZrbmRoMDNmMGNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23039BE5&amp;color=%23EF6C00" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://calendar.google.com/calendar/embed?src=rmrlihouliaid212p6k4a7f574%40group.calendar.google.com&ctz=Asia%2FOmsk" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
