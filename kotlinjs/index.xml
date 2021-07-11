@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Введение on Web-приложения на языке Kotlin</title>
+    <link>https://altmanea.ru/kotlinjs/</link>
+    <description>Recent content in Введение on Web-приложения на языке Kotlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language><atom:link href="https://altmanea.ru/kotlinjs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Конспект</title>
+      <link>https://altmanea.ru/kotlinjs/lecture/workbook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/kotlinjs/lecture/workbook/</guid>
+      <description>В конспект записываются основные тезисы материалов лекций, ответы на контрольные вопросы (задаются во время лекций), краткое изложение теоретических материалов, которые требуется самостоятельно изучить в рамках выполнения лабораторных работ.
+На каждой странице конспекта нужно написать фамилию и группу автора конспекта. Перед каждым занятием поставить дату.
+Проверка конспектов осуществляется перед защитой лабораторных работ.
+Конспектом лекций можно пользоваться на экзамене при подготовке к билету и при ответе на вопросы по лабораторным работам.</description>
+    </item>
+    
+    <item>
+      <title>Среда разработки</title>
+      <link>https://altmanea.ru/kotlinjs/lecture/kotlinx/devenv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/kotlinjs/lecture/kotlinx/devenv/</guid>
+      <description>Создание проекта Сборка проекта Запуск проекта Отладка проекта Работа с переменными </description>
+    </item>
+    
+    <item>
+      <title>Генерация HTML</title>
+      <link>https://altmanea.ru/kotlinjs/lecture/kotlinx/html/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/kotlinjs/lecture/kotlinx/html/</guid>
+      <description>Добавление тегов Генерация списков Библиотека kotlinx.html Обработка событий Редактирование HTML </description>
+    </item>
+    
+    <item>
+      <title>DSL</title>
+      <link>https://altmanea.ru/kotlinjs/lecture/kotlinx/dsl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/kotlinjs/lecture/kotlinx/dsl/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
