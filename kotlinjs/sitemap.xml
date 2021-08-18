@@ -2,28 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://altmanea.ru/kotlinjs/lecture/workbook/</loc>
+    <loc>https://altmanea.ru/kotlinjs/slides/workbook/</loc>
   </url><url>
-    <loc>https://altmanea.ru/kotlinjs/lecture/kotlinx/</loc>
+    <loc>https://altmanea.ru/kotlinjs/slides/</loc>
   </url><url>
-    <loc>https://altmanea.ru/kotlinjs/lecture/kotlinx/devenv/</loc>
+    <loc>https://altmanea.ru/kotlinjs/labs/ide/</loc>
   </url><url>
-    <loc>https://altmanea.ru/kotlinjs/lecture/kotlinx/html/</loc>
+    <loc>https://altmanea.ru/kotlinjs/labs/</loc>
   </url><url>
-    <loc>https://altmanea.ru/kotlinjs/lecture/react/</loc>
+    <loc>https://altmanea.ru/kotlinjs/labs/kotlin-html/</loc>
   </url><url>
-    <loc>https://altmanea.ru/kotlinjs/lecture/kotlinx/dsl/</loc>
+    <loc>https://altmanea.ru/kotlinjs/labs/react-component/</loc>
   </url><url>
-    <loc>https://altmanea.ru/kotlinjs/lecture/redux/</loc>
+    <loc>https://altmanea.ru/kotlinjs/labs/react-app/</loc>
   </url><url>
-    <loc>https://altmanea.ru/kotlinjs/lecture/async/</loc>
+    <loc>https://altmanea.ru/kotlinjs/labs/react-in-component/</loc>
   </url><url>
     <loc>https://altmanea.ru/kotlinjs/categories/</loc>
   </url><url>
     <loc>https://altmanea.ru/kotlinjs/tags/</loc>
   </url><url>
     <loc>https://altmanea.ru/kotlinjs/</loc>
-  </url><url>
-    <loc>https://altmanea.ru/kotlinjs/lecture/</loc>
   </url>
 </urlset>

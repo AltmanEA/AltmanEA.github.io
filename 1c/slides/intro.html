@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Введение в курс</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+## Разработка информационных систем
+
+--
+
+### Уровни разработки программ
+
+- Прикладная платформа  (1С, Android, SciPy)
+- Фреймворк (Spring, React)
+- Программная платформа/ Язык программирования (Java, .Net, Python)
+- Аппаратная платформа (Ассемблер, С/С++, Java)
+
+--
+
+### Проектирование и программирование
+
+Проектирование информационной системы – разработка структуры, состоящей из элементов и связей между ними. 
+
+Программирование – реализация элементов и протоколов.
+
+Разработка в 1C – определение структуры, используя готовые элементы, доработка представления элементов.
+
+---
+
+# Порядок изучения
+
+--
+
+### По семестрам
+
+1. Работа с объектами конфигурации.
+2. Представление объектов.
+3. Разработка приложений.
+
+--
+
+### Практические занятия
+
+Лабораторные, самостоятельная или курсовая работа выполняются в виде одного проекта.
+
+Примерные темы проектов:
+
+- Учет оценок студентов по предмету.
+- Список трудов преподавателей кафедры.
+- Каталог книг (фильмов или др.).
+
+--
+
+### Аттестация
+
+Оценка выставляется по результатам собеседования по проекту.
+
+Оценка может быть выставлена по результатам работы в семестре.
+
+---
+
+# Материалы для изучения
+
+--
+
+### Платформа
+
+[Список учебных платформ](http://online.1c.ru/catalog/free/learning.php)
+
+- 1С:Предприятие 8.3 Учебная версия.
+- 1С:Предприятие 8.3 Версия для обучения программированию (более старые версии, но с книгами).
+
+--
+
+### Учебник
+
+М. Радченко, Е. Хрусталева «1С:Предприятие 8.3. Практическое пособие разработчика. Примеры и типовые приемы».
+
+                    </script>
+                </section>
+            </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealAudioSlideshow, RevealAudioRecorder ],
+				menu: {
+		        	themes: true,
+        			themesPath: 'dist/theme/',
+		        }
+			});
+		</script>
+	</body>
+</html>
