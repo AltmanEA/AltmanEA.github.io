@@ -3,10 +3,10 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Введение - Web-приложения на языке Kotlin</title>
+<title>9. React redux - Web-приложения на языке Kotlin</title>
 <meta name="generator" content="Hugo 0.86.1" />
 <link href="https://altmanea.ru/kotlinjs//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://altmanea.ru/kotlinjs/">
+<link rel="canonical" href="https://altmanea.ru/kotlinjs/labs/react-redux/">
 <link rel="stylesheet" href="https://altmanea.ru/kotlinjs/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://altmanea.ru/kotlinjs/css/chroma.min.css">
@@ -16,16 +16,24 @@
 <script src="https://altmanea.ru/kotlinjs/js/bundle.js"></script><style>
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
-<meta property="og:title" content="Введение" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://altmanea.ru/kotlinjs/" />
+<meta property="og:title" content="9. React redux" />
+<meta property="og:description" content="Теоретические сведения Лекция
+Задание  Переделайте приложение из лекций так, чтобы оно включало в себя весь функционал из задания предыдущей лабораторной работы.  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/kotlinjs/labs/react-redux/" /><meta property="article:section" content="labs" />
+
+
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Введение"/>
-<meta name="twitter:description" content=""/>
-<meta itemprop="name" content="Введение">
-<meta itemprop="description" content="">
+<meta name="twitter:title" content="9. React redux"/>
+<meta name="twitter:description" content="Теоретические сведения Лекция
+Задание  Переделайте приложение из лекций так, чтобы оно включало в себя весь функционал из задания предыдущей лабораторной работы.  "/>
+<meta itemprop="name" content="9. React redux">
+<meta itemprop="description" content="Теоретические сведения Лекция
+Задание  Переделайте приложение из лекций так, чтобы оно включало в себя весь функционал из задания предыдущей лабораторной работы.  ">
+
+<meta itemprop="wordCount" content="21">
+<meta itemprop="keywords" content="" />
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148810194-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -39,16 +47,18 @@
 </header>
 
 <div class="content-container">
-<main><ul>
-<li><a href="slides">Лекции</a></li>
-<li><a href="labs">Лабораторные</a></li>
-<li><a href="coursework">Самостоятельная работа</a></li>
-<li><a href="exam">Вопросы к экзамену</a></li>
-</ul>
-<nav class="pagination"><a class="nav nav-next" href="https://altmanea.ru/kotlinjs/slides/" title="Лекции">Next - Лекции <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</nav><div class="edit-meta">
+<main><h1>9. React redux</h1>
+<h3 id="теоретические-сведения">Теоретические сведения</h3>
+<p><a target="_blank" rel="noopener noreferrer" href="../../slides/react-redux.html">Лекция</a></p>
+<h3 id="задание">Задание</h3>
+<ol>
+<li>Переделайте приложение из лекций так, чтобы оно включало в себя весь функционал из задания предыдущей лабораторной работы.</li>
+</ol>
+<div class="edit-meta">
 
-<br></div><footer><p align="center">
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/kotlinjs/labs/state-control/" title="8. Управление состоянием"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - 8. Управление состоянием</a>
+<a class="nav nav-next" href="https://altmanea.ru/kotlinjs/labs/ide/" title="1. Среда разработки">Next - 1. Среда разработки <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p align="center">
     <a href="https://altmanea.ru">&copy; Альтман Е. А. 2021</a>
 </p>
 </footer>
@@ -57,7 +67,7 @@
 
 <nav class="slide-menu">
 <ul>
-<li class="active"><a href="https://altmanea.ru/kotlinjs/">Home</a></li>
+<li class=""><a href="https://altmanea.ru/kotlinjs/">Home</a></li>
 
 <li class=" has-sub-menu"><a href="https://altmanea.ru/kotlinjs/slides/">Лекции<span class="mark closed">+</span></a>
   
@@ -67,7 +77,7 @@
   
 </li>
 
-<li class=" has-sub-menu"><a href="https://altmanea.ru/kotlinjs/labs/">Лабораторные<span class="mark closed">+</span></a>
+<li class="parent has-sub-menu"><a href="https://altmanea.ru/kotlinjs/labs/">Лабораторные<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://altmanea.ru/kotlinjs/labs/ide/">1. Среда разработки</a></li>
@@ -78,7 +88,7 @@
 <li class=""><a href="https://altmanea.ru/kotlinjs/labs/react-app-complex/">6. Усложненное приложение</a></li>
 <li class=""><a href="https://altmanea.ru/kotlinjs/labs/react-route/">7. React route</a></li>
 <li class=""><a href="https://altmanea.ru/kotlinjs/labs/state-control/">8. Управление состоянием</a></li>
-<li class=""><a href="https://altmanea.ru/kotlinjs/labs/react-redux/">9. React redux</a></li>
+<li class="active"><a href="https://altmanea.ru/kotlinjs/labs/react-redux/">9. React redux</a></li>
 </ul>
   
 </li>
