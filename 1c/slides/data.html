@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Справочники, реквизиты, табличные части</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/github.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+# Реквизиты
+
+--
+
+## Справочник типы занятий
+
+![](images/data/dir-lesson-type.jpg)
+
+--
+
+## Предопределенный элемент
+
+![](images/data/add-lesson-type.jpg)
+
+--
+
+## Данные справочника
+
+![](images/data/vid-lesson-data.jpg)
+
+--
+
+## Стандартные реквизиты
+
+![](images/data/standart-rekv.jpg)
+
+--
+
+## Добавление реквизита
+
+![](images/data/add-rekv-type-lesson.jpg)
+
+--
+
+## Встроенные типы
+
+![](images/data/data-number.jpg)
+![](images/data/data-string.jpg)
+![](images/data/data-data.jpg)
+
+--
+
+## Предопределенный вид занятий
+
+![](images/data/add-lesson-vid.jpg)
+
+--
+
+## Редактируем вид занятий
+
+![](images/data/edit-lesson-vid.jpg)
+
+---
+
+# Табличные части
+
+--
+
+## Пример для табличной части
+
+- В 1С.Университет занятия распределяются по ставкам.
+- Для упрощения импорта заведем два справочника:
+	- «ПреподавателиСтавки» (ставки из 1С.Университет);
+	- «Преподаватели»;
+- Для связи будем использовать табличную часть справочника «Преподаватели»
+
+--
+
+## Добавляем табличную часть
+
+![](images/data/prep-add-tp.jpg)
+
+--
+
+## Реквизит табличной части
+
+![](images/data/rekv-tp.jpg)
+
+--
+
+## Редактирование справочника с ТЧ.
+
+![](images/data/add-stavka-to-prepod.jpg)
+
+                    </script>
+                </section>
+            </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealAudioSlideshow, RevealAudioRecorder ],
+				menu: {
+		        	themes: true,
+        			themesPath: 'dist/theme/',
+		        }
+			});
+		</script>
+	</body>
+</html>
