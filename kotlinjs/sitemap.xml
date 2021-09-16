@@ -4,13 +4,13 @@
   <url>
     <loc>https://altmanea.ru/kotlinjs/slides/workbook/</loc>
   </url><url>
-    <loc>https://altmanea.ru/kotlinjs/slides/</loc>
-  </url><url>
     <loc>https://altmanea.ru/kotlinjs/labs/ide/</loc>
   </url><url>
-    <loc>https://altmanea.ru/kotlinjs/labs/</loc>
+    <loc>https://altmanea.ru/kotlinjs/slides/</loc>
   </url><url>
     <loc>https://altmanea.ru/kotlinjs/labs/kotlin-html/</loc>
+  </url><url>
+    <loc>https://altmanea.ru/kotlinjs/labs/</loc>
   </url><url>
     <loc>https://altmanea.ru/kotlinjs/labs/react-component/</loc>
   </url><url>
@@ -25,6 +25,8 @@
     <loc>https://altmanea.ru/kotlinjs/labs/state-control/</loc>
   </url><url>
     <loc>https://altmanea.ru/kotlinjs/labs/react-redux/</loc>
+  </url><url>
+    <loc>https://altmanea.ru/kotlinjs/labs/react-test/</loc>
   </url><url>
     <loc>https://altmanea.ru/kotlinjs/categories/</loc>
   </url><url>
