@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Отчеты. Представление данных.</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/github.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+### Структурируем данные
+
+--
+
+## Запрос
+
+![](images/report/query-cond-text.jpg)
+
+--
+
+## Отчет
+
+![](images/reportUI/struct-group-prepod.jpg)
+![](images/reportUI/struct-record-prepod.jpg)
+![](images/reportUI/struct-report-result.jpg)
+
+--
+
+## Результат
+
+![](images/reportUI/struct-ent-result.jpg)
+
+---
+
+### Используем ресурсы
+
+--
+
+## Ресурс
+
+![](images/reportUI/resource-set.jpg)
+
+--
+
+## Порядок полей
+
+![](images/reportUI/resource-fields-order.jpg)
+
+--
+
+## Результат
+
+![](images/reportUI/resource-ent-result.jpg)
+
+
+---
+
+### Используем вычисления
+
+--
+
+## Создаем переменную
+
+![](images/reportUI/calc-value.jpg)
+
+--
+
+## Создаем ресурс
+
+![](images/reportUI/calc-resource.jpg)
+
+--
+
+## Настраиваем отчет
+
+![](images/reportUI/calc-report.jpg)
+
+--
+
+## Настраиваем детальные записи
+
+![](images/reportUI/calc-group.jpg)
+
+--
+
+## Результат
+
+![](images/reportUI/calc-ent-result.jpg)
+
+</script>
+                </section>
+            </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealAudioSlideshow, RevealAudioRecorder ],
+				menu: {
+		        	themes: true,
+        			themesPath: 'dist/theme/',
+		        },
+				audio: {
+					prefix: 'audio/report/',
+					suffix: '.webm;codecs=opus',
+				},
+			});
+		</script>
+	</body>
+</html>
