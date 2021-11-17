@@ -27,6 +27,167 @@
                 <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
 <script type="text/template">
 
+## Потоки
+
+~~~
+
+### Процессы и Потоки
+
+<pre class="kotlin"><code>fun printThreadInfo() {
+    val currentThread = Thread.currentThread()
+    val processID = ManagementFactory.getRuntimeMXBean().name
+    println("Thread: ${currentThread.name}")
+    println("Process: $processID")
+}</code></pre>
+
+~~~
+
+### Создание потока
+
+<pre class="kotlin"><code>class MyThread : Thread() {
+    override fun run() {
+        printThreadInfo()
+    }
+}</code></pre>
+
+~~~
+
+### Запуск потока
+
+<pre class="kotlin"><code>    printThreadInfo()
+    MyThread().start()
+    Thread { // interface Runnable
+        printThreadInfo()
+    }
+        .start()
+    thread(name = "MyThread") { printThreadInfo() }
+</code></pre>
+
+</code></pre>
+<pre><code>
+	Thread: main
+	Process: 6792@aisu-mobile
+	Thread: Thread-0
+	Process: 6792@aisu-mobile
+	Thread: Thread-1
+	Process: 6792@aisu-mobile
+	Thread: MyThread
+	Process: 6792@aisu-mobile
+</code></pre>
+
+~~~
+
+### Приостановка потока
+
+<pre class="kotlin"><code>val currentTime
+    get() = System.nanoTime().toString().subSequence(5, 10)
+
+println("Begin of sleep funs $currentTime")
+thread { Thread.sleep(1000L)
+         println("I have woken up $currentTime") }
+thread { Thread.sleep(10000L) 
+        println("I slept for 10 seconds $currentTime") }
+	.interrupt()
+println("End of sleep funs $currentTime")	
+</code></pre>
+
+</code></pre>
+<pre><code>
+	Begin of sleep funs 63349
+	End of sleep funs 63419
+	Exception in thread "Thread-1" java.lang.InterruptedException: sleep interrupted
+		at java.base/java.lang.Thread.sleep(Native Method)
+		at MainKt$sleepThread$2.invoke(main.kt:111)
+		at MainKt$sleepThread$2.invoke(main.kt:110)
+		at kotlin.concurrent.ThreadsKt$thread$thread$1.run(Thread.kt:30)
+	I have woken up 73546
+</code></pre>
+
+~~~
+
+### Ожидание потока
+
+<pre class="kotlin"><code>println("Start of join thread $currentTime")
+thread {
+        Thread.sleep(1000L)
+        println("I have woken up $currentTime")
+}
+	.join()
+println("End of join thread $currentTime")
+</code></pre>
+
+<pre><code>
+	Start of join thread 90704
+	I have woken up 00834
+	End of join thread 00844
+</code></pre>
+
+~~~
+
+### Общий ресурс без синхронизации потоков
+
+<table width="100%"><tr> 
+	 <td width="60%"><pre class="kotlin"><code>var shared = 0
+fun coreSyncFun(op: (Int) -> Int, delay: Long) {
+	val t = op(shared)
+	println("start op $shared -> $t $currentTime")
+	Thread.sleep(delay)
+	println("end  op  $shared -> $t $currentTime")
+	shared = t 
+}
+println("Start in $currentTime")
+thread { for (delay in listOf(300L, 100L))
+	coreSyncFun({ it + 1 }, delay) }
+thread { for (delay in listOf(100L, 300L))
+	coreSyncFun({ it + 10 }, delay)}.join()
+println(shared)</code></pre></td>
+	 <td width="40%"><pre><code>Start in 75049
+start op 0 -> 10 75471
+start op 0 -> 1 75472
+end  op  0 -> 10 76527
+start op 10 -> 20 76530
+end  op  10 -> 1 78581
+start op 1 -> 2 78584
+end  op  1 -> 20 79545
+end  op  20 -> 2 79678
+2</code></pre></td>
+</tr></table>
+
+~~~
+
+### Общий ресурс с синхронизации потоков
+
+<table width="100%"><tr> 
+	 <td width="60%"><pre class="kotlin"><code>var shared = 0
+@Synchronized
+fun coreSyncFun(op: (Int) -> Int, delay: Long) {
+	val t = op(shared)
+	println("start op $shared -> $t $currentTime")
+	Thread.sleep(delay)
+	println("end  op  $shared -> $t $currentTime")
+	shared = t 
+}
+println("Start in $currentTime")
+thread { for (delay in listOf(300L, 100L))
+	coreSyncFun({ it + 1 }, delay) }
+thread { for (delay in listOf(100L, 300L))
+	coreSyncFun({ it + 10 }, delay)}.join()
+println(shared)</code></pre></td>
+	 <td width="40%"><pre><code>Start in 43345
+start op 0 -> 1 43713
+end  op  0 -> 1 46723
+start op 1 -> 2 46725
+end  op  1 -> 2 47799
+start op 2 -> 12 47803
+end  op  2 -> 12 48896
+start op 12 -> 22 48899
+end  op  12 -> 22 51965
+22</code></pre></td>
+</tr></table>
+
+
+!~~~!
+
 ## Основы
 
 ~~~
