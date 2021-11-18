@@ -29,6 +29,9 @@
 
 ## Потоки
 
+Примеры:
+[https://github.com/AltmanEA/edu-async](https://github.com/AltmanEA/edu-async)
+
 ~~~
 
 ### Процессы и Потоки
@@ -139,7 +142,8 @@ println("Start in $currentTime")
 thread { for (delay in listOf(300L, 100L))
 	coreSyncFun({ it + 1 }, delay) }
 thread { for (delay in listOf(100L, 300L))
-	coreSyncFun({ it + 10 }, delay)}.join()
+	coreSyncFun({ it + 10 }, delay)}
+Thread.sleep(1000)
 println(shared)</code></pre></td>
 	 <td width="40%"><pre><code>Start in 75049
 start op 0 -> 10 75471
@@ -165,15 +169,15 @@ fun coreSyncFun(op: (Int) -> Int, delay: Long) {
 	println("start op $shared -> $t $currentTime")
 	Thread.sleep(delay)
 	println("end  op  $shared -> $t $currentTime")
-	shared = t 
-}
+	shared = t }
 println("Start in $currentTime")
 thread { for (delay in listOf(300L, 100L))
 	coreSyncFun({ it + 1 }, delay) }
 thread { for (delay in listOf(100L, 300L))
-	coreSyncFun({ it + 10 }, delay)}.join()
+	coreSyncFun({ it + 10 }, delay)}
+Thread.sleep(1000)
 println(shared)</code></pre></td>
-	 <td width="40%"><pre><code>Start in 43345
+<td width="40%"><pre><code>Start in 43345
 start op 0 -> 1 43713
 end  op  0 -> 1 46723
 start op 1 -> 2 46725
@@ -185,6 +189,87 @@ end  op  12 -> 22 51965
 22</code></pre></td>
 </tr></table>
 
+~~~
+
+### Блокировка
+
+<table width="100%"><tr> 
+	 <td width="60%"><pre class="kotlin"><code>val lock = ReentrantLock()
+var shared = 0
+fun lockedOp(op: (Int) -> Int, delay: Long){
+	lock.lock()
+	val t = op(shared)
+	println("start op $shared -> $t $currentTime")
+	Thread.sleep(delay)
+	println("end  op  $shared -> $t $currentTime")
+	shared = t
+	lock.unlock()
+}
+thread { for (delay in listOf(300L, 100L))
+	lockedOp({ it + 1 }, delay) }
+thread { for (delay in listOf(100L, 300L))
+	lockedOp({ it + 10 }, delay) }</code></pre></td>
+<td width="40%"><pre><code>start op 0 -> 1 90011
+end  op  0 -> 1 93047
+start op 1 -> 2 93049
+end  op  1 -> 2 94147
+start op 2 -> 12 94149
+end  op  2 -> 12 95268
+start op 12 -> 22 95270
+end  op  12 -> 22 98401</code></pre></td>
+</tr></table>
+
+~~~
+
+### Взаимная блокировка
+
+<table width="100%"><tr> 
+	 <td width="50%"><pre class="kotlin"><code>val lockA = ReentrantLock()
+val lockB = ReentrantLock()
+thread { 
+	lockA.lock()
+	println("Thread 1 Lock A $currentTime")
+	Thread.sleep(100)
+	lockB.lock()
+	println("Thread 1 Lock B $currentTime")
+	lockB.unlock()
+	lockA.unlock() 
+}
+</code></pre></td>
+<td width="50%"><pre class="kotlin"><code>thread { 
+	lockB.lock()
+	println("Thread 2 Lock B $currentTime")
+	Thread.sleep(100)
+	lockA.lock()
+	println("Thread 2 Lock A $currentTime")
+	lockA.unlock()
+	lockB.unlock() 
+}</code></pre></td>
+</tr></table>
+
+<pre><code>Thread 1 Lock A 04751
+Thread 2 Lock B 04758</code></pre>
+
+!~~~!
+
+## Асинхронные вызовы
+
+~~~
+
+### Kotlin js
+
+<pre class="kotlin"><code>
+dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-js:1.5.31")
+}
+
+kotlin {
+    js(LEGACY) {
+        binaries.executable()
+        browser { }
+    }
+}
+</code></pre>
 
 !~~~!
 
