@@ -258,8 +258,7 @@ Thread 2 Lock B 04758</code></pre>
 
 ### Kotlin js
 
-<pre class="kotlin"><code>
-dependencies {
+<pre class="kotlin"><code>dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-js:1.5.31")
 }
 
@@ -268,12 +267,107 @@ kotlin {
         binaries.executable()
         browser { }
     }
-}
-</code></pre>
+}</code></pre>
+
+<pre class="kotlin"><code>val currentTime
+    get() = Date.now().toString().subSequence(9, 13)</code></pre>
+
+~~~
+
+### Callback
+
+<pre class="kotlin"><code>window.setTimeout(
+	{ console.log("I woke up at $currentTime") },
+    1000
+)
+console.log("End of timeout example  at $currentTime")</code></pre>
+<pre><code>End of timeout example  at 0349
+I woke up  at 1360</code></pre>
+
+~~~
+
+### Promise
+
+<pre class="kotlin"><code>val promise = Promise< String > { resolve, reject ->
+	window.setTimeout({
+			val isOk = (0..10).random() < 9
+			if (isOk)
+				resolve("Resource downloaded at $currentTime")
+			else
+				reject(Throwable("Download failed at $currentTime"))
+		},1000 ) }
+promise.then(
+	onFulfilled = { console.log(it) },
+	onRejected = { console.log(it.message) }
+)
+console.log("End of promise example at $currentTime")</code></pre>
+<pre><code>End of promise example at 2275
+Resource downloaded at 3790</code></pre>
+
+~~~
+
+### Загрузка ресурсов
+
+<pre class="kotlin"><code>fun resourceDownloader(name: String): Promise< String > {
+    console.log("Start download resource $name at $currentTime")
+    return Promise { resolve, reject ->
+        window.setTimeout( {
+                val isOk = (0..100).random() < 95
+                if (isOk) {
+                    console.log("Resource $name downloaded at $currentTime")
+                    resolve("Resource $name downloaded")
+                } else {
+                    console.log("Download $name failed  at $currentTime")
+                    reject(Throwable("Download $name failed"))
+                }
+            },
+            1000 ) } }</code></pre>
+
+
+~~~
+
+### Загрузка нескольких ресурсов последовательно
+
+<pre class="kotlin"><code>resourceDownloader("A")
+	.then {
+		resourceDownloader("B")
+	}
+	.then {
+		resourceDownloader("C")
+	}</code></pre>
+<pre class="kotlin"><code>Start download resource A at 5356
+Resource A downloaded at 6429
+Start download resource B at 6429
+Resource B downloaded at 7433
+Start download resource C at 7433
+Resource C downloaded at 8437</code></pre>
+
+
+~~~
+
+### Загрузка нескольких ресурсов параллельно
+
+<pre class="kotlin"><code>Promise.all(
+	arrayOf(
+		resourceDownloader("A"),
+		resourceDownloader("B"),
+		resourceDownloader("C")
+	)
+).then {
+	console.log("All downloaded at $currentTime")
+}}</code></pre>
+<pre class="kotlin"><code>Start download resource A at 3350
+Start download resource B at 3401
+Start download resource C at 3402
+Resource A downloaded at 4802
+Resource B downloaded at 4817
+Resource C downloaded at 4818
+All downloaded at 4825</code></pre>		
+
 
 !~~~!
 
-## Основы
+## Сопрограммы Kotlin
 
 ~~~
 
