@@ -369,6 +369,8 @@ All downloaded at 4825</code></pre>
 
 ## [Сопрограммы Kotlin](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html)
 
+## Сопрограммы vs потоки
+
 ~~~
 
 ### Запуск сопрограммы
@@ -463,6 +465,103 @@ main: I'm tired of waiting!  (01908)
 job: I'm sleeping 3 ...  (03320)
 job: I'm sleeping 4 ...  (08320)
 main: Now I can quit.  (08347)</code></pre>
+
+~~~
+
+### Прерываемая сопрограмма
+
+<pre class="kotlin"><code>val startTime = System.currentTimeMillis()
+val job = launch(Dispatchers.Default) {
+	var nextPrintTime = startTime
+    var i = 0
+    while (isActive) { // cancellable computation loop
+            if (System.currentTimeMillis() >= nextPrintTime) {
+                println("job: I'm sleeping ${i++} ...  ($currentTime)")
+                nextPrintTime += 500L 
+            } } }
+    delay(1300L) // delay a bit
+    println("main: I'm tired of waiting!  ($currentTime)")
+    job.cancelAndJoin() // cancels the job and waits for its completion
+    println("main: Now I can quit.  ($currentTime)")</code></pre>
+<pre><code>job: I'm sleeping 0 ...  (26184)
+job: I'm sleeping 1 ...  (17402)
+job: I'm sleeping 2 ...  (19021)
+job: I'm sleeping 3 ...  (18992)
+main: I'm tired of waiting!  (29176)
+main: Now I can quit.  (33374)</code></pre>
+
+~~~
+
+### Использование ресурсов
+
+<pre class="kotlin"><code>runBlocking {
+	repeat(100_000) { // Launch 100K coroutines
+		launch {
+    		val resource = withTimeout(60) { // Timeout of 60 ms
+        		delay(50) // Delay for 50 ms
+        		Resource() // Acquire a resource and return it from withTimeout block
+    		}
+    		resource.close() // Release the resource
+    	} } }
+    // Outside of runBlocking all coroutines have completed
+    println(acquired) // Print the number of resources still acquired	
+</code></pre>
+<pre><code>652</code></pre>
+
+~~~
+
+### Обработка прерываний
+
+<pre class="kotlin"><code>runBlocking {
+	repeat(100_000) { // Launch 100K coroutines
+		launch {
+			var resource: Resource? = null // Not acquired yet
+			try {
+				withTimeout(60) { // Timeout of 60 ms
+					delay(50) // Delay for 50 ms
+					resource = Resource() // Store a resource to the variable if acquired
+				}
+				// We can do something else with the resource here
+			} finally {
+				resource?.close() // Release the resource if it was acquired
+			} } } }
+	// Outside of runBlocking all coroutines have completed
+	println(acquired) // Print the number of resources still acquired
+</code></pre>
+<pre><code>0</code></pre>
+
+~~~
+
+### Разделяемые ресурс
+
+<table width="100%"><tr> 
+	<td width="70%"><pre class="kotlin"><code>println("Start in $currentTime")
+var shared = 0
+suspend fun coreSyncFun(op: (Int) -> Int, delay: Long) {
+	val t = op(shared)
+	println("start op $shared -> $t $currentTime")
+	delay(delay)
+	println("end  op  $shared -> $t $currentTime")
+	shared = t }
+runBlocking {
+	launch { for (delay in listOf(300L, 100L))
+		coreSyncFun({ it + 1 }, delay) }
+	launch { for (delay in listOf(100L, 300L))
+		coreSyncFun({ it + 10 }, delay) }
+	delay(1000)
+	println(shared) }</code></pre></td>
+<td width="30%"><pre><code>Start in 58396
+start op 0 -> 1 71723
+start op 0 -> 10 72392
+end  op  0 -> 10 84919
+start op 10 -> 20 86535
+end  op  10 -> 1 87725
+start op 1 -> 2 87828
+end  op  1 -> 20 98369
+end  op  20 -> 2 98938
+2</code></pre></td>
+</tr></table>
+
 
 </script>
                 </section>
