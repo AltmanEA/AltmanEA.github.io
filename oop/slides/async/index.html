@@ -530,6 +530,10 @@ main: Now I can quit.  (33374)</code></pre>
 </code></pre>
 <pre><code>0</code></pre>
 
+!~~~!
+
+## Доступ к ресурсам
+
 ~~~
 
 ### Разделяемые ресурсы
@@ -562,6 +566,66 @@ end  op  20 -> 2 98938
 2</code></pre></td>
 </tr></table>
 
+~~~
+
+### Mutex
+
+<table width="100%"><tr> 
+	<td width="70%"><pre class="kotlin"><code>println("Start in $currentTime")
+val mutex = Mutex()
+var shared = 0
+suspend fun coreSyncFun(op: (Int) -> Int, delay: Long) {
+	mutex.withLock {
+		val t = op(shared)
+		println("start op $shared -> $t $currentTime")
+		delay(delay)
+		println("end  op  $shared -> $t $currentTime")
+		shared = t
+	}
+}</code></pre></td>
+<td width="30%"><pre><code>Start in 59917
+start op 0 -> 1 72591
+end  op  0 -> 1 03028
+start op 1 -> 11 03444
+end  op  1 -> 11 14470
+start op 11 -> 12 14517
+end  op  11 -> 12 25376
+start op 12 -> 22 25486
+end  op  12 -> 22 56602
+22</code></pre></td>
+</tr></table>
+
+~~~
+
+### Атомарные ресурсы
+
+<table width="100%"><tr> 
+	<td width="70%"><pre class="kotlin"><code>println("Start in $currentTime")
+var shared = AtomicInteger()
+suspend fun coreSyncFun(
+	op: (AtomicInteger) -> AtomicInteger, delay: Long) {
+	val t = op(shared)
+	println("start op $shared -> $t $currentTime")
+	delay(delay)
+	println("end  op  $shared -> $t $currentTime")
+	shared = t }
+runBlocking { launch { for (delay in listOf(300L, 100L))
+		coreSyncFun({ it.apply {  getAndAdd(1) }}, delay) }
+	launch { for (delay in listOf(100L, 300L))
+		coreSyncFun({it.apply {  getAndAdd(10) } }, delay) }
+	delay(1000)
+	println(shared) }</code></pre></td>
+<td width="30%"><pre><code>Start in 75952
+start op 1 -> 1 90694
+start op 11 -> 11 90750
+end  op  11 -> 11 02127
+start op 21 -> 21 02269
+end  op  21 -> 21 22211
+start op 22 -> 22 22233
+end  op  22 -> 22 32963
+end  op  22 -> 22 33022
+22</code></pre></td>
+</tr></table>
 
 </script>
                 </section>
