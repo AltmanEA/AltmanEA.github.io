@@ -627,6 +627,68 @@ end  op  22 -> 22 33022
 22</code></pre></td>
 </tr></table>
 
+~~~
+
+### Каналы
+
+<table width="100%"><tr> 
+	<td width="70%"><pre class="kotlin"><code>val channel = Channel< Int >()
+launch {
+	for (x in 1..5) {
+		channel.send(x * x)
+		delay(1000)
+	}
+	channel.close() // we're done sending
+}
+for (y in channel) 
+	println("$y $currentTime")
+println("Done!")</code></pre></td>
+<td width="30%"><pre><code>1 49549
+4 49888
+9 51128
+16 52096
+25 53597
+Done!</code></pre></td>
+</tr></table>
+
+!~~~!
+
+## Асинхронные вызовы
+
+~~~
+
+### Последовательное выполнение приостанавливаемых функций
+
+<pre class="kotlin"><code>suspend fun doSomethingUsefulOne(): Int {
+    delay(1000L) // pretend we are doing something useful here
+    return 13 }
+suspend fun doSomethingUsefulTwo(): Int {
+    delay(1000L) // pretend we are doing something useful here, too
+    return 29 }
+val time = measureTimeMillis {
+	val one = doSomethingUsefulOne()
+    val two = doSomethingUsefulTwo()
+    println("The answer is ${one + two}")
+}
+println("Completed in $time ms")</code></pre>
+<pre><code>The answer is 42
+Completed in 2022 ms</code></pre>
+
+
+~~~
+
+### Параллельное выполнение приостанавливаемых функций
+
+<pre class="kotlin"><code>
+val time = measureTimeMillis {
+	val one: Deferred< Int > = async { doSomethingUsefulOne() }
+    val two: Deferred< Int > = async { doSomethingUsefulTwo() }
+    println("The answer is ${one.await() + two.await()}")
+}
+println("Completed in $time ms")</code></pre>
+<pre><code>The answer is 42
+Completed in 1086 ms</code></pre>
+
 </script>
                 </section>
 
