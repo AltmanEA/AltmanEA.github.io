@@ -5,11 +5,7 @@
     <link>https://altmanea.ru/oop/</link>
     <description>Recent content in Введение on Объектно-ориентированное программирование</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru</language>
-    
-	<atom:link href="https://altmanea.ru/oop/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ru</language><atom:link href="https://altmanea.ru/oop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1. Среда разработки</title>
       <link>https://altmanea.ru/oop/labs/idea/</link>
