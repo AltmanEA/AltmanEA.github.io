@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>2. REST сервер - Серверная часть WEB приложений</title>
+<meta name="generator" content="Hugo 0.88.1" />
+<link href="https://altmanea.ru/backend//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/backend/labs/rest/">
+<link rel="stylesheet" href="https://altmanea.ru/backend/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/backend/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script src="https://altmanea.ru/backend/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="2. REST сервер" />
+<meta property="og:description" content="Теоретические сведения Лекция
+Задание Повторите пример из лекций.
+Добавьте в API сервера точку входа &ldquo;/students/group/{group}&rdquo;, метод GET которой выдает список студентов этой группы.
+Факультативное задание Реализуйте в API возврат списка студентов группы, при этом группа задается в виде аргументов формы (?group=29з).
+Реализуйте в API возврат списка студентов группы, при этом группа передается в теле запроса." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/backend/labs/rest/" /><meta property="article:section" content="labs" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="2. REST сервер"/>
+<meta name="twitter:description" content="Теоретические сведения Лекция
+Задание Повторите пример из лекций.
+Добавьте в API сервера точку входа &ldquo;/students/group/{group}&rdquo;, метод GET которой выдает список студентов этой группы.
+Факультативное задание Реализуйте в API возврат списка студентов группы, при этом группа задается в виде аргументов формы (?group=29з).
+Реализуйте в API возврат списка студентов группы, при этом группа передается в теле запроса."/>
+<meta itemprop="name" content="2. REST сервер">
+<meta itemprop="description" content="Теоретические сведения Лекция
+Задание Повторите пример из лекций.
+Добавьте в API сервера точку входа &ldquo;/students/group/{group}&rdquo;, метод GET которой выдает список студентов этой группы.
+Факультативное задание Реализуйте в API возврат списка студентов группы, при этом группа задается в виде аргументов формы (?group=29з).
+Реализуйте в API возврат списка студентов группы, при этом группа передается в теле запроса.">
+
+<meta itemprop="wordCount" content="55">
+<meta itemprop="keywords" content="" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148810194-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148810194-1');
+</script></head>
+<body><div class="container"><header>
+<h1>Серверная часть WEB приложений</h1>
+</header>
+
+<div class="content-container">
+<main><h1>2. REST сервер</h1>
+<h3 id="теоретические-сведения">Теоретические сведения</h3>
+<p><a target="_blank" rel="noopener noreferrer" href="../../slides/rest.html">Лекция</a></p>
+<h3 id="задание">Задание</h3>
+<p>Повторите пример из лекций.</p>
+<p>Добавьте в API сервера точку входа &ldquo;/students/group/{group}&rdquo;, метод GET которой выдает список студентов этой группы.</p>
+<h4 id="факультативное-задание">Факультативное задание</h4>
+<p>Реализуйте в API возврат списка студентов группы, при этом группа задается в виде аргументов формы (?group=29з).</p>
+<p>Реализуйте в API возврат списка студентов группы, при этом группа передается в теле запроса.</p>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/backend/labs/struct/" title="1. Структура приложения"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - 1. Структура приложения</a>
+<a class="nav nav-next" href="https://altmanea.ru/backend/coursework/" title="Курсовая работа">Next - Курсовая работа <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p align="center">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2022</a>
+</p>
+</footer>
+</main>
+<div class="sidebar">
+
+<nav class="slide-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/backend/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/backend/slides/">Лекции</a>
+  
+</li>
+
+<li class="parent has-sub-menu"><a href="https://altmanea.ru/backend/labs/">Лабораторные<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/backend/labs/struct/">1. Структура приложения</a></li>
+<li class="active"><a href="https://altmanea.ru/backend/labs/rest/">2. REST сервер</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/backend/coursework/">Курсовая работа</a>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

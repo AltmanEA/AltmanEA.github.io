@@ -2,7 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://altmanea.ru/backend/labs/struct/</loc>
+  </url><url>
     <loc>https://altmanea.ru/backend/slides/</loc>
+  </url><url>
+    <loc>https://altmanea.ru/backend/labs/rest/</loc>
+  </url><url>
+    <loc>https://altmanea.ru/backend/labs/</loc>
   </url><url>
     <loc>https://altmanea.ru/backend/coursework/</loc>
   </url><url>
