@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>REST сервер</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/github.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+# Введение
+
+--
+
+### Исходные коды
+
+[Репозиторий](https://github.com/AltmanEA/ru.altmanea.edu-server-22)
+
+[Текущий шаг](https://github.com/AltmanEA/ru.altmanea.edu-server-22/tree/bbea90a22b9f1aa992a8f97e6673cbcc84113f52) 
+
+(коммит – rest app)
+
+--
+
+### REST
+
+Representational State Transfer (передача репрезентативного состояния)
+
+1. Модель клиент-сервер
+2. Отсутствие состояния
+3. Кэширование
+4. Единообразие интерфейса
+5. Слои
+6. Код по требованию
+
+--
+
+### Составляющие REST
+
+- Формат представления данных: JSON, XML, ...
+- Протокол передачи данных: HTTP
+- Ресурсы: http://localhost:8000/students, http://localhost:8000/students/sheldon, 
+- Действия (глаголы): POST, GET, PUT, DELETE
+- Параметры могут передаваться в: пути, форм (?a=1), теле и (или) заголовке запроса.
+
+--
+
+### REST API
+
+OpenAPI - [https://swagger.io/specification/](https://swagger.io/specification/)
+
+---
+
+# Репозиторий
+
+--
+
+```model/../Item.kt```
+
+```Kotlin
+interface Item < E > {
+    val elem: E
+    val uuid: String
+    val etag: Long
+}
+```
+
+--
+
+```repo/Repo.kt```
+
+```Kotlin
+interface Repo< E > {
+
+    operator fun get(uuid: String): Item< E >?
+    fun find(predicate: (E) -> Boolean): List< Item< E >>
+    fun findAll(): List< Item < E >>
+
+    fun create(element: E): Boolean
+    fun update(uuid: String, value: E): Boolean
+    fun delete(uuid: String): Boolean
+
+    fun isEmpty(): Boolean
+}
+```
+
+--
+
+```repo/RepoItem.kt```
+
+```Kotlin
+@Serializable
+class RepoItem< E >(
+    override val elem: E,
+    override val uuid: String = UUID.randomUUID().toString(),
+    override val etag: Long = System.currentTimeMillis()
+) : Item< E >
+```
+
+--
+
+```repo/ListRepo.kt```
+
+```Kotlin
+class ListRepo< E > : Repo< E > {
+    private val list = ConcurrentHashMap< String, Pair< E, Long >>()
+
+    override fun get(uuid: String): RepoItem< E >? =
+        list[uuid]?.let {
+            RepoItem(it.first, uuid, it.second)
+        }
+```
+
+--
+
+```repo/ListRepo.kt```
+
+```Kotlin
+override fun find(predicate: (E) -> Boolean): List< RepoItem< E >> =
+    list
+        .filter { (_, value) -> predicate(value.first) }
+        .map { RepoItem(it.value.first, it.key, it.value.second) }
+
+override fun findAll(): List< RepoItem< E >> =
+    list
+        .map { RepoItem(it.value.first, it.key, it.value.second) }
+```
+
+--
+
+```repo/ListRepo.kt```
+
+```Kotlin
+@Suppress("KotlinConstantConditions")
+override fun create(element: E): Boolean =
+    RepoItem(element).let {
+        list[it.uuid] = it.elem to it.etag
+        true
+    }
+override fun update(uuid: String, value: E): Boolean =
+    if (list.containsKey(uuid)) {
+        list[uuid] = value to currentTimeMillis()
+        true
+    } else false
+override fun delete(uuid: String): Boolean =
+    list.remove(uuid) != null
+override fun isEmpty(): Boolean =
+    list.isEmpty()
+```
+
+--
+
+```repo/students.kt```
+
+```Kotlin
+val studentsRepo = ListRepo< Student >()
+
+fun ListRepo< Student >.urlByUUID(uuid: String) =
+    this[uuid]?.let { Config.studentsURL + it.uuid }
+
+fun ListRepo< Student >.urlByFirstname(firstname: String) =
+    this.find { it.firstname == firstname }.let {
+        if (it.size == 1) Config.studentsURL + it.first().uuid
+        else null }
+
+val studentsRepoTestData = listOf(
+    Student("Sheldon", "Cooper"),
+    Student("Leonard", "Hofstadter"),
+    Student("Howard", "Wolowitz"),
+    Student("Penny", "Hofstadter"),)
+```
+
+---
+
+# REST сервис
+
+--
+
+```rest/student.kt```
+
+```Kotlin
+fun Route.student() =
+    route(studentsPath) {
+        get {
+            if (!studentsRepo.isEmpty()) {
+                call.respond(studentsRepo.findAll())
+            } else {
+                call.respondText("No students found", 
+                    status = HttpStatusCode.NotFound)
+            }
+        }
+```
+
+--
+
+```rest/student.kt```
+
+```Kotlin
+get("{id}") {
+    val id = call.parameters["id"] ?: return@get call.respondText(
+        "Missing or malformed id",
+        status = HttpStatusCode.BadRequest
+    )
+    val studentItem =
+        studentsRepo[id] ?: return@get call.respondText(
+            "No student with id $id",
+            status = HttpStatusCode.NotFound
+        )    
+    call.respond(studentItem)
+}
+```
+
+--
+
+```rest/student.kt```
+
+```Kotlin
+post {
+    val student = call.receive< Student >()
+    studentsRepo.create(student)
+    call.respondText("Student stored correctly", 
+        status = HttpStatusCode.Created) }
+delete("{id}") {
+    val id = call.parameters["id"] 
+        ?: return@delete call.respond(HttpStatusCode.BadRequest)
+    if (studentsRepo.delete(id)) {
+        call.respondText("Student removed correctly", 
+            status = HttpStatusCode.Accepted)
+    } else {
+        call.respondText("Not Found", 
+            status = HttpStatusCode.NotFound)
+    } }
+```
+
+--
+
+```rest/student.kt```
+
+```Kotlin
+put("{id}") {
+    val id = call.parameters["id"] ?: return@put call.respondText(
+        "Missing or malformed id",
+        status = HttpStatusCode.BadRequest
+    )
+    studentsRepo[id] ?: return@put call.respondText(
+        "No student with id $id",
+        status = HttpStatusCode.NotFound
+    )
+    val newStudent = call.receive< Student>()
+    studentsRepo.update(id, newStudent)
+    call.respondText("Student updates correctly", 
+        status = HttpStatusCode.Created)
+}
+```
+
+---
+
+# Тестируем REST сервис
+
+--
+
+```src/test/../StudentKtTest.kt```
+
+```Kotlin
+internal class StudentsKtTest {
+    @Test
+    fun testStudentRoute() {
+        withTestApplication(Application::main) {
+            val studentItems = 
+                handleRequest(HttpMethod.Get, Config.studentsPath)
+            .run {
+                assertEquals(HttpStatusCode.OK, response.status())
+                decodeBody< List< RepoItem< Student>>>()
+            }
+            assertEquals(4, studentItems.size)
+            val sheldon = studentItems.find {
+                it.elem.firstname == "Sheldon" }
+            check(sheldon != null)
+```
+
+--
+
+```src/test/../Tools.kt```
+
+```Kotlin
+internal inline fun < reified T> TestApplicationCall.decodeBody() =
+    Json.decodeFromString<T>(response.content ?: "")
+
+internal fun TestApplicationRequest.setBodyAndHeaders(body: String) {
+    setBody(body)
+    addHeader("Content-Type", "application/json")
+    addHeader("Accept", "application/json")
+}
+```
+
+--
+
+```src/test/../StudentKtTest.kt```
+
+```Kotlin
+handleRequest(HttpMethod.Get, Config.studentsPath + sheldon.uuid)
+    .run {
+        assertEquals(HttpStatusCode.OK, response.status())
+        assertEquals("Sheldon", 
+            decodeBody< RepoItem< Student>>().elem.firstname)
+    }
+handleRequest(HttpMethod.Get, Config.studentsPath + "Jack")
+    .run {
+        assertEquals(HttpStatusCode.NotFound, response.status())
+    }
+```
+
+--
+
+```src/test/../StudentKtTest.kt```
+
+```Kotlin
+handleRequest(HttpMethod.Post, Config.studentsPath) {
+    setBodyAndHeaders(Json.encodeToString(
+            Student("Raj", "Koothrappali") ) )
+}.apply {
+    assertEquals(HttpStatusCode.Created, response.status())
+}
+val studentItemsWithRaj = 
+    handleRequest(HttpMethod.Get, Config.studentsPath).run {
+        decodeBody< List< RepoItem< Student >>>()
+    }
+assertEquals(5, studentItemsWithRaj.size)
+val raj = studentItemsWithRaj.find { it.elem.firstname == "Raj" }
+check(raj != null)
+assertEquals("Koothrappali", raj.elem.surname)
+```
+
+--
+
+```src/test/../StudentKtTest.kt```
+
+```Kotlin
+handleRequest(HttpMethod.Delete, Config.studentsPath + raj.uuid)
+    .apply {assertEquals(HttpStatusCode.Accepted, response.status())}
+handleRequest(HttpMethod.Delete, Config.studentsPath + raj.uuid)
+    .apply {assertEquals(HttpStatusCode.NotFound, response.status())}
+val penny = studentItems.find { it.elem.firstname == "Penny" }
+check(penny != null)
+handleRequest(HttpMethod.Put, Config.studentsPath + penny.uuid) {
+    setBodyAndHeaders( Json.encodeToString(
+            Student("Penny", "Waitress") ) )
+}.apply {
+    assertEquals(HttpStatusCode.Created, response.status())
+}
+```
+                    </script>
+                </section>
+            </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealAudioSlideshow, RevealAudioRecorder ],
+				menu: {
+		        	themes: true,
+        			themesPath: 'dist/theme/',
+		        },
+				audio: {
+					prefix: 'audio/struct/',
+					suffix: '.webm;codecs=opus'
+				}
+			});
+		</script>
+	</body>
+</html>
