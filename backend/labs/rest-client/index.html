@@ -3,10 +3,10 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>2. REST сервер - Серверная часть WEB приложений</title>
+<title>3. REST клиент - Серверная часть WEB приложений</title>
 <meta name="generator" content="Hugo 0.88.1" />
 <link href="https://altmanea.ru/backend//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://altmanea.ru/backend/labs/rest/">
+<link rel="canonical" href="https://altmanea.ru/backend/labs/rest-client/">
 <link rel="stylesheet" href="https://altmanea.ru/backend/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://altmanea.ru/backend/css/chroma.min.css">
@@ -16,32 +16,29 @@
 <script src="https://altmanea.ru/backend/js/bundle.js"></script><style>
 :root {--custom-font-color: white;--custom-background-color: blue;}
 </style>
-<meta property="og:title" content="2. REST сервер" />
+<meta property="og:title" content="3. REST клиент" />
 <meta property="og:description" content="Теоретические сведения Лекция
 Задание Повторите пример из лекций.
 Переделайте пример с использованием варианта класса Student, сделанного в 1 лабораторной работе.
-Добавьте в API сервера точку входа &ldquo;/groups/&rdquo;, которая бы позволяла с помощью метода GET получить список групп, и точку &ldquo;/students/group/{group}&rdquo;, которая бы позволяла с помощью метода GET получить список студентов этой группы.
-Факультативное задание Реализуйте в API возврат списка студентов группы, при этом группа задается в виде аргументов формы (?group=29з)." />
+Добавьте компонент, который бы позволял выбрать группу студентов, а компонент и контейнер со списком студентов измените так, чтобы загружались и отображались только студенты выбранной группы." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://altmanea.ru/backend/labs/rest/" /><meta property="article:section" content="labs" />
+<meta property="og:url" content="https://altmanea.ru/backend/labs/rest-client/" /><meta property="article:section" content="labs" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="2. REST сервер"/>
+<meta name="twitter:title" content="3. REST клиент"/>
 <meta name="twitter:description" content="Теоретические сведения Лекция
 Задание Повторите пример из лекций.
 Переделайте пример с использованием варианта класса Student, сделанного в 1 лабораторной работе.
-Добавьте в API сервера точку входа &ldquo;/groups/&rdquo;, которая бы позволяла с помощью метода GET получить список групп, и точку &ldquo;/students/group/{group}&rdquo;, которая бы позволяла с помощью метода GET получить список студентов этой группы.
-Факультативное задание Реализуйте в API возврат списка студентов группы, при этом группа задается в виде аргументов формы (?group=29з)."/>
-<meta itemprop="name" content="2. REST сервер">
+Добавьте компонент, который бы позволял выбрать группу студентов, а компонент и контейнер со списком студентов измените так, чтобы загружались и отображались только студенты выбранной группы."/>
+<meta itemprop="name" content="3. REST клиент">
 <meta itemprop="description" content="Теоретические сведения Лекция
 Задание Повторите пример из лекций.
 Переделайте пример с использованием варианта класса Student, сделанного в 1 лабораторной работе.
-Добавьте в API сервера точку входа &ldquo;/groups/&rdquo;, которая бы позволяла с помощью метода GET получить список групп, и точку &ldquo;/students/group/{group}&rdquo;, которая бы позволяла с помощью метода GET получить список студентов этой группы.
-Факультативное задание Реализуйте в API возврат списка студентов группы, при этом группа задается в виде аргументов формы (?group=29з).">
+Добавьте компонент, который бы позволял выбрать группу студентов, а компонент и контейнер со списком студентов измените так, чтобы загружались и отображались только студенты выбранной группы.">
 
-<meta itemprop="wordCount" content="84">
+<meta itemprop="wordCount" content="45">
 <meta itemprop="keywords" content="" />
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148810194-1"></script>
 <script>
@@ -56,20 +53,17 @@
 </header>
 
 <div class="content-container">
-<main><h1>2. REST сервер</h1>
+<main><h1>3. REST клиент</h1>
 <h3 id="теоретические-сведения">Теоретические сведения</h3>
-<p><a target="_blank" rel="noopener noreferrer" href="../../slides/rest.html">Лекция</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="../../slides/rest-client.html">Лекция</a></p>
 <h3 id="задание">Задание</h3>
 <p>Повторите пример из лекций.</p>
 <p>Переделайте пример с использованием варианта класса Student, сделанного в <a href="../struct">1 лабораторной работе</a>.</p>
-<p>Добавьте в API сервера точку входа &ldquo;/groups/&rdquo;, которая бы позволяла с помощью метода GET получить список групп, и точку &ldquo;/students/group/{group}&rdquo;, которая бы позволяла с помощью метода GET получить список студентов этой группы.</p>
-<h4 id="факультативное-задание">Факультативное задание</h4>
-<p>Реализуйте в API возврат списка студентов группы, при этом группа задается в виде аргументов формы (?group=29з).</p>
-<p>Реализуйте в API возврат списка студентов группы, при этом группа передается в теле запроса.</p>
+<p>Добавьте компонент, который бы позволял выбрать группу студентов, а компонент и контейнер со списком студентов измените так, чтобы загружались и отображались только студенты выбранной группы.</p>
 <div class="edit-meta">
 
-<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/backend/labs/struct/" title="1. Структура приложения"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - 1. Структура приложения</a>
-<a class="nav nav-next" href="https://altmanea.ru/backend/labs/rest-client/" title="3. REST клиент">Next - 3. REST клиент <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/backend/labs/rest/" title="2. REST сервер"><i class="fas fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev - 2. REST сервер</a>
+<a class="nav nav-next" href="https://altmanea.ru/backend/coursework/" title="Курсовая работа">Next - Курсовая работа <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><p align="center">
     <a href="https://altmanea.ru">&copy; Альтман Е. А. 2022</a>
 </p>
@@ -89,8 +83,8 @@
   
 <ul class="sub-menu">
 <li class=""><a href="https://altmanea.ru/backend/labs/struct/">1. Структура приложения</a></li>
-<li class="active"><a href="https://altmanea.ru/backend/labs/rest/">2. REST сервер</a></li>
-<li class=""><a href="https://altmanea.ru/backend/labs/rest-client/">3. REST клиент</a></li>
+<li class=""><a href="https://altmanea.ru/backend/labs/rest/">2. REST сервер</a></li>
+<li class="active"><a href="https://altmanea.ru/backend/labs/rest-client/">3. REST клиент</a></li>
 </ul>
   
 </li>

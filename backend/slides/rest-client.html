@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>REST клиент</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/github.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+# REST клиент
+
+--
+
+```client/../App.kt```
+
+```Kotlin
+val queryClient = QueryClient()
+fun main() { 
+    render(document.getElementById("root")!!) {
+        HashRouter { QueryClientProvider {
+            attrs.client = queryClient
+            Link { attrs.to = "/" 
+                +"Students" }
+            Routes {
+                Route { attrs.index = true
+                    attrs.element = 
+                        createElement(fcContainerStudentList()) }
+                Route { attrs.path = "/student/:id"
+                    attrs.element = 
+                        createElement(fcContainerStudent())} }
+            child(cReactQueryDevtools()) {} } } } }
+```
+
+---
+
+# Компонент списка студентов
+
+--
+
+```client/../component/studentList.kt```
+
+```Kotlin
+external interface StudentListProps : Props {
+    var students: List< Item< Student>>
+    var addStudent: (String, String) -> Unit
+    var deleteStudent: (Int) -> Unit
+}
+
+fun fcStudentList() = fc("StudentList") { props: StudentListProps ->
+```
+
+--
+
+```client/../component/studentList.kt```
+
+```Kotlin
+val firstnameRef = useRef<INPUT>()
+val surnameRef = useRef<INPUT>()
+
+span { 
+    p { +"Firstname: "
+        input { ref = firstnameRef } }
+    p { +"Surname: "
+        input { ref = surnameRef } }
+    button {
+        +"Add student"
+        attrs.onClickFunction = {
+            firstnameRef.current?.value?.let { firstname ->
+                surnameRef.current?.value?.let { surname ->
+                    props.addStudent(firstname, surname) } } } } }
+```
+
+--
+
+```client/../component/studentList.kt```
+
+```Kotlin
+h3 { +"Students" }
+ol {
+    props.students.mapIndexed { index, studentItem ->
+        li {
+            val student = Student(
+                studentItem.elem.firstname, 
+                studentItem.elem.surname)
+            Link { attrs.to = "/student/${studentItem.uuid}"
+                +"${student.fullname} \t" }
+            button {
+                +"X"
+                attrs.onClickFunction = {
+                    props.deleteStudent(index)
+                } } } } }
+```
+
+---
+
+# Контейнер списка студентов
+
+--
+
+```client/../component/studentList.kt```
+
+```Kotlin
+fun fcContainerStudentList() = fc("QueryStudentList") { _: Props ->
+    val queryClient = useQueryClient()
+
+    val query = useQuery< Any, QueryError, 
+        AxiosResponse< Array< Item< Student >>>, Any>(
+        "studentList",
+        {
+            axios< Array< Student >>(jso {
+                url = studentsURL
+            })
+        }
+    )
+```
+
+--
+
+```client/../component/studentList.kt```
+
+```Kotlin
+val addStudentMutation = useMutation<Any, Any, Any, Any>(
+    { student: Student ->
+        axios<String>(jso {
+            url = studentsURL
+            method = "Post"
+            headers = json(
+                "Content-Type" to "application/json"
+            )
+            data = Json.encodeToString(student)
+        })
+    },
+    options = jso {
+        onSuccess = { _: Any, _: Any, _: Any? ->
+            queryClient.invalidateQueries<Any>("studentList")
+        } } )
+```
+
+--
+
+```client/../component/studentList.kt```
+
+```Kotlin
+val deleteStudentMutation = useMutation<Any, Any, Any, Any>(
+    { studentItem: Item<Student> ->
+        axios<String>(jso {
+            url = "$studentsURL/${studentItem.uuid}"
+            method = "Delete"
+        })
+    },
+    options = jso {
+        onSuccess = { _: Any, _: Any, _: Any? ->
+            queryClient.invalidateQueries<Any>("studentList")
+        }
+    }
+)
+```
+
+--
+
+```client/../component/studentList.kt```
+
+```Kotlin
+if (query.isLoading) div { +"Loading .." }
+else if (query.isError) div { +"Error!" }
+else {
+    val items = query.data?.data?.toList() ?: emptyList()
+    child(fcStudentList()) {
+        attrs.students = items
+        attrs.addStudent = { f, s ->
+            addStudentMutation.mutate(Student(f, s), null)
+        }
+        attrs.deleteStudent = {
+            deleteStudentMutation.mutate(items[it], null)
+        }
+    }
+}
+```
+
+
+---
+
+# Компонент студент
+
+--
+
+```client/../component/student.kt```
+
+```Kotlin
+external interface StudentProps : Props {
+    var students: Item<Student>
+    var updateStudent: (String, String) -> Unit
+}
+
+
+fun fcStudent() = fc("Student") { props: StudentProps ->
+    val firstnameRef = useRef<INPUT>()
+    val surnameRef = useRef<INPUT>()
+
+    val (firstname, setFirstname) = 
+        useState(props.students.elem.firstname)
+    val (surname, setSurname) = 
+        useState(props.students.elem.surname)
+```
+
+--
+
+```client/../component/student.kt```
+
+```Kotlin
+fun onInputEdit(setter: StateSetter<String>, 
+    ref: MutableRefObject<INPUT>) =
+    { _: Event -> setter(ref.current?.value ?: "ERROR!") }
+span { p { +"Firstname: "
+        input { ref = firstnameRef
+            attrs.value = firstname
+            attrs.onChangeFunction = 
+                onInputEdit(setFirstname, firstnameRef) } }
+    p { +"Surname: "
+        input { .. } }
+    button { +"Update student"
+        attrs.onClickFunction = {
+            firstnameRef.current?.value?.let { firstname ->
+                surnameRef.current?.value?.let { surname ->
+                    props.updateStudent(firstname, surname) } } } } }
+```
+
+--
+
+```client/../component/student.kt```
+
+```Kotlin
+class MutationData(val oldStudent: Item<Student>,
+    val newStudent: Student)
+fun fcContainerStudent() = fc("ContainerStudent") { _: Props ->
+    ...
+val updateStudentMutation = useMutation<Any, Any, 
+    MutationData, Any>(
+    { mutationData -> axios<String>(jso {
+        url = "${Config.studentsURL}/${mutationData.oldStudent.uuid}"
+        method = "Put"
+        headers = json("Content-Type" to "application/json")
+        data = Json.encodeToString(mutationData.newStudent) }) },
+    options = jso {
+        onSuccess = { _: Any, _: Any, _: Any? ->
+            queryClient.invalidateQueries<Any>(studentId) } } )    
+```
+                    </script>
+                </section>
+            </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealAudioSlideshow, RevealAudioRecorder ],
+				menu: {
+		        	themes: true,
+        			themesPath: 'dist/theme/',
+		        },
+				audio: {
+					prefix: 'audio/struct/',
+					suffix: '.webm;codecs=opus'
+				}
+			});
+		</script>
+	</body>
+</html>
