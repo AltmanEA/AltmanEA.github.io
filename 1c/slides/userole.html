@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Пользователи и роли</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/github.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+# Роли
+
+--
+
+## Роли конфигурации
+
+![](images/userole/conf_role.jpg)
+
+--
+
+## Права роли
+
+![](images/userole/conf_rights.jpg)
+
+--
+
+## Права на справочники
+
+![](images/userole/rights_dicts.jpg)
+
+--
+
+## Права на реквизиты
+
+![](images/userole/rights_rekv.jpg)
+
+---
+
+# Настройка ролей
+
+--
+
+## Настраиваем администратора
+
+![](images/userole/all_rights.jpg)
+
+
+--
+
+## Запрет интерактивного удаления
+
+![](images/userole/deny_inter_delete.jpg)
+
+--
+
+## ЗавКаф. Просмотр справочников
+
+![](images/userole/read_rights.jpg)
+
+--
+
+## ЗавКаф. Распределение нагрузки
+
+![](images/userole/zav_plan.jpg)
+
+--
+
+## ЗавКаф. Распределение нагрузки
+
+![](images/userole/zav_fact.jpg)
+
+--
+
+## Преподаватель. Просмотр справочников
+
+![](images/userole/prep_dicts.jpg)
+
+--
+
+## Преподаватель. Распределение нагрузки
+
+![](images/userole/prep_plan.jpg)
+
+--
+
+## Преподаватель. Выполнение нагрузки
+
+![](images/userole/prep_fact.jpg)
+
+---
+
+# Пользователи
+
+--
+
+## Список пользователей
+
+![](images/userole/adm_user.jpg)
+
+--
+
+## Пользователь «Администратор»
+
+![](images/userole/user_admin.jpg)
+
+--
+
+## Роли пользователя «Администратор»
+
+![](images/userole/user_admin_roles.jpg)
+
+--
+
+## Пользователь «МалютинАГ»
+
+![](images/userole/user_mag.jpg)
+
+--
+
+## Права пользователя «МалютинАГ»
+
+![](images/userole/user_mag_roles.jpg)
+
+--
+
+## Права пользователя «АльтманЕА»
+
+![](images/userole/user_ea_roles.jpg)
+
+--
+
+## Вход в систему
+
+![](images/userole/user_auth.jpg)
+
+--
+
+## Ограничения доступа
+
+![](images/userole/user_ea_access.jpg)
+
+
+                    </script>
+                </section>
+            </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealAudioSlideshow, RevealAudioRecorder ],
+				menu: {
+		        	themes: true,
+        			themesPath: 'dist/theme/',
+		        },
+				audio: {
+					prefix: 'audio/report/',
+					suffix: '.webm;codecs=opus',
+				},
+			});
+		</script>
+	</body>
+</html>
