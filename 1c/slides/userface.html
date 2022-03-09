@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Интерфейс приложения для пользователей</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/github.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+# Подсистемы
+
+--
+
+### Подсистема деканата
+
+![](images/userface/sub_deka.jpg)
+
+--
+
+### Подсистема кафедры
+
+![](images/userface/sub_dep.jpg)
+
+--
+
+### Подсистемы администратора
+
+![](images/userface/view_sub.jpg)
+
+--
+
+### Интерфейс администратора
+
+![](images/userface/ent_sub.jpg)
+
+---
+
+# Настройка подсистем
+
+--
+
+### Настройка для всех ролей
+
+![](images/userface/subs_visible.jpg)
+
+--
+
+### Видимость по ролям
+
+![](images/userface/subs_visible_role.jpg)
+
+
+---
+
+# Настройка главной страницы
+
+--
+
+### Настройка главной рабочей области
+
+![](images/userface/main_work_area.jpg)
+
+--
+
+### Настройка интерфейса главной страницы
+
+![](images/userface/main_iface.jpg)
+
+--
+
+### Внешний вид главной страницы
+
+![](images/userface/main_area.jpg)
+
+---
+
+# Функциональные опции
+
+--
+
+### Константы для функциональных опций
+
+![](images/userface/fo_const.jpg)
+
+--
+
+### Создание функциональной опции
+
+![](images/userface/fo_name.jpg)
+
+--
+
+### Состав функциональной опции
+
+![](images/userface/fo_content.jpg)
+
+--
+
+### Подсистема для настройки функциональных опции
+
+![](images/userface/sub_config.jpg)
+
+--
+
+### Права для настройки
+
+![](images/userface/admin_config.jpg)
+
+--
+
+### Интерфейс с выключенной опцией
+
+![](images/userface/interface_without_ip.jpg)
+
+--
+
+### Включение опции
+
+![](images/userface/turn_on_ip.jpg)
+
+--
+
+### Интерфейс с включенной опцией
+
+![](images/userface/intrerface_with_ip.jpg)
+
+
+                    </script>
+                </section>
+            </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealAudioSlideshow, RevealAudioRecorder ],
+				menu: {
+		        	themes: true,
+        			themesPath: 'dist/theme/',
+		        },
+				audio: {
+					prefix: 'audio/report/',
+					suffix: '.webm;codecs=opus',
+				},
+			});
+		</script>
+	</body>
+</html>
