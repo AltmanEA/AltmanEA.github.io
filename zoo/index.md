@@ -21,4 +21,4 @@
 
 О желании пройти аттестацию нужно сообщить в чате портала [https://dot.omgups.ru/](https://dot.omgups.ru/) за день до экзамена.
 
-<iframe src="https://calendar.yandex.ru/embed/week?&layer_ids=13810490&tz_id=Asia/Omsk&layer_names=Конференции со студентами" width="800" height="450" frameborder="0" style="border: 1px solid #eee"></iframe>
+<iframe src="https://calendar.yandex.ru/embed/month?&layer_ids=13810490&tz_id=Asia/Omsk&layer_names=Конференции со студентами" width="800" height="450" frameborder="0" style="border: 1px solid #eee"></iframe>
