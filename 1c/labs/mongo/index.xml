@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>3. Основы MongoDb on Объектно-ориентированное программирование и обработка данных</title>
+    <link>https://altmanea.ru/oop-data/labs/mongo/</link>
+    <description>Recent content in 3. Основы MongoDb on Объектно-ориентированное программирование и обработка данных</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/labs/mongo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Основные операции.</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/crud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/crud/</guid>
+      <description>Создайте коллекцию mongo для класса, реализующего счетчики:
+@Serializabledata class Count(val name: String, val value: Int = 0)Добавьте в коллекцию счетчики &amp;ldquo;Tables&amp;rdquo;, &amp;ldquo;Figures&amp;rdquo;, &amp;ldquo;Equations&amp;rdquo;.
+Изучите оператор инкремента inc и реализуйте функцию, увеличивающую счетчик на единицу:
+ fun incCount(countName: String) Проверьте работу этой функции на следующем примере и сделайте выводы по работе оператора inc.
+incCount(&amp;quot;Tables&amp;quot;)incCount(&amp;quot;Tables&amp;quot;)incCount(&amp;quot;Equations&amp;quot;)incCount(&amp;quot;Listings&amp;quot;)prettyPrintCursor(counts.find())Ознакомьтесь с другими Field Update Operators.
+  Прочитайте про опцию upsert функции update.</description>
+    </item>
+    
+    <item>
+      <title>2. Работа с документами.</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/document/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/document/</guid>
+      <description>Напишите функцию, увеличивающую на единицу оценку студента:
+fun incGrade(course: String, studentName: String)Используя функции из лекций, протестируйте ее:
+fillStudentsAndCourse()setGrade(&amp;quot;Math&amp;quot;, &amp;quot;Penny&amp;quot;, 5)setGrade(&amp;quot;Math&amp;quot;, &amp;quot;Sheldon&amp;quot;, 6)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))incGrade(&amp;quot;Math&amp;quot;, &amp;quot;Sheldon&amp;quot;)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))incGrade(&amp;quot;Math&amp;quot;,&amp;quot;Raj&amp;quot;)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))  Прочитайте про операторы in (в kmongo записывается как `in`) и push.
+Реализуйте функцию, которая добавляет студента в список студентов и записывает его на курсы:
+fun addStudent(name: String, group: String, courses: List&amp;lt;String&amp;gt;)Протестируйте ее и сделайте выводы:</description>
+    </item>
+    
+    <item>
+      <title>3. Индексы коллекций.</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/indexes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/indexes/</guid>
+      <description>Сформируйте запрос к коллекции population для поиска всех стран, население которых в 2018 году было больше миллиарда.
+Протестируйте выполнение этого запроса с различными вариантами индексов (и без них).</description>
+    </item>
+    
+    <item>
+      <title>4. Конвейерная обработка.</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/pipeline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/pipeline/</guid>
+      <description>Создайте классы для студентов, оценок и курсов, аналогичные классам рассмотренным на лекциях. Отличие создаваемых классов должно заключатся в том, что оценки коллекция оценок находится в классе студентов, а в классе оценок хранится информация о курсе, за который получена оценка.
+Создайте коллекции mongo для курсов и студентов, заполнив такими же оценками, как и в примере на лекции.
+  С помощью одной стадии match конвейера фреймворка агрегации найдите в коллекции студентов, не имеющих оценки ниже 4.</description>
+    </item>
+    
+  </channel>
+</rss>

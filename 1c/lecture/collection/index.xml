@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1. Коллекции on Объектно-ориентированное программирование и обработка данных</title>
+    <link>https://altmanea.ru/oop-data/lecture/collection/</link>
+    <description>Recent content in 1. Коллекции on Объектно-ориентированное программирование и обработка данных</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/lecture/collection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Операции с коллекциями</title>
+      <link>https://altmanea.ru/oop-data/lecture/collection/operation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/collection/operation/</guid>
+      <description>1. Понятие коллекции 2. Коллекция List 3. Функция Map в коллекциях 4. Фильтрация элементов коллекции 5. Поиск элементов в коллекции 6. Свертка коллекции 7. Сложная обработка коллекций 8. Сортировка коллекций </description>
+    </item>
+    
+    <item>
+      <title>2. Виды коллекций</title>
+      <link>https://altmanea.ru/oop-data/lecture/collection/type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/collection/type/</guid>
+      <description>1. Интерфейсы 2. Итератор 3. Строки как коллекции 4. Функция flatMap 5. Sequence 6. Set 7. Map </description>
+    </item>
+    
+    <item>
+      <title>3. Реализация коллекций</title>
+      <link>https://altmanea.ru/oop-data/lecture/collection/implementation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/collection/implementation/</guid>
+      <description>Обзор коллекций Java. Связанный список. Реализация изменяемых коллекций. Коллекции типа очередь. </description>
+    </item>
+    
+  </channel>
+</rss>

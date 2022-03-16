@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>2. Работа с документами. - Объектно-ориентированное программирование и обработка данных</title>
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.87.0" />
 <link href="https://altmanea.ru/oop-data//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://altmanea.ru/oop-data/labs/mongo/document/">
 <link rel="stylesheet" href="https://altmanea.ru/oop-data/css/theme.min.css">
@@ -60,9 +60,9 @@ fun addStudent(name: String, group: String, courses: List&lt;String&gt;)Про�
 <ol>
 <li>
 <p>Напишите функцию, увеличивающую на единицу оценку студента:</p>
-<pre tabindex="0"><code>fun incGrade(course: String, studentName: String)
+<pre><code>fun incGrade(course: String, studentName: String)
 </code></pre><p>Используя функции из лекций, протестируйте ее:</p>
-<pre tabindex="0"><code>fillStudentsAndCourse()
+<pre><code>fillStudentsAndCourse()
 setGrade(&quot;Math&quot;, &quot;Penny&quot;, 5)
 setGrade(&quot;Math&quot;, &quot;Sheldon&quot;, 6)
 prettyPrintCursor(mCourses.find(Course::name eq &quot;Math&quot;))
@@ -74,18 +74,18 @@ prettyPrintCursor(mCourses.find(Course::name eq &quot;Math&quot;))
 <li>
 <p>Прочитайте про операторы <a href="https://docs.mongodb.com/manual/reference/operator/query/in/">in</a> (в kmongo записывается как <code>`in`</code>) и <a href="https://docs.mongodb.com/manual/reference/operator/update/push/index.html">push</a>.</p>
 <p>Реализуйте функцию, которая добавляет студента в список студентов и записывает его на курсы:</p>
-<pre tabindex="0"><code>fun addStudent(name: String, group: String, courses: List&lt;String&gt;)
+<pre><code>fun addStudent(name: String, group: String, courses: List&lt;String&gt;)
 </code></pre><p>Протестируйте ее и сделайте выводы:</p>
-<pre tabindex="0"><code>addStudent(&quot;Stuart&quot;, &quot;Boys&quot;, listOf(&quot;Math&quot;, &quot;Phys&quot;))
+<pre><code>addStudent(&quot;Stuart&quot;, &quot;Boys&quot;, listOf(&quot;Math&quot;, &quot;Phys&quot;))
 addStudent(&quot;Emily&quot;, &quot;Girls&quot;, listOf(&quot;Math&quot;, &quot;Chem&quot;))
 prettyPrintCursor(mCourses.find())
 </code></pre></li>
 <li>
 <p>Ознакомьтесь с <a href="https://litote.org/kmongo/dokka/kmongo/org.litote.kmongo/kotlin.reflect.-k-property1/all-pos-op.html">all positional operator</a>.</p>
 <p>Реализуйте функцию, выставляющую одну оценку всем студентам на курсе:</p>
-<pre tabindex="0"><code>fun setAllValue(course: String, value: Int)
+<pre><code>fun setAllValue(course: String, value: Int)
 </code></pre><p>Протестируйте ее:</p>
-<pre tabindex="0"><code>setAllValue(&quot;Math&quot;, 3)
+<pre><code>setAllValue(&quot;Math&quot;, 3)
 prettyPrintCursor(mCourses.find(Course::name eq &quot;Math&quot;))
 </code></pre></li>
 </ol>
