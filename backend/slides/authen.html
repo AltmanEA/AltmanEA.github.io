@@ -1,0 +1,349 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Аутентификация клиентов</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/github.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+
+# Задачи контроля пользователей
+
+--
+
+*Аутентификация* – идентификация пользователя.
+
+*Авторизация* – определение прав пользователя для ресурса.
+
+*Аудит* (accounting) – регистрация действий пользователя.
+
+---
+
+# Basic аутентификация
+
+--
+
+### Проверка пользователя
+
+```Kotlin
+private fun validator(): 
+	suspend ApplicationCall.(UserPasswordCredential) -> Principal? =
+    { credentials ->
+        if ( userList.find {
+                it.username == credentials.name
+            }?.password == credentials.password 
+			){ 
+				UserIdPrincipal(credentials.name) } 
+		else { null }
+    }
+```
+
+--
+
+### Подключение плагина
+
+```Kotlin
+install(Authentication) {
+	basic("auth-basic") {
+		realm = "Access to the '/basic' path"
+		validate(validator())
+	}
+}
+```
+
+--
+
+### Контроль доступа
+
+```Kotlin
+routing {
+	authenticate("auth-basic") {
+		get("/basic") {
+			call.respondText(
+				"Hello, ${call.principal<UserIdPrincipal>()?.name}!"
+			)
+		}
+	}
+```
+
+--
+
+### Вход с браузера
+
+![](images/authen/authen_browser.jpg)
+
+--
+
+### Вход с браузера
+
+![](images/authen/authen_browser_network.jpg)
+
+--
+
+### Curl
+
+```
+curl -i http://localhost:8000/basic 
+HTTP/1.1 401 Unauthorized
+WWW-Authenticate: Basic realm="Access to the '/basic' path", 
+	charset=UTF-8
+Content-Length: 0
+```
+
+```
+curl -i -H "Authorization: Basic dHV0b3I6dHV0b3I=" 
+	http://localhost:8000/basic
+HTTP/1.1 200 OK
+Content-Length: 13
+Content-Type: text/plain; charset=UTF-8
+```
+
+---
+
+# Digest аутентификация
+
+--
+
+### Настройка плагина
+
+```Kotlin
+fun getMd5Digest(str: String): ByteArray = 
+	MessageDigest.getInstance("MD5").digest(str.toByteArray())
+const val digestRealm = "Access to the '/digest' path"
+val usersHash: Map<String, ByteArray> = userList.associate {
+    it.username to 
+		getMd5Digest("${it.username}:$digestRealm:${it.password}")
+}
+
+digest("auth-digest") {
+	realm = digestRealm
+	digestProvider { userName, realm ->
+		usersHash[userName]
+	}
+}
+```
+
+--
+
+### Контроль доступа
+
+```Kotlin
+routing {
+	authenticate("auth-digest") {
+		get("/digest") {
+			call.respondText(
+				"Hello, ${call.principal<UserIdPrincipal>()?.name}!")
+		}
+	}
+```
+
+--
+
+### Вход с браузера
+
+![](images/authen/digest.jpg)
+
+--
+
+### Curl
+
+```
+curl -i http://localhost:8000/digest
+HTTP/1.1 401 Unauthorized
+WWW-Authenticate: Digest realm="Access to the '/digest' path", 
+	nonce="fb1bffee9d86d7d4", algorithm="MD5"
+Content-Length: 0
+
+```
+
+```
+curl -i -H @digest-header.txt http://localhost:8000/digest
+HTTP/1.1 200 OK
+Content-Length: 13
+Content-Type: text/plain; charset=UTF-8
+```
+
+---
+
+# Form и session аутентификация
+
+--
+
+### Настройка плагина
+
+```Kotlin
+data class UserSession(val name: String, val count: Int) : Principal
+form("auth-form") {
+	userParamName = "username"
+	passwordParamName = "password"
+	validate(validator()) }
+session<UserSession>("auth-session") {
+	validate { session ->
+		session }
+	challenge {
+		call.respondRedirect("/form-login") } }
+```
+
+--
+
+### Контроль доступа
+
+```Kotlin
+authenticate("auth-form") {
+	post("/form-login") {
+		val userName = call.principal<UserIdPrincipal>()
+			?.name.toString()
+		call.sessions.set(UserSession(userName, 1))
+		call.respondText("Hello, $userName!") } }
+authenticate("auth-session") {
+	get("/session") {
+		val userSession = call.principal<UserSession>()
+		call.sessions.set(userSession
+			?.copy(count = userSession.count + 1))
+		call.respondText("Hello, ${userSession?.name}") } }
+```
+
+--
+
+### Curl form
+
+```
+curl -i 
+	-H "Content-Type: application/x-www-form-urlencoded" 
+	-d "username=tutor&password=tutor"  
+	-X POST http://localhost:8000/form-login
+
+HTTP/1.1 200 OK
+user_session: count=%23i1&name=%23stutor
+Content-Length: 13
+Content-Type: text/plain; charset=UTF-8
+```
+
+--
+
+### Curl
+
+```
+curl -v 
+	-H "user_session: count=%23i1&name=%23stutor" 
+	http://localhost:8000/session                                                       
+* Connected to localhost (127.0.0.1) port 8000 (#0)
+> GET /session HTTP/1.1
+> Host: localhost:8000
+> User-Agent: curl/7.55.1
+> Accept: */*
+> user_session: count=%23i1&name=%23stutor
+< HTTP/1.1 200 OK
+< user_session: count=%23i2&name=%23stutor
+< Content-Length: 12
+< Content-Type: text/plain; charset=UTF-8
+Hello, tutor* Connection #0 to host localhost left intact
+```
+
+---
+
+# JWT
+
+--
+
+### Настройка плагина
+
+```Kotlin
+jwt("auth-jwt") {
+	realm = jwtRealm
+	verifier(JWT
+		.require(Algorithm.HMAC256(secret))
+		.withAudience(audience)
+		.withIssuer(issuer)
+		.build() )
+	validate { credential ->
+		if (credential.payload.getClaim("username").asString() 
+			!= "") {
+			JWTPrincipal(credential.payload)
+		} else { 
+			null } } }
+```
+
+--
+
+### Выдача токена
+
+```Kotlin
+post("jwt-login") {
+	val user = call.receive<User>()
+	val token = JWT.create()
+		.withAudience(audience)
+		.withIssuer(issuer)
+		.withClaim("username", user.username)
+		.withExpiresAt(
+			Date(System.currentTimeMillis() + 600000))
+		.sign(Algorithm.HMAC256(secret))
+	call.respond(hashMapOf("token" to token))
+}
+```
+
+--
+
+### Использование токена
+
+```Kotlin
+authenticate("auth-jwt") {
+	get("/jwt") {
+		val principal = call.principal<JWTPrincipal>()
+		val username = principal!!.payload
+			.getClaim("username").asString()
+		val expiresAt = principal.expiresAt
+			?.time?.minus(System.currentTimeMillis())
+		call.respondText(
+			"Hello, $username! Token is expired at $expiresAt ms.")
+	}
+}
+```
+
+--
+
+### Сервер токенов
+
+OAuth — открытый протокол (схема) авторизации, обеспечивающий предоставление третьей стороне 
+ограниченный доступ к защищённым ресурсам пользователя без передачи ей (третьей стороне) логина и пароля
+
+					</script>
+                </section>
+            </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealAudioSlideshow, RevealAudioRecorder ],
+				menu: {
+		        	themes: true,
+        			themesPath: 'dist/theme/',
+		        },
+				audio: {
+					prefix: 'audio/rest2_client/',
+					suffix: '.webm;codecs=opus'
+				}
+			});
+		</script>
+	</body>
+</html>
