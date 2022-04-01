@@ -199,6 +199,133 @@ fun Route.authorizedRoute(allowedRoles: Set<Role>,
     return authorizedRoute }
 ```
 
+--
+
+```Kotlin
+fun Route.lesson() {
+    route(lessonsPath) {
+        authenticate("auth-jwt") {
+            authorizedRoute(setOf(roleAdmin, roleUser)) {
+                get {..}
+                get("{id}") { .. }
+            }
+			authorizedRoute(setOf(roleAdmin)) {
+                post { }
+                ..                
+            } } } }
+
+```
+
+--
+
+```Kotlin
+withTestApplication(Application::main) {
+	val tokenAdmin = handleRequest(HttpMethod.Post, "/jwt-login") {
+		setBodyAndHeaders(
+			"""{ "username": "admin", "password": "admin" }""")
+	}.run { "Bearer ${decodeBody<Token>().token}" }
+
+	val lessonItems = 
+		handleRequest(HttpMethod.Get, Config.lessonsPath) {
+			addHeader("Authorization", tokenAdmin)
+		}.run {
+			assertEquals(HttpStatusCode.OK, response.status())
+			decodeBody<List<RepoItem<Lesson>>>() }
+	assertEquals(3, lessonItems.size)
+	val math = lessonItems.find { it.elem.name == "Math" }
+	check(math != null)
+```
+
+---
+
+# Authorization on client
+
+--
+
+### Типы и контекст
+
+```Kotlin
+typealias Token = String
+typealias AuthUser = Pair<User, Token>?
+typealias Username = String
+typealias Password = String
+
+val userInfo = createContext<AuthUser>(null)
+```
+
+--
+
+### Интерфейсы
+
+```Kotlin
+external interface AuthProps : Props {
+    var user: User?
+    var signIn: (Username, Password) -> Unit
+    var signOff: () -> Unit
+}
+external interface AuthContainerProps : Props {
+    var user: User?
+    var signIn: (Pair<User, Token>) -> Unit
+    var signOff: () -> Unit
+}
+```
+
+--
+
+### Запрос на авторизацию
+
+```Kotlin
+fun signInRequest(user: User) {
+	axios<AxiosData>(
+		jso { url = "$serverUrl/jwt-login"
+			method = "Post"
+			headers = json(
+				"Content-Type" to "application/json"
+			)
+			data = Json.encodeToString(user) }
+	).then {
+		val token = it.data.token
+		console.log(token)
+		props.signIn(Pair(user, "Bearer $token")) } }
+```
+
+--
+
+### Провайдер для токена
+
+```Kotlin
+fun fAuthProvider(render: Render) = fc<Props>("AuthManager") {
+    val (userAndToken, setUserAndToken) = useState<AuthUser>(null)
+    child(fAuthContainer()) {
+        attrs.user = userAndToken?.first
+        attrs.signOff = { setUserAndToken(null) }
+        attrs.signIn = { setUserAndToken(it) }
+    }
+    if (userAndToken == null)
+        p { +"Authentication is required" }
+    else
+        userInfo.Provider(userAndToken) {
+            render() } }
+```
+
+--
+
+### Пример запроса
+
+```Kotlin
+fun fcContainerLesson() = fc("ContainerLesson") { _: Props ->
+    val lessonParams = useParams()
+    val queryClient = useQueryClient()
+    val token = useContext(userInfo)?.second
+    val authHeader = "Authorization" to token
+    val lessonId = lessonParams["id"] ?: "Route param error"
+    val queryLesson = useQuery<String, QueryError, String, String>(
+        lessonId,
+        { fetchText(
+                Config.lessonsPath + lessonId,
+                jso { headers = json(authHeader) } ) },
+        options = jso { refetchOnWindowFocus = false } )
+```
 					</script>
                 </section>
             </div>
