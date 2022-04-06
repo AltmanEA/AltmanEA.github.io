@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Установка и обновление конфигурации</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/github.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+# Создание и установка
+
+--
+
+## Пример конфигурации
+
+![](images/conf/conf1.jpg)
+
+--
+
+## Поставка конфигурации
+
+![](images/conf/make-cf.jpg)
+
+--
+
+## Поставка конфигурации. Ошибка.
+
+![](images/conf/make-cf-error.jpg)
+
+--
+
+## Свойства конфигурации
+
+![](images/conf/conf1-props.jpg)
+
+--
+
+## Файлы поставки
+
+![](images/conf/make-cf-start.jpg)
+
+--
+
+## Комплект поставки
+
+![](images/conf/make-compl.jpg)
+
+--
+
+## Свойства комплекта поставки
+
+![](images/conf/make-compl-1.jpg)
+
+--
+
+## Описание комплекта поставки
+
+![](images/conf/make-compl-2.jpg)
+
+--
+
+## Содержимое комплекта поставки
+
+![](images/conf/make-compl-3.jpg)
+
+--
+
+## Готовый комплект поставки
+
+![](images/conf/make-compl-end.jpg)
+
+--
+
+## Использование комплекта поставки
+
+![](images/conf/setup.jpg)
+
+--
+
+## Установленные шаблоны
+
+![](images/conf/template.jpg)
+
+--
+
+## Установленная конфигурация
+
+![](images/conf/conf-copy.jpg)
+
+---
+
+# Обновление конфигурации
+
+--
+
+## Обновленная конфигурация
+
+![](images/conf/update-conf.jpg)
+
+--
+
+## Создание обновления конфигурации
+
+![](images/conf/make-update.jpg)
+
+--
+
+## Свойства нового комплекта поставки
+
+![](images/conf/update-compl.jpg)
+
+--
+
+## Добавление обновления в комплект
+
+![](images/conf/update-add-to-compl.jpg)
+
+--
+
+## Новый комплект поставки
+
+![](images/conf/update-compl-done.jpg)
+
+--
+
+## Установка нового комплекта 
+
+![](images/conf/update-compl-setup.jpg)
+
+--
+
+## Установленная база
+
+![](images/conf/base-work-before-update.jpg)
+
+--
+
+## Обновление конфигурации
+
+![](images/conf/conf-update.jpg)
+
+--
+
+## Выбор обновления
+
+![](images/conf/conf-update-1.jpg)
+
+--
+
+## Выполнение обновления
+
+![](images/conf/conf-update-2.jpg)
+
+--
+
+## Обновленная база
+
+![](images/conf/conf-update-result.jpg)
+
+                    </script>
+                </section>
+            </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealAudioSlideshow, RevealAudioRecorder ],
+				menu: {
+		        	themes: true,
+        			themesPath: 'dist/theme/',
+		        },
+				audio: {
+					prefix: 'audio/userole/',
+					suffix: '.webm;codecs=opus',
+				},
+			});
+		</script>
+	</body>
+</html>
