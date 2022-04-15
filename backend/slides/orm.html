@@ -1,0 +1,478 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Object-Relational Mapping</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/github.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+
+# Kotlin Exposed 
+
+--
+
+### Обзор Kotlin ORM
+
+- (Spring data) JPA
+- Exposed
+- Komapper, ktorm ...
+
+--
+
+### Подключение
+
+```Kotlin
+dependencies {
+	implementation("org.jetbrains.exposed", "exposed-core", "0.37.3")
+	implementation("org.jetbrains.exposed", "exposed-dao", "0.37.3")
+	implementation("org.jetbrains.exposed", "exposed-jdbc", "0.37.3")
+}
+```
+
+--
+
+### Соединение
+
+
+К базе данных (H2)
+```Kotlin
+val db = Database.connect(
+	"jdbc:h2:mem:test", 
+	driver = "org.h2.Driver"
+)
+```
+
+К источнику данных (пул)
+```Kotlin
+val db = Database.connect(dataSource)
+```
+
+--
+
+### Уровни взаимодействия
+
+
+- DSL (Domain Specific Language) 
+- DAO (Data Access Object)
+
+---
+
+# DSL
+
+--
+
+### Создание таблиц
+
+```Kotlin
+object Cities : Table() {
+    val id = integer("id").autoIncrement() // Column<Int>
+    val name = varchar("name", 50) // Column<String>
+    override val primaryKey = PrimaryKey(id, name = "PK_Cities_ID")
+}
+object Users : Table() {
+    val id = varchar("id", 10) // Column<String>
+    val name = varchar("name", length = 50) // Column<String>
+    val cityId = (integer("city_id") references Cities.id).nullable() 
+    override val primaryKey = PrimaryKey(id, name = "PK_User_ID")
+}
+transaction {
+	SchemaUtils.create(Cities, Users) }
+```
+
+--
+
+### Создание элемента
+
+```Kotlin
+fun <T : Table> T.insert(
+	body: T.(InsertStatement<Number>
+) -> Unit): InsertStatement<Number>	
+```
+
+```Kotlin
+val saintPetersburgId = Cities.insert {
+	it[name] = "St. Petersburg"
+} get Cities.id
+val munichId = Cities.insert {
+	it[name] = "Munich"
+} get Cities.id
+val pragueId = Cities.insert {
+	it.update(name, stringLiteral("   Prague   ")
+		.trim().substring(1, 2))
+}[Cities.id]
+```
+
+--
+
+### Создание элемента
+
+
+```Kotlin
+Users.insert {
+	it[id] = "andrey"
+	it[name] = "Andrey"
+	it[Users.cityId] = saintPetersburgId
+}
+Users.insert {
+	it[id] = "sergey"
+	it[name] = "Sergey"
+	it[Users.cityId] = munichId
+}
+```
+
+--
+
+### Чтение элемента
+
+```Kotlin
+inline fun FieldSet.select(
+	where: SqlExpressionBuilder.() -> Op<Boolean>): Query 
+```
+
+```Kotlin
+/**
+ * Builder object for creating SQL expressions.
+ */
+object SqlExpressionBuilder : ISqlExpressionBuilder
+```
+
+```Kotlin
+/**
+ * Represents an SQL operator.
+ */
+abstract class Op<T> : Expression<T>() {
+```
+
+--
+
+### Чтение элемента
+
+```Kotlin
+val pragueName = Cities.select { 
+	Cities.id eq pragueId 
+}.single()[Cities.name]
+```
+```Kotlin
+infix fun <T, S1 : T?, S2 : T?> Expression<in S1>
+	.eq(other: Expression<in S2>): Op<Boolean>
+```
+
+--
+
+### Обновление элемента
+
+```Kotlin
+fun <T : Table> T.update(
+	where: (SqlExpressionBuilder.() -> Op<Boolean>)? = null, 
+	limit: Int? = null, 
+	body: T.(UpdateStatement) -> Unit
+): Int {
+```
+```Kotlin
+Users.update({ Users.id eq "alex" }) {
+	it[name] = "Alexey"
+}
+```
+
+--
+
+### Удаление элемента
+
+```Kotlin
+fun Table.deleteWhere(
+	limit: Int? = null, 
+	offset: Long? = null, 
+	op: SqlExpressionBuilder.() -> Op<Boolean>)
+```
+
+```Kotlin
+Users.deleteWhere { 
+	Users.name like "%thing" 
+}
+```
+
+--
+
+### Объединение таблиц
+
+```Kotlin
+(Users innerJoin Cities)
+	.slice(Users.name, Users.cityId, Cities.name)
+	.select { 
+		Cities.name.eq("St. Petersburg") or Users.cityId.isNull() 
+	}
+```
+
+--
+
+### Агрегирующие функции
+
+
+```Kotlin
+(Cities innerJoin Users)
+	.slice(Cities.name, Users.id.count())
+	.selectAll()
+	.groupBy(Cities.name)
+```
+
+
+---
+
+# DAO
+
+--
+
+### Таблица и класс
+
+```Kotlin
+object StarWarsFilms : IntIdTable() {
+	val sequelId = integer("sequel_id").uniqueIndex()
+	val name = varchar("name", 50)
+	val director = varchar("director", 50)
+} 
+```
+```Kotlin
+class StarWarsFilm(id: EntityID<Int>) : IntEntity(id) {
+	companion object : IntEntityClass<StarWarsFilm>(StarWarsFilms)
+	var sequelId by StarWarsFilms.sequelId 
+	var name     by StarWarsFilms.name
+	var director by StarWarsFilms.director
+}
+```
+
+--
+
+### Create
+
+```Kotlin
+val movie = StarWarsFilm.new {
+	name = "The Last Jedi"
+	sequelId = 8
+	director = "Rian Johnson"
+  }
+```
+
+### Read
+
+```Kotlin
+val movies = StarWarsFilm.all()
+val movies = StarWarsFilm.find { 
+	StarWarsFilms.sequelId eq 8 }
+val movie = StarWarsFilm.findById(5)
+```
+
+### Update and Delete
+
+```Kotlin
+movie.name = "Episode VIII – The Last Jedi"
+ 
+movie.delete() 
+```
+
+--
+
+### Many to One
+
+```Kotlin
+object Users: IntIdTable() {
+    val name = varchar("name", 50) }
+class User(id: EntityID<Int>): IntEntity(id) {
+    companion object : IntEntityClass<User>(Users)
+    var name by Users.name }
+object UserRatings: IntIdTable() {
+    val value = long("value")
+    val film = reference("film", StarWarsFilms)
+    val user = reference("user", Users) }
+class UserRating(id: EntityID<Int>): IntEntity(id) {
+    companion object : IntEntityClass<UserRating>(UserRatings)
+    var value by UserRatings.value
+    var film by StarWarsFilm referencedOn UserRatings.film 
+    var user by User referencedOn UserRatings.user }
+```
+
+--
+
+### Many to Many
+
+```Kotlin
+object Actors: IntIdTable() {
+    val firstname = varchar("firstname", 50)
+    val lastname = varchar("lastname", 50) }
+class Actor(id: EntityID<Int>): IntEntity(id) {
+    companion object : IntEntityClass<Actor>(Actors)
+    var firstname by Actors.firstname
+    var lastname by Actors.lastname }
+object StarWarsFilmActors : Table() {
+    val starWarsFilm = reference("starWarsFilm", StarWarsFilms)
+    val actor = reference("actor", Actors)
+    override val primaryKey = PrimaryKey(starWarsFilm, actor) }
+class StarWarsFilm(id: EntityID<Int>) : IntEntity(id) {
+    companion object : IntEntityClass<StarWarsFilm>(StarWarsFilms)
+    var actors by Actor via StarWarsFilmActors
+    ... }
+```
+
+--
+
+### Eager loading
+
+```Kotlin
+StarWarsFilm.findById(1).load(StarWarsFilm::actors)
+
+StarWarsFilm.findById(1).load(StarWarsFilm::actors, Actor::rating)
+
+object StarWarsFilms : Table() {
+	...
+	val description = text("name", eagerLoading=true)
+  }
+```
+
+--
+
+### Сложные операции
+
+```Kotlin
+val query = Users.innerJoin(UserRatings).innerJoin(StarWarsFilm)
+  .slice(Users.columns)
+  .select {
+    StarWarsFilms.sequelId eq 2 and (UserRatings.value gt 5) 
+  }.withDistinct()
+```
+
+---
+
+# Repository
+
+--
+
+### Таблица
+
+```Kotlin
+abstract class ItemTable<E>(name: String = "") : UUIDTable(name) {
+    val etag = long("etag")
+    abstract fun readItem(result: ResultRow): RepoItem<E>
+    abstract fun fill(builder: UpdateBuilder<Number>, elem: E)
+}
+```
+
+--
+
+### Таблица
+
+```Kotlin
+object StudentsTable: ItemTable<Student>() {
+    val firstname = varchar("firstname", 50)
+    val surname = varchar("surname", 50)
+    override fun readItem(result: ResultRow) = 
+        RepoItem(
+			Student(result[firstname],result[surname]),
+            result[id].toString(),
+            result[etag] )
+    override fun fill(builder: UpdateBuilder<Number>, elem: Student) {
+        builder[etag] = System.currentTimeMillis()
+        builder[firstname] = elem.firstname
+        builder[surname] = elem.surname } }
+```
+
+--
+
+### Репозиторий
+
+```Kotlin
+open class ExposedRepo<E>(
+    val table: ItemTable<E>
+) : Repo<E> {
+
+    override fun get(uuid: String) =
+        transaction {
+            table
+                .select { table.id eq UUID.fromString(uuid) }
+                .firstOrNull()
+                ?.let { table.readItem(it) }
+        }
+```
+
+--
+
+### Репозиторий
+
+```Kotlin
+override fun findAll() =
+	transaction {
+		table
+			.selectAll()
+			.mapNotNull {
+				table.readItem(it)
+			} }
+
+override fun create(element: E) =
+	transaction {
+		table.insert {
+			fill(it, element)
+		}
+		true
+	}
+```
+
+--
+
+### Репозиторий
+
+```Kotlin
+override fun update(uuid: String, value: E) =
+	transaction {
+		table.update(
+			{ table.id eq UUID.fromString(uuid) }
+		) { table.fill(it, value) } > 0 }
+override fun delete(uuid: String) =
+	transaction {
+		table.deleteWhere {
+			table.id eq UUID.fromString(uuid)
+		} > 0 }
+override fun isEmpty() =
+	transaction {
+		table.select {
+			table.id.isNotNull()
+		}.empty() }
+```
+
+</script>
+                </section>
+            </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealAudioSlideshow, RevealAudioRecorder ],
+				menu: {
+		        	themes: true,
+        			themesPath: 'dist/theme/',
+		        },
+				audio: {
+					prefix: 'audio/orm/',
+					suffix: '.webm;codecs=opus'
+				}
+			});
+		</script>
+	</body>
+</html>
