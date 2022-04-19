@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>3. Основы docker - Информационные технологии (часть 2)</title>
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.88.1" />
 <link href="https://altmanea.ru/it2//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://altmanea.ru/it2/labs/docker/">
 <link rel="stylesheet" href="https://altmanea.ru/it2/css/theme.min.css">
@@ -59,12 +59,12 @@
 <details>
 <summary>Первоначальный способ установки.</summary>
 В терминале виртуальной машины выполните команду, которая обновит информацию о доступных для установки программах: 
-<pre><code>sudo apt-get update
+<pre tabindex="0"><code>sudo apt-get update
 </code></pre><blockquote>
 <p>Примечание: большинство действий apt-get требуют прав администратора (root), команда sudo позволяет выполнять другие команды с такими правами.</p>
 </blockquote>
 <p>Установите дополнительные пакеты, которые потребуются для установки docker:</p>
-<pre><code>sudo apt-get install \
+<pre tabindex="0"><code>sudo apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -77,12 +77,12 @@
 <p>Примечание: в процессе выполнения команд в терминале могут появиться вопросы, действительно ли пользователь желает выполнить определенные действия. Предлагается ввести (при русифицированном интерфейсе) буквы «д» или «н», соответствующие ответам «да» и «нет», ответ по-умолчанию начинается с большой буквой. Для ответа также можно использовать английские «y» (yes – да) и «n» (no – нет).</p>
 </blockquote>
 <p>Установите цифровой ключ для проверки подписи устанавливаемого программного обеспечения (docker):</p>
-<pre><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+<pre tabindex="0"><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 </code></pre><blockquote>
 <p>Примечание: символ вертикальной линии (<code>|</code>) запускает конвейерное выполнение команд, т.е. результат выполнения первой команды передается на вход второй. Утилита curl скачивает цифровой ключ и передает его утилите apt-key для установки.</p>
 </blockquote>
 <p>Установите репозиторий docker:</p>
-<pre><code>sudo add-apt-repository \
+<pre tabindex="0"><code>sudo add-apt-repository \
    &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable&quot;
@@ -90,32 +90,32 @@
 <p>Примечание: docker состоит из нескольких программ, в частности репозиторий (Docker repository) нужен для загрузки и других операций с образами контейнеров, а движок (Docker Engine) позволяет их запускать.</p>
 </blockquote>
 <p>Установите движок docker:</p>
-<pre><code>sudo apt-get update
+<pre tabindex="0"><code>sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 </code></pre></details>
 <p>Перейдите на страницу <a href="https://download.docker.com/linux/ubuntu/dists/">https://download.docker.com/linux/ubuntu/dists/</a>, выберите нужную версию Ubuntu, перейдите в папку <code>/pool/stable</code>, выберите архитектуру <code>amd64</code>, <code>armhf</code> или <code>arm64</code> и загрузите последние версии файлов <code>containerd.io_𝑣𝑒𝑟𝑠𝑖𝑜𝑛.deb</code>, <code>docker-ce-cli_𝑣𝑒𝑟𝑠𝑖𝑜𝑛.deb</code> и <code>docker-ce_𝑣𝑒𝑟𝑠𝑖𝑜𝑛.deb</code>. Для рекомендуемой ранее виртуальной машины этий файлы находятся по адресу <a href="https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/">https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/</a>.</p>
 <p>Установите каждый из скаченных файлов с помощью команды:</p>
-<pre><code>sudo dpkg -i 𝑝𝑎𝑐𝑘𝑎𝑔𝑒.deb
+<pre tabindex="0"><code>sudo dpkg -i 𝑝𝑎𝑐𝑘𝑎𝑔𝑒.deb
 </code></pre><p>Проверьте корректность установки:</p>
-<pre><code>sudo docker run hello-world
+<pre tabindex="0"><code>sudo docker run hello-world
 </code></pre><blockquote>
 <p>Примечание: Данная команда попытается запустить образ hello-world. Не обнаружив его в локальном репозитории она скачает его последнюю версию из глобального репозитория и запустит.</p>
 </blockquote>
 <h2 id="работа-с-образами">Работа с образами</h2>
 <p>Посмотрите имеющиеся в репозитории docker образы с помощью команды</p>
-<pre><code>sudo docker images
+<pre tabindex="0"><code>sudo docker images
 </code></pre><p>Попробуйте удалить имеющийся образ с помощью команды</p>
-<pre><code>sudo docker image rm 𝘐𝘔𝘈𝘎𝘌_𝘐𝘋
+<pre tabindex="0"><code>sudo docker image rm 𝘐𝘔𝘈𝘎𝘌_𝘐𝘋
 </code></pre><p>Посмотрите контейнеры с помощью команды (ключ <code>-a</code> – показывать остановленные контейнеры)</p>
-<pre><code>sudo docker ps -a
+<pre tabindex="0"><code>sudo docker ps -a
 </code></pre><p>Удалите контейнер с помощью команды</p>
-<pre><code>sudo docker container rm 𝘊𝘖𝘕𝘛𝘈𝘐𝘕𝘌𝘙_𝘐𝘋 или 𝘕𝘈𝘔𝘌𝘚
+<pre tabindex="0"><code>sudo docker container rm 𝘊𝘖𝘕𝘛𝘈𝘐𝘕𝘌𝘙_𝘐𝘋 или 𝘕𝘈𝘔𝘌𝘚
 </code></pre><p>Удалите образ.</p>
 <p>Скачайте образ c операционной системой alpine:</p>
-<pre><code>sudo docker pull alpine
+<pre tabindex="0"><code>sudo docker pull alpine
 </code></pre><p>Запустите образ alpine. Посмотрите список контейнеров.</p>
 <p>Выполните команду</p>
-<pre><code>sudo docker run -it alpine
+<pre tabindex="0"><code>sudo docker run -it alpine
 </code></pre><p>Повторите команды из <a href="../vm/#%D0%B7%D0%BD%D0%B0%D0%BA%D0%BE%D0%BC%D1%81%D1%82%D0%B2%D0%BE-%D1%81-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%BE%D0%BC">последнего раздела первой лабораторной работы</a> в терминале alpine.</p>
 <p>Запустите еще один терминал на виртуальной машине и посмотрите в нем список контейнеров. Удалите контейнер с запущенным образом alpine. Посмотрите, что произошло в первом терминале.</p>
 <div class="edit-meta">
@@ -166,6 +166,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-branch/">6. Ветки в GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-remote/">7. Объединение веток в GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-merge/">8. Удаленные ветки в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/java/">9. Виртуальная машина Java</a></li>
 </ul>
   
 </li>

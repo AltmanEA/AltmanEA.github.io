@@ -90,5 +90,14 @@
       <description>Создание удаленных веток. Выборка и выкладывание коммитов в удаленные ветки. Разрешение конфликтов в удаленных ветках. Работа с несколькими удаленными ветками. </description>
     </item>
     
+    <item>
+      <title>9. Виртуальная машина Java</title>
+      <link>https://altmanea.ru/it2/lecture/java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/java/</guid>
+      <description>Установка Java под Linux. Настройка Java, ссылки в Linux. Компиляция простой программы для Java. Обзор примера объектно-ориентированной программы для Java. Сборка и запуск jar файла для Java. Обзор формата jar файла для Java. Обзор реализаций виртуальной машины Java. </description>
+    </item>
+    
   </channel>
 </rss>

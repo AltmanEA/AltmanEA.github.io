@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>4. Настройка ресурсов контейнеров docker - Информационные технологии (часть 2)</title>
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.88.1" />
 <link href="https://altmanea.ru/it2//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://altmanea.ru/it2/labs/container/">
 <link rel="stylesheet" href="https://altmanea.ru/it2/css/theme.min.css">
@@ -64,12 +64,12 @@ sudo docker pull gccЗапустите этот контейнер указав
 <p>Целью данной лабораторной работы является изучение взаимодействия контейнеров docker с операционной системой.</p>
 <h2 id="создание-общей-папки-для-контейнера">Создание общей папки для контейнера</h2>
 <p>Скачайте образ docker, содержащий средства разработки под linux:</p>
-<pre><code>sudo docker pull gcc
+<pre tabindex="0"><code>sudo docker pull gcc
 </code></pre><p>Запустите этот контейнер указав следующие ключи:</p>
-<pre><code>-it -v /home/osboxes/server:/home/osboxes
+<pre tabindex="0"><code>-it -v /home/osboxes/server:/home/osboxes
 </code></pre><p>Ключ <code>-v</code> создает общую папку, доступную на виртуальной машине по пути <code>/home/osboxes/server</code>, а в контейнере по пути <code>/home/osboxes</code>.</p>
 <p>На физическом компьютере или виртуальной машине создайте файл <code>hello.c</code> со следующим содержимым:</p>
-<pre><code>  #include &quot;stdio.h&quot;
+<pre tabindex="0"><code>  #include &quot;stdio.h&quot;
   main () {
       #if defined(_WIN32)
           printf(&quot;hello, windows\n&quot;);
@@ -85,11 +85,11 @@ sudo docker pull gccЗапустите этот контейнер указав
 <p>Скопируйте любую лабораторную работу из 1-го семестра по программированию в расшаренную папку, скомпилируйте ее в контейнере и запустите.</p>
 <h2 id="проброс-портов">Проброс портов</h2>
 <p>Скачайте образ gitbucket (сервер системы контроля версий):</p>
-<pre><code>sudo docker pull gitbucket/gitbucket
+<pre tabindex="0"><code>sudo docker pull gitbucket/gitbucket
 </code></pre><p>При запуске контейнера ключ <code>-it</code> указывать не нужно, нужно указать ключи <code>-v</code> и <code>-p</code>.</p>
 <p>Создайте на физической машине папку для хранения данных gitbucket и сделайте ее с помощью ключа <code>-v</code> общей с папкой контейнера <code>/gitbucket</code> (через общую папку на виртуальной машине).</p>
 <p>Ключ <code>-p</code> нужен для проброса портов. Он имеет формат:</p>
-<pre><code>-p 𝘩𝘰𝘴𝘵_𝘱𝘰𝘳𝘵:𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘦𝘳_𝘱𝘰𝘳𝘵
+<pre tabindex="0"><code>-p 𝘩𝘰𝘴𝘵_𝘱𝘰𝘳𝘵:𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘦𝘳_𝘱𝘰𝘳𝘵
 </code></pre><p>Сервер в контейнере запускается на порту 8080, этот порт следует указать в <code>𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘦𝘳_𝘱𝘰𝘳𝘵</code>. <code>𝘩𝘰𝘴𝘵_𝘱𝘰𝘳𝘵</code> – это порт, на котором будет доступен сервер на виртуальной машине (его нужно пробросить на физическую машину).</p>
 <p>Дождитесь загрузки сервера (в терминале должен появиться текст <code>Server:main: Started</code>). В браузере компьютера зайдите на сервер gitbucket, аутентифицируйтесь под логином <code>root</code> с паролем <code>root</code>.  Создайте репозиторий системы контроля версий с настройками по-умолчанию.</p>
 <p>Перегрузите виртуальную машину, перезапустите контейнер и убедитесь, что учетная запись и репозиторий на сервере сохранились.</p>
@@ -104,17 +104,17 @@ sudo docker pull gccЗапустите этот контейнер указав
 <ul>
 <li>
 <p>настройте пользователя системы контроля версий:</p>
-<pre><code>git config --global user.email &quot;𝘺𝘰𝘶@𝘦𝘹𝘢𝘮𝘱𝘭𝘦.𝘤𝘰𝘮&quot;
+<pre tabindex="0"><code>git config --global user.email &quot;𝘺𝘰𝘶@𝘦𝘹𝘢𝘮𝘱𝘭𝘦.𝘤𝘰𝘮&quot;
 git config --global user.name &quot;𝘠𝘰𝘶𝘳 𝘕𝘢𝘮𝘦&quot;
 </code></pre></li>
 <li>
 <p>создайте и перейдите в каталог для локального репозитория:</p>
-<pre><code>mkdir repo
+<pre tabindex="0"><code>mkdir repo
 cd repo
 </code></pre></li>
 <li>
 <p>создайте репозиторий и привяжите его к репозиторию на сервере:</p>
-<pre><code>touch README.md
+<pre tabindex="0"><code>touch README.md
 git init
 git add README.md
 git commit -m &quot;first commit&quot;
@@ -172,6 +172,7 @@ git push -u origin master
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-branch/">6. Ветки в GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-remote/">7. Объединение веток в GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-merge/">8. Удаленные ветки в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/java/">9. Виртуальная машина Java</a></li>
 </ul>
   
 </li>

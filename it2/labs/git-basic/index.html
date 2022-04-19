@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>5. Основы GIT - Информационные технологии (часть 2)</title>
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.88.1" />
 <link href="https://altmanea.ru/it2//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://altmanea.ru/it2/labs/git-basic/">
 <link rel="stylesheet" href="https://altmanea.ru/it2/css/theme.min.css">
@@ -64,10 +64,10 @@
 </ul>
 <h3 id="команды">Команды</h3>
 <p>Репозиторий создается в папке на компьютере. Для его создания нужно в этой папке дать команду</p>
-<pre><code>git init
+<pre tabindex="0"><code>git init
 </code></pre><p>В папке репозитория будет создана папка <code>.git</code>, в которой будут храниться все служебные файлы репозитория, индекс и коммиты. Хранение коммитов оптимизировано (хранятся только изменения между различными версиями).</p>
 <p>Для просмотра основной информации о состоянии репозитория (прежде всего, о состоянии находящихся в каталоге репозитория файлов) можно использовать следующую команду:</p>
-<pre><code>git status
+<pre tabindex="0"><code>git status
 </code></pre><p>Команды для индексации, фиксации и обратных к ним действий схематично показаны на рисунке 1.</p>
 <center>
 <img src="../images/states.png" width=60%>
@@ -111,7 +111,7 @@ git log
 </pre>
 <p>По умолчанию эта команда выводит метаинформацию о каждом коммите.</p>
 <p>Команда <code>git log</code> имеет много опций для настройки содержания и внешнего вида выводимой информации. Например ключ <code>-p</code> выводит информацию о файлах, в которых произошли изменения в коммите, ключи в виде дефиса и цифры задает количество выводимых коммитов. Ключ <code>--pretty</code> позволяет задать формат вывода информации и, в свою очередь, имеет большое количество опций. Например [4]:</p>
-<pre><code>git log --pretty=format:&quot;%h %ad | %s%d [%an]&quot; --date=short
+<pre tabindex="0"><code>git log --pretty=format:&quot;%h %ad | %s%d [%an]&quot; --date=short
 </code></pre><p>Для просмотра полного списка опций нужно выполнить команду</p>
 <pre>
 git log --help
@@ -178,6 +178,7 @@ git log --help
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-branch/">6. Ветки в GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-remote/">7. Объединение веток в GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-merge/">8. Удаленные ветки в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/java/">9. Виртуальная машина Java</a></li>
 </ul>
   
 </li>

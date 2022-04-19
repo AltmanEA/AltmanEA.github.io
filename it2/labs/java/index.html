@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>9. Платформа Java - Информационные технологии (часть 2)</title>
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.88.1" />
 <link href="https://altmanea.ru/it2//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://altmanea.ru/it2/labs/java/">
 <link rel="stylesheet" href="https://altmanea.ru/it2/css/theme.min.css">
@@ -67,9 +67,9 @@
 <p>Скачайте последнюю версию <a href="https://openjdk.java.net/">OpenJDK</a> (builds tar.gz архив с Linux/x64 версией). Если вы скачивали под хостовой операционной системой, то поместите архив в общую папку, чтобы он был доступен на виртуальной машине.</p>
 <p>Проверьте установленную версию java (с помощью команды, которой проверяли версию под Windows).</p>
 <p>Прочитайте про встроенный архиватор Linux систем <a href="https://losst.ru/komanda-tar-v-linux">tar</a>. Разархивируйте архив в папку <code>/usr/lib/jvm/</code> командой</p>
-<pre><code>sudo tar -zxf 𝑎𝑟𝑐ℎ𝑖𝑣𝑒 -C /usr/lib/jvm/
+<pre tabindex="0"><code>sudo tar -zxf 𝑎𝑟𝑐ℎ𝑖𝑣𝑒 -C /usr/lib/jvm/
 </code></pre><p>Если такой папки не было, то ее нужно будет создать командой</p>
-<pre><code>sudo mkdir /usr/lib/jvm
+<pre tabindex="0"><code>sudo mkdir /usr/lib/jvm
 </code></pre><p>Теперь нужно объяснить системе, что мы установили новую программу. В Ubuntu запускаются программы, расположенные в папке <code>/usr/bin</code>. Однако, размещение больших программ непосредственно в этой папке может привести в путанице, поэтому в ней часто размещают только ссылки на актуальные версии программ.</p>
 <p>Прочитайте про <a href="https://losst.ru/simvolicheskie-i-zhestkie-ssylki-linux">символические и жесткие ссылки Linux</a>. С помощью команды <code>ls -al /usr/bin/</code> определите, где расположен браузер firefox и какого типа ссылки используются в каталоге <code>/usr/bin</code>.</p>
 <blockquote>
@@ -77,34 +77,34 @@
 </blockquote>
 <p>Для некоторых программ, таких как, например, java, для некоторых задач нужно держать на компьютере одновременно несколько версий. В этом случае работу с ссылками на эти программы можно автоматизировать с помощью утилиты <code> update-alternatives</code>.</p>
 <p>Например, следующая команда создаст ссылку на java c приоритетом 1:</p>
-<pre><code>sudo update-alternatives --install /usr/bin/java java /𝑗𝑑𝑘_𝑑𝑖𝑟𝑒𝑐𝑡𝑜𝑟𝑦/bin/java 1
+<pre tabindex="0"><code>sudo update-alternatives --install /usr/bin/java java /𝑗𝑑𝑘_𝑑𝑖𝑟𝑒𝑐𝑡𝑜𝑟𝑦/bin/java 1
 </code></pre><p>Выполните эту команду, и определите, какие ссылки были созданы.</p>
 <p>Изменить используемую версию можно с помощью следующей команды (опробуйте и ее):</p>
-<pre><code>sudo update-alternatives --config java
+<pre tabindex="0"><code>sudo update-alternatives --config java
 </code></pre><h2 id="компиляция-и-запуск-программ">Компиляция и запуск программ</h2>
 <h3 id="простое-консольное-приложение">Простое консольное приложение</h3>
 <p>Создайте в общей папки виртуальной и физической машин каталог для программ на языке Java.</p>
 <p>В этом каталоге создайте файл <code>hello.java</code> со следующим содержимым:</p>
-<pre><code>class Hello {
+<pre tabindex="0"><code>class Hello {
     public static void main(String[] args) {
         System.out.println(&quot;Hello World!&quot;);
     }
 }
 </code></pre><p>Для компиляции исходных кодов на языке java используется компилятор <code>javac</code>. С помощью него можно скомпилировать файл <code>hello.java</code> следующим образом:</p>
-<pre><code>javac hello.java
+<pre tabindex="0"><code>javac hello.java
 </code></pre><p>В результате компиляции получится файл <code>Hello.class</code>. Это скомпилированная программа для виртуальной машины java. Запустить ее можно с помощью команды</p>
-<pre><code>java Hello
+<pre tabindex="0"><code>java Hello
 </code></pre><p>В качестве аргумента в этой команде указывается имя класса (не файла). Виртуальная машина ищет скомпилированный код класса в файлах с расширением <code>.class</code> находящихся в каталоге, из которого запущена программа. В нашем случае такой класс находится. В более сложных случаях указать расположение файлов с классами можно либо с помощью переменной среды <code>CLASSPATH</code>, либо с помощью ключа <code>-classpath</code>.</p>
 <p>После запуска программы в терминале должна появиться фраза <code>Hello World!</code>. Проверьте и сравните работу этой программы под Windows и под Linux.</p>
 <h3 id="приложение-с-графическим-интерфейсом-из-нескольких-файлов">Приложение с графическим интерфейсом из нескольких файлов</h3>
 <p>Создайте в каталоге для программ на языке Java файл <code>GuiMain.java</code>:</p>
-<pre><code>class GuiMain{    
+<pre tabindex="0"><code>class GuiMain{    
     public static void main(String args[]){               
         new Gui();
     }
 }
 </code></pre><p>и <code>Gui.java</code>:</p>
-<pre><code>import java.awt.*;
+<pre tabindex="0"><code>import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -134,10 +134,10 @@ class Gui{
 <p>Проверьте и сравните работу класса <code>GuiMain</code> под Windows и под Linux.</p>
 <p>Программы, содержащие несколько файлов с классами, для удобства использования принято упаковывать в архив типа <code>.jar</code>.
 Соберите такой архив для нашей программы с помощью команды</p>
-<pre><code>jar cfe gui.jar GuiMain Gui.class GuiMain.class
+<pre tabindex="0"><code>jar cfe gui.jar GuiMain Gui.class GuiMain.class
 </code></pre><p>Тут ключ <code>c</code> означает, что создается архив типа <code>.jar</code>; ключ <code>f</code> указывает, что результат нужно записать в файл, который указан далее (<code>gui.jar</code>); ключ <code>e</code> позволяет установить класс, который запускается при запуске архива на выполнение (<code>GuiMain</code>); далее через пробел записываются файлы или каталоги с файлами, которые нужно поместить в архив.</p>
 <p>Запустить архив на выполнение можно с помощью ключа <code>-jar</code>:</p>
-<pre><code>java -jar gui.jar
+<pre tabindex="0"><code>java -jar gui.jar
 </code></pre><p>Выполните и сравните работу полученного файла <code>.jar</code> под Windows и под Linux.</p>
 <p>Определите размер архива <code>.jar</code>. Распакуйте его обычным архиватором. Найдите, где находится метаинформация о программе, в частности, где указывается запускаемый класс.</p>
 <div class="edit-meta">
@@ -188,6 +188,7 @@ class Gui{
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-branch/">6. Ветки в GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-remote/">7. Объединение веток в GIT</a></li>
 <li class=""><a href="https://altmanea.ru/it2/lecture/git-merge/">8. Удаленные ветки в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/java/">9. Виртуальная машина Java</a></li>
 </ul>
   
 </li>
