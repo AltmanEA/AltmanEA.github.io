@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Расширения конфигурации</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="plugin/highlight/github.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+# Безопасное расширение
+
+--
+
+## Создание расширения
+
+![](images/ext/ext-new.jpg)
+
+--
+
+## Настройки расширения
+
+![](images/ext/ext-conf.jpg)
+
+--
+
+## Объекты конфигурации для расширения
+
+![](images/ext/ext-add-dict.jpg)
+
+--
+
+## Создание объекта в расширении
+
+![](images/ext/ext-report.jpg)
+
+--
+
+## Создание объекта в расширении
+
+![](images/ext/ext-query.jpg)
+
+--
+
+## Работа расширения
+
+![](images/ext/ext-report-result.jpg)
+
+--
+
+## Экспорт расширения
+
+![](images/ext/ext-export.jpg)
+
+--
+
+## Импорт расширения
+
+![](images/ext/ext-order.jpg)
+
+---
+
+# Небезопасное расширение
+
+--
+
+## Обновление конфигурации
+
+![](images/ext/upd3-code.jpg)
+
+--
+
+## Обновление конфигурации
+
+![](images/ext/upd3-compile.jpg)
+
+--
+
+## Комплект поставки
+
+![](images/ext/upd3-pack.jpg)
+
+--
+
+## Работа обновления
+
+![](images/ext/upd3-result.jpg)
+
+--
+
+## Расширение
+
+![](images/ext/ext-upd3.jpg)
+
+--
+
+## Ошибка расширения
+
+![](images/ext/ext3-error.jpg)
+
+--
+
+## Работа расширения
+
+![](images/ext/ext3-work.jpg)
+
+
+
+
+                    </script>
+                </section>
+            </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/audio-slideshow/plugin.js"></script>
+		<script src="plugin/audio-slideshow/recorder.js"></script>
+		<script src="plugin/audio-slideshow/RecordRTC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealAudioSlideshow, RevealAudioRecorder ],
+				menu: {
+		        	themes: true,
+        			themesPath: 'dist/theme/',
+		        },
+				audio: {
+					prefix: 'audio/conf/',
+					suffix: '.webm;codecs=opus',
+				},
+			});
+		</script>
+	</body>
+</html>
