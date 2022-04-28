@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>1. Основные операции. - Объектно-ориентированное программирование и обработка данных</title>
-<meta name="generator" content="Hugo 0.87.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 <link href="https://altmanea.ru/oop-data//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://altmanea.ru/oop-data/labs/mongo/crud/">
 <link rel="stylesheet" href="https://altmanea.ru/oop-data/css/theme.min.css">
@@ -63,13 +63,13 @@ incCount(&quot;Tables&quot;)incCount(&quot;Tables&quot;)incCount(&quot;Equatio
 <ol>
 <li>
 <p>Создайте коллекцию mongo для класса, реализующего счетчики:</p>
-<pre><code>@Serializable
+<pre tabindex="0"><code>@Serializable
 data class Count(val name: String, val value: Int = 0)
 </code></pre><p>Добавьте в коллекцию счетчики &ldquo;Tables&rdquo;, &ldquo;Figures&rdquo;, &ldquo;Equations&rdquo;.</p>
 <p>Изучите оператор инкремента <a href="https://docs.mongodb.com/manual/reference/operator/update/inc/">inc</a> и реализуйте функцию, увеличивающую счетчик на единицу:</p>
-<pre><code> fun incCount(countName: String) 
+<pre tabindex="0"><code> fun incCount(countName: String) 
 </code></pre><p>Проверьте работу этой функции на следующем примере и сделайте выводы по работе оператора <code>inc</code>.</p>
-<pre><code>incCount(&quot;Tables&quot;)
+<pre tabindex="0"><code>incCount(&quot;Tables&quot;)
 incCount(&quot;Tables&quot;)
 incCount(&quot;Equations&quot;)
 incCount(&quot;Listings&quot;)
@@ -79,9 +79,9 @@ prettyPrintCursor(counts.find())
 <li>
 <p>Прочитайте про опцию <a href="https://docs.mongodb.com/manual/reference/method/db.collection.update/#update-upsert">upsert</a> функции <code>update</code>. Для того чтобы использовать эту опцию в kmongo, посмотрите в среде разработки определение функции <code>updateOne</code> с третьим аргументом типа <code>UpdateOptions</code> и исходный код класса <code>UpdateOptions</code>.</p>
 <p>Реализуйте функцию, которая в случае, если счетчика нет – создает его, если счетчик уже есть – увеличивает его на 1:</p>
-<pre><code>fun incOrCreateCount(countName: String)
+<pre tabindex="0"><code>fun incOrCreateCount(countName: String)
 </code></pre><p>Протестируйте ее:</p>
-<pre><code>incOrCreateCount(&quot;Tables&quot;)
+<pre tabindex="0"><code>incOrCreateCount(&quot;Tables&quot;)
 incOrCreateCount(&quot;Listings&quot;)
 incOrCreateCount(&quot;Listings&quot;)
 prettyPrintCursor(counts.find())
@@ -144,6 +144,10 @@ prettyPrintCursor(counts.find())
 <li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/indexes/">3. Индексы коллекций.</a></li>
 <li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/pipeline/">4. Конвейерная обработка.</a></li>
 </ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/parse/">4. Поиск в данных</a>
   
 </li>
 </ul>
