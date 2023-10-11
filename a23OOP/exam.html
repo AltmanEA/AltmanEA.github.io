@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>Объектно-ориентированное программирование. Вопросы к экзамену</title>
+    <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
+</head>
+
+<body style="width: 800px;">
+    <script type="text/javascript">
+        console.log(window.location.hostname)
+        if (window.location.hostname == "altmanea.ru")
+            VK.init({
+                apiId: 51579302,
+                onlyWidgets: true
+            })
+        else
+            setTimeout(
+                function () { location.reload() },
+                10000)
+    </script>
+
+    <h3>Вопросы к экзамену </h3>
+
+    <p>Появятся ближе к концу семестра</p>
+
+    <h3>Вопросы и комментарии</h3>
+    <div id="vk_comments"></div>
+    <script type="text/javascript">
+        if (window.location.hostname == "altmanea.ru")
+            VK.Widgets.Comments('vk_comments')
+    </script>
+
+</body>
+
+</html>
