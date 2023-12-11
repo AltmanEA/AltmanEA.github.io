@@ -3,6 +3,10 @@
 <head>
   <title>Объектно-ориентированное программирование. Осень 2023. 22зкм.</title>
   <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
+  <!-- Lightweight client-side loader that feature-detects and load polyfills only when necessary -->
+  <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+  <!-- Load the element definition -->
+  <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
 </head>
 
 <body style="width: 800px;">
@@ -16,7 +20,7 @@
   <a href="https://altmanea.ru">Начальная страница</a>
 
   <h2>Объектно-ориентированное программирование.</h2>
-  
+
   <h3>0. Введение</h3>
   <h4><a href="https://altmanea.ru/courser/oopbasic1/#view?slide=0000">Учебные материалы.</a></h4>
   <h4>Лабораторная работа.</h4>
@@ -51,11 +55,16 @@
 
   <h3>Проверочные работы</h3>
 
-  Проверочные выполняются в виде теста. Для прохождения теста нужно распечатать <a href="https://altmanea.ru/tester/blank.docx">бланк</a>
+  Проверочные выполняются в виде теста. Для прохождения теста нужно распечатать <a
+    href="https://altmanea.ru/tester/blank.docx">бланк</a>
 
   <h2>Расписание занятий</h2>
   <iframe src="https://calendar.yandex.ru/embed/week?&layer_ids=21948198&tz_id=Asia/Omsk&layer_names=ООП" width="800"
     height="450" frameborder="0" style="border: 1px solid #eee"></iframe>
+
+  <h2>Вопросы к экзамену</h2>
+
+  <zero-md src="exam.md"></zero-md>
 
   <h2>Новости и обратная связь</h2>
   <div id="vk_comments"></div>
