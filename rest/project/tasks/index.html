@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Примеры заданий - Разработка REST-сервера</title>
+<meta name="generator" content="Hugo 0.74.3" />
+<link href="https://altmanea.ru/rest//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/rest/project/tasks/">
+<link rel="stylesheet" href="https://altmanea.ru/rest/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/rest/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://altmanea.ru/rest/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="Примеры заданий" />
+<meta property="og:description" content="Сервер оценок Сервер позволяет получать и редактировать оценки студентов по различным предметам (а также самих студентов и предметы, студенты объединяются по группам, у каждой группы – свой список предметов), получать списки учащихся по различным критериям (имеет двойки, только 4 и 5 и т. п.).
+Сервер учебных планов Учебный план представляет собой список дисциплин (дисциплины могут входить в несколько учебных планов), распределенных по нескольким семестрам. Для дисциплины указывается количество часов на лекции, практику, самостоятельную работу, курсовую работу (при наличии), аттестации (и вид аттестации)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/rest/project/tasks/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Примеры заданий"/>
+<meta name="twitter:description" content="Сервер оценок Сервер позволяет получать и редактировать оценки студентов по различным предметам (а также самих студентов и предметы, студенты объединяются по группам, у каждой группы – свой список предметов), получать списки учащихся по различным критериям (имеет двойки, только 4 и 5 и т. п.).
+Сервер учебных планов Учебный план представляет собой список дисциплин (дисциплины могут входить в несколько учебных планов), распределенных по нескольким семестрам. Для дисциплины указывается количество часов на лекции, практику, самостоятельную работу, курсовую работу (при наличии), аттестации (и вид аттестации)."/>
+<meta itemprop="name" content="Примеры заданий">
+<meta itemprop="description" content="Сервер оценок Сервер позволяет получать и редактировать оценки студентов по различным предметам (а также самих студентов и предметы, студенты объединяются по группам, у каждой группы – свой список предметов), получать списки учащихся по различным критериям (имеет двойки, только 4 и 5 и т. п.).
+Сервер учебных планов Учебный план представляет собой список дисциплин (дисциплины могут входить в несколько учебных планов), распределенных по нескольким семестрам. Для дисциплины указывается количество часов на лекции, практику, самостоятельную работу, курсовую работу (при наличии), аттестации (и вид аттестации).">
+
+<meta itemprop="wordCount" content="223">
+
+
+
+<meta itemprop="keywords" content="" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script><script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+
+<script type="text/javascript">
+    VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+</head>
+<body><div class="container"><header>
+<h1>Разработка REST-сервера</h1>
+
+</header>
+
+<div class="content-container">
+<main><h1>Примеры заданий</h1>
+<h2 id="сервер-оценок">Сервер оценок</h2>
+<p>Сервер позволяет получать и редактировать оценки студентов по различным предметам (а также самих студентов и предметы, студенты объединяются по группам, у каждой группы – свой список предметов), получать списки учащихся по различным критериям (имеет двойки, только 4 и 5 и т. п.).</p>
+<h2 id="сервер-учебных-планов">Сервер учебных планов</h2>
+<p>Учебный план представляет собой список дисциплин (дисциплины могут входить в несколько учебных планов), распределенных по нескольким семестрам. Для дисциплины указывается количество часов на лекции, практику, самостоятельную работу, курсовую работу (при наличии), аттестации (и вид аттестации). Сервер позволяет получать и редактировать список учебных планов, общую информацию об отдельном плане (направление, профиль, годы подготовки и др.), списки дисциплин учебного плана (целиком и по семестрам).</p>
+<h2 id="сервер-расписания">Сервер расписания</h2>
+<p>Расписание содержит список событий. Событие может быть повторяющимся (с заданным интервалом и количеством повторений), входить в несколько расписаний. Сервер позволят редактировать события и расписание, получить данные по событиям за определенный интервал для нескольких расписаний, импортировать данные о событиях из файлов расписания для групп ОмГУПС.</p>
+<h2 id="сервер-прав-доступа">Сервер прав доступа</h2>
+<p>Сервер позволят задать и получить права пользователя (никаких, чтение или редактирование) для ресурса. Пользователи и ресурсы могут объединяться в группы, права могут быть назначены для группы пользователей или на группу ресурсов.</p>
+<h2 id="сервер-сообщений-форума">Сервер сообщений форума</h2>
+<p>Сервер позволяет редактировать пользователей, темы форума и права пользователей (оставлять сообщение в определенных темах, редактировать чужие сообщения, права пользователей). Сервер позволяет создавать и редактировать сообщения, просматривать сообщения и историю их редактирования.</p>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/rest/project/28/" title="Варианты"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Варианты</a>
+<a class="nav nav-next" href="https://altmanea.ru/rest/exam/" title="Вопросы к экзамену">Next - Вопросы к экзамену <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script><p align="right">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2019-2020</a>
+</p>
+</footer>
+</main><div class="sidebar">
+
+<nav class="open-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/rest/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/rest/lecture/">Лекции</a>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/rest/labs/">Лабораторные работы</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/rest/labs/uml/">1. Проектирование на UML</a></li>
+<li class=""><a href="https://altmanea.ru/rest/labs/umlcode/">2. Разработка программы по UML диаграммам</a></li>
+<li class=""><a href="https://altmanea.ru/rest/labs/orm/">3. Проектирование ORM</a></li>
+<li class=""><a href="https://altmanea.ru/rest/labs/ormcode/">4. Разработка ORM</a></li>
+<li class=""><a href="https://altmanea.ru/rest/labs/rest/">5. Разработка REST API</a></li>
+<li class=""><a href="https://altmanea.ru/rest/labs/restcode/">6. Разработка REST сервера</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/rest/self/">Самостоятельная работа</a>
+  
+</li>
+
+<li class="parent"><a href="https://altmanea.ru/rest/project/">Курсовая работа</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/rest/project/28/">Варианты</a></li>
+<li class="active"><a href="https://altmanea.ru/rest/project/tasks/">Примеры заданий</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/rest/exam/">Вопросы к экзамену</a>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

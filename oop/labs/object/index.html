@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>3. Объекты - Объектно-ориентированное программирование</title>
+<meta name="generator" content="Hugo 0.87.0" />
+<link href="https://altmanea.ru/oop//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/oop/labs/object/">
+<link rel="stylesheet" href="https://altmanea.ru/oop/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/oop/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://altmanea.ru/oop/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="3. Объекты" />
+<meta property="og:description" content="Теоретические сведения Лекция
+Задание Разработайте игру «Крестики-нолики».
+В некоторой переменной должен храниться символ текущего игрока (&ldquo;X&rdquo; или &ldquo;O&rdquo;). При нажатие на кнопку с пустым текстовым полем в это текстовое поле должен быть записан символ текущего игрока, а сам символ должен измениться.
+В программе реализуйте функцию, которая проверяет, нет ли на поле ряда из трех одинаковых символов. Если такой ряд есть, она возвращает символ из этого ряда. Напишите тесты для этой функции." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/oop/labs/object/" /><meta property="article:section" content="labs" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="3. Объекты"/>
+<meta name="twitter:description" content="Теоретические сведения Лекция
+Задание Разработайте игру «Крестики-нолики».
+В некоторой переменной должен храниться символ текущего игрока (&ldquo;X&rdquo; или &ldquo;O&rdquo;). При нажатие на кнопку с пустым текстовым полем в это текстовое поле должен быть записан символ текущего игрока, а сам символ должен измениться.
+В программе реализуйте функцию, которая проверяет, нет ли на поле ряда из трех одинаковых символов. Если такой ряд есть, она возвращает символ из этого ряда. Напишите тесты для этой функции."/>
+<meta itemprop="name" content="3. Объекты">
+<meta itemprop="description" content="Теоретические сведения Лекция
+Задание Разработайте игру «Крестики-нолики».
+В некоторой переменной должен храниться символ текущего игрока (&ldquo;X&rdquo; или &ldquo;O&rdquo;). При нажатие на кнопку с пустым текстовым полем в это текстовое поле должен быть записан символ текущего игрока, а сам символ должен измениться.
+В программе реализуйте функцию, которая проверяет, нет ли на поле ряда из трех одинаковых символов. Если такой ряд есть, она возвращает символ из этого ряда. Напишите тесты для этой функции.">
+
+<meta itemprop="wordCount" content="96">
+<meta itemprop="keywords" content="" /><script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+
+<script type="text/javascript">
+    VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+</head>
+<body><div class="container"><header>
+<h1>Объектно-ориентированное программирование</h1>
+
+</header>
+
+<div class="content-container">
+<main><h1>3. Объекты</h1>
+<h3 id="теоретические-сведения">Теоретические сведения</h3>
+<p><a href="https://altmanea.ru/oop/slides/object">Лекция</a></p>
+<h3 id="задание">Задание</h3>
+<p>Разработайте игру <a href="https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D0%B5%D1%81%D1%82%D0%B8%D0%BA%D0%B8-%D0%BD%D0%BE%D0%BB%D0%B8%D0%BA%D0%B8">«Крестики-нолики»</a>.</p>
+<p>В некоторой переменной должен храниться символ текущего игрока (&ldquo;X&rdquo; или &ldquo;O&rdquo;). При нажатие на кнопку с пустым текстовым полем в это текстовое поле должен быть записан символ текущего игрока, а сам символ должен измениться.</p>
+<p>В программе реализуйте функцию, которая проверяет, нет ли на поле ряда из трех одинаковых символов. Если такой ряд есть, она возвращает символ из этого ряда. Напишите тесты для этой функции. Функция должны быть реализованна эффективно, с одним оператором <code>if</code> в коде.</p>
+<p>После обнаружения на поле выигрышной комбинации выведите сообщение об окончании игры и о победителе.</p>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop/labs/basic/" title="2. Конструкции структурного программирования в Kotlin"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 2. Конструкции структурного программирования в Kotlin</a>
+<a class="nav nav-next" href="https://altmanea.ru/oop/labs/class/" title="4. Классы">Next - 4. Классы <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script><p align="right">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2019-2020</a>
+</p>
+</footer>
+</main><div class="sidebar">
+
+<nav class="open-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/oop/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/oop/lecture/">Лекции</a>
+  
+</li>
+
+<li class="parent"><a href="https://altmanea.ru/oop/labs/">Лабораторные работы</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop/labs/idea/">1. Среда разработки</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/basic/">2. Конструкции структурного программирования в Kotlin</a></li>
+<li class="active"><a href="https://altmanea.ru/oop/labs/object/">3. Объекты</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/class/">4. Классы</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/inheritance/">5. Наследование</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/relation/">6. Интерфейсы и абстрактные классы</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/extra/">7. Расширение ООП</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/oop/self/">Самостоятельная работа</a>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/oop/exam/">Вопросы к экзамену</a>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

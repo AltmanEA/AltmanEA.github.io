@@ -1,0 +1,730 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Асинхронные функции</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
+<script type="text/template">
+
+## Потоки
+
+Примеры:
+[https://github.com/AltmanEA/edu-async](https://github.com/AltmanEA/edu-async)
+
+~~~
+
+### Процессы и Потоки
+
+<pre class="kotlin"><code>fun printThreadInfo() {
+    val currentThread = Thread.currentThread()
+    val processID = ManagementFactory.getRuntimeMXBean().name
+    println("Thread: ${currentThread.name}")
+    println("Process: $processID")
+}</code></pre>
+
+~~~
+
+### Создание потока
+
+<pre class="kotlin"><code>class MyThread : Thread() {
+    override fun run() {
+        printThreadInfo()
+    }
+}</code></pre>
+
+~~~
+
+### Запуск потока
+
+<pre class="kotlin"><code>    printThreadInfo()
+    MyThread().start()
+    Thread { // interface Runnable
+        printThreadInfo()
+    }
+        .start()
+    thread(name = "MyThread") { printThreadInfo() }
+</code></pre>
+
+</code></pre>
+<pre><code>
+	Thread: main
+	Process: 6792@aisu-mobile
+	Thread: Thread-0
+	Process: 6792@aisu-mobile
+	Thread: Thread-1
+	Process: 6792@aisu-mobile
+	Thread: MyThread
+	Process: 6792@aisu-mobile
+</code></pre>
+
+~~~
+
+### Приостановка потока
+
+<pre class="kotlin"><code>val currentTime
+    get() = System.nanoTime().toString().subSequence(5, 10)
+
+println("Begin of sleep funs $currentTime")
+thread { Thread.sleep(1000L)
+         println("I have woken up $currentTime") }
+thread { Thread.sleep(10000L) 
+        println("I slept for 10 seconds $currentTime") }
+	.interrupt()
+println("End of sleep funs $currentTime")	
+</code></pre>
+
+</code></pre>
+<pre><code>
+	Begin of sleep funs 63349
+	End of sleep funs 63419
+	Exception in thread "Thread-1" java.lang.InterruptedException: sleep interrupted
+		at java.base/java.lang.Thread.sleep(Native Method)
+		at MainKt$sleepThread$2.invoke(main.kt:111)
+		at MainKt$sleepThread$2.invoke(main.kt:110)
+		at kotlin.concurrent.ThreadsKt$thread$thread$1.run(Thread.kt:30)
+	I have woken up 73546
+</code></pre>
+
+~~~
+
+### Ожидание потока
+
+<pre class="kotlin"><code>println("Start of join thread $currentTime")
+thread {
+        Thread.sleep(1000L)
+        println("I have woken up $currentTime")
+}
+	.join()
+println("End of join thread $currentTime")
+</code></pre>
+
+<pre><code>
+	Start of join thread 90704
+	I have woken up 00834
+	End of join thread 00844
+</code></pre>
+
+~~~
+
+### Общий ресурс без синхронизации потоков
+
+<table width="100%"><tr> 
+	 <td width="60%"><pre class="kotlin"><code>var shared = 0
+fun coreSyncFun(op: (Int) -> Int, delay: Long) {
+	val t = op(shared)
+	println("start op $shared -> $t $currentTime")
+	Thread.sleep(delay)
+	println("end  op  $shared -> $t $currentTime")
+	shared = t 
+}
+println("Start in $currentTime")
+thread { for (delay in listOf(300L, 100L))
+	coreSyncFun({ it + 1 }, delay) }
+thread { for (delay in listOf(100L, 300L))
+	coreSyncFun({ it + 10 }, delay)}
+Thread.sleep(1000)
+println(shared)</code></pre></td>
+	 <td width="40%"><pre><code>Start in 75049
+start op 0 -> 10 75471
+start op 0 -> 1 75472
+end  op  0 -> 10 76527
+start op 10 -> 20 76530
+end  op  10 -> 1 78581
+start op 1 -> 2 78584
+end  op  1 -> 20 79545
+end  op  20 -> 2 79678
+2</code></pre></td>
+</tr></table>
+
+~~~
+
+### Общий ресурс с синхронизации потоков
+
+<table width="100%"><tr> 
+	 <td width="60%"><pre class="kotlin"><code>var shared = 0
+@Synchronized
+fun coreSyncFun(op: (Int) -> Int, delay: Long) {
+	val t = op(shared)
+	println("start op $shared -> $t $currentTime")
+	Thread.sleep(delay)
+	println("end  op  $shared -> $t $currentTime")
+	shared = t }
+println("Start in $currentTime")
+thread { for (delay in listOf(300L, 100L))
+	coreSyncFun({ it + 1 }, delay) }
+thread { for (delay in listOf(100L, 300L))
+	coreSyncFun({ it + 10 }, delay)}
+Thread.sleep(1000)
+println(shared)</code></pre></td>
+<td width="40%"><pre><code>Start in 43345
+start op 0 -> 1 43713
+end  op  0 -> 1 46723
+start op 1 -> 2 46725
+end  op  1 -> 2 47799
+start op 2 -> 12 47803
+end  op  2 -> 12 48896
+start op 12 -> 22 48899
+end  op  12 -> 22 51965
+22</code></pre></td>
+</tr></table>
+
+~~~
+
+### Блокировка
+
+<table width="100%"><tr> 
+	 <td width="60%"><pre class="kotlin"><code>val lock = ReentrantLock()
+var shared = 0
+fun lockedOp(op: (Int) -> Int, delay: Long){
+	lock.lock()
+	val t = op(shared)
+	println("start op $shared -> $t $currentTime")
+	Thread.sleep(delay)
+	println("end  op  $shared -> $t $currentTime")
+	shared = t
+	lock.unlock()
+}
+thread { for (delay in listOf(300L, 100L))
+	lockedOp({ it + 1 }, delay) }
+thread { for (delay in listOf(100L, 300L))
+	lockedOp({ it + 10 }, delay) }</code></pre></td>
+<td width="40%"><pre><code>start op 0 -> 1 90011
+end  op  0 -> 1 93047
+start op 1 -> 2 93049
+end  op  1 -> 2 94147
+start op 2 -> 12 94149
+end  op  2 -> 12 95268
+start op 12 -> 22 95270
+end  op  12 -> 22 98401</code></pre></td>
+</tr></table>
+
+~~~
+
+### Взаимная блокировка
+
+<table width="100%"><tr> 
+	 <td width="50%"><pre class="kotlin"><code>val lockA = ReentrantLock()
+val lockB = ReentrantLock()
+thread { 
+	lockA.lock()
+	println("Thread 1 Lock A $currentTime")
+	Thread.sleep(100)
+	lockB.lock()
+	println("Thread 1 Lock B $currentTime")
+	lockB.unlock()
+	lockA.unlock() 
+}
+</code></pre></td>
+<td width="50%"><pre class="kotlin"><code>thread { 
+	lockB.lock()
+	println("Thread 2 Lock B $currentTime")
+	Thread.sleep(100)
+	lockA.lock()
+	println("Thread 2 Lock A $currentTime")
+	lockA.unlock()
+	lockB.unlock() 
+}</code></pre></td>
+</tr></table>
+
+<pre><code>Thread 1 Lock A 04751
+Thread 2 Lock B 04758</code></pre>
+
+!~~~!
+
+## Асинхронные вызовы
+
+~~~
+
+### Kotlin js
+
+<pre class="kotlin"><code>dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-js:1.5.31")
+}
+
+kotlin {
+    js(LEGACY) {
+        binaries.executable()
+        browser { }
+    }
+}</code></pre>
+
+<pre class="kotlin"><code>val currentTime
+    get() = Date.now().toString().subSequence(9, 13)</code></pre>
+
+~~~
+
+### Callback
+
+<pre class="kotlin"><code>window.setTimeout(
+	{ console.log("I woke up at $currentTime") },
+    1000
+)
+console.log("End of timeout example  at $currentTime")</code></pre>
+<pre><code>End of timeout example  at 0349
+I woke up  at 1360</code></pre>
+
+~~~
+
+### Promise
+
+<pre class="kotlin"><code>val promise = Promise< String > { resolve, reject ->
+	window.setTimeout({
+			val isOk = (0..10).random() < 9
+			if (isOk)
+				resolve("Resource downloaded at $currentTime")
+			else
+				reject(Throwable("Download failed at $currentTime"))
+		},1000 ) }
+promise.then(
+	onFulfilled = { console.log(it) },
+	onRejected = { console.log(it.message) }
+)
+console.log("End of promise example at $currentTime")</code></pre>
+<pre><code>End of promise example at 2275
+Resource downloaded at 3790</code></pre>
+
+~~~
+
+### Загрузка ресурсов
+
+<pre class="kotlin"><code>fun resourceDownloader(name: String): Promise< String > {
+    console.log("Start download resource $name at $currentTime")
+    return Promise { resolve, reject ->
+        window.setTimeout( {
+                val isOk = (0..100).random() < 95
+                if (isOk) {
+                    console.log("Resource $name downloaded at $currentTime")
+                    resolve("Resource $name downloaded")
+                } else {
+                    console.log("Download $name failed  at $currentTime")
+                    reject(Throwable("Download $name failed"))
+                }
+            },
+            1000 ) } }</code></pre>
+
+
+~~~
+
+### Загрузка нескольких ресурсов последовательно
+
+<pre class="kotlin"><code>resourceDownloader("A")
+	.then {
+		resourceDownloader("B")
+	}
+	.then {
+		resourceDownloader("C")
+	}</code></pre>
+<pre class="kotlin"><code>Start download resource A at 5356
+Resource A downloaded at 6429
+Start download resource B at 6429
+Resource B downloaded at 7433
+Start download resource C at 7433
+Resource C downloaded at 8437</code></pre>
+
+
+~~~
+
+### Загрузка нескольких ресурсов параллельно
+
+<pre class="kotlin"><code>Promise.all(
+	arrayOf(
+		resourceDownloader("A"),
+		resourceDownloader("B"),
+		resourceDownloader("C")
+	)
+).then {
+	console.log("All downloaded at $currentTime")
+}}</code></pre>
+<pre class="kotlin"><code>Start download resource A at 3350
+Start download resource B at 3401
+Start download resource C at 3402
+Resource A downloaded at 4802
+Resource B downloaded at 4817
+Resource C downloaded at 4818
+All downloaded at 4825</code></pre>		
+
+
+!~~~!
+
+## [Сопрограммы Kotlin](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html)
+
+## Сопрограммы vs потоки
+
+~~~
+
+### Запуск сопрограммы
+
+<pre class="kotlin"><code>fun main() = runBlocking { // this: CoroutineScope
+    launch { // launch a new coroutine and continue
+        delay(1000L) // non-blocking delay for 1 second (default time unit is ms)
+        println("World! ($currentTime)") // print after delay
+    }
+    println("Hello  ($currentTime)") // main coroutine continues while a previous one is delayed
+}</code></pre>
+<pre><code>Hello  (14885)
+World! (25135)</code></pre>
+
+~~~
+
+### Прерываемые функции
+
+<pre class="kotlin"><code>fun main() = runBlocking { // this: CoroutineScope
+    launch { doWorld() }
+    println("Hello ($currentTime)")
+}
+// this is your first suspending function
+suspend fun doWorld() {
+    delay(1000L)
+    println("World! ($currentTime)")
+}</code></pre>
+<pre><code>Hello (21501)
+World! (31666)</code></pre>
+
+~~~
+
+### Задачи
+
+<pre class="kotlin"><code>fun main() = runBlocking {
+    val job = launch { // launch a new coroutine and keep a reference to its Job
+        delay(1000L)
+        println("World!  ($currentTime)")
+    }
+    println("Hello ($currentTime)")
+    job.join() // wait until child coroutine complete
+    println("Done  ($currentTime)")
+}</code></pre>
+<pre><code>Hello (10652)
+World!  (21106)
+Done  (21204)</code></pre>
+
+~~~
+
+### Прерывание задачи
+
+<pre class="kotlin"><code>fun main() = runBlocking {
+    val job = launch {
+        repeat(1000) { i ->
+            println("job: I'm sleeping $i ...  ($currentTime)")
+            delay(500L)
+        }
+    }
+    delay(1300L) // delay a bit
+    println("main: I'm tired of waiting! ($currentTime)")
+    job.cancel() // cancels the job
+    job.join() // waits for job's completion
+    println("main: Now I can quit.  ($currentTime)")
+}</code></pre>
+<pre><code>job: I'm sleeping 0 ...  (57277)
+job: I'm sleeping 1 ...  (62441)
+job: I'm sleeping 2 ...  (67469)
+main: I'm tired of waiting! (70275)
+main: Now I can quit.  (70563)</code></pre>
+
+~~~
+
+### Непрерываемая сопрограмма
+
+<pre class="kotlin"><code>val startTime = System.currentTimeMillis()
+val job = launch(Dispatchers.Default) {
+	var nextPrintTime = startTime
+    var i = 0
+    while (i < 5) { // computation loop, just wastes CPU    
+    	if (System.currentTimeMillis() >= nextPrintTime) {
+        	println("job: I'm sleeping ${i++} ...  ($currentTime)")
+            nextPrintTime += 500L
+        } } }
+delay(1300L) // delay a bit
+println("main: I'm tired of waiting!  ($currentTime)")
+job.cancelAndJoin() // cancels the job and waits for its completion
+println("main: Now I can quit.  ($currentTime)")</code></pre>
+<pre><code>job: I'm sleeping 0 ...  (88723)
+job: I'm sleeping 1 ...  (93321)
+job: I'm sleeping 2 ...  (98321)
+main: I'm tired of waiting!  (01908)
+job: I'm sleeping 3 ...  (03320)
+job: I'm sleeping 4 ...  (08320)
+main: Now I can quit.  (08347)</code></pre>
+
+~~~
+
+### Прерываемая сопрограмма
+
+<pre class="kotlin"><code>val startTime = System.currentTimeMillis()
+val job = launch(Dispatchers.Default) {
+	var nextPrintTime = startTime
+    var i = 0
+    while (isActive) { // cancellable computation loop
+            if (System.currentTimeMillis() >= nextPrintTime) {
+                println("job: I'm sleeping ${i++} ...  ($currentTime)")
+                nextPrintTime += 500L 
+            } } }
+    delay(1300L) // delay a bit
+    println("main: I'm tired of waiting!  ($currentTime)")
+    job.cancelAndJoin() // cancels the job and waits for its completion
+    println("main: Now I can quit.  ($currentTime)")</code></pre>
+<pre><code>job: I'm sleeping 0 ...  (26184)
+job: I'm sleeping 1 ...  (17402)
+job: I'm sleeping 2 ...  (19021)
+job: I'm sleeping 3 ...  (18992)
+main: I'm tired of waiting!  (29176)
+main: Now I can quit.  (33374)</code></pre>
+
+~~~
+
+### Использование ресурсов
+
+<pre class="kotlin"><code>runBlocking {
+	repeat(100_000) { // Launch 100K coroutines
+		launch {
+    		val resource = withTimeout(60) { // Timeout of 60 ms
+        		delay(50) // Delay for 50 ms
+        		Resource() // Acquire a resource and return it from withTimeout block
+    		}
+    		resource.close() // Release the resource
+    	} } }
+    // Outside of runBlocking all coroutines have completed
+    println(acquired) // Print the number of resources still acquired	
+</code></pre>
+<pre><code>652</code></pre>
+
+~~~
+
+### Обработка прерываний
+
+<pre class="kotlin"><code>runBlocking {
+	repeat(100_000) { // Launch 100K coroutines
+		launch {
+			var resource: Resource? = null // Not acquired yet
+			try {
+				withTimeout(60) { // Timeout of 60 ms
+					delay(50) // Delay for 50 ms
+					resource = Resource() // Store a resource to the variable if acquired
+				}
+				// We can do something else with the resource here
+			} finally {
+				resource?.close() // Release the resource if it was acquired
+			} } } }
+	// Outside of runBlocking all coroutines have completed
+	println(acquired) // Print the number of resources still acquired
+</code></pre>
+<pre><code>0</code></pre>
+
+!~~~!
+
+## Доступ к ресурсам
+
+~~~
+
+### Разделяемые ресурсы
+
+<table width="100%"><tr> 
+	<td width="70%"><pre class="kotlin"><code>println("Start in $currentTime")
+var shared = 0
+suspend fun coreSyncFun(op: (Int) -> Int, delay: Long) {
+	val t = op(shared)
+	println("start op $shared -> $t $currentTime")
+	delay(delay)
+	println("end  op  $shared -> $t $currentTime")
+	shared = t }
+runBlocking {
+	launch { for (delay in listOf(300L, 100L))
+		coreSyncFun({ it + 1 }, delay) }
+	launch { for (delay in listOf(100L, 300L))
+		coreSyncFun({ it + 10 }, delay) }
+	delay(1000)
+	println(shared) }</code></pre></td>
+<td width="30%"><pre><code>Start in 58396
+start op 0 -> 1 71723
+start op 0 -> 10 72392
+end  op  0 -> 10 84919
+start op 10 -> 20 86535
+end  op  10 -> 1 87725
+start op 1 -> 2 87828
+end  op  1 -> 20 98369
+end  op  20 -> 2 98938
+2</code></pre></td>
+</tr></table>
+
+~~~
+
+### Mutex
+
+<table width="100%"><tr> 
+	<td width="70%"><pre class="kotlin"><code>println("Start in $currentTime")
+val mutex = Mutex()
+var shared = 0
+suspend fun coreSyncFun(op: (Int) -> Int, delay: Long) {
+	mutex.withLock {
+		val t = op(shared)
+		println("start op $shared -> $t $currentTime")
+		delay(delay)
+		println("end  op  $shared -> $t $currentTime")
+		shared = t
+	}
+}</code></pre></td>
+<td width="30%"><pre><code>Start in 59917
+start op 0 -> 1 72591
+end  op  0 -> 1 03028
+start op 1 -> 11 03444
+end  op  1 -> 11 14470
+start op 11 -> 12 14517
+end  op  11 -> 12 25376
+start op 12 -> 22 25486
+end  op  12 -> 22 56602
+22</code></pre></td>
+</tr></table>
+
+~~~
+
+### Атомарные ресурсы
+
+<table width="100%"><tr> 
+	<td width="70%"><pre class="kotlin"><code>println("Start in $currentTime")
+var shared = AtomicInteger()
+suspend fun coreSyncFun(
+	op: (AtomicInteger) -> AtomicInteger, delay: Long) {
+	val t = op(shared)
+	println("start op $shared -> $t $currentTime")
+	delay(delay)
+	println("end  op  $shared -> $t $currentTime")
+	shared = t }
+runBlocking { launch { for (delay in listOf(300L, 100L))
+		coreSyncFun({ it.apply {  getAndAdd(1) }}, delay) }
+	launch { for (delay in listOf(100L, 300L))
+		coreSyncFun({it.apply {  getAndAdd(10) } }, delay) }
+	delay(1000)
+	println(shared) }</code></pre></td>
+<td width="30%"><pre><code>Start in 75952
+start op 1 -> 1 90694
+start op 11 -> 11 90750
+end  op  11 -> 11 02127
+start op 21 -> 21 02269
+end  op  21 -> 21 22211
+start op 22 -> 22 22233
+end  op  22 -> 22 32963
+end  op  22 -> 22 33022
+22</code></pre></td>
+</tr></table>
+
+~~~
+
+### Каналы
+
+<table width="100%"><tr> 
+	<td width="70%"><pre class="kotlin"><code>val channel = Channel< Int >()
+launch {
+	for (x in 1..5) {
+		channel.send(x * x)
+		delay(1000)
+	}
+	channel.close() // we're done sending
+}
+for (y in channel) 
+	println("$y $currentTime")
+println("Done!")</code></pre></td>
+<td width="30%"><pre><code>1 49549
+4 49888
+9 51128
+16 52096
+25 53597
+Done!</code></pre></td>
+</tr></table>
+
+!~~~!
+
+## Асинхронные вызовы
+
+~~~
+
+### Последовательное выполнение приостанавливаемых функций
+
+<pre class="kotlin"><code>suspend fun doSomethingUsefulOne(): Int {
+    delay(1000L) // pretend we are doing something useful here
+    return 13 }
+suspend fun doSomethingUsefulTwo(): Int {
+    delay(1000L) // pretend we are doing something useful here, too
+    return 29 }
+val time = measureTimeMillis {
+	val one = doSomethingUsefulOne()
+    val two = doSomethingUsefulTwo()
+    println("The answer is ${one + two}")
+}
+println("Completed in $time ms")</code></pre>
+<pre><code>The answer is 42
+Completed in 2022 ms</code></pre>
+
+
+~~~
+
+### Параллельное выполнение приостанавливаемых функций
+
+<pre class="kotlin"><code>
+val time = measureTimeMillis {
+	val one: Deferred< Int > = async { doSomethingUsefulOne() }
+    val two: Deferred< Int > = async { doSomethingUsefulTwo() }
+    println("The answer is ${one.await() + two.await()}")
+}
+println("Completed in $time ms")</code></pre>
+<pre><code>The answer is 42
+Completed in 1086 ms</code></pre>
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				width: '90%',
+    			height: '100%',
+				// Learn about plugins: https://revealjs.com/plugins/
+				// plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				// audio: {
+				// 	prefix: 'audio/',
+				// 	suffix: '.webm;codecs=opus',
+				// 	autoplay: false,
+				// 	advance: -1,
+				// },
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu ],
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title>Объектно-ориентированное программирование. Лабораторная работа 1. Основы typescript </title>
+    <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
+</head>
+
+<body style="width: 800px;">
+    <script type="text/javascript">
+        console.log(window.location.hostname)
+        if (window.location.hostname == "altmanea.ru")
+            VK.init({
+                apiId: 51579302,
+                onlyWidgets: true
+            })
+        else
+            setTimeout(
+                function () { location.reload() },
+                10000)
+    </script>
+
+    <h3>1. Основы typescript</h3>
+
+    <p><b>Цель работы</b> - изучить особенности использования основных элементов структурного программирования
+        (переменные, типы данных, управляющие конструкции, функции) на языке <code>typescript</code>.
+    </p>
+    <p>Реализуйте игру в крестики-нолики на доске 3 на 3, используя коды из
+        <a href="https://raw.githubusercontent.com/AltmanEA/OOPBasic1/main/20_typescript/10_Intro_start.zip">
+            исходного проекта</a>.
+    </p>
+    <p>Рекомендуется реализовывать функции из исходного проекта в описанном ниже порядке, сразу проверяя их с помощью
+        тестов. Для запуска отдельного теста используйте команду по образцу <code>jest -t "Преобразования"</code>.
+    </p>
+    <p>Функция <b><code>function boardFromString(s: string): string[]</code></b> должна преобразовывать текущую позицию
+        из
+        строки (например <code>00__XX___</code>) в массив (например <code>    [
+            '0', '0', '_',
+            '_', 'X', 'X',
+            '_', '_', '_'
+          ]
+      </code>). В виде строки удобно задавать начальную позицию в коде. При выполнении кода, определении победителя и
+        др. удобнее использовать представлении в виде массива.
+        Функция <b><code>function boardToString(b: string[]): string</code></b> должна выполнять обратное
+        преобразование</p>
+    <p>Функция <b><code>function isFill(board: string[]): boolean</code></b> должна проверять, имеются ли на доске
+        свободные клетки. Если ни в одном из элементов массива <code>board</code> нет элементов равных <code>_</code>
+        она возвращает <code>true</code>.</p>
+    <p>Функция <b><code>function isRightMove(move: number, board: string[]): boolean</code></b> должна проверять
+        свободно ли поле <code>move</code> (равно ли ее значение <code>_</code>) на доске <code>board</code>.</p>
+    <p>Функция <b><code>function checkWin(board: string[]): string</code></b> должна проверять,
+        имеется ли на доске выигрышная комбинация в виде ряда из трех одинаковых символов <code>X</code> или
+        <code>0</code>. В случае наличия такой комбинации функция должна вернуть <code>X</code> или
+        <code>0</code> соответственно, иначе нужно вернуть <code>_</code>. Для этого нужно проверить все возможные
+        варианты рядов, которые перечисленны в <code>winPos</code>.
+    </p>
+    <p>В файле <b><code>index.ts</code></b> переменная <code>board</code> хранит текущее состояние доски, переменная
+        <code>turn</code> - символ, который будет выставлен на доску при очередном ходе, переменная
+        <code>gameOver</code> устанавливается в значение "истина" при окончании игры (кто-то выиграли или закончились
+        пустые поля).
+    </p>
+    <p>Функция <b><code>function step(cell: number): void</code></b> в случае, если игра не окончена и в клетку
+        <code>cell</code> возможен ход, должна выполнить ход. При выполнении хода нужно заполнить соответствующие
+        элементы массивов <code>board</code> и <code>buttons</code>, затем проверить, на закончилась ли игра и, если
+        игра закончилась, обновить переменные <code>gameOver</code> и <code>info</code>.
+    </p>
+    <p>Функция <b><code>reset</code></b> должна установить в начальное состояние переменные <code>board</code>,
+        <code>turn</code> и <code>gameOver</code>, а также установить в начальное состояние свойство
+        <code>textContent</code> html элементов <code>buttons</code> и <code>info</code>.
+    </p>
+
+    <h3>Вопросы и комментарии</h3>
+    <div id="vk_comments"></div>
+    <script type="text/javascript">
+        if (window.location.hostname == "altmanea.ru")
+            VK.Widgets.Comments('vk_comments')
+    </script>
+
+</body>
+
+</html>

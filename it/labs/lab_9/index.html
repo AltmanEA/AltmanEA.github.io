@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>9. Растровые рисунки - Информационные технологии</title>
+<meta name="generator" content="Hugo 0.74.3" />
+<link href="https://altmanea.ru/it//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/it/labs/lab_9/">
+<link rel="stylesheet" href="https://altmanea.ru/it/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/it/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://altmanea.ru/it/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="9. Растровые рисунки" />
+<meta property="og:description" content="Краткие теоретические сведения Лекция
+Задание к работе Для просмотра и редактирования файлов в виде шестнадцатеричных кодов рекомендуется использовать редактор frhed.
+ Формат BMP  Откройте файл fig.bmp в редакторе frhed и с помощью средства просмотра фотографий Windows (или другой программе для просмотра фотографий). Откройте описание формата BMP и сверяйте по нему следующие действия. Посмотрите описание структуры «BITMAPFILEHEADER». Убедитесь, что первые два байта содержат код 424D, что означает, что этот файл в формате BMP." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/it/labs/lab_9/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="9. Растровые рисунки"/>
+<meta name="twitter:description" content="Краткие теоретические сведения Лекция
+Задание к работе Для просмотра и редактирования файлов в виде шестнадцатеричных кодов рекомендуется использовать редактор frhed.
+ Формат BMP  Откройте файл fig.bmp в редакторе frhed и с помощью средства просмотра фотографий Windows (или другой программе для просмотра фотографий). Откройте описание формата BMP и сверяйте по нему следующие действия. Посмотрите описание структуры «BITMAPFILEHEADER». Убедитесь, что первые два байта содержат код 424D, что означает, что этот файл в формате BMP."/>
+<meta itemprop="name" content="9. Растровые рисунки">
+<meta itemprop="description" content="Краткие теоретические сведения Лекция
+Задание к работе Для просмотра и редактирования файлов в виде шестнадцатеричных кодов рекомендуется использовать редактор frhed.
+ Формат BMP  Откройте файл fig.bmp в редакторе frhed и с помощью средства просмотра фотографий Windows (или другой программе для просмотра фотографий). Откройте описание формата BMP и сверяйте по нему следующие действия. Посмотрите описание структуры «BITMAPFILEHEADER». Убедитесь, что первые два байта содержат код 424D, что означает, что этот файл в формате BMP.">
+
+<meta itemprop="wordCount" content="385">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+crossorigin="anonymous"
+onload='renderMathInElement(document.body);'></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
+
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+<script type="text/javascript">
+    VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+</head>
+<body><div class="container"><header>
+<h1>Информационные технологии</h1>
+
+</header>
+
+<div class="content-container">
+<main><h1>9. Растровые рисунки</h1>
+<h2 id="краткие-теоретические-сведения">Краткие теоретические сведения</h2>
+<p><a href="https://altmanea.ru/it/slides/figure/">Лекция</a></p>
+<h2 id="задание-к-работе">Задание к работе</h2>
+<p>Для просмотра и редактирования файлов в виде шестнадцатеричных кодов рекомендуется использовать редактор <a href="http://frhed.sourceforge.net/en/">frhed</a>.</p>
+<ol>
+<li>Формат BMP
+<ol>
+<li>Откройте файл <a href="../images/fig.bmp">fig.bmp</a> в редакторе frhed и с помощью средства просмотра фотографий Windows (или другой программе для просмотра фотографий). Откройте <a href="https://ru.wikipedia.org/wiki/BMP">описание формата BMP</a> и сверяйте по нему следующие действия.</li>
+<li>Посмотрите описание структуры «BITMAPFILEHEADER». Убедитесь, что  первые два байта содержат код 424D, что означает, что этот файл в формате BMP.</li>
+<li>Следующие 4 байта задают размер файла. Они записаны в так называемом формате little-endian, что означает, что первый байт (по адресу 0x2) это младший 256-битный разряд всего числа. В некоторых случаях применяется формат big-endian, в котором первый байт это старший разряд. С помощью калькулятора переведите число в десятичную систему и сравните его с размером файла, сообщаемом операционной системой.</li>
+<li>4 байта начиная с 10 задают адрес пиксельных данных, т.е. адрес байт в которых хранятся значения цветов пикселей. Запишите или запомните его.</li>
+<li>Посмотрите описание структуры «BITMAPINFO». Определите версию этой структуры по ее размеру.</li>
+<li>Найдите в полях этой структуры ширину и высоту пиксельных данных, а также количество бит на пиксель. Перемножив эти три числа, найдите количество байт, занимаемых пиксельными данными.</li>
+<li>Откройте частичное шестнадцатеричное представление файла fig1.bmp (в frhed меню «File–Open partially»). Подберите размеры окна так, чтобы в нем отображалось ровно такое количество строчек, которое было равно высоте пиксельных данных. Сравните такое представление данных с отображением файла fig1.bmp в окне средства просмотра фотографий.</li>
+<li>Измените значение первых трех байт на «00» и сохраните файл. Что произошло с рисунком?</li>
+<li>Последовательно изменяйте значения первых трех байт на «ff», сохраняя каждый раз файл. Каким цветам соответствуют каждый их этих байтов?</li>
+<li>Проверьте все варианты, в которых два первых байта из трех равны «ff», а третий «00». Объясните полученные результаты.</li>
+</ol>
+</li>
+<li>Свойства растровых изображений
+<ol>
+<li>Создайте пустой документ Microsoft Word и вставьте в него файл fig1.bmp. Увеличьте изображение в 10 раз («Формат рисунка–Рисунка-Масштаб–1000%»). Объясните, что произошло с изображением?</li>
+<li>Откройте в MS Paint рисунок fig1.bmp, увеличьте максимально его изображение. Нарисуйте диагональную линию минимальной толщины.  Прочитайте про алгоритмы <a href="https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%91%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%85%D1%8D%D0%BC%D0%B0">Брезенхэма</a> и <a href="https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%92%D1%83">Ву</a> и определите, какой из этих алгоритмов используется в MS Paint.</li>
+</ol>
+</li>
+<li>Сжатие изображений
+<ol>
+<li>С помощью программы <a href="https://saerasoft.com/caesium/">Caesium</a> постройте таблицу соответствия между качеством сжатия и размером выходного файла для файла fig1.bmp (в таблице должны быть все значения качества сжатия кратные 20). Оцените визуально минимальное качество сжатия, при котором не заметны искажения.</li>
+<li>Повторите предыдущий пункт для фотографии из 2 лабораторной работы.</li>
+</ol>
+</li>
+</ol>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/it/labs/lab_8/" title="8. Формат DOCX"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 8. Формат DOCX</a>
+<a class="nav nav-next" href="https://altmanea.ru/it/labs/lab_10/" title="10. Векторные рисунки">Next - 10. Векторные рисунки <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script><p align="right">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2019-2020</a>
+</p>
+</footer>
+</main><div class="sidebar">
+
+<nav class="open-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/it/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/it/lecture/">Лекции</a>
+  
+</li>
+
+<li class="parent"><a href="https://altmanea.ru/it/labs/">Лабораторные работы</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/it/labs/lab_1/">1. Работа с текстом и кодировки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_2/">2. Язык разметки markdown</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_3/">3. Таблицы, код и формулы в markdown</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_4/">4. Математические формулы</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_5/">5. Основы HTML</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_6/">6. Стиль текста</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_7/">7. Активные элементы текста</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_8/">8. Формат DOCX</a></li>
+<li class="active"><a href="https://altmanea.ru/it/labs/lab_9/">9. Растровые рисунки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_10/">10. Векторные рисунки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_11/">11. Диаграммы</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_12/">12. Технические рисунки</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/it/self/">Самостоятельная работа</a>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/it/exam/">Вопросы к экзамену</a>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

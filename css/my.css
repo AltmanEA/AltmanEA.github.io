@@ -1,0 +1,15 @@
+header {
+  background: #ddd;
+}
+header h1 {
+  color: #006;
+}
+.menu {
+  background: #eee;
+}
+.menu a{
+  color: #006;
+}
+.menu a:hover{
+  color: #00f;
+}

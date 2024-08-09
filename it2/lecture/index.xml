@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Лекции on Информационные технологии (часть 2)</title>
+    <link>https://altmanea.ru/it2/lecture/</link>
+    <description>Recent content in Лекции on Информационные технологии (часть 2)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language><atom:link href="https://altmanea.ru/it2/lecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Рабочая тетрадь</title>
+      <link>https://altmanea.ru/it2/lecture/workbook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/workbook/</guid>
+      <description>Содержание На каждой странице рабочей тетради необходимо написать свою фамилию и группу. Перед каждым занятием на полях или в отдельной строке по центру тетради нужно поставить его дату.
+В рабочую тетрадь заносится конспект лекций и ответы на вопросы проводимой на лекции проверочной работы.
+В конспект лекций записываются название видео и его основные идеи (тезисы). При необходимости, после просмотра видео на лекции можно уточнить правильность понимания сказанного у преподавателя.
+Вопросы проверочной работы и ответы на них записываются в ту же тетрадь, что и конспект лекций.</description>
+    </item>
+    
+    <item>
+      <title>1. Установка Ubuntu на виртуальную машину</title>
+      <link>https://altmanea.ru/it2/lecture/vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/vm/</guid>
+      <description>Подготовка к установке Создание виртуальной машины Определение термина виртуальная машина Русификация Ubuntu </description>
+    </item>
+    
+    <item>
+      <title>2. Взаимодействие виртуальной и физической машины в VirtualBox</title>
+      <link>https://altmanea.ru/it2/lecture/share/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/share/</guid>
+      <description>Тестовый веб-сервер на Python. Настройка сетевых портов. Общая папка в VirtualBox. Права доступа в Linux. Доступ к общей папке VirtualBox из Linux. Работа с общей папкой VirtualBox. </description>
+    </item>
+    
+    <item>
+      <title>3. Основы docker</title>
+      <link>https://altmanea.ru/it2/lecture/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/docker/</guid>
+      <description>Введение в docker. Менеджер пакетов apt. Установка docker. Замечания по установке docker. Работа с образами. </description>
+    </item>
+    
+    <item>
+      <title>4. Настройка ресурсов контейнеров docker</title>
+      <link>https://altmanea.ru/it2/lecture/container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/container/</guid>
+      <description>Создание папки для контейнера docker. Общий исходный код для Windows и контейнера docker. Настройка порта для сервера в контейнере. Виртуальная сеть контейнеров docker. Сетевое взаимодействие (клонирование репозитория) между контейнерами. </description>
+    </item>
+    
+    <item>
+      <title>5. Основы GIT</title>
+      <link>https://altmanea.ru/it2/lecture/git-basic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/git-basic/</guid>
+      <description>Введение в системы контроля версий. Терминология систем контроля версий. Команды git для изменения состояния файлов. Команды git для отмены изменений состояния файлов. Команды git для просмотра и изменения зафиксированных состояний (commits). </description>
+    </item>
+    
+    <item>
+      <title>6. Ветки в GIT</title>
+      <link>https://altmanea.ru/it2/lecture/git-branch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/git-branch/</guid>
+      <description>Понятие веток в системах контроля версий. Создание веток и переход между ними. Отмена операций с ветками и коммитами. </description>
+    </item>
+    
+    <item>
+      <title>7. Объединение веток в GIT</title>
+      <link>https://altmanea.ru/it2/lecture/git-remote/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/git-remote/</guid>
+      <description>Слияние веток. Разрешение конфликта при слиянии веток. Перебазирование веток. Разрешение конфликтов при перебазировании веток. </description>
+    </item>
+    
+    <item>
+      <title>8. Удаленные ветки в GIT</title>
+      <link>https://altmanea.ru/it2/lecture/git-merge/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/git-merge/</guid>
+      <description>Создание удаленных веток. Выборка и выкладывание коммитов в удаленные ветки. Разрешение конфликтов в удаленных ветках. Работа с несколькими удаленными ветками. </description>
+    </item>
+    
+    <item>
+      <title>9. Виртуальная машина Java</title>
+      <link>https://altmanea.ru/it2/lecture/java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/it2/lecture/java/</guid>
+      <description>Установка Java под Linux. Настройка Java, ссылки в Linux. Компиляция простой программы для Java. Обзор примера объектно-ориентированной программы для Java. Сборка и запуск jar файла для Java. Обзор формата jar файла для Java. Обзор реализаций виртуальной машины Java. </description>
+    </item>
+    
+  </channel>
+</rss>

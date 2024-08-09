@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>7. Объединение веток - Информационные технологии (часть 2)</title>
+<meta name="generator" content="Hugo 0.88.1" />
+<link href="https://altmanea.ru/it2//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/it2/labs/git-merge/">
+<link rel="stylesheet" href="https://altmanea.ru/it2/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/it2/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script src="https://altmanea.ru/it2/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="7. Объединение веток" />
+<meta property="og:description" content="Теоретические сведения Слияние веток Основная цель создание дополнительных веток – проработать отдельный элемент проекта автономно а затем присоединить его к проекту. Поэтому в большинстве случаев эти ветки в конечном итоге объединяются с веткой master. Процедура объединения веток называется слияние (merge).
+Для слияния текущей ветки с какой-либо другой используется команда
+git merge имя_веткиВ результате выполнения этой команды в текущей ветке появится новый коммит. Этот коммит будет иметь два предка – последние коммиты обоих веток, участвующих в слиянии." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/it2/labs/git-merge/" /><meta property="article:section" content="labs" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="7. Объединение веток"/>
+<meta name="twitter:description" content="Теоретические сведения Слияние веток Основная цель создание дополнительных веток – проработать отдельный элемент проекта автономно а затем присоединить его к проекту. Поэтому в большинстве случаев эти ветки в конечном итоге объединяются с веткой master. Процедура объединения веток называется слияние (merge).
+Для слияния текущей ветки с какой-либо другой используется команда
+git merge имя_веткиВ результате выполнения этой команды в текущей ветке появится новый коммит. Этот коммит будет иметь два предка – последние коммиты обоих веток, участвующих в слиянии."/>
+<meta itemprop="name" content="7. Объединение веток">
+<meta itemprop="description" content="Теоретические сведения Слияние веток Основная цель создание дополнительных веток – проработать отдельный элемент проекта автономно а затем присоединить его к проекту. Поэтому в большинстве случаев эти ветки в конечном итоге объединяются с веткой master. Процедура объединения веток называется слияние (merge).
+Для слияния текущей ветки с какой-либо другой используется команда
+git merge имя_веткиВ результате выполнения этой команды в текущей ветке появится новый коммит. Этот коммит будет иметь два предка – последние коммиты обоих веток, участвующих в слиянии.">
+
+<meta itemprop="wordCount" content="623">
+<meta itemprop="keywords" content="" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148810194-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148810194-1');
+</script></head>
+<body><div class="container"><header>
+<h1>Информационные технологии (часть 2)</h1>
+</header>
+
+<div class="content-container">
+<main><h1>7. Объединение веток</h1>
+<h2 id="теоретические-сведения">Теоретические сведения</h2>
+<h3 id="слияние-веток">Слияние веток</h3>
+<p>Основная цель создание дополнительных веток – проработать отдельный элемент проекта автономно а затем присоединить его к проекту. Поэтому в большинстве случаев эти ветки в конечном итоге объединяются с веткой <code>master</code>. Процедура объединения веток называется <strong>слияние</strong> (merge).</p>
+<p>Для слияния текущей ветки с какой-либо другой используется команда</p>
+<pre>
+git merge <i>имя_ветки</i>
+</pre>
+<p>В результате выполнения этой команды в текущей ветке появится новый коммит. Этот коммит будет иметь два предка – последние коммиты обоих веток, участвующих в слиянии. Содержимое этого коммита будет включать содержимое коммитов обоих веток.</p>
+<p>Изменения, происходящие с репозиторием при выполнении команды <code>git merge</code> схематично показаны на рисунках 3 и 4.</p>
+<center>
+<img src="../images/before.png" width=30%>
+<p>Рисунок 3 – Состояние репозитория до слияния</p>
+</center>
+<center>
+<img src="../images/merge.png"  width=45%>
+<p>Рисунок 4 – Состояние репозитория после слияния</p>
+</center>
+<p>После слияния веток одна из них становится лишней. Ее можно удалить командой <code>git branch -d</code>.</p>
+<p>Типичная последовательность действий, которой завершается работа над какой-либо задачей проекта в отдельной ветке (назовем ее для примера <code>task</code>), будет такой:</p>
+<pre>
+git checkout master
+git merge task
+git branch -d task
+</pre>
+<h3 id="конфликты-при-слиянии">Конфликты при слиянии</h3>
+<p>При слиянии может возникнуть ситуация, когда фрагмент в каком-либо файле проекта в различных ветках отредактирован по разному. Такая ситуация называется <strong>конфликт</strong> (conflict).</p>
+<p>В случае возникновения конфликтов git заносит в создаваемый при объединении коммит файл, содержащий текст обоих версий. Начало конфликтного фрагмента помечается строкой, начинающиеся с символов <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> и содержащей имя первой ветки, а заканчивается строкой, начинающиеся с символов <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> и содержащей имя вливаемой ветки. Версии из каждой ветки разделяются строкой с символами <code>=======</code>. Такой файл получает статус <strong>не объединенный</strong> (unmerged).</p>
+<p>При возникновении конфликта пользователь должен в ручном режиме его устранить. Посмотреть список не объединенных файлов можно с помощью команды <code>git status</code>. После редактирования конфликтной области и сохранения файла, нужно сообщить git о разрешении конфликта с помощью индексирования этого файла (после чего он перейдет в состояние «измененный»).</p>
+<h3 id="перемещение">Перемещение</h3>
+<p>В СКВ git существует альтернативный способ объединения веток. Он называется <strong>Перемещение</strong> (rebase, часто переводиться как перебазирование).</p>
+<p>В общем случае операции слияния и перемещения формируют одинаковый результирующий коммит. Отличаются эти операции внутренними алгоритмами получения результирующего коммита, а также тем, что операция перемещения изменяет историю коммитов. Схематично результат перемещения для приведенного выше репозитория представлен на рисунке 5.</p>
+<center>
+<img src="../images/rebase.png" width=45%>
+<p>Рисунок 5 – Состояние репозитория после перемещения</p>
+</center>
+<p>В случае операции слияния имеющиеся в репозитории коммиты не изменяются, в частности, не изменяются их предки. Операция перемещения изменяет историю коммитов, размещая коммиты ветки, в которой происходит слияния, после коммитов ветки, с которой происходит слияние.
+В результате коммит, возникающий при операции перемещения, имеет одного предка, а обе ветки, участвующие в слиянии, состоят из одной цепочки коммитов.</p>
+<p>Какой способ объединения веток использовать (слияние или перемещение) во многом является делом вкуса. Слияние сохраняет историю коммитов, а перемещение позволят прибраться в структуре коммитов. Единственное существенное ограничение, которое накладывается на выбор операции, состоит в том, что перемещение нельзя использовать для коммитов, для которых есть копии в других репозиториях или на сервере (подробнее копирование репозиториев рассмотрено в следующей работе).</p>
+<h2 id="задание-к-работе">Задание к работе</h2>
+<p>После выполнения каждого пункта задания нужно выполнить команды для просмотра состояния тех частей репозитория (дерева коммитов, индекс, файлы из рабочего каталога), которые могут измениться при выполнении этого пункта.</p>
+<ol>
+<li>Предположим, что перед нами стоит задача записать контактную информацию. В репозитории из предыдущей работы создайте ветку для выполнение задачи, назовите ее по шаблону <code>имя_one</code>, где <code>имя</code> – транслитерация вашего имени.</li>
+<li>В этой ветке создайте коммит, в котором в файл добавлен Ваш номер телефона (можете указать произвольный номер).</li>
+<li>Произведите слияние к ветки <code>master</code> ветки <code>имя_one</code>. Удалите ветку <code>имя_one</code>.</li>
+<li>Создайте новую ветку с названием по шаблону <code>имя_two</code>. Добавьте в нее коммит, в котором в файл добавлен Ваш домашний адрес (можете указать произвольный адрес).</li>
+<li>В ветку <code>master</code> добавьте коммит, в котором в файл добавлен ваш электронный адрес.</li>
+<li>Произведите слияние к ветки <code>master</code> ветки <code>имя_two</code>. Разрешите возникший конфликт.</li>
+<li>Повторите предыдущие пункты (использую имена веток <code>имя_three</code> и <code>имя_four</code>), выполняя вместо операции слияния операцию перемещения. Сделайте выводы о различиях этих операций.</li>
+</ol>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/it2/labs/git-branch/" title="6. Ветки в GIT"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 6. Ветки в GIT</a>
+<a class="nav nav-next" href="https://altmanea.ru/it2/labs/git-remote/" title="8. Удаленные репозитории">Next - 8. Удаленные репозитории <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p align="right">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2020-2021</a>
+</p>
+</footer>
+</main>
+<div class="sidebar">
+
+<nav class="slide-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/it2/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/it2/exam/">Зачет</a>
+  
+</li>
+
+<li class="parent has-sub-menu"><a href="https://altmanea.ru/it2/labs/">Лабораторные<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/it2/labs/vm/">1. Установка Ubuntu на виртуальную машину</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/share/">2. Взаимодействие гостевой ОС и хоста</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/docker/">3. Основы docker</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/container/">4. Настройка ресурсов контейнеров docker</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/git-basic/">5. Основы GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/git-branch/">6. Ветки в GIT</a></li>
+<li class="active"><a href="https://altmanea.ru/it2/labs/git-merge/">7. Объединение веток</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/git-remote/">8. Удаленные репозитории</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/java/">9. Платформа Java</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/cmake/">10. Сборка кроссплатформенных программ</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/it2/lecture/">Лекции<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/it2/lecture/workbook/">Рабочая тетрадь</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/vm/">1. Установка Ubuntu на виртуальную машину</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/share/">2. Взаимодействие виртуальной и физической машины в VirtualBox</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/docker/">3. Основы docker</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/container/">4. Настройка ресурсов контейнеров docker</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/git-basic/">5. Основы GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/git-branch/">6. Ветки в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/git-remote/">7. Объединение веток в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/git-merge/">8. Удаленные ветки в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/java/">9. Виртуальная машина Java</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

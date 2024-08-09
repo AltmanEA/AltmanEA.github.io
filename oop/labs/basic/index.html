@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>2. Конструкции структурного программирования в Kotlin - Объектно-ориентированное программирование</title>
+<meta name="generator" content="Hugo 0.87.0" />
+<link href="https://altmanea.ru/oop//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/oop/labs/basic/">
+<link rel="stylesheet" href="https://altmanea.ru/oop/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/oop/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://altmanea.ru/oop/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="2. Конструкции структурного программирования в Kotlin" />
+<meta property="og:description" content="Теоретические сведения Лекция
+Задание Данное задание предназначено для ознакомления с языком Kotlin. Для его выполнения нужно создать программу для поиска анаграмм. Анаграммы это слова (или фразы), состоящие из одинаковых букв, но расположенных в различном порядке, например: «автор» — «товар». Программ должна состоят из нескольких функций, приводящих список слов к форме, удобной для быстрого поиска. Список слов может быть взят тут (файл 20k.txt).
+Создайте и протестируйте следующие функции:
+ Создайте функцию fun charSort(word: String): String которая возвращает строку с буквами из аргумента в порядке возрастания." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/oop/labs/basic/" /><meta property="article:section" content="labs" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="2. Конструкции структурного программирования в Kotlin"/>
+<meta name="twitter:description" content="Теоретические сведения Лекция
+Задание Данное задание предназначено для ознакомления с языком Kotlin. Для его выполнения нужно создать программу для поиска анаграмм. Анаграммы это слова (или фразы), состоящие из одинаковых букв, но расположенных в различном порядке, например: «автор» — «товар». Программ должна состоят из нескольких функций, приводящих список слов к форме, удобной для быстрого поиска. Список слов может быть взят тут (файл 20k.txt).
+Создайте и протестируйте следующие функции:
+ Создайте функцию fun charSort(word: String): String которая возвращает строку с буквами из аргумента в порядке возрастания."/>
+<meta itemprop="name" content="2. Конструкции структурного программирования в Kotlin">
+<meta itemprop="description" content="Теоретические сведения Лекция
+Задание Данное задание предназначено для ознакомления с языком Kotlin. Для его выполнения нужно создать программу для поиска анаграмм. Анаграммы это слова (или фразы), состоящие из одинаковых букв, но расположенных в различном порядке, например: «автор» — «товар». Программ должна состоят из нескольких функций, приводящих список слов к форме, удобной для быстрого поиска. Список слов может быть взят тут (файл 20k.txt).
+Создайте и протестируйте следующие функции:
+ Создайте функцию fun charSort(word: String): String которая возвращает строку с буквами из аргумента в порядке возрастания.">
+
+<meta itemprop="wordCount" content="230">
+<meta itemprop="keywords" content="" /><script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+
+<script type="text/javascript">
+    VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+</head>
+<body><div class="container"><header>
+<h1>Объектно-ориентированное программирование</h1>
+
+</header>
+
+<div class="content-container">
+<main><h1>2. Конструкции структурного программирования в Kotlin</h1>
+<h3 id="теоретические-сведения">Теоретические сведения</h3>
+<p><a href="https://altmanea.ru/oop/slides/basic">Лекция</a></p>
+<h3 id="задание">Задание</h3>
+<p>Данное задание предназначено для ознакомления с языком Kotlin.
+Для его выполнения нужно создать программу для поиска анаграмм. Анаграммы это слова (или фразы), состоящие из одинаковых букв, но расположенных в различном порядке, например: «автор» — «товар». Программ должна состоят из нескольких функций, приводящих список слов к форме, удобной для быстрого поиска. Список слов может быть взят <a href="https://github.com/first20hours/google-10000-english">тут</a> (файл <a href="https://raw.githubusercontent.com/first20hours/google-10000-english/master/20k.txt">20k.txt</a>).</p>
+<p>Создайте и протестируйте следующие функции:</p>
+<ol>
+<li>Создайте функцию
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#000;font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">charSort</span>(word: String): String
+</code></pre></div><p>которая возвращает строку с буквами из аргумента в порядке возрастания. Можно использовать любой алгоритм сортировки. Подсказка: используйте тип <code>CharArray</code>.</p>
+</li>
+<li>Определим
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">WordWithIndex</span>(<span style="color:#000;font-weight:bold">val</span> word:String, <span style="color:#000;font-weight:bold">val</span> index:Int)
+</code></pre></div><p>Создайте функцию</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#000;font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">wordArraySort</span>(array: Array&lt;WordWithIndex&gt;)
+</code></pre></div><p>которая сортирует <code>array</code> по убыванию свойства <code>word</code>.</p>
+</li>
+<li>Создайте функцию
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#000;font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">getAnagrams</span>(words: Array&lt;String&gt;) :ArrayList&lt;ArrayList&lt;String&gt;&gt;
+</code></pre></div><p>которая возвращает список списков анаграмм, например: {{автор, тавро, отвар, рвота, втора, товар}, {сила, лиса}, &hellip;}. Эта функция создает массив из <code>WordWithIndex</code> из исходного массива, затем, используя функцию  <code>charSort</code>, создает новый массив из <code>WordWithIndex</code> с отсортированными буквами в каждом слове. Далее, последний массив сортируется с помощью функции <code>wordArraySort</code>. В отсортированном массиве анаграммы должны быть расположены по порядку и находятся за один проход по массиву.</p>
+</li>
+<li>В проекте IDEA создайте каталог «resource», пометьте его как «Resources Root» и поместите в него файл со списком слов. Создайте функцию <code>main ()</code> которая находит все анаграммы из исходного файла. Для чтения из файла списка слов можно использовать следующий код:
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#000;font-weight:bold">val</span> words = WordWithIndex<span style="color:#000;font-weight:bold">::</span><span style="color:#000;font-weight:bold">class</span>.java.getResource(<span style="color:#d14">&#34;20k.txt&#34;</span>)
+        .readText()
+        .split(<span style="color:#d14">&#34;</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>)
+        .filter { <span style="color:#000;font-weight:bold">it</span>.length&gt;<span style="color:#099">10</span> }
+        .toTypedArray()
+</code></pre></div></li>
+</ol>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop/labs/idea/" title="1. Среда разработки"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 1. Среда разработки</a>
+<a class="nav nav-next" href="https://altmanea.ru/oop/labs/object/" title="3. Объекты">Next - 3. Объекты <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script><p align="right">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2019-2020</a>
+</p>
+</footer>
+</main><div class="sidebar">
+
+<nav class="open-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/oop/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/oop/lecture/">Лекции</a>
+  
+</li>
+
+<li class="parent"><a href="https://altmanea.ru/oop/labs/">Лабораторные работы</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop/labs/idea/">1. Среда разработки</a></li>
+<li class="active"><a href="https://altmanea.ru/oop/labs/basic/">2. Конструкции структурного программирования в Kotlin</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/object/">3. Объекты</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/class/">4. Классы</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/inheritance/">5. Наследование</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/relation/">6. Интерфейсы и абстрактные классы</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/extra/">7. Расширение ООП</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/oop/self/">Самостоятельная работа</a>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/oop/exam/">Вопросы к экзамену</a>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

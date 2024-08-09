@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Введение on Объектно-ориентированное программирование и обработка данных</title>
+    <link>https://altmanea.ru/oop-data/</link>
+    <description>Recent content in Введение on Объектно-ориентированное программирование и обработка данных</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Введение</title>
+      <link>https://altmanea.ru/oop-data/lecture/intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/intro/</guid>
+      <description>Конспект Конспект представляет собой тетрадь, в которой конспектируются (записываются основные идеи и сведения) материалы, изучаемые как на лекции, так и при выполнении лабораторных работ.
+На каждой странице тетради необходимо написать свою фамилию и группу. Перед каждым занятием нужно поставить его дату, тип (лекция или лабораторная работа) и тему.
+На лекциях в конспект записываются название раздела лекции (видео) и его основные идеи (тезисы). После просмотра видео на лекции можно уточнить правильность понимания сказанного у преподавателя.</description>
+    </item>
+    
+    <item>
+      <title>Утилиты для работы с расписанием занятий</title>
+      <link>https://altmanea.ru/oop-data/coursework/sched/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/coursework/sched/</guid>
+      <description>Задание на разработку утилит для работы с расписанием занятий является заданием для комплексной курсовой работы, которая может выполняться несколькими студентами.
+Общей частью является формат коллекций mongo, в которой хранится информация о занятиях. Для занятия задаются его координаты (тип недели, день недели, номер пары), предмет, тип занятия (лекция или др.), аудитория, список участвующих (группы, подгруппы, преподаватели).
+Утилиты представляют собой небольшие программы, выполняющие в системе отдельную небольшую функцию. Входные данные для этих утилит задаются либо непосредственно в виде аргументов командной строки, либо в файле, имя которого передается в виде аргумента командной строки.</description>
+    </item>
+    
+    <item>
+      <title>Обработка библиографической информации</title>
+      <link>https://altmanea.ru/oop-data/coursework/bib/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/coursework/bib/</guid>
+      <description>Задание на разработку системы для обработки библиографической информации является заданием для комплексной курсовой работы, которая может выполняться несколькими студентами.
+Общей частью является формат коллекций mongo, в которых храниться библиографическая информация, и который должен быть согласован между всеми участниками проекта. Формат должен быть разработан на основе bibtex (допускается не полная его реализация).
+Система состоит из нескольких утилит командной строки (по одной утилите на исполнителя). Входные данные для этих утилит задаются либо непосредственно в виде аргументов командной строки, либо в файле, имя которого передается в виде аргумента командной строки.</description>
+    </item>
+    
+    <item>
+      <title>Инструментарий для учета студенческих работ</title>
+      <link>https://altmanea.ru/oop-data/coursework/tasks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/coursework/tasks/</guid>
+      <description>Задание на разработку инструментария для учета студенческих работ является заданием для комплексной курсовой работы, которая может выполняться несколькими студентами.
+Общей частью является формат коллекций mongo, который должен быть согласован между всеми студентами, выполняющими задание.
+Первая коллекция хранит информацию о группах студентов, в группе определены подгруппы, в которых есть список студентов. Вторая коллекция для заданий по предмету. Для задания задаются его тип (посещение лекции, лабораторных и пр.), дата сдачи, максимальны балл, наименование, описание и др.</description>
+    </item>
+    
+    <item>
+      <title>1. Коллекции</title>
+      <link>https://altmanea.ru/oop-data/labs/collection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/collection/</guid>
+      <description>Примеры из лекций и входной код для выполнения заданий находится в репозитории https://github.com/AltmanEA/edu-collection.
+В задании требуется самостоятельно изучить отдельные элементы библиотеки коллекций. Для этого рекомендуется в среде набрать название элемента и с помощью сочетания клавиш Ctrl-B открыть исходный код этого элемента. В исходном коде в комментариях приведено описание этого элемента, из которого потом генерируется документация. Этого описания должно быть достаточно для понимания того, что и для чего делает этот элемент.</description>
+    </item>
+    
+    <item>
+      <title>1. Операции с коллекциями</title>
+      <link>https://altmanea.ru/oop-data/lecture/collection/operation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/collection/operation/</guid>
+      <description>1. Понятие коллекции 2. Коллекция List 3. Функция Map в коллекциях 4. Фильтрация элементов коллекции 5. Поиск элементов в коллекции 6. Свертка коллекции 7. Сложная обработка коллекций 8. Сортировка коллекций </description>
+    </item>
+    
+    <item>
+      <title>1. Основные операции.</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/crud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/crud/</guid>
+      <description>Создайте коллекцию mongo для класса, реализующего счетчики:
+@Serializabledata class Count(val name: String, val value: Int = 0)Добавьте в коллекцию счетчики &amp;ldquo;Tables&amp;rdquo;, &amp;ldquo;Figures&amp;rdquo;, &amp;ldquo;Equations&amp;rdquo;.
+Изучите оператор инкремента inc и реализуйте функцию, увеличивающую счетчик на единицу:
+ fun incCount(countName: String) Проверьте работу этой функции на следующем примере и сделайте выводы по работе оператора inc.
+incCount(&amp;quot;Tables&amp;quot;)incCount(&amp;quot;Tables&amp;quot;)incCount(&amp;quot;Equations&amp;quot;)incCount(&amp;quot;Listings&amp;quot;)prettyPrintCursor(counts.find())Ознакомьтесь с другими Field Update Operators.
+  Прочитайте про опцию upsert функции update.</description>
+    </item>
+    
+    <item>
+      <title>1. Основные операции.</title>
+      <link>https://altmanea.ru/oop-data/lecture/mongo/crud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/mongo/crud/</guid>
+      <description>Введение в MongoDb. Установление соединения с MongoDb. Хранилища CRUD. Добавление документов в коллекции MongoDb. Чтение документов из MongoDb. Типизированные json запросы в MongoDb. Обновление документов в MongoDb. Удаление документов из коллекций MongoDb. </description>
+    </item>
+    
+    <item>
+      <title>1. Понятия сериализации и библиотека jackson</title>
+      <link>https://altmanea.ru/oop-data/lecture/serialization/jackson/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/serialization/jackson/</guid>
+      <description>Введение в сериализацию. Форматы сериализации. Библиотеки для сериализации для Kotlin. Основы библиотеки jackson. Настройка библиотеки Jackson. </description>
+    </item>
+    
+    <item>
+      <title>2. Библиотека kotlinx.serialization</title>
+      <link>https://altmanea.ru/oop-data/lecture/serialization/kotlinxserial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/serialization/kotlinxserial/</guid>
+      <description>Пример работы и плагин для библиотеки kotlinx.serialization. Конструкторы классов для сериализации. Сериализация вложенных объектов. Управление сериализацией свойств объектов. Сериализация коллекций (списков, множеств, карт). </description>
+    </item>
+    
+    <item>
+      <title>2. Виды коллекций</title>
+      <link>https://altmanea.ru/oop-data/lecture/collection/type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/collection/type/</guid>
+      <description>1. Интерфейсы 2. Итератор 3. Строки как коллекции 4. Функция flatMap 5. Sequence 6. Set 7. Map </description>
+    </item>
+    
+    <item>
+      <title>2. Работа с документами.</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/document/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/document/</guid>
+      <description>Напишите функцию, увеличивающую на единицу оценку студента:
+fun incGrade(course: String, studentName: String)Используя функции из лекций, протестируйте ее:
+fillStudentsAndCourse()setGrade(&amp;quot;Math&amp;quot;, &amp;quot;Penny&amp;quot;, 5)setGrade(&amp;quot;Math&amp;quot;, &amp;quot;Sheldon&amp;quot;, 6)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))incGrade(&amp;quot;Math&amp;quot;, &amp;quot;Sheldon&amp;quot;)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))incGrade(&amp;quot;Math&amp;quot;,&amp;quot;Raj&amp;quot;)prettyPrintCursor(mCourses.find(Course::name eq &amp;quot;Math&amp;quot;))  Прочитайте про операторы in (в kmongo записывается как `in`) и push.
+Реализуйте функцию, которая добавляет студента в список студентов и записывает его на курсы:
+fun addStudent(name: String, group: String, courses: List&amp;lt;String&amp;gt;)Протестируйте ее и сделайте выводы:</description>
+    </item>
+    
+    <item>
+      <title>2. Работа с документами.</title>
+      <link>https://altmanea.ru/oop-data/lecture/mongo/document/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/mongo/document/</guid>
+      <description>Структура базы данных. Нормализация структуры базы данных. Добавление вложенных объектов в базу данных. Поиск вложенных объектов в базе данных. Обновление массивов в базе данных. </description>
+    </item>
+    
+    <item>
+      <title>2. Сериализация</title>
+      <link>https://altmanea.ru/oop-data/labs/serialization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/serialization/</guid>
+      <description>Примеры из лекций и входной код для выполнения заданий находится в репозитории https://github.com/AltmanEA/edu-serialization.
+Перед выполнением прочитайте замечания по порядку выполнения заданий и поиску информации из первой работы.
+  Библиотека jackson
+ Изучите документацию к классу SimpleDateFormat и создайте формат, который бы выводил дату в таком виде: 2021.01.22. Создайте объект типа ObjectMapper и установите его свойство dateFormat равным созданному формату. Создайте класс Lesson со свойствами name: String и date: Date. Создайте объект этого класса со свойствами, указанными ниже, и выполните его сериализацию в формат JSON.</description>
+    </item>
+    
+    <item>
+      <title>3. Библиотека kotlinx.serialization, часть 2.</title>
+      <link>https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/</guid>
+      <description>Интерфейс KSerializer. Сериализация класса Date. Сериализация иерархии классов. Статическое создание полиморфного описания. Сериализация иерархии классов. Динамическое создание полиморфного описания. </description>
+    </item>
+    
+    <item>
+      <title>3. Индексы коллекций.</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/indexes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/indexes/</guid>
+      <description>Сформируйте запрос к коллекции population для поиска всех стран, население которых в 2018 году было больше миллиарда.
+Протестируйте выполнение этого запроса с различными вариантами индексов (и без них).</description>
+    </item>
+    
+    <item>
+      <title>3. Индексы коллекций.</title>
+      <link>https://altmanea.ru/oop-data/lecture/mongo/indexes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/mongo/indexes/</guid>
+      <description>Коллекция для экспериментов с индексами. Информация о выполнении запроса mongo. Создание индекса. Индексы и запросы по нескольким полям. Сложные индексы. </description>
+    </item>
+    
+    <item>
+      <title>3. Реализация коллекций</title>
+      <link>https://altmanea.ru/oop-data/lecture/collection/implementation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/collection/implementation/</guid>
+      <description>Обзор коллекций Java. Связанный список. Реализация изменяемых коллекций. Коллекции типа очередь. </description>
+    </item>
+    
+    <item>
+      <title>4. Конвейерная обработка.</title>
+      <link>https://altmanea.ru/oop-data/labs/mongo/pipeline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/mongo/pipeline/</guid>
+      <description>Создайте классы для студентов, оценок и курсов, аналогичные классам рассмотренным на лекциях. Отличие создаваемых классов должно заключатся в том, что оценки коллекция оценок находится в классе студентов, а в классе оценок хранится информация о курсе, за который получена оценка.
+Создайте коллекции mongo для курсов и студентов, заполнив такими же оценками, как и в примере на лекции.
+  С помощью одной стадии match конвейера фреймворка агрегации найдите в коллекции студентов, не имеющих оценки ниже 4.</description>
+    </item>
+    
+    <item>
+      <title>4. Конвейерная обработка.</title>
+      <link>https://altmanea.ru/oop-data/lecture/mongo/pipeline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/mongo/pipeline/</guid>
+      <description>Введение в фреймворк агрегации mongo. Пример конвейера, оператор match. Развертывание массивов, оператор unwind. Использование развернутых массивов. Проецирование полей документов при конвейерной обработке. Операции постобработки данных, операторы sort и limit. Группировка документов и аккумулирование значений полей документов. </description>
+    </item>
+    
+    <item>
+      <title>4. Поиск в данных</title>
+      <link>https://altmanea.ru/oop-data/labs/parse/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/parse/</guid>
+      <description>Примеры из лекций и входной код для выполнения заданий находится в репозитории https://github.com/AltmanEA/edu-parse.
+  Регулярные выражения
+Текстом, с которым проводятся операции с регулярными выражениями, может быть любой файл с программой из репозитория с примерами из лекций.
+ Найдите в исходном коде имена всех переменных, поместите их в список и распечатайте (переменные нужно находить по их объявлению с помощью ключевых слов var и val). Проверьте переменные в списке переменных на соответствие camelStyle (начинаются со строчной буквы, между словами в названии нет никаких символов, второе и последующие слова начинаются с заглавной буквы).</description>
+    </item>
+    
+  </channel>
+</rss>

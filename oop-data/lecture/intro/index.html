@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Введение - Объектно-ориентированное программирование и обработка данных</title>
+<meta name="generator" content="Hugo 0.88.1" />
+<link href="https://altmanea.ru/oop-data//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/oop-data/lecture/intro/">
+<link rel="stylesheet" href="https://altmanea.ru/oop-data/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/oop-data/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script src="https://altmanea.ru/oop-data/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="Введение" />
+<meta property="og:description" content="Конспект Конспект представляет собой тетрадь, в которой конспектируются (записываются основные идеи и сведения) материалы, изучаемые как на лекции, так и при выполнении лабораторных работ.
+На каждой странице тетради необходимо написать свою фамилию и группу. Перед каждым занятием нужно поставить его дату, тип (лекция или лабораторная работа) и тему.
+На лекциях в конспект записываются название раздела лекции (видео) и его основные идеи (тезисы). После просмотра видео на лекции можно уточнить правильность понимания сказанного у преподавателя." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/oop-data/lecture/intro/" /><meta property="article:section" content="lecture" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Введение"/>
+<meta name="twitter:description" content="Конспект Конспект представляет собой тетрадь, в которой конспектируются (записываются основные идеи и сведения) материалы, изучаемые как на лекции, так и при выполнении лабораторных работ.
+На каждой странице тетради необходимо написать свою фамилию и группу. Перед каждым занятием нужно поставить его дату, тип (лекция или лабораторная работа) и тему.
+На лекциях в конспект записываются название раздела лекции (видео) и его основные идеи (тезисы). После просмотра видео на лекции можно уточнить правильность понимания сказанного у преподавателя."/>
+<meta itemprop="name" content="Введение">
+<meta itemprop="description" content="Конспект Конспект представляет собой тетрадь, в которой конспектируются (записываются основные идеи и сведения) материалы, изучаемые как на лекции, так и при выполнении лабораторных работ.
+На каждой странице тетради необходимо написать свою фамилию и группу. Перед каждым занятием нужно поставить его дату, тип (лекция или лабораторная работа) и тему.
+На лекциях в конспект записываются название раздела лекции (видео) и его основные идеи (тезисы). После просмотра видео на лекции можно уточнить правильность понимания сказанного у преподавателя.">
+
+<meta itemprop="wordCount" content="356">
+<meta itemprop="keywords" content="" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148810194-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148810194-1');
+</script></head>
+<body><div class="container"><header>
+<h1>Объектно-ориентированное программирование и обработка данных</h1>
+</header>
+
+<div class="content-container">
+<main><h1>Введение</h1>
+<h3 id="конспект">Конспект</h3>
+<p>Конспект представляет собой тетрадь, в которой конспектируются (записываются основные идеи и сведения) материалы, изучаемые как на лекции, так и при выполнении лабораторных работ.</p>
+<p>На каждой странице тетради необходимо написать свою фамилию и группу. Перед каждым занятием нужно поставить его дату, тип (лекция или лабораторная работа) и тему.</p>
+<p>На лекциях в конспект записываются название раздела лекции (видео) и его основные идеи (тезисы). После просмотра видео на лекции можно уточнить правильность понимания сказанного у преподавателя.</p>
+<p>Теоретические результаты, полученные при выполнении лабораторных работ, следует также заносить в тетрадь с конспектом: общее описание изучаемых в работе классов, объектов, функций и др., а также их основные свойства (например, для функций следует описать аргументы).</p>
+<p>Конспект нужно предъявлять при защите лабораторных работ и на экзамене.</p>
+<h3 id="выполнение-работ">Выполнение работ</h3>
+<p>Самостоятельное написание конспекта, выполнение лабораторных и курсовой работ – самый простой способ освоить предмет.</p>
+<p>При выполнении практических заданий не нужно искать решений в интернете. Если что-то не получается:</p>
+<ul>
+<li>повторите материалы лекций;</li>
+<li>прочитайте документацию;</li>
+<li>еще раз обдумайте возможные варианты решения;</li>
+<li>обратитесь к преподавателю (во время практических занятий).</li>
+</ul>
+<h3 id="сдача-выполненных-работ">Сдача выполненных работ</h3>
+<p>Для сдачи выполненных лабораторных работ нужно подготовить отчет по работе, для защиты курсового – пояснительную записку. Отчет и записка должны быть оформлены по соответствующим стандартам, содержать задание, теоретические сведения (полученные при выполнении работы), описание хода выполнения работы, полученные результаты и выводы. Если задание лабораторной работы выполнялось на занятии и сдается в срок – ее можно сдавать без отчета.</p>
+<p>Сдача лабораторных работ происходит во время соответствующих занятий и должна начинаться не позднее чем за полчаса до конца занятия. При приеме лабораторных работ преподаватель может задавать теоретические вопросы и давать практические задания по теме работы.</p>
+<p>На теоретические вопросы нужно отвечать сразу, консультации по этим вопросам (у одногруппников или в интернете) не допускаются. При отсутствии ответа на вопрос сдача работы переносится на следующее занятие.</p>
+<p>Практическое задание нужно выполнить самостоятельно во время аудиторного занятия.</p>
+<p>Перед защитой курсовой работы нужно подготовить пояснительную записку и получить допуск к защите у преподавателя. Во время защиты работы преподаватель задает вопросы по решениям, используемым в курсовой работе.</p>
+<h3 id="экзамен">Экзамен</h3>
+<p>До экзамена допускаются только студенты, защитившие курсовую работу.</p>
+<p>Студенты, не сдавшие все лабораторные работы, до экзамена допускаются, но получают дополнительные вопросы по каждой не сданной лабораторной работе.</p>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop-data/lecture/" title="Лекции"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Лекции</a>
+<a class="nav nav-next" href="https://altmanea.ru/oop-data/lecture/collection/" title="1. Коллекции">Next - 1. Коллекции <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p align="center">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2021, 2022</a>
+</p>
+</footer>
+</main>
+<div class="sidebar">
+
+<nav class="slide-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/oop-data/">Home</a></li>
+
+<li class="parent has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/">Лекции<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+<li class="active"><a href="https://altmanea.ru/oop-data/lecture/intro/">Введение</a></li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/collection/">1. Коллекции<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/collection/operation/">1. Операции с коллекциями</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/collection/type/">2. Виды коллекций</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/collection/implementation/">3. Реализация коллекций</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/serialization/">2. Сериализация<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/jackson/">1. Понятия сериализации и библиотека jackson</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserial/">2. Библиотека kotlinx.serialization</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/">3. Библиотека kotlinx.serialization, часть 2.</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/mongo/">3. Коллекции mongo<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/crud/">1. Основные операции.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/document/">2. Работа с документами.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/indexes/">3. Индексы коллекций.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/pipeline/">4. Конвейерная обработка.</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/parse/">4. Поиск в данных</a>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/labs/">Лабораторные<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/labs/collection/">1. Коллекции</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/serialization/">2. Сериализация</a></li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/labs/mongo/">3. Основы MongoDb<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/labs/mongo/crud/">1. Основные операции.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/mongo/document/">2. Работа с документами.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/mongo/indexes/">3. Индексы коллекций.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/mongo/pipeline/">4. Конвейерная обработка.</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/parse/">4. Поиск в данных</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/coursework/">Курсовая работа<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/coursework/sched/">Утилиты для работы с расписанием занятий</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/coursework/bib/">Обработка библиографической информации</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/coursework/tasks/">Инструментарий для учета студенческих работ</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/oop-data/exam/">Вопросы к экзамену</a>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

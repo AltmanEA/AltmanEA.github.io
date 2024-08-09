@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Язык разметки Markdown</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <section data-markdown data-separator="----" data-separator-vertical="---" > 
+<script type="text/template">
+
+## Основы разметки документов
+
+---
+
+### Пример Markdown 
+
+![](images/md_example.png)
+
+---
+
+### Пример HTML
+
+![](images/html_example.png)
+
+---
+
+### Заголовки
+
+![](images/md_heading.png)
+
+---
+
+### Выделение текста
+
+![](images/md_emph.png)
+
+---
+
+### Выделение абзацев
+
+![](images/md_code.png)
+
+---
+
+### Списки
+
+![](images/md_lists.png)
+
+---
+
+### Ссылки и картинки
+
+![](images/md_images.png)
+
+---
+
+### Таблицы
+
+![](images/md_table.png)
+
+----
+
+## Математические формулы
+
+---
+
+### Способы включения
+
+Форматы:
+
+- [Tex](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
+- [MathML](https://developer.mozilla.org/ru/docs/Web/MathML)
+
+Библиотеки:
+
+- [MathJax](https://www.mathjax.org/)
+- [Katex](https://katex.org/)
+
+---
+
+### Вставка формул
+
+![](images/math_insert.png)
+
+---
+
+### Переменные и символы
+
+![](images/math_vars.png)
+
+---
+
+### Функции
+
+![](images/math_func.png)
+
+---
+
+### Степени, индексы и дроби
+
+![](images/math_index.png)
+
+---
+
+### Суммы, интегралы и скобки
+
+![](images/math_integral.png)
+
+---
+
+### Матрицы
+
+![](images/math_matrix.png)
+
+----
+
+## Расширенный markdown
+
+---
+
+### Варианты markdown
+
+Расширения:
+
+- [Исходный](https://daringfireball.net/projects/markdown/syntax);
+- [GitHub Flavored Markdown](https://github.github.com/gfm/);
+- [Pandoc Markdown](https://pandoc.org/MANUAL.html#pandocs-markdown);
+- ...
+
+Дополнения:
+
+- математические библиотеки;
+- диаграммы ([mermaid](https://mermaidjs.github.io/#/));
+- презентации ([revealjs](https://github.com/hakimel/reveal.js/));
+- ...
+
+--- 
+
+### Метаданные
+
+Pandoc:
+
+```
+% title
+% author(s) (separated by semicolons)
+% date
+```
+
+JAMstack (static site generation):
+
+```
++++
+title = "Язык разметки Markdown"
+outputs = ["Reveal"]
++++
+```
+
+--- 
+
+### Mermaid
+
+- [Mermaid Live Editor](https://mermaidjs.github.io/mermaid-live-editor/);
+- VS code «Markdown Preview Mermaid» extension;
+- HTML and mermaid.js 
+  - Content Delivery Network [https://unpkg.com/browse/mermaid@8.2.3/](https://unpkg.com/browse/mermaid@8.2.3/)
+  - local files
+  - ...
+
+--- 
+
+### Mermaid flowchart
+
+![](images/mermaid_flowchart.png)
+
+--- 
+
+### Mermaid sequence
+
+![](images/mermaid_sequence.png)
+
+--- 
+
+### Mermaid Gantt
+
+![](images/mermaid_gantt.png)
+
+---
+
+### Revealjs
+
+- [slides.com](https://slides.com/);
+- VS code «vscode-reveal» extension;
+- Static site generation ([example]
+(https://themes.gohugo.io/theme/reveal-hugo/#/));
+- HTML and *.js.
+
+---
+
+### Reveal example
+
+![](images/reveal_example.png)
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				audio: {
+					prefix: 'audio/',
+ 					suffix: '.webm;codecs=opus',
+					autoplay: false,
+					advance: -1,
+				},
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>

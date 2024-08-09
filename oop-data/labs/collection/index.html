@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>1. Коллекции - Объектно-ориентированное программирование и обработка данных</title>
+<meta name="generator" content="Hugo 0.88.1" />
+<link href="https://altmanea.ru/oop-data//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/oop-data/labs/collection/">
+<link rel="stylesheet" href="https://altmanea.ru/oop-data/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/oop-data/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script src="https://altmanea.ru/oop-data/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="1. Коллекции" />
+<meta property="og:description" content="Примеры из лекций и входной код для выполнения заданий находится в репозитории https://github.com/AltmanEA/edu-collection.
+В задании требуется самостоятельно изучить отдельные элементы библиотеки коллекций. Для этого рекомендуется в среде набрать название элемента и с помощью сочетания клавиш Ctrl-B открыть исходный код этого элемента. В исходном коде в комментариях приведено описание этого элемента, из которого потом генерируется документация. Этого описания должно быть достаточно для понимания того, что и для чего делает этот элемент." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/oop-data/labs/collection/" /><meta property="article:section" content="labs" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="1. Коллекции"/>
+<meta name="twitter:description" content="Примеры из лекций и входной код для выполнения заданий находится в репозитории https://github.com/AltmanEA/edu-collection.
+В задании требуется самостоятельно изучить отдельные элементы библиотеки коллекций. Для этого рекомендуется в среде набрать название элемента и с помощью сочетания клавиш Ctrl-B открыть исходный код этого элемента. В исходном коде в комментариях приведено описание этого элемента, из которого потом генерируется документация. Этого описания должно быть достаточно для понимания того, что и для чего делает этот элемент."/>
+<meta itemprop="name" content="1. Коллекции">
+<meta itemprop="description" content="Примеры из лекций и входной код для выполнения заданий находится в репозитории https://github.com/AltmanEA/edu-collection.
+В задании требуется самостоятельно изучить отдельные элементы библиотеки коллекций. Для этого рекомендуется в среде набрать название элемента и с помощью сочетания клавиш Ctrl-B открыть исходный код этого элемента. В исходном коде в комментариях приведено описание этого элемента, из которого потом генерируется документация. Этого описания должно быть достаточно для понимания того, что и для чего делает этот элемент.">
+
+<meta itemprop="wordCount" content="476">
+<meta itemprop="keywords" content="" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148810194-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148810194-1');
+</script></head>
+<body><div class="container"><header>
+<h1>Объектно-ориентированное программирование и обработка данных</h1>
+</header>
+
+<div class="content-container">
+<main><h1>1. Коллекции</h1>
+<p>Примеры из лекций и входной код для выполнения заданий находится в репозитории <a href="https://github.com/AltmanEA/edu-collection">https://github.com/AltmanEA/edu-collection</a>.</p>
+<p>В задании требуется самостоятельно изучить отдельные элементы библиотеки коллекций. Для этого рекомендуется в среде набрать название элемента и с помощью сочетания клавиш <code>Ctrl-B</code> открыть исходный код этого элемента. В исходном коде в комментариях приведено описание этого элемента, из которого потом генерируется документация. Этого описания должно быть достаточно для понимания того, что и для чего делает этот элемент.</p>
+<p>Если описания в документации не достаточно то можно попробовать разобраться с исходным кодом, который доступен для библиотечных функций и классов. Если и исходного кода оказалось недостаточно для понимания какого-либо элемента библиотеки то можно попробовать найти информацию в сети интернет. Однако её следует проверить с помощью экспериментов с кодом, поскольку в интернете встречается много устаревшей или некорректной информации.</p>
+<ol>
+<li>
+<p>Операции с коллекциями</p>
+<ol>
+<li>Изучите функцию <code>mapIndexed</code> и создайте с её помощью коллекцию <code>studentIndexes</code> c индексами коллекции <code>students</code>.</li>
+<li>Изучите функцию <code>zip</code> и создайте с её помощью из коллекций <code>students</code> и <code>studentIndexes</code> коллекцию <code>studentWithIndexes</code> из <code>Pair&lt;index, student&gt;</code>.</li>
+<li>Изучите функцию <code>joinToString</code> и создайте с её помощью из коллекции <code>studentWithIndexes</code> строку <code>studentsString</code> содержащую перечисленные через запятую пары коллекции. Элементы каждой пары должны выводиться через дефис.</li>
+</ol>
+<p>После вывода на печать результатов предыдущих пунктов должно получиться примерно следующее:</p>
+ <pre><code> [0, 1, 2, 3, 4, 5, 6]
+ [(0, Sheldon), (1, Leonard), (2, Howard), (3, Raj), (4, Penny), (5, Amy), (6, Bernadette)]
+ 0  - Sheldon, 1  - Leonard, 2  - Howard, 3  - Raj, 4  - Penny, 5  - Amy, 6  - Bernadette</pre></code>
+</li>
+<li>
+<p>Виды коллекций</p>
+<ol>
+<li>Изучите исходный код функций <code>maxBy</code> и <code>count</code> класса <code>Iterable</code>. На их основе создайте функцию <code>fun &lt;T&gt; Iterable&lt;T&gt;.countBy(value: Int, selector: (T) -&gt; Int): Int</code>, которая бы подсчитывала число элементов коллекции для которых значение <code>selector</code> было бы равно <code>value</code>.</li>
+<li>Из коллекции <code>grades</code> с использованием функции <code>mapTo</code> создайте множество (Set) оценок, которые получили студенты.</li>
+<li>Изучите функцию <code>associate</code> класса <code>Iterable</code>. С помощью нее и созданной в первом пункте функции <code>countBy</code> создайте карту (Map), ключом в которой является оценка, а значение – количество студентов, которые получили эту оценку.</li>
+<li>Используя подсказку среды замените функцию <code>associate</code> на <code>associateWith</code>. Изучите функцию <code>associateWith</code>.</li>
+</ol>
+<p>После вывода на печать результатов последнего пункта должно получиться примерно следующее:</p>
+ <pre><code> {3=1, 4=2, 5=1}</pre></code>
+</li>
+<li>
+<p>Реализация коллекций</p>
+<ol>
+<li>Изучите описание интерфейса <code>Deque</code>. Разберитесь, как с помощью него можно реализовать стек LIFO, в частности, выполнять операции «поместить в стек» и «взять из стека».</li>
+<li>Создайте коллекцию тип <code>Deque</code> на основе <code>LinkedList</code> поместив туда первых трех студентов (используйте при этом функцию <code>subList</code>).</li>
+<li>Выполните следующие действия над стеком, распечатывая состояние стека до и после операции и результат самой операции:
+<ol>
+<li>Поместите в стек студента с индексом 4.</li>
+<li>Возьмите элемент с вершины стека.</li>
+</ol>
+</li>
+<li>Изучите функцию <code>merge</code> класса <code>TreeMap</code>. Создайте с помощью этой функции карту в которой является оценка, а значение – список студентов через запятую, которые получили эту оценку. Выведите результат на печать.</li>
+</ol>
+<p>Результат выполнения последних пунктов должен быть примерно такой:</p>
+ <pre><code> [Sheldon, Leonard, Howard]
+ kotlin.Unit
+ [Penny, Sheldon, Leonard, Howard]
+ Penny
+ [Sheldon, Leonard, Howard]
+
+ {3=Raj, 4=Leonard, Howard, 5=Sheldon}</pre></code>
+</li>
+</ol>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop-data/labs/" title="Лабораторные"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Лабораторные</a>
+<a class="nav nav-next" href="https://altmanea.ru/oop-data/labs/serialization/" title="2. Сериализация">Next - 2. Сериализация <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p align="center">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2021, 2022</a>
+</p>
+</footer>
+</main>
+<div class="sidebar">
+
+<nav class="slide-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/oop-data/">Home</a></li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/">Лекции<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/intro/">Введение</a></li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/collection/">1. Коллекции<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/collection/operation/">1. Операции с коллекциями</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/collection/type/">2. Виды коллекций</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/collection/implementation/">3. Реализация коллекций</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/serialization/">2. Сериализация<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/jackson/">1. Понятия сериализации и библиотека jackson</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserial/">2. Библиотека kotlinx.serialization</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/serialization/kotlinxserialcont/">3. Библиотека kotlinx.serialization, часть 2.</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/lecture/mongo/">3. Коллекции mongo<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/crud/">1. Основные операции.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/document/">2. Работа с документами.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/indexes/">3. Индексы коллекций.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/mongo/pipeline/">4. Конвейерная обработка.</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/oop-data/lecture/parse/">4. Поиск в данных</a>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class="parent has-sub-menu"><a href="https://altmanea.ru/oop-data/labs/">Лабораторные<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+<li class="active"><a href="https://altmanea.ru/oop-data/labs/collection/">1. Коллекции</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/serialization/">2. Сериализация</a></li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/labs/mongo/">3. Основы MongoDb<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/labs/mongo/crud/">1. Основные операции.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/mongo/document/">2. Работа с документами.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/mongo/indexes/">3. Индексы коллекций.</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/mongo/pipeline/">4. Конвейерная обработка.</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://altmanea.ru/oop-data/labs/parse/">4. Поиск в данных</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/oop-data/coursework/">Курсовая работа<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop-data/coursework/sched/">Утилиты для работы с расписанием занятий</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/coursework/bib/">Обработка библиографической информации</a></li>
+<li class=""><a href="https://altmanea.ru/oop-data/coursework/tasks/">Инструментарий для учета студенческих работ</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/oop-data/exam/">Вопросы к экзамену</a>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>1. Среда разработки - Объектно-ориентированное программирование</title>
+<meta name="generator" content="Hugo 0.74.3" />
+<link href="https://altmanea.ru/oop//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/oop/labs/lab1/">
+<link rel="stylesheet" href="https://altmanea.ru/oop/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/oop/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://altmanea.ru/oop/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="1. Среда разработки" />
+<meta property="og:description" content="Теоретические сведения Лекция
+Задание   Установите и настройте на своем компьютере среду разработки.
+  Напишите функцию для вычисления площади круга по его адресу.
+Подсказки:
+ аргумент и результат должны быть типа Double; импортируйте константу PI из библиотеки kotlin.math.    Напишите тесты для этой функции.
+  Переименуйте функцию с помощью рефакторинга. Отформатируйте текст с помощью функции среды reformat.
+  Прогоните тесты по шагам в режиме отладки." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/oop/labs/lab1/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="1. Среда разработки"/>
+<meta name="twitter:description" content="Теоретические сведения Лекция
+Задание   Установите и настройте на своем компьютере среду разработки.
+  Напишите функцию для вычисления площади круга по его адресу.
+Подсказки:
+ аргумент и результат должны быть типа Double; импортируйте константу PI из библиотеки kotlin.math.    Напишите тесты для этой функции.
+  Переименуйте функцию с помощью рефакторинга. Отформатируйте текст с помощью функции среды reformat.
+  Прогоните тесты по шагам в режиме отладки."/>
+<meta itemprop="name" content="1. Среда разработки">
+<meta itemprop="description" content="Теоретические сведения Лекция
+Задание   Установите и настройте на своем компьютере среду разработки.
+  Напишите функцию для вычисления площади круга по его адресу.
+Подсказки:
+ аргумент и результат должны быть типа Double; импортируйте константу PI из библиотеки kotlin.math.    Напишите тесты для этой функции.
+  Переименуйте функцию с помощью рефакторинга. Отформатируйте текст с помощью функции среды reformat.
+  Прогоните тесты по шагам в режиме отладки.">
+
+<meta itemprop="wordCount" content="59">
+
+
+
+<meta itemprop="keywords" content="" />
+</head>
+<body><div class="container"><header>
+<h1>Объектно-ориентированное программирование</h1>
+
+</header>
+
+<div class="content-container">
+<main><h1>1. Среда разработки</h1>
+<h3 id="теоретические-сведения">Теоретические сведения</h3>
+<p><a href="https://altmanea.ru/oop/slides/idea">Лекция</a></p>
+<h3 id="задание">Задание</h3>
+<ol>
+<li>
+<p>Установите и настройте на своем компьютере среду разработки.</p>
+</li>
+<li>
+<p>Напишите функцию для вычисления площади круга по его адресу.</p>
+<p>Подсказки:</p>
+<ul>
+<li>аргумент и результат должны быть типа <code>Double</code>;</li>
+<li>импортируйте константу <code>PI</code> из библиотеки <code>kotlin.math</code>.</li>
+</ul>
+</li>
+<li>
+<p>Напишите тесты для этой функции.</p>
+</li>
+<li>
+<p>Переименуйте функцию с помощью рефакторинга. Отформатируйте текст с помощью функции среды <code>reformat</code>.</p>
+</li>
+<li>
+<p>Прогоните тесты по шагам в режиме отладки.</p>
+</li>
+</ol>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop/labs/" title="Лабораторные работы"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Лабораторные работы</a>
+<a class="nav nav-next" href="https://altmanea.ru/oop/lecture/" title="Лекции">Next - Лекции <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p align="right">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2019-2020</a>
+</p>
+</footer>
+</main><div class="sidebar">
+
+<nav class="open-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/oop/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/oop/lecture/">Лекции</a>
+  
+</li>
+
+<li class="parent"><a href="https://altmanea.ru/oop/labs/">Лабораторные работы</a>
+  
+<ul class="sub-menu">
+<li class="active"><a href="https://altmanea.ru/oop/labs/lab1/">1. Среда разработки</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

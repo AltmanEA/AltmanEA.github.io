@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>IDE</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="----" data-separator-vertical="---" > 
+<script type="text/template">
+
+## Install
+
+---
+
+### OpenJDK
+
+<img src="images/openJDK.png" width="70%">
+
+---
+
+### IDEA
+
+<img src="images/idea_download.png" width="70%">
+
+---
+
+### Project
+
+<img src="images/new_project.png" width="60%">
+
+---
+
+### Project properties
+
+![](images/new_project_props.png)
+
+---
+
+### Project is made
+
+<img src="images/new_project_done.png" width="70%">
+
+----
+
+## Edit code
+
+---
+
+### Source file
+
+<img src="images/new_kotlin_file.png" width="55%">
+<img src="images/new_kotlin_file_2.png" style="float: right; width=40%">
+
+---
+
+### Run program
+
+<img src="images/hello_world_code.png">
+<img src="images/hello_world_run.png" style="float: right">
+<img src="images/hello_world_result.png">
+
+---
+
+### Smart code completion
+
+![](images/smart_code.png)
+
+---
+
+### Error hint
+
+<table>
+<tr>
+<td><img src="images/error_help_1.png"></td>
+<td><img src="images/error_help_2.png"></td>
+</tr><tr>
+<td><img src="images/error_help_3.png"></td>
+<td><img src="images/error_help_4.png"></td>
+</tr>
+</table>
+
+---
+
+### Refactor
+
+<table>
+<tr>
+<td><img src="images/refactor_1.png"></td>
+<td><img src="images/refactor_2.png"></td>
+</tr>
+</table>
+
+---
+
+### Reformat
+
+<table>
+<tr>
+<td><img src="images/reformat_1.png"></td>
+<td><img src="images/reformat_2.png"></td>
+</tr>
+</table>
+
+----
+
+## Tests
+
+---
+
+### Create test
+
+<table>
+<tr>
+<td><img src="images/create_test_1.png"></td>
+<td><img src="images/create_test_2.png"></td>
+</tr>
+</table>
+
+---
+
+### build.gradle
+
+```groovy{} 
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+```
+
+---
+
+### Test class
+
+<img src="images/test_class.png">
+
+---
+
+### Test code
+
+```kotlin{}
+import org.junit.jupiter.api.Test
+
+internal class MainKtTest {
+
+    @Test
+    fun testDouble(){
+        assert(double(2)==4)
+    }
+}
+```
+
+---
+
+### Test result
+
+<img src="images/test_result.png">
+
+---
+
+### Test error
+
+<img src="images/test_error.png">
+
+----
+
+## Debug
+
+---
+
+### Function
+
+```kotlin{}
+fun factorial(n: Int): Int =
+    if (n == 0)
+        1
+    else
+        factorial(n - 1) * n
+```
+
+---
+
+### Import libs fun
+
+<img src="images/lib_import.png">
+
+
+---
+
+### Breakpoint
+
+<img src="images/breakpoint.png">
+
+---
+
+### Debug run
+
+<img src="images/debug_run.png">
+
+
+---
+
+### Debug state
+
+<img src="images/debug_state.png">
+
+---
+
+### Debug window
+
+<img src="images/debug_win.png">
+
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				audio: {
+					prefix: 'audio/',
+					suffix: '.webm;codecs=opus',
+					autoplay: false,
+					advance: -1,
+				},
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>

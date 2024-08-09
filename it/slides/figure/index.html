@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Графические данные</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
+<script type="text/template">
+
+## Растровые изображения
+
+~~~
+
+### BMP
+
+Bitmap Picture:
+
+- Метаданные:
+  -  BITMAPFILEHEADER;
+  -  BITMAPINFO;
+- Пиксельные данные.
+
+~~~
+
+### BITMAPFILEHEADER
+
+
+| Поз. | Size | Имя         | Тип   | Описание                |
+| ---- | ---- | ----------- | ----- | ----------------------- |
+| 00   | 2    | bfType      | WORD  | Сигнатура.              |
+| 02   | 4    | bfSize      | DWORD | Размер.                 |
+| 06   | 2    | bfReserved1 | WORD  | Зарезервированы         |
+| 08   | 2    | bfReserved2 | WORD  |                         |
+| 0A   | 4    | bfOffBits   | DWORD | Адрес пиксельных данных |
+
+~~~
+
+### BITMAPINFO
+
+Имеет несколько версий.
+
+Основные поля:
+
+- bcSize — размер пиксельных данных;
+- bcWidth — ширина;
+- bcHeight — высота;
+- bcBitCount - бит на пиксель;
+- таблица цветов;
+
+~~~
+
+### Пиксельные данные
+
+![](images/bitmap_hex.png)
+
+~~~
+
+### Сжатие данных
+
+<img src="images/origin.png" width="45%">
+<img src="images/origin_compressed.jpg" width="45%">
+
+Оригинал 113 кБ, сжатый — 21kБ.
+
+~~~
+
+### Рисование линий
+
+Алгоритм Брезенхэма.
+
+![](https://upload.wikimedia.org/wikipedia/commons/c/c2/LineBresenham.gif?uselang=ru)
+
+~~~
+
+### Рисование линий
+
+Алгоритм Ву.
+
+![](https://upload.wikimedia.org/wikipedia/commons/9/95/LineXiaolinWu.gif?uselang=ru)
+
+~~~
+
+### Масштабирование
+
+<img src="images/scale.png" width="70%">
+
+!~~~!
+
+## Векторные рисунки
+
+~~~
+
+### SVG (Scalable Vector Graphics)
+
+![](images/raster_xml.png)
+
+~~~
+
+### Кривые Безье
+
+![](https://upload.wikimedia.org/wikipedia/commons/3/3d/B%C3%A9zier_2_big.gif?uselang=ru)
+![](images/bezier.png)
+
+~~~
+
+### Градиент
+
+<img src="images/gradient.png" width="50%">
+
+~~~
+
+### Обводка
+
+<img src="images/line_style.png" width="50%">
+
+~~~
+
+### Порядок прорисовки
+
+![](images/zorder.png)
+
+~~~
+
+### Фильтры
+
+![](images/filter.png)
+
+~~~
+
+### Форматы
+
+![](images/formats.png)
+
+~~~
+
+### Масштабирование
+
+![](images/raster_scale.png)
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				audio: {
+					prefix: 'audio/',
+ 					suffix: '.webm;codecs=opus',
+					autoplay: false,
+					advance: -1,
+				},
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>

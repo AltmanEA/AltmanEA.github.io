@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>6. Ветки в GIT - Информационные технологии (часть 2)</title>
+<meta name="generator" content="Hugo 0.88.1" />
+<link href="https://altmanea.ru/it2//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/it2/labs/git-branch/">
+<link rel="stylesheet" href="https://altmanea.ru/it2/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/it2/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script src="https://altmanea.ru/it2/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="6. Ветки в GIT" />
+<meta property="og:description" content="Теоретические сведения Ветки и указатели на коммиты При работе над проектами часто возникает ситуация при которой существует несколько вариантов проекта. Например, один вариант – это текущая версия проекта, другой вариант – это версия, в которую внесены экспериментальные или логически не завершенные элементы. Особенно часто возникают различные варианты проекта при работе над ним нескольких разработчиков.
+В СКВ различные варианты проекта хранятся в различных ветках (branch).
+При создании проекта существует только одна ветка (один вариант проекта), которая называется master." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/it2/labs/git-branch/" /><meta property="article:section" content="labs" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="6. Ветки в GIT"/>
+<meta name="twitter:description" content="Теоретические сведения Ветки и указатели на коммиты При работе над проектами часто возникает ситуация при которой существует несколько вариантов проекта. Например, один вариант – это текущая версия проекта, другой вариант – это версия, в которую внесены экспериментальные или логически не завершенные элементы. Особенно часто возникают различные варианты проекта при работе над ним нескольких разработчиков.
+В СКВ различные варианты проекта хранятся в различных ветках (branch).
+При создании проекта существует только одна ветка (один вариант проекта), которая называется master."/>
+<meta itemprop="name" content="6. Ветки в GIT">
+<meta itemprop="description" content="Теоретические сведения Ветки и указатели на коммиты При работе над проектами часто возникает ситуация при которой существует несколько вариантов проекта. Например, один вариант – это текущая версия проекта, другой вариант – это версия, в которую внесены экспериментальные или логически не завершенные элементы. Особенно часто возникают различные варианты проекта при работе над ним нескольких разработчиков.
+В СКВ различные варианты проекта хранятся в различных ветках (branch).
+При создании проекта существует только одна ветка (один вариант проекта), которая называется master.">
+
+<meta itemprop="wordCount" content="716">
+<meta itemprop="keywords" content="" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148810194-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148810194-1');
+</script></head>
+<body><div class="container"><header>
+<h1>Информационные технологии (часть 2)</h1>
+</header>
+
+<div class="content-container">
+<main><h1>6. Ветки в GIT</h1>
+<h2 id="теоретические-сведения">Теоретические сведения</h2>
+<h3 id="ветки-и-указатели-на-коммиты">Ветки и указатели на коммиты</h3>
+<p>При работе над проектами часто возникает ситуация при которой существует несколько вариантов проекта. Например, один вариант – это текущая версия проекта, другой вариант – это версия, в которую внесены экспериментальные или логически не завершенные элементы. Особенно часто возникают различные варианты проекта при работе над ним нескольких разработчиков.</p>
+<p>В СКВ различные варианты проекта хранятся в различных <strong>ветках</strong> (branch).</p>
+<p>При создании проекта существует только одна ветка (один вариант проекта), которая называется <code>master</code>. Эта ветка в течении всего проекта является основной. На ее основе могут создавать другие ветки, которые с помощью новых коммитов будут представлять другие варианты проекта.</p>
+<p>Ветки проекта могут объединяться (сливаться). Например, после логического завершения какой-либо части проекта, выполняемой в отдельной ветке, ветка этой части сливается с веткой <code>master</code>.</p>
+<p>В СКВ git для организации работы с ветками каждый коммит хранит указатель на предыдущий коммит. Благодаря этому для каждой ветки достаточно хранить только указатель на последний коммит в этой ветке. Указатель на ветку имеет то же имя, что и ветка, и в этом смысле указатель и саму ветку можно считать синонимами.</p>
+<p>Помимо указателей на ветку в git существует еще указатель <code>HEAD</code> на текущий коммит (ветку). В случае, если используется одна ветка, указатели <code>HEAD</code> и <code>master</code> совпадают. Если в репозитории имеется несколько веток, то ветка, на которую указывает указатель <code>HEAD</code> называется текущей.</p>
+<p>При выполнении команды <code>git commit</code> создается новый коммит, после чего на него перемещаются указатели <code>HEAD</code> и текущей ветки.</p>
+<h3 id="команды-для-работы-с-ветками-и-указателями">Команды для работы с ветками и указателями</h3>
+<p>Основные команды для работы с ветками схематично приведены на рисунке 2 (с1, с2, с3 – коммиты, стрелки между блоками – указатели).</p>
+<center>
+<img src="../images/commits.png" width=50%>
+<p>Рисунок 2 – Команды для работы с ветками</p>
+</center>
+<p>Для создания новой ветки используется команда</p>
+<pre>
+git branch <i>имя_ветки</i>
+</pre>
+<p>Для просмотра имеющихся в репозитории веток нужно ввести эту команду без аргументов:</p>
+<pre>
+git branch
+</pre>
+<p>Эта команда только создает ветку, но не изменяет указатель на текущую ветку <code>HEAD</code>. Для того, чтобы сделать ветку текущей (переместить <code>HEAD</code>) нужно выполнить команду</p>
+<pre>
+git checkout <i>имя_ветки</i>
+</pre>
+<p>Создать ветку и сразу на нее переключиться можно с помощью команды</p>
+<pre>
+git checkout -b <i>имя_ветки</i>
+</pre>
+<p>В обычном режиме работы рассмотренных команд достаточно для работы с ветками (за исключением слияния веток, которое будет рассмотрено отдельно). Однако, для исправления ошибок при работе с коммитами может потребоваться команда, позволяющая вручную перемещать указатели веток с коммита на коммит (прежде всего, откатывать указатели ветки на предыдущие коммиты).</p>
+<p>Для перемещения указателей веток может использоваться команда</p>
+<pre>
+git reset [<i>режим</i>] <i>commit</i>
+</pre>
+<p>В поле <em>commit</em> задается идентификатор коммита. Идентификатор представляет собой шестнадцатеричное число, получаемое из контрольной суммы. Узнать идентификаторы коммитов можно с помощью команды <code>git log</code>. Также в поле <em>commit</em> можно использовать специальные мнемокоды, например, <code>HEAD~</code> будет указывать на предыдущий коммит текущей ветки.</p>
+<p>В общем случае эта команда делает следующие действия:</p>
+<ol>
+<li>Перемещает ветку, на которую указывает <code>HEAD</code> на заданный <em>commit</em>.</li>
+<li>Обновляет индекс в соответствии с содержимым коммита <em>commit</em>.</li>
+<li>Обновляет содержимое рабочего каталога в соответствии с содержимым коммита <em>commit</em>.</li>
+</ol>
+<p>В различных сценариях использования может потребоваться выполнять не полный набора этих действий, что задается <em>режимом</em> команды:</p>
+<ul>
+<li><code>--soft</code> – выполняет только первое действие;</li>
+<li><code>--mixed</code> (режим по-умолчанию) – выполняет 1 и 2 действия;</li>
+<li><code>--hard</code> – выполняет все действия.</li>
+</ul>
+<p>Существует также версия команды <code>git reset</code> для обновления индекса (без перемещение указателей). Она была рассмотрена в предыдущей работе.</p>
+<p>Помимо команд для выполнения действий над ветками СКВ git имеет возможности для их просмотра. По-умолчанию, команда <code>git log</code> выводит коммиты только текущей ветки. Для просмотра всех веток для этой команды нужно указать ключи <code>-all</code>. Более наглядным вывод веток в терминал получится, если дополнительно указать ключ <code>--graph</code>, при котором с помощью псевдографики будет нарисовано дерево репозитория.</p>
+<h2 id="задание-к-работе">Задание к работе</h2>
+<p>После каждого пункта из задания к работе нужно выполнить команду для вывода в терминал дерева репозитория. В отчете нужно также привести содержимое файла репозитория после выполнение каждого пункта, начиная со 2.</p>
+<ol>
+<li>Создайте ветку, назовите ее своим именем (в транслитерации).</li>
+<li>Измените содержимое файла и добавьте коммит в новую ветку. Повторите этот пункт.</li>
+<li>Измените содержимое файла и добавьте коммит в ветку <code>master</code>. Повторите этот пункт.</li>
+<li>Установите указатель новой ветки на коммит с первым изменением файла.</li>
+<li>Установите указатель ветки <code>master</code> на коммит с первым изменением файла в этой ветки. При этом должно произойти обновление индекса в соответствии с содержимым этого коммита. Для просмотра содержимого индекса используйте команду <code>git ls-files</code>.</li>
+<li>Перейдите на новую ветку и переместите ее указатель на первоначальный коммит в этой работе. При этом должно произойти обновление индекса и рабочего каталога в соответствии с содержимым этого коммита.</li>
+</ol>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/it2/labs/git-basic/" title="5. Основы GIT"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 5. Основы GIT</a>
+<a class="nav nav-next" href="https://altmanea.ru/it2/labs/git-merge/" title="7. Объединение веток">Next - 7. Объединение веток <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p align="right">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2020-2021</a>
+</p>
+</footer>
+</main>
+<div class="sidebar">
+
+<nav class="slide-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/it2/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/it2/exam/">Зачет</a>
+  
+</li>
+
+<li class="parent has-sub-menu"><a href="https://altmanea.ru/it2/labs/">Лабораторные<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/it2/labs/vm/">1. Установка Ubuntu на виртуальную машину</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/share/">2. Взаимодействие гостевой ОС и хоста</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/docker/">3. Основы docker</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/container/">4. Настройка ресурсов контейнеров docker</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/git-basic/">5. Основы GIT</a></li>
+<li class="active"><a href="https://altmanea.ru/it2/labs/git-branch/">6. Ветки в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/git-merge/">7. Объединение веток</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/git-remote/">8. Удаленные репозитории</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/java/">9. Платформа Java</a></li>
+<li class=""><a href="https://altmanea.ru/it2/labs/cmake/">10. Сборка кроссплатформенных программ</a></li>
+</ul>
+  
+</li>
+
+<li class=" has-sub-menu"><a href="https://altmanea.ru/it2/lecture/">Лекции<span class="mark closed">+</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/it2/lecture/workbook/">Рабочая тетрадь</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/vm/">1. Установка Ubuntu на виртуальную машину</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/share/">2. Взаимодействие виртуальной и физической машины в VirtualBox</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/docker/">3. Основы docker</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/container/">4. Настройка ресурсов контейнеров docker</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/git-basic/">5. Основы GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/git-branch/">6. Ветки в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/git-remote/">7. Объединение веток в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/git-merge/">8. Удаленные ветки в GIT</a></li>
+<li class=""><a href="https://altmanea.ru/it2/lecture/java/">9. Виртуальная машина Java</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Безопасность данных и функций</title>
+
+		<script type="text/javascript" src="http://livejs.com/live.js"></script>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
+<script type="text/template">
+
+## Null типы
+
+~~~
+
+### Определение типа
+
+<pre class="kotlin"><code>
+val elem: Int? = null
+
+val sum: Int = if (elem==null) 0 else elem
+</code></pre>
+
+Null типы на дают забыть проверку.
+
+~~~
+
+### Элвис оператор
+
+<pre class="kotlin"><code>
+val elem: Int? = null
+
+val sum: Int = elem ?: 0
+</code></pre>
+
+Упрощает проверку.
+
+~~~
+
+### Оператор безопасного вызова
+
+<pre class="kotlin"><code>
+class Good(val price: Float?, val name: String)
+val mail: Good? = Good(null, "mail")
+val awl: Good? = Good(20F, "awl")
+
+val total = mail?.price?:0F + (awl?.price?:0F)
+</code></pre>
+
+Позволят создавать цепочку проверок.
+
+~~~
+
+### Умное преобразование
+
+<pre class="kotlin"><code>
+class Good(val price: Float?, val name: String)
+
+val mail: Good? = Good(null, "mail")
+val awl: Good? = Good(20F, "awl")
+	
+val mailPrice: Float =
+	if (mail?.price != null)
+		mail.price
+	else
+		0F
+</code></pre>
+
+Сокращает число проверок.
+
+~~~
+
+### Оператор опасного вызова
+
+<pre class="kotlin"><code>
+class Good(val price: Float?, val name: String)
+
+val mail: Good? = Good(null, "mail")
+val awl: Good? = Good(20F, "awl")
+
+val total = mail!!.price!! + awl!!.price!!
+</code></pre>
+
+Применять только при полной уверенности в переменной.
+
+!~~~!
+
+## Разграничение доступа
+
+~~~
+
+### Пакеты
+
+#### build.gradle
+<pre><code>group 'ru.altmanea.examples'
+version '0.1'</code></pre>
+
+#### Исходный код
+
+<pre class="kotlin"><code>package ru.altmanea.examples.d_inheritance</code></pre>
+
+~~~
+
+### Импорт из пакетов
+
+<pre class="kotlin"><code>import java.awt.Color
+import java.awt.GridLayout
+import javax.swing.JButton
+import javax.swing.JPanel</code></pre>
+
+- Внимательно следите за автоимпортом.
+- Не включайте лишнего.
+- Оптимизируйте с помощью ```CTRL-ALT-O```.
+
+~~~
+
+### Модификаторы доступа
+
+- 
+- private
+- public
+- protected
+- internal
+
+
+
+!~~~!
+
+## Изменяемые коллекции
+
+~~~
+
+### Не изменяемые коллекции
+
+<pre class="kotlin"><code>
+var a: List < Int > = listOf(1, 2, 3)
+	
+a = a.mapIndexed { elem, index ->
+		if (index == 0)
+			0
+		else
+			elem
+	}
+</code></pre>
+
+~~~
+
+### Не изменяемые коллекции
+
+<pre class="kotlin"><code>
+val b: MutableList < Int > = listOf(1, 2, 3) as MutableList < Int >
+	
+b[0] = 0
+</code></pre>
+
+Использовать в случае крайней необходимости.
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				width: '90%',
+    			height: '100%',
+				// Learn about plugins: https://revealjs.com/plugins/
+				// plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				// audio: {
+				// 	prefix: 'audio/',
+				// 	suffix: '.webm;codecs=opus',
+				// 	autoplay: false,
+				// 	advance: -1,
+				// },
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu ],
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>

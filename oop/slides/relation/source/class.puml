@@ -1,0 +1,18 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam MinClassWidth 150
+
+class Controller {
+  -Int? checkCell
+  #State step()
+}
+
+abstract class State {
+   ~squares : Array<String>
+}
+
+interface View {
+    +update()
+}
+@enduml

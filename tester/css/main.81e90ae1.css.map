@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.81e90ae1.css","mappings":"AAAA,WACE,kBAAkB,CAClB,iBACF,CACA,QACE,SACF","sources":["index.css"],"sourcesContent":[".countdown {\n  font-size:xx-large;\n  text-align: center;\n}\n.engine {\n  margin:5%\n}"],"names":[],"sourceRoot":""}

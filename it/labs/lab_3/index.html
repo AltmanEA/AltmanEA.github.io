@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>3. Таблицы, код и формулы в markdown - Информационные технологии</title>
+<meta name="generator" content="Hugo 0.74.3" />
+<link href="https://altmanea.ru/it//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/it/labs/lab_3/">
+<link rel="stylesheet" href="https://altmanea.ru/it/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/it/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://altmanea.ru/it/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="3. Таблицы, код и формулы в markdown" />
+<meta property="og:description" content="Краткие теоретические сведения Лекция
+Таблицы Рассмотрим пример таблицы markdown. Исходный код:
+Номер | Название | Цена ------|:--------:|------: 1 | шило | 10 2 | мыло | 20 3 | веревка | 40 Результат сборки:
+   Номер Название Цена     1 шило 10   2 мыло 20   3 веревка 40    В первой строке таблицы записывается шапка, колонки таблицы разделяются символом вертикальной линии." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/it/labs/lab_3/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="3. Таблицы, код и формулы в markdown"/>
+<meta name="twitter:description" content="Краткие теоретические сведения Лекция
+Таблицы Рассмотрим пример таблицы markdown. Исходный код:
+Номер | Название | Цена ------|:--------:|------: 1 | шило | 10 2 | мыло | 20 3 | веревка | 40 Результат сборки:
+   Номер Название Цена     1 шило 10   2 мыло 20   3 веревка 40    В первой строке таблицы записывается шапка, колонки таблицы разделяются символом вертикальной линии."/>
+<meta itemprop="name" content="3. Таблицы, код и формулы в markdown">
+<meta itemprop="description" content="Краткие теоретические сведения Лекция
+Таблицы Рассмотрим пример таблицы markdown. Исходный код:
+Номер | Название | Цена ------|:--------:|------: 1 | шило | 10 2 | мыло | 20 3 | веревка | 40 Результат сборки:
+   Номер Название Цена     1 шило 10   2 мыло 20   3 веревка 40    В первой строке таблицы записывается шапка, колонки таблицы разделяются символом вертикальной линии.">
+
+<meta itemprop="wordCount" content="637">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+crossorigin="anonymous"
+onload='renderMathInElement(document.body);'></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
+
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+<script type="text/javascript">
+    VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+</head>
+<body><div class="container"><header>
+<h1>Информационные технологии</h1>
+
+</header>
+
+<div class="content-container">
+<main><h1>3. Таблицы, код и формулы в markdown</h1>
+<h1 id="краткие-теоретические-сведения">Краткие теоретические сведения</h1>
+<p><a href="https://altmanea.ru/it/slides//markdown/#/1">Лекция</a></p>
+<h2 id="таблицы">Таблицы</h2>
+<p>Рассмотрим пример таблицы markdown. Исходный код:</p>
+<pre><code>Номер | Название | Цена
+------|:--------:|------:
+1     | шило     | 10
+2     | мыло     | 20
+3     | веревка  | 40
+</code></pre><p>Результат сборки:</p>
+<table>
+<thead>
+<tr>
+<th>Номер</th>
+<th align="center">Название</th>
+<th align="right">Цена</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td align="center">шило</td>
+<td align="right">10</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="center">мыло</td>
+<td align="right">20</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="center">веревка</td>
+<td align="right">40</td>
+</tr>
+</tbody>
+</table>
+<p>В первой строке таблицы записывается шапка, колонки таблицы разделяются символом вертикальной линии.</p>
+<p>Во второй строке идет описание колонок. Для каждой колонки необходимо набрать как минимум три дефиса. Для выравнивания колонки по центру с двух сторон от дефисов нужно добавить двоеточия, для выравнивания по правому краю двоеточие нужно добавить только после дефисов.</p>
+<p>Вертикальные линии, разделяющие колонки, необязательно располагать друг под другом, это делается только для удобства чтения исходного кода. Количество дефисов во второй строке и количество пробелов в остальных строках значения не имеют.</p>
+<h2 id="код">Код</h2>
+<p>Для того чтобы сформировать выделенный текст, в markdown достаточно его набрать с отступом от начала строки на одну позицию табуляции (обычно 4 пробела). Этот текст будет моноширинным шрифтом и помещен в рамку, например (сравните ширину букв w и i обычного текста и в примере):</p>
+<pre><code>while()
+if()
+</code></pre>
+<p>Моноширинный шрифт удобен для отображения кода, поскольку все буквы имеют одинаковую ширину и элементы кода можно располагать в ровные колонки. При подключении дополнительных библиотек (при сборке в HTML) ключевые слова и другие конструкции языков программирования автоматически выделяются заданным цветом или шрифтом.</p>
+<p>В случае если код начинается с символа, воспринимаемого в markdown как элемент списка, или если код располагается внутри списка или код располагается внутри строки, для выделения кода нужно использовать парный тег «```» (набирается клавишей, обычно расположенной на клавиатуре под клавишей «ESC»). Например: <code>printf(&quot;Hello&quot;);</code>.</p>
+<h2 id="формулы">Формулы</h2>
+<p>В markdown набрать математические формулы можно только с использованием дополнительных библиотек. Наиболее универсальный способ — использование библиотеки «MathJax». Она поддерживает различные языки разметки для набора математических формул, и, прежде всего, «Latex» и «MathML».
+Альтернативная библиотека <a href="https://katex.org/">Katex</a> работает только с форматом «Latex», зато проще и быстрее.</p>
+<p>В «Katex» по-умолчанию используются парные теги <code>\\(...\)))</code> для набора формулы непосредственно в тексте и <code>$$...$$</code> для набора формулы в отдельной строке.</p>
+<p>Например, формула $$ a=b+c, $$ где \( a=0 \).</p>
+<p>может быть набрана следующим образом:</p>
+<pre><code>Например, формула $$ a=b+c, $$ где \\( a=0 \\).
+</code></pre>
+<p>В расширении «Markdown All in One» отображение математических формул настроено по другому. Предыдущий пример следует набирать так:</p>
+<pre><code>Например, формула 
+$$a=b+c,$$ 
+где $a=0$
+</code></pre><p>Выключенную формулу нужно набирать отдельной строкой, а также следует избегать лишних пробелов.</p>
+<p>В формулах встречаются символы различного типа: переменные, операции, функции и др.</p>
+<p>Переменные могут быть набраны латинскими или греческими буквами. Латинские буквы набираются непосредственно, а для греческих есть специальные команды, например: <code>\alpha</code> – \(\alpha\)</p>
+<p>Операции также могут быть набраны или непосредственно (например, +, –), или с помощью команд, например: <code>\div</code> — \(\div\).</p>
+<p>Функции набираются с помощью специальных команд, например: <code>\sin()</code> — \(\sin()\).</p>
+<p>Степени и индексы набираются с помощью значков «^» и &laquo;_&raquo; соответственно, например: w^{ij}_n — \(w^{ij}_n\).</p>
+<p>Дробь можно набирать с помощью обычной косой черты (если формула в одну строчку), однако дробь имеет другой вид, если использовать команду <code>\frac</code> с двумя параметрами (числитель и знаменатель), например: <code>\frac{1+x}{n}$</code> — \( \frac{1+x}n\).</p>
+<p>Подробнее о наборе математических формул можно посмотреть на <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics">этой странице</a>.</p>
+<h1 id="задание-к-работе">Задание к работе</h1>
+<p>Описанные ниже задания следует выполнять в одном markdown файле, для защиты лабораторной работы следует предоставить исходный код и сборку этого файла.</p>
+<ol>
+<li> Таблицы.
+<ol>
+<li> Наберите в markdown такую таблицу:
+<table>
+<thead>
+<tr>
+<th>X</th>
+<th>Y</th>
+<th align="center">X and Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>  Наберите в markdown такую таблицу (подсказка: для перехода на следующую строку внутри таблицы используйте HTML тег〈br〉):
+<table>
+<thead>
+<tr>
+<th>День</th>
+<th>Время работы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Понедельник<br>Вторник<br>Среда<br>Четверг<br>Пятница</td>
+<td>8:00–17:00</td>
+</tr>
+<tr>
+<td>Суббота<br>Воскресенье</td>
+<td>Выходной</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</li>
+<li> Листинги
+<ol>
+<li> Наберите в markdown следующий код (примечание: внешний вид кода может заметно отличаться от того, что приведено в тексте, поскольку используются различные способы сборки markdown):
+<pre><code class="C++">printf("Hello world!");
+</code></pre>
+</li>
+<li> Наберите в markdown следующий код (подсказка: для задания отступа можно использовать символ Non-breaking space: «<code>&nbsp;</code>»):
+<pre><code class="C++">if (x>y)
+     return x;
+</code></pre>
+</li>
+</ol>
+</li>
+<li> Формулы
+<ol>
+<li> Наберите формулу:
+<p>$$a^2+b^2 = c^2$$</p>
+</li>
+<li> Наберите текст с описанием метода решения квадратного уравнения.
+</li>
+</ol>
+</ol>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/it/labs/lab_2/" title="2. Язык разметки markdown"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 2. Язык разметки markdown</a>
+<a class="nav nav-next" href="https://altmanea.ru/it/labs/lab_4/" title="4. Математические формулы">Next - 4. Математические формулы <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script><p align="right">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2019-2020</a>
+</p>
+</footer>
+</main><div class="sidebar">
+
+<nav class="open-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/it/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/it/lecture/">Лекции</a>
+  
+</li>
+
+<li class="parent"><a href="https://altmanea.ru/it/labs/">Лабораторные работы</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/it/labs/lab_1/">1. Работа с текстом и кодировки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_2/">2. Язык разметки markdown</a></li>
+<li class="active"><a href="https://altmanea.ru/it/labs/lab_3/">3. Таблицы, код и формулы в markdown</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_4/">4. Математические формулы</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_5/">5. Основы HTML</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_6/">6. Стиль текста</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_7/">7. Активные элементы текста</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_8/">8. Формат DOCX</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_9/">9. Растровые рисунки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_10/">10. Векторные рисунки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_11/">11. Диаграммы</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_12/">12. Технические рисунки</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/it/self/">Самостоятельная работа</a>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/it/exam/">Вопросы к экзамену</a>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

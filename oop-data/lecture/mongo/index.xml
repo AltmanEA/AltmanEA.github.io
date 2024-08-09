@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>3. Коллекции mongo on Объектно-ориентированное программирование и обработка данных</title>
+    <link>https://altmanea.ru/oop-data/lecture/mongo/</link>
+    <description>Recent content in 3. Коллекции mongo on Объектно-ориентированное программирование и обработка данных</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/lecture/mongo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Основные операции.</title>
+      <link>https://altmanea.ru/oop-data/lecture/mongo/crud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/mongo/crud/</guid>
+      <description>Введение в MongoDb. Установление соединения с MongoDb. Хранилища CRUD. Добавление документов в коллекции MongoDb. Чтение документов из MongoDb. Типизированные json запросы в MongoDb. Обновление документов в MongoDb. Удаление документов из коллекций MongoDb. </description>
+    </item>
+    
+    <item>
+      <title>2. Работа с документами.</title>
+      <link>https://altmanea.ru/oop-data/lecture/mongo/document/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/mongo/document/</guid>
+      <description>Структура базы данных. Нормализация структуры базы данных. Добавление вложенных объектов в базу данных. Поиск вложенных объектов в базе данных. Обновление массивов в базе данных. </description>
+    </item>
+    
+    <item>
+      <title>3. Индексы коллекций.</title>
+      <link>https://altmanea.ru/oop-data/lecture/mongo/indexes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/mongo/indexes/</guid>
+      <description>Коллекция для экспериментов с индексами. Информация о выполнении запроса mongo. Создание индекса. Индексы и запросы по нескольким полям. Сложные индексы. </description>
+    </item>
+    
+    <item>
+      <title>4. Конвейерная обработка.</title>
+      <link>https://altmanea.ru/oop-data/lecture/mongo/pipeline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/mongo/pipeline/</guid>
+      <description>Введение в фреймворк агрегации mongo. Пример конвейера, оператор match. Развертывание массивов, оператор unwind. Использование развернутых массивов. Проецирование полей документов при конвейерной обработке. Операции постобработки данных, операторы sort и limit. Группировка документов и аккумулирование значений полей документов. </description>
+    </item>
+    
+  </channel>
+</rss>

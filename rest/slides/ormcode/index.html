@@ -1,0 +1,493 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Реализация ORM</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+		</style>
+		
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
+<script type="text/template">
+
+## Exposed: DSL (domain specific language)
+
+~~~
+
+### Объект таблица
+
+<pre class="Kotlin"><code>object StarWarsFilms : Table() {
+	val id: Column< Int > = integer("id").autoIncrement()
+	val sequelId: Column< Int > = integer("sequel_id").uniqueIndex()
+	val name: Column< String > = varchar("name", 50)
+	val director: Column< String > = varchar("director", 50)
+}</code></pre>
+
+~~~
+
+### Создание таблиц
+
+<pre class="Kotlin"><code>transaction {
+	SchemaUtils.create(StarWarsFilms)
+}</code></pre>
+
+~~~
+
+### Создание данных
+
+<pre class="Kotlin"><code>val id = StarWarsFilms.insertAndGetId {
+	it[name] = "The Last Jedi"
+	it[sequelId] = 8
+	it[director] = "Rian Johnson"
+}</code></pre>
+
+~~~
+
+### Чтение данных
+
+<pre class="Kotlin"><code>StarWarsFilms.select { 
+	StarWarsFilms.sequelId eq 8 
+}.forEach {
+	println(it[StarWarsFilms.name])
+}</code></pre>
+
+~~~
+
+### Чтение данных с обработкой
+
+<pre class="Kotlin"><code>val filmAndDirector = StarWarsFilms.
+	slice(StarWarsFilms.name, StarWarsFilms.director).
+	selectAll().map {
+		it[StarWarsFilms.name] to it[StarWarsFilms.director]
+	}</code></pre>
+
+~~~
+
+### Обновление и запись
+
+<pre class="Kotlin"><code>StarWarsFilms.update ({ 
+	StarWarsFilms.sequelId eq 8 
+}) {
+	it[StarWarsFilms.name] = "Episode VIII – The Last Jedi"
+}</code></pre>
+
+<pre class="Kotlin"><code>StarWarsFilms.deleteWhere { 
+	StarWarsFilms.sequelId eq 8 
+}
+</code></pre>
+
+!~~~!
+
+## Оптимизация
+
+~~~
+
+### Условный запрос
+
+<pre class="Kotlin"><code>val query = StarWarsFilms.selectAll()
+directorName?.let {
+	query.andWhere { StarWarsFilms.director eq it }
+}
+sequelId?.let {
+	query.andWhere { StarWarsFilms.sequelId eq it }
+}</code></pre>
+
+~~~
+
+### Функции SQL
+
+<pre class="Kotlin"><code>val count = StarWarsFilms.select { 
+	StarWarsFilms.sequelId eq  8 
+}.count()
+</code></pre>
+
+<pre class="Kotlin"><code>StarWarsFilms
+	.slice(StarWarsFilms.sequelId.count(), StarWarsFilms.director)
+	.selectAll()
+	.groupBy(StarWarsFilms.director)
+</code></pre>
+
+~~~
+
+### Несколько таблиц
+
+<pre class="Kotlin"><code>object StarWarsFilms : IntIdTable() {
+	val sequelId: Column< Int > = integer("sequel_id").uniqueIndex()
+	val name: Column< String > = varchar("name", 50)
+	val director: Column< String > = varchar("director", 50)
+}
+object Players : Table() {
+	val sequelId: Column< Int > = integer("sequel_id").uniqueIndex()
+	val name: Column< String > = varchar("name", 50)
+}</code></pre>
+
+~~~
+
+### Joint запрос
+
+<pre class="Kotlin"><code>(Players innerJoin StarWarsFilms)
+	.slice(Players.name.count(), StarWarsFilms.name)
+	.select { StarWarsFilms.sequelId eq Players.sequelId }
+	.groupBy(StarWarsFilms.name)</code></pre>
+
+~~~
+
+### Joint запрос с внешним ключом
+	
+<pre class="Kotlin"><code>Players.join(
+	StarWarsFilms, 
+	JoinType.INNER, 
+	additionalConstraint = {StarWarsFilms.sequelId eq Players.sequelId}
+)
+	.slice(Players.name.count(), StarWarsFilms.name)
+	.selectAll()
+	.groupBy(StarWarsFilms.name)</code></pre>
+
+!~~~!
+
+## Репозиторий на DSL
+
+[https://github.com/AltmanEA/restAndORM](https://github.com/AltmanEA/restAndORM)
+
+~~~
+
+### Репозиторий
+
+<pre class="Kotlin"><code>interface Item {
+    var id: Int
+}</code></pre>
+
+<pre class="Kotlin"><code>interface Repo< T: Item > {
+
+	fun create(element: T): Boolean // null if element was in repo
+
+	fun read(id: Int): T? // null if id is absent
+
+	fun read(): List< T > // read all
+
+	fun update(id: Int, element: T): Boolean // false if id is absent
+
+	fun delete(id: Int): Boolean // false if id is absent
+
+}</code></pre>
+
+~~~
+
+### Обобщенный класс
+
+<pre class="Kotlin"><code>abstract class RepoDSLTable< T: Item >
+	: IntIdTable(){
+	abstract fun fill(builder: UpdateBuilder< Int >, item: T): Unit
+	abstract fun readResult(result: ResultRow): T?
+	fun insertAndGetIdItem(item: T) =
+		insertAndGetId {
+			fill(it, item)
+		}
+	fun updateItem(id: Int, dto: T) =
+		update({
+			this@RepoDSLTable.id eq id
+		}){
+			fill(it, dto)
+		}
+}</code></pre>
+
+~~~
+
+### Реализация репозитория
+
+<pre class="Kotlin"><code>class RepoDSL< T : Item>(
+	private val table: RepoDSLTable< T >
+) : Repo< T > {
+
+	override fun create(element: T) =
+		transaction {
+			table.insertAndGetIdItem(element).value
+			true }
+	override fun update(id: Int, element: T) =
+		transaction { table.updateItem(id, element) > 0 }
+	override fun delete(id: Int) =
+		transaction { table.deleteWhere { table.id eq id } > 0 }
+</code></pre>
+
+~~~
+
+### Реализация репозитория: чтение
+
+<pre class="Kotlin"><code>override fun read() =
+	transaction {
+		table.selectAll()
+				.mapNotNull {
+					table.readResult(it)
+				}}
+override fun read(id: Int) =
+	transaction {
+		table.select { table.id eq id }
+				.firstOrNull()
+				?.let {
+					table.readResult(it)
+				}}
+</code></pre>
+
+!~~~!
+
+## Exposed: DAO (data access object)
+
+~~~
+
+### DAO класс
+
+<pre class="Kotlin"><code>object StarWarsFilms : IntIdTable() {
+	val sequelId = integer("sequel_id").uniqueIndex()
+	val name = varchar("name", 50)
+	val director = varchar("director", 50)
+}
+</code></pre>
+
+<pre class="Kotlin"><code>class StarWarsFilm(id: EntityID< Int >) : IntEntity(id) {
+	companion object : IntEntityClass< StarWarsFilm >(StarWarsFilms)
+	var sequelId by StarWarsFilms.sequelId 
+	var name     by StarWarsFilms.name
+	var director by StarWarsFilms.director
+}
+</code></pre>
+
+~~~
+
+### Создание данных
+
+<pre class="Kotlin"><code>val movie = StarWarsFilm.new {
+	name = "The Last Jedi"
+	sequelId = 8
+	director = "Rian Johnson"
+}</code></pre>
+
+~~~
+
+### Чтение данных
+
+<pre class="Kotlin"><code>val movies = StarWarsFilm.all()
+	val movies = StarWarsFilm.find { StarWarsFilms.sequelId eq 8 }
+	val movie = StarWarsFilm.findById(5)
+	val movies = StarWarsFilm.all().sortedBy { it.sequelId }
+</code></pre>
+
+~~~
+
+### Обновление и удаление данных
+
+<pre class="Kotlin"><code>movie.name = "Episode VIII – The Last Jedi"
+</code></pre>
+<pre class="Kotlin"><code>movie.delete()
+</code></pre>
+
+!~~~!
+
+## Exposed: DAO ORM
+
+~~~
+
+### Many-to-one. One
+
+<pre class="Kotlin"><code>object Users: IntIdTable() {
+    val name = varchar("name", 50)
+}
+class User(id: EntityID< Int >): IntEntity(id) {
+    companion object : IntEntityClass< User >(Users)
+	var name by Users.name
+}
+</code></pre>
+
+~~~
+
+### Many-to-one. Many
+
+<pre class="Kotlin"><code>object UserRatings: IntIdTable() {
+    val value = long("value")
+    val film = reference("film", StarWarsFilms)
+    val user = reference("user", Users)
+}
+class UserRating(id: EntityID< Int >): IntEntity(id) {
+    companion object : IntEntityClass< UserRating >(UserRatings)
+    var value by UserRatings.value
+    var film by StarWarsFilm referencedOn UserRatings.film 
+    var user by User referencedOn UserRatings.user
+}
+</code></pre>
+
+~~~
+
+### Many-to-one. One.
+
+<pre class="Kotlin"><code>class StarWarsFilm(id: EntityID< Int >) : IntEntity(id) {
+    companion object : IntEntityClass< StarWarsFilm >(StarWarsFilms)
+	...
+	// make sure to use val and referrersOn
+    val ratings by UserRating referrersOn UserRatings.film 
+    ...
+}
+</code></pre>
+
+~~~
+
+### Many-to-many. 
+
+<pre class="Kotlin"><code>object Actors: IntIdTable() {
+    val firstname = varchar("firstname", 50)
+    val lastname = varchar("lastname", 50)
+}
+class Actor(id: EntityID< Int >): IntEntity(id) {
+    companion object : IntEntityClass< Actor >(Actors)
+    var firstname by Actors.firstname
+    var lastname by Actors.lastname
+}
+</code></pre>
+
+~~~
+
+### Many-to-many. Дополнительная таблица.
+
+<pre class="Kotlin"><code>object StarWarsFilmActors : Table() {
+    val starWarsFilm = reference("starWarsFilm", StarWarsFilms)
+    val actor = reference("actor", Actors)
+	override val primaryKey = 
+		PrimaryKey(starWarsFilm, actor, name = "PK_StarWarsFilmActors_swf_act") 
+}
+</code></pre>
+
+~~~
+
+### Many-to-many. 
+
+<pre class="Kotlin"><code>class StarWarsFilm(id: EntityID< Int >) : IntEntity(id) {
+    companion object : IntEntityClass< StarWarsFilm >(StarWarsFilms)
+    ...
+    var actors by Actor via StarWarsFilmActors
+    ...
+}
+</code></pre>
+
+~~~
+
+### Eager Loading 
+
+<pre class="Kotlin"><code>StarWarsFilm.findById(1).load(StarWarsFilm::actors, Actor::rating)
+</code></pre>
+
+!~~~!
+
+## Репозиторий на DAO
+
+~~~
+
+### ItemClass
+
+<pre class="Kotlin"><code>abstract class ItemClass< T : Item >(id: EntityID< Int >) : IntEntity(id) {
+    abstract val obj: T
+    abstract fun fill(item: T)
+}
+</code></pre>
+
+~~~
+
+### Repo. Create.
+
+<pre class="Kotlin"><code>open class RepoDAO< T : Item >(
+	val companion: IntEntityClass< ItemClass< T > >
+) : Repo< T > {
+
+override fun create(element: T) =
+		transaction {
+			companion.new {
+				fill(element)
+			}
+			true
+		}
+</code></pre>
+
+~~~
+
+### Repo. Read
+
+<pre class="Kotlin"><code>override fun read(id: Int) =
+	transaction {
+		companion.findById(id)?.obj
+	}
+
+override fun read() =
+	transaction {
+		companion.all().map {
+			it.obj
+		}
+	}
+</code></pre>
+
+~~~
+
+### Repo. Update, Delete
+
+<pre class="Kotlin"><code>override fun update(id: Int, element: T)=
+	transaction {
+		companion.findById(id)?.run {
+			fill(element)
+			true
+		} ?: false
+	}
+
+override fun delete(id: Int)=
+	transaction {
+		companion.findById(id)?.run {
+			delete()
+			true
+		} ?: false
+	}
+</code></pre>
+
+
+
+</script>
+                </section>
+
+			</div>	
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				width: '90%',
+    			height: '100%',
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu ],
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>

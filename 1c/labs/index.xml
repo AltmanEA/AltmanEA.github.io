@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Лабораторные on Объектно-ориентированное программирование и обработка данных</title>
+    <link>https://altmanea.ru/oop-data/labs/</link>
+    <description>Recent content in Лабораторные on Объектно-ориентированное программирование и обработка данных</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/labs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Коллекции</title>
+      <link>https://altmanea.ru/oop-data/labs/collection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/collection/</guid>
+      <description>Примеры из лекций и входной код для выполнения заданий находится в репозитории https://github.com/AltmanEA/edu-collection.
+В задании требуется самостоятельно изучить отдельные элементы библиотеки коллекций. Для этого рекомендуется в среде набрать название элемента и с помощью сочетания клавиш Ctrl-B открыть исходный код этого элемента. В исходном коде в комментариях приведено описание этого элемента, из которого потом генерируется документация. Этого описания должно быть достаточно для понимания того, что и для чего делает этот элемент.</description>
+    </item>
+    
+    <item>
+      <title>2. Сериализация</title>
+      <link>https://altmanea.ru/oop-data/labs/serialization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/serialization/</guid>
+      <description>Примеры из лекций и входной код для выполнения заданий находится в репозитории https://github.com/AltmanEA/edu-serialization.
+Перед выполнением прочитайте замечания по порядку выполнения заданий и поиску информации из первой работы.
+  Библиотека jackson
+ Изучите документацию к классу SimpleDateFormat и создайте формат, который бы выводил дату в таком виде: 2021.01.22. Создайте объект типа ObjectMapper и установите его свойство dateFormat равным созданному формату. Создайте класс Lesson со свойствами name: String и date: Date. Создайте объект этого класса со свойствами, указанными ниже, и выполните его сериализацию в формат JSON.</description>
+    </item>
+    
+    <item>
+      <title>4. Поиск в данных</title>
+      <link>https://altmanea.ru/oop-data/labs/parse/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/labs/parse/</guid>
+      <description>Примеры из лекций и входной код для выполнения заданий находится в репозитории https://github.com/AltmanEA/edu-parse.
+  Регулярные выражения
+Текстом, с которым проводятся операции с регулярными выражениями, может быть любой файл с программой из репозитория с примерами из лекций.
+ Найдите в исходном коде имена всех переменных, поместите их в список и распечатайте (переменные нужно находить по их объявлению с помощью ключевых слов var и val). Проверьте переменные в списке переменных на соответствие camelStyle (начинаются со строчной буквы, между словами в названии нет никаких символов, второе и последующие слова начинаются с заглавной буквы).</description>
+    </item>
+    
+  </channel>
+</rss>

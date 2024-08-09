@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Расширение ООП</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="!~~~!" data-separator-vertical="~~~" > 
+<script type="text/template">
+
+## Рефлексия (интроспекция)
+
+~~~
+
+### Типы 
+
+<pre class="kotlin"><code>class Test
+val obj = Test()
+val c1: KClass< Test > = Test::class
+val c2: KClass< out Test > = obj::class
+val jc1: Class< Test > = Test::class.java
+val jc2: Class< Test > = Test::class.java
+val qn: String? = c1.qualifiedName
+val kt: List< KType > = c1.supertypes
+</code></pre>
+
+~~~
+
+### Члены класса 
+
+<pre class="kotlin"><code>class Test(val prop: Int = 0) {
+    fun func(x: Int) = x+1
+}
+</code></pre>
+
+<pre class="kotlin"><code>val pr: KProperty0< Collection< KCallable< * > > > 
+	= Test::class::members
+val members: Collection< KCallable< * > > = pr.get()
+members.forEach{ println(it)}
+</code></pre>
+
+<pre><code>val Test.prop: kotlin.Int
+fun Test.func(kotlin.Int): kotlin.Int
+fun Test.equals(kotlin.Any?): kotlin.Boolean
+fun Test.hashCode(): kotlin.Int
+fun Test.toString(): kotlin.String
+</code></pre>
+
+~~~
+
+### Работа с членам класса
+
+<pre class="kotlin"><code>class Test(val prop: Int = 0) {
+    fun func(x: Int) = x+1
+}
+</code></pre>
+
+<pre class="kotlin"><code>val obj = Test()
+val members = Test::class::members.get()
+val pProp: KProperty1< Test, Int > = Test::prop
+val pFunc: KCallable< * >? = 
+	members.find { it.name=="func" }
+println(pProp.call(obj))
+println(pFunc?.call(obj, 5))
+</code></pre>
+
+<pre><code>0
+6
+</code></pre>
+
+!~~~!
+
+## Аннотации
+
+~~~
+
+### Определение 
+
+<pre class="kotlin"><code>annotation class Test
+</code></pre>
+
+~~~
+
+### Мета-аннотации
+
+- @Target определяет возможные виды элементов для аннотации (классы, функции, свойства, выражения и т.д.);
+- @Retention определяет, будет ли аннотация храниться в скомпилированном классе;
+- @Repeatable позволяет использовать одну и ту же аннотацию на одном элементе несколько раз;
+
+~~~
+
+### Параметры аннотации
+
+<pre class="kotlin"><code>annotation class ReplaceWith(val expression: String)
+
+annotation class Deprecated(
+	val message: String,
+	val replaceWith: ReplaceWith = ReplaceWith(""))
+	
+@Deprecated(
+	"Эта функция устарела, вместо неё используйте ===", 
+	ReplaceWith("this === other")
+)
+</code></pre>
+
+!~~~!
+
+## Исключения
+
+~~~
+
+### Обработка небезопасного кода
+
+<pre class="kotlin"><code>try {
+    // some code
+}
+catch (e: SomeException) {
+    // handler
+}
+finally {
+    // optional finally block
+}</code></pre>
+
+~~~
+
+### Пример
+
+<pre class="kotlin"><code>val a: Int? = try { 
+	parseInt(input) 
+} catch (e: NumberFormatException) { 
+	null 
+}
+</code></pre>
+
+~~~
+
+### Выбрасывание исключений
+
+<pre class="kotlin"><code>fun fail(message: String): Nothing {
+	throw IllegalArgumentException(message)
+}
+
+val s = person.name ?: fail("Name required")
+</code></pre>
+
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				width: '90%',
+    			height: '100%',
+				// Learn about plugins: https://revealjs.com/plugins/
+				// plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				// audio: {
+				// 	prefix: 'audio/',
+				// 	suffix: '.webm;codecs=opus',
+				// 	autoplay: false,
+				// 	advance: -1,
+				// },
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu ],
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>

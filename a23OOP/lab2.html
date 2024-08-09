@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>Объектно-ориентированное программирование. Лабораторная работа 2. Объекты </title>
+    <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
+</head>
+
+<body style="width: 800px;">
+    <script type="text/javascript">
+        console.log(window.location.hostname)
+        if (window.location.hostname == "altmanea.ru")
+            VK.init({
+                apiId: 51579302,
+                onlyWidgets: true
+            })
+        else
+            setTimeout(
+                function () { location.reload() },
+                10000)
+    </script>
+
+    <h3>2. Объекты</h3>
+
+    <p><b>Цель работы</b> - закрепить понятие объекта, научиться на практике работать с объектами, их свойствами и
+        методами.
+    </p>
+    <p>Доработайте игру из предыдущей лабораторной работы с использованием объектов. Дополните функционал игры
+        возможностью возврата к любой из ранее встречавшихся позиций. Тип используемых объектов и реализацию интерфейса
+        игры можно найти в <a
+            href="https://raw.githubusercontent.com/AltmanEA/OOPBasic1/main/30_object/20_Object_start.zip">
+            шаблоне проекта</a>.
+    </p>
+
+    <h4>Объект <code>board</code></h4>
+    <p>В объекте хранится текущая позиция. Объект может определять, закончилась ли игра в текущей позиции и имеет метод
+        для совершения кода</p>
+    <p>Позиция храниться в элементе <code>cells</code> который имеет тип кортежа из 9 элементов типа <code>Cell</code>.
+        Переменные типа <code>Cell</code> могут принимать одно из трех значений: <code>"_"</code>, <code>"X"</code> или
+        <code>"0"</code>.
+    </p>
+    <p>Методы <code>fromString</code>, <code>toString</code>, <code>isFill</code>, <code>getLineChar</code>,
+        <code>checkWin</code> и свойство <code>winPos</code> аналогичны соответствующим функциям и константе
+        из предыдущей работы.
+    </p>
+    <p>Метод <code>move</code> выполняет проверку на возможность походить в ячейку с индексом <code>index</code> и, если
+        ячейка свободна, изменяет свойство <code>cells</code>. В случае успешного кода возвращается <code>true</code>,
+        иначе - <code>false</code>.</p>
+
+    <h4>Объект <code>game</code></h4>
+    <p>В объекте хранится список всех позиций, которые были в игре (свойство <code>steps</code>) и номер текущей позиции
+        в этом списке (<code>current</code>).</p>
+    <p>Метод <code>checkStatus</code> определяет статус игры - идет ли игра, закончилась она в ничью или кто-то победил.
+    </p>
+    <p>Метод <code>move</code> проверяет статус игры и вычисляет, чья очередь хода. Если игра не закончена, то делается
+        попытка сделать ход на доске. Если ход выполняется успешно, то создается новый объект типа <code>Cells</code> с
+        новой позицией и он сохраняется в свойство <code>steps</code> и изменяется свойство <code>current</code>. В
+        случае успешного кода возвращается <code>true</code>,
+        иначе - <code>false</code>.</p>
+    <p>Метод <code>toStep</code> проверяет, является ли параметр <code>step</code> корректным номером для позиций в
+        массиве <code>steps</code>. Если номер корректный, то в объект <code>board</code> загружается соответствующая
+        позиция и изменяется свойство <code>current</code>.</p>
+    <h3>Вопросы и комментарии</h3>
+    <div id="vk_comments"></div>
+    <script type="text/javascript">
+        if (window.location.hostname == "altmanea.ru")
+            VK.Widgets.Comments('vk_comments')
+    </script>
+
+</body>
+
+</html>

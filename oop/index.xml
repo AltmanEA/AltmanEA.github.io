@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Введение on Объектно-ориентированное программирование</title>
+    <link>https://altmanea.ru/oop/</link>
+    <description>Recent content in Введение on Объектно-ориентированное программирование</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language><atom:link href="https://altmanea.ru/oop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Среда разработки</title>
+      <link>https://altmanea.ru/oop/labs/idea/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop/labs/idea/</guid>
+      <description>Теоретические сведения Лекция
+Задание   Установите и настройте на своем компьютере среду разработки.
+  Напишите функцию для вычисления площади круга по его радиусу.
+Подсказки:
+ аргумент и результат должны быть типа Double; импортируйте константу PI из библиотеки kotlin.math.    Напишите тесты для этой функции.
+  Переименуйте функцию с помощью рефакторинга. Отформатируйте текст с помощью функции среды reformat.
+  Прогоните тесты по шагам в режиме отладки.</description>
+    </item>
+    
+    <item>
+      <title>2. Конструкции структурного программирования в Kotlin</title>
+      <link>https://altmanea.ru/oop/labs/basic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop/labs/basic/</guid>
+      <description>Теоретические сведения Лекция
+Задание Данное задание предназначено для ознакомления с языком Kotlin. Для его выполнения нужно создать программу для поиска анаграмм. Анаграммы это слова (или фразы), состоящие из одинаковых букв, но расположенных в различном порядке, например: «автор» — «товар». Программ должна состоят из нескольких функций, приводящих список слов к форме, удобной для быстрого поиска. Список слов может быть взят тут (файл 20k.txt).
+Создайте и протестируйте следующие функции:
+ Создайте функцию fun charSort(word: String): String которая возвращает строку с буквами из аргумента в порядке возрастания.</description>
+    </item>
+    
+    <item>
+      <title>3. Объекты</title>
+      <link>https://altmanea.ru/oop/labs/object/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop/labs/object/</guid>
+      <description>Теоретические сведения Лекция
+Задание Разработайте игру «Крестики-нолики».
+В некоторой переменной должен храниться символ текущего игрока (&amp;ldquo;X&amp;rdquo; или &amp;ldquo;O&amp;rdquo;). При нажатие на кнопку с пустым текстовым полем в это текстовое поле должен быть записан символ текущего игрока, а сам символ должен измениться.
+В программе реализуйте функцию, которая проверяет, нет ли на поле ряда из трех одинаковых символов. Если такой ряд есть, она возвращает символ из этого ряда. Напишите тесты для этой функции.</description>
+    </item>
+    
+    <item>
+      <title>4. Классы</title>
+      <link>https://altmanea.ru/oop/labs/class/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop/labs/class/</guid>
+      <description>Теоретические сведения Лекция
+Задание  Создайте класс Controller: class Controller( var state: State = State() ) { val view = View(this) var checkedCell: Int? = null }  Обновите классы Game и View так, чтобы они работали с классом Controller. Изменив класс View установите фон элементов типа JButton так, чтобы игровое поле выглядело как шахматная доска. В случае, если в объекте класса Controller поле checkedCell не нулевое, установите фон соответствующей кнопки в какой-либо цвет.</description>
+    </item>
+    
+    <item>
+      <title>5. Наследование</title>
+      <link>https://altmanea.ru/oop/labs/inheritance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop/labs/inheritance/</guid>
+      <description>Теоретические сведения  Лекция Исходный проект (каталог d_inheritance)  Задание  Дополните класс Controller коллекцией ArrayList &amp;lt; State &amp;gt;. Дополните класс View элементом, позволяющим вернуться к предыдущему ходу. Проверьте работоспособность этого элемента на двух играх. Реализуйте игру шашки. Факультативное задание (для претендующих на оценку по результатам работы в семестре больше 3): создайте иерархию классов для управления игрой, состоящую из базового класса, класса для игр с перемещением фигур, класса для игр с выставлением фигур, классы для рассмотренных игр и класс для игры в крестики-нолики 5 в ряд.</description>
+    </item>
+    
+    <item>
+      <title>6. Интерфейсы и абстрактные классы</title>
+      <link>https://altmanea.ru/oop/labs/relation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop/labs/relation/</guid>
+      <description>Теоретические сведения  Лекция  Задание Переделайте программы из предыдущей лабораторной работы используя абстрактный класс State и интерфейсы Controller и View.</description>
+    </item>
+    
+    <item>
+      <title>7. Расширение ООП</title>
+      <link>https://altmanea.ru/oop/labs/extra/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop/labs/extra/</guid>
+      <description>Теоретические сведения  Дополнение классов Расширение ООП  Задание Переделайте программы из предыдущей лабораторной работы, при этом:
+ используйте классы данных для хранения состояния (замените при этом абстрактный класс на интерфейс); используйте изолированные классы для работы с фигурами; переделайте обработку ошибок (которые могут возникать из-за действий пользователя) с помощью исключений.  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Технические рисунки</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/github.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <section data-markdown data-separator="----" data-separator-vertical="---" > 
+<script type="text/template">
+
+## Диаграммы
+
+---
+
+### PlantUML
+
+[http://plantuml.com/ru/](http://plantuml.com/ru/)
+
+Требуется:
+- [java](https://www.java.com/en/download/)
+- [Graphviz](https://www.graphviz.org/)
+
+Компиляция:
+
+```
+java -jar plantuml.jar sequenceDiagram.txt
+```
+
+VS code расширение [plantUML](https://github.com/qjebbs/vscode-plantuml).
+
+---
+
+### Диаграммы последовательностей
+
+![](images/sequence_intro.png)
+
+---
+
+### Типы объектов
+
+![](images/sequence_part.png)
+
+---
+
+### Типы действий
+
+![](images/sequence_arrow.png)
+
+---
+
+### Линия жизни
+
+![](images/sequence_lifeline.png)
+
+---
+
+### Mindmap
+
+![](images/mindmap.png)
+
+---
+
+### Work breakdown
+
+![](images/workbreakdown.png)
+
+----
+
+## PGF/TIKZ
+
+---
+
+### TexStudio
+
+- [Latex](https://ru.wikibooks.org/wiki/LaTeX)
+- [MiKTex](https://miktex.org/)
+- [The Comprehensive TEX Archive Network](https://www.ctan.org/)
+- [TexStudio](https://www.texstudio.org/)
+- [PGF/TIKZ](http://mirror.ctan.org/graphics/pgf/base/doc/pgfmanual.pdf)
+
+---
+
+###  Path и Draw
+
+![](images/tikz_intro.png)
+
+---
+
+### Node
+
+![](images/tikz_node.png)
+
+---
+
+### Style
+
+![](images/tikz_style.png)
+
+---
+
+### Name and positioning
+
+![](images/tikz_name.png)
+
+---
+
+### Label
+
+![](images/tikz_label.png)
+
+
+---
+
+### Connection
+
+![](images/tikz_simple_connection.png)
+
+---
+
+### Connection
+
+![](images/tikz_connection.png)
+
+----
+
+## TIKZ Library
+
+---
+
+### Shading
+
+![](images/tikz_shading.png)
+
+---
+
+### Shadows
+
+![](images/tikz_shadows.png)
+
+---
+
+### Data Visualization
+
+![](images/tikz_dataviz.png)
+
+---
+
+### Automata
+
+![](images/tikz_automata.png)
+
+---
+
+### Circuit
+
+![](images/tikz_circuit.png)
+
+</script>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/audio-slideshow/plugin.js"></script>
+		<script src="../plugin/audio-slideshow/recorder.js"></script>
+		<script src="../plugin/audio-slideshow/RecordRTC.js"></script>
+		<script src="../plugin/menu/menu.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealAudioSlideshow, RevealAudioRecorder, RevealMenu ],
+				audio: {
+					prefix: 'audio/',
+ 					suffix: '.webm;codecs=opus',
+					autoplay: false,
+					advance: -1,
+				},
+				menu: {
+					custom: [{
+						title: 'Home',
+						icon: '<i class="fa fa-home">',
+						src: '../menu.html'
+					}]
+				}
+			});
+		</script>
+	</body>
+</html>

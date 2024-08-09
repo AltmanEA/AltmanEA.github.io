@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Лекции on Объектно-ориентированное программирование и обработка данных</title>
+    <link>https://altmanea.ru/oop-data/lecture/</link>
+    <description>Recent content in Лекции on Объектно-ориентированное программирование и обработка данных</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language><atom:link href="https://altmanea.ru/oop-data/lecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Рабочая тетрадь</title>
+      <link>https://altmanea.ru/oop-data/lecture/workbook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://altmanea.ru/oop-data/lecture/workbook/</guid>
+      <description>Содержание На каждой странице рабочей тетради необходимо написать свою фамилию и группу. Перед каждым занятием в отдельной строке по центру тетради нужно поставить его дату, тип и тему.
+В рабочую тетрадь заносится конспект лекций, ответы на вопросы проводимой на лекции проверочной работы и основные результаты и выводы по лабораторным работам.
+В конспект лекций записываются название видео и его основные идеи (тезисы). При необходимости, после просмотра видео на лекции можно уточнить правильность понимания сказанного у преподавателя.</description>
+    </item>
+    
+  </channel>
+</rss>

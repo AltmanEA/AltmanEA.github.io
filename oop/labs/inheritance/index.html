@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>5. Наследование - Объектно-ориентированное программирование</title>
+<meta name="generator" content="Hugo 0.87.0" />
+<link href="https://altmanea.ru/oop//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/oop/labs/inheritance/">
+<link rel="stylesheet" href="https://altmanea.ru/oop/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/oop/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://altmanea.ru/oop/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="5. Наследование" />
+<meta property="og:description" content="Теоретические сведения  Лекция Исходный проект (каталог d_inheritance)  Задание  Дополните класс Controller коллекцией ArrayList &lt; State &gt;. Дополните класс View элементом, позволяющим вернуться к предыдущему ходу. Проверьте работоспособность этого элемента на двух играх. Реализуйте игру шашки. Факультативное задание (для претендующих на оценку по результатам работы в семестре больше 3): создайте иерархию классов для управления игрой, состоящую из базового класса, класса для игр с перемещением фигур, класса для игр с выставлением фигур, классы для рассмотренных игр и класс для игры в крестики-нолики 5 в ряд." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/oop/labs/inheritance/" /><meta property="article:section" content="labs" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="5. Наследование"/>
+<meta name="twitter:description" content="Теоретические сведения  Лекция Исходный проект (каталог d_inheritance)  Задание  Дополните класс Controller коллекцией ArrayList &lt; State &gt;. Дополните класс View элементом, позволяющим вернуться к предыдущему ходу. Проверьте работоспособность этого элемента на двух играх. Реализуйте игру шашки. Факультативное задание (для претендующих на оценку по результатам работы в семестре больше 3): создайте иерархию классов для управления игрой, состоящую из базового класса, класса для игр с перемещением фигур, класса для игр с выставлением фигур, классы для рассмотренных игр и класс для игры в крестики-нолики 5 в ряд."/>
+<meta itemprop="name" content="5. Наследование">
+<meta itemprop="description" content="Теоретические сведения  Лекция Исходный проект (каталог d_inheritance)  Задание  Дополните класс Controller коллекцией ArrayList &lt; State &gt;. Дополните класс View элементом, позволяющим вернуться к предыдущему ходу. Проверьте работоспособность этого элемента на двух играх. Реализуйте игру шашки. Факультативное задание (для претендующих на оценку по результатам работы в семестре больше 3): создайте иерархию классов для управления игрой, состоящую из базового класса, класса для игр с перемещением фигур, класса для игр с выставлением фигур, классы для рассмотренных игр и класс для игры в крестики-нолики 5 в ряд.">
+
+<meta itemprop="wordCount" content="83">
+<meta itemprop="keywords" content="" /><script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+
+<script type="text/javascript">
+    VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+</head>
+<body><div class="container"><header>
+<h1>Объектно-ориентированное программирование</h1>
+
+</header>
+
+<div class="content-container">
+<main><h1>5. Наследование</h1>
+<h3 id="теоретические-сведения">Теоретические сведения</h3>
+<ul>
+<li><a href="https://altmanea.ru/oop/slides/inheritance">Лекция</a></li>
+<li><a href="https://github.com/AltmanEA/game">Исходный проект</a> (каталог d_inheritance)</li>
+</ul>
+<h3 id="задание">Задание</h3>
+<ol>
+<li>Дополните класс <code>Controller</code> коллекцией ArrayList &lt; State &gt;. Дополните класс <code>View</code> элементом, позволяющим вернуться к предыдущему ходу. Проверьте работоспособность этого элемента на двух играх.</li>
+<li>Реализуйте игру шашки.</li>
+<li>Факультативное задание (для претендующих на оценку по результатам работы в семестре больше 3): создайте иерархию классов для управления игрой, состоящую из базового класса, класса для игр с перемещением фигур, класса для игр с выставлением фигур, классы для рассмотренных игр и класс для игры в крестики-нолики 5 в ряд.</li>
+</ol>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/oop/labs/class/" title="4. Классы"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 4. Классы</a>
+<a class="nav nav-next" href="https://altmanea.ru/oop/labs/relation/" title="6. Интерфейсы и абстрактные классы">Next - 6. Интерфейсы и абстрактные классы <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script><p align="right">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2019-2020</a>
+</p>
+</footer>
+</main><div class="sidebar">
+
+<nav class="open-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/oop/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/oop/lecture/">Лекции</a>
+  
+</li>
+
+<li class="parent"><a href="https://altmanea.ru/oop/labs/">Лабораторные работы</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/oop/labs/idea/">1. Среда разработки</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/basic/">2. Конструкции структурного программирования в Kotlin</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/object/">3. Объекты</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/class/">4. Классы</a></li>
+<li class="active"><a href="https://altmanea.ru/oop/labs/inheritance/">5. Наследование</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/relation/">6. Интерфейсы и абстрактные классы</a></li>
+<li class=""><a href="https://altmanea.ru/oop/labs/extra/">7. Расширение ООП</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/oop/self/">Самостоятельная работа</a>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/oop/exam/">Вопросы к экзамену</a>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

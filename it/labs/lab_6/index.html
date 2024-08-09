@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>6. Стиль текста - Информационные технологии</title>
+<meta name="generator" content="Hugo 0.74.3" />
+<link href="https://altmanea.ru/it//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/it/labs/lab_6/">
+<link rel="stylesheet" href="https://altmanea.ru/it/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/it/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://altmanea.ru/it/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="6. Стиль текста" />
+<meta property="og:description" content="Краткие теоретические сведения Лекция
+Каскадные таблицы стилей (CSS — Cascading Styles Sheet) используется для задания внешнего вида элементов HTML или других текстовых форматов. Наиболее удобный способ записи стилей заключается в использовании отдельного файла с расширением «css», но можно их включать непосредственно в HTML код.
+Описание стиля выглядит примерно следующий образом:
+h1{ color: blue; } В этой записи h1 описывает HTML тег, для которого задается стиль, а в фигурных скобках приводится описание самого стиля." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/it/labs/lab_6/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="6. Стиль текста"/>
+<meta name="twitter:description" content="Краткие теоретические сведения Лекция
+Каскадные таблицы стилей (CSS — Cascading Styles Sheet) используется для задания внешнего вида элементов HTML или других текстовых форматов. Наиболее удобный способ записи стилей заключается в использовании отдельного файла с расширением «css», но можно их включать непосредственно в HTML код.
+Описание стиля выглядит примерно следующий образом:
+h1{ color: blue; } В этой записи h1 описывает HTML тег, для которого задается стиль, а в фигурных скобках приводится описание самого стиля."/>
+<meta itemprop="name" content="6. Стиль текста">
+<meta itemprop="description" content="Краткие теоретические сведения Лекция
+Каскадные таблицы стилей (CSS — Cascading Styles Sheet) используется для задания внешнего вида элементов HTML или других текстовых форматов. Наиболее удобный способ записи стилей заключается в использовании отдельного файла с расширением «css», но можно их включать непосредственно в HTML код.
+Описание стиля выглядит примерно следующий образом:
+h1{ color: blue; } В этой записи h1 описывает HTML тег, для которого задается стиль, а в фигурных скобках приводится описание самого стиля.">
+
+<meta itemprop="wordCount" content="361">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+crossorigin="anonymous"
+onload='renderMathInElement(document.body);'></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
+
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+<script type="text/javascript">
+    VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+</head>
+<body><div class="container"><header>
+<h1>Информационные технологии</h1>
+
+</header>
+
+<div class="content-container">
+<main><h1>6. Стиль текста</h1>
+<h2 id="краткие-теоретические-сведения">Краткие теоретические сведения</h2>
+<p><a href="https://altmanea.ru/it/slides//html/#/1">Лекция</a></p>
+<p>Каскадные таблицы стилей (CSS — Cascading Styles Sheet) используется для задания внешнего вида элементов HTML или других текстовых форматов. Наиболее удобный способ записи стилей заключается в использовании отдельного файла с расширением «css», но можно их включать непосредственно в HTML код.</p>
+<p>Описание стиля выглядит примерно следующий образом:</p>
+<pre><code>h1{
+    color: blue;
+}
+</code></pre><p>В этой записи <code>h1</code> описывает HTML тег, для которого задается стиль, а в фигурных скобках приводится описание самого стиля.</p>
+<p>Описание стиля состоит из нескольких записей, которые заканчиваются точкой с запятой. Одна запись описывает некоторое свойства стиля, в пример выше свойство задает цвет текста.</p>
+<p>В общем случае на позиции, на которой в нашем примере записан тег <code>h1</code>, записывается <em>селектор</em>. В качестве селектора, кроме тега, могут выступать другие элементы HTML документа, например, классы. Класс тега указывается в его свойствах и позволяет по-разному оформить различные по смыслу фрагменты текста, набранные в одинаковых тегах.</p>
+<p>При формировании внешнего вида текста значения свойств определяются каскадно или иерархически. Полный набор значений свойств, которые применяются по умолчанию, заложен в браузере (нижний уровень иерархии). Если в html документе есть стилевой файл, то значения, указанные в нем, перезаписывают значения по умолчанию (более высокий уровень иерархии). Еще выше в иерархии стоят значения, указанные непосредственно в html тегах.</p>
+<h2 id="задание-к-работе">Задание к работе</h2>
+<ol>
+<li>
+<p>Создайте в папке с markdown файлом из второй лабораторной работы файл «style.css». Наберите в нем:</p>
+<pre><code>h1{
+    color: blue;
+}
+</code></pre><p>Преобразуйте markdown файл в html. Добавьте в заголовок html файла строчку:</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+</code></pre></li>
+<li>
+<p>Откройте полученный html файл в браузере. В нем заголовки первого уровня должны выводиться синим цветом. Измените файл «style.css» следующим образом:</p>
+<pre><code>h1{
+    color: blue;
+    font-weight: normal;
+}
+</code></pre><p>Обновите страницу в браузере (повторно преобразовывать в HTML в данном случае не нужно), посмотрите, как изменился шрифт заголовков первого уровня.</p>
+</li>
+<li>
+<p><a href="https://webref.ru/css">В справочнике по CSS</a> найдите нужную информацию и настройте для элементов <code>h1</code> и <code>p</code> размер шрифта равный 14pt, <code>h1</code> сделайте выровненным по центу, <code>p</code> выровненным по ширине с абзацным отступом 15мм (подсказка: шрифт, размер, выравнивание и отступ переводятся на английский как font, size, align и indent соответственно).</p>
+</li>
+<li>
+<p>Прочитайте про границы (свойство «border») и настройте отображение рисунков в розовой или голубой двойной рамке шириной 10 px.</p>
+</li>
+<li>
+<p>Прочитайте про псевдоэлемент CSS «:before» и настройте в качестве маркера маркированного списка длинное тире.</p>
+</li>
+</ol>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/it/labs/lab_5/" title="5. Основы HTML"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 5. Основы HTML</a>
+<a class="nav nav-next" href="https://altmanea.ru/it/labs/lab_7/" title="7. Активные элементы текста">Next - 7. Активные элементы текста <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script><p align="right">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2019-2020</a>
+</p>
+</footer>
+</main><div class="sidebar">
+
+<nav class="open-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/it/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/it/lecture/">Лекции</a>
+  
+</li>
+
+<li class="parent"><a href="https://altmanea.ru/it/labs/">Лабораторные работы</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://altmanea.ru/it/labs/lab_1/">1. Работа с текстом и кодировки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_2/">2. Язык разметки markdown</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_3/">3. Таблицы, код и формулы в markdown</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_4/">4. Математические формулы</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_5/">5. Основы HTML</a></li>
+<li class="active"><a href="https://altmanea.ru/it/labs/lab_6/">6. Стиль текста</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_7/">7. Активные элементы текста</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_8/">8. Формат DOCX</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_9/">9. Растровые рисунки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_10/">10. Векторные рисунки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_11/">11. Диаграммы</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_12/">12. Технические рисунки</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/it/self/">Самостоятельная работа</a>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/it/exam/">Вопросы к экзамену</a>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

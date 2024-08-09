@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>1. Работа с текстом и кодировки - Информационные технологии</title>
+<meta name="generator" content="Hugo 0.74.3" />
+<link href="https://altmanea.ru/it//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://altmanea.ru/it/labs/lab_1/">
+<link rel="stylesheet" href="https://altmanea.ru/it/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://altmanea.ru/it/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://altmanea.ru/it/js/bundle.js"></script><style>
+:root {--custom-font-color: white;--custom-background-color: blue;}
+</style>
+<meta property="og:title" content="1. Работа с текстом и кодировки" />
+<meta property="og:description" content="Краткие теоретические сведения Лекция
+Задание к работе   Исходный текст.
+ Создайте свой каталог на учебном компьютере. В этом каталоге создайте текстовый файл и откройте его в редакторе. Переключите кодировку текста на «CP 866». Наберите в текстовом файле фразу «Hello, мир-25!» и сохраните его.    Шестнадцатеричное представление текста
+ Откройте набранный файл в программе «Frhed». Допишите справа от текста цифры 0, 1 и 2. Чему равны шестнадцатеричные коды этих символов?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://altmanea.ru/it/labs/lab_1/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="1. Работа с текстом и кодировки"/>
+<meta name="twitter:description" content="Краткие теоретические сведения Лекция
+Задание к работе   Исходный текст.
+ Создайте свой каталог на учебном компьютере. В этом каталоге создайте текстовый файл и откройте его в редакторе. Переключите кодировку текста на «CP 866». Наберите в текстовом файле фразу «Hello, мир-25!» и сохраните его.    Шестнадцатеричное представление текста
+ Откройте набранный файл в программе «Frhed». Допишите справа от текста цифры 0, 1 и 2. Чему равны шестнадцатеричные коды этих символов?"/>
+<meta itemprop="name" content="1. Работа с текстом и кодировки">
+<meta itemprop="description" content="Краткие теоретические сведения Лекция
+Задание к работе   Исходный текст.
+ Создайте свой каталог на учебном компьютере. В этом каталоге создайте текстовый файл и откройте его в редакторе. Переключите кодировку текста на «CP 866». Наберите в текстовом файле фразу «Hello, мир-25!» и сохраните его.    Шестнадцатеричное представление текста
+ Откройте набранный файл в программе «Frhed». Допишите справа от текста цифры 0, 1 и 2. Чему равны шестнадцатеричные коды этих символов?">
+
+<meta itemprop="wordCount" content="386">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+crossorigin="anonymous"
+onload='renderMathInElement(document.body);'></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
+
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+<script type="text/javascript">
+    VK.init({apiId: 7147452, onlyWidgets: true});
+</script>
+</head>
+<body><div class="container"><header>
+<h1>Информационные технологии</h1>
+
+</header>
+
+<div class="content-container">
+<main><h1>1. Работа с текстом и кодировки</h1>
+<h1 id="краткие-теоретические-сведения">Краткие теоретические сведения</h1>
+<p><a href="https://altmanea.ru/it/slides//charcode">Лекция</a></p>
+<h1 id="задание-к-работе">Задание к работе</h1>
+<ol>
+<li>
+<p>Исходный текст.</p>
+<ol>
+<li>Создайте свой каталог на учебном компьютере.</li>
+<li>В этом каталоге создайте текстовый файл и откройте его в редакторе.</li>
+<li>Переключите кодировку текста на «CP 866».</li>
+<li>Наберите в текстовом файле фразу «Hello, мир-25!» и сохраните его.</li>
+</ol>
+</li>
+<li>
+<p>Шестнадцатеричное представление текста</p>
+<ol>
+<li>Откройте набранный файл в программе «Frhed».</li>
+<li>Допишите справа от текста цифры 0, 1 и 2. Чему равны шестнадцатеричные коды этих символов?</li>
+<li>Найдите в шестнадцатеричном представлении код запятой, дефиса и восклицательного знака. Чему они равны в десятичной системе счисления?</li>
+</ol>
+</li>
+<li>
+<p>Кодировки символов</p>
+<ol>
+<li>Клинув в строке статуса в программе «Frhed» по надписи «OEM» измените кодировку. Как изменился текст в правой половине окна и почему? Верните исходную кодировку.</li>
+<li>В текстовом редакторе измените кодировку на «Windows 1251» (основная кодировка операционной системы windows) и сохраните файл. Какие варианты изменения кодировки поддерживаются в текстовом редакторе?</li>
+<li>Запустите еще один экземпляр программы «Frhed» и откройте в нем новую версию файла. Сравните шестнадцатеричные коды версий текстовых файлов в различных кодировках. Для каких символов коды совпадают?</li>
+<li>Проделайте аналогичные операции с текстом для кодировки «UTF-8». Определите, почему текст в этой кодировке занимает больше символов.</li>
+<li>Наберите текст из букв русского алфавита: «абвгдеёжзийклмнопрстуфхцчшщъыьэюя АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ». Посмотрите его шестнадцатеричное представление в трех рассмотренных кодировках. Какие кодировки можно использовать для сортировки русских слов по алфавиту и с какими ограничениями?</li>
+</ol>
+</li>
+<li>
+<p>Специальные символы</p>
+<ol>
+<li>В меню «View» текстового редактора установите галочки «Render Whitespace» и «Render Control Characters». Установите расширение «code-eol». Вставьте в текстовый файл символ конца строки (нажмите «Enter») и табуляции (возьмите тут: «	»). Как отображаются эти символы в vs code?</li>
+<li>Откройте текстовый файл в программе «Frhed». Какие коды имеют набранные символы?</li>
+<li>В правом нижнем углу, левее символов текущей кодировки, найдите обозначение текущего способа обозначение конца строки: «LF» (используется по умолчанию в Linux) или «CR LF» (Windows). Поменяйте способ обозначение конца строки и опишите, что произошло с текстом.</li>
+<li>Из <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">List of Unicode characters</a> возьмите символы длинного (—) и короткого тире (–) и символы принятых в русском языке кавычек елочек (как, например, в предыдущих предложениях). Составьте предложение, включающее эти символы. Определите коды этих символов.</li>
+<li>Откройте окно «Keyboard Shortcuts», в дополнительных операциях этого окна нажмите найдите команду «Open Keyboard Shortcuts(JSON)». По образцу для длинного тире создайте горячие клавиши для ввода символов из предыдущего параграфа (в параметре «key» указывается сочетание клавиш, в «text» — символ):</li>
+</ol>
+<pre><code>[
+    {
+        &quot;key&quot;: &quot;alt+k m&quot;,
+        &quot;command&quot;: &quot;type&quot;,
+        &quot;args&quot;: {
+            &quot;text&quot;: &quot;—&quot;
+        }
+    },
+    // Другие горячие клавиши        
+]
+</code></pre></li>
+</ol>
+<div class="edit-meta">
+
+<br></div><nav class="pagination"><a class="nav nav-prev" href="https://altmanea.ru/it/labs/" title="Лабораторные работы"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Лабораторные работы</a>
+<a class="nav nav-next" href="https://altmanea.ru/it/labs/lab_2/" title="2. Язык разметки markdown">Next - 2. Язык разметки markdown <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script><p align="right">
+    <a href="https://altmanea.ru">&copy; Альтман Е. А. 2019-2020</a>
+</p>
+</footer>
+</main><div class="sidebar">
+
+<nav class="open-menu">
+<ul>
+<li class=""><a href="https://altmanea.ru/it/">Home</a></li>
+
+<li class=""><a href="https://altmanea.ru/it/lecture/">Лекции</a>
+  
+</li>
+
+<li class="parent"><a href="https://altmanea.ru/it/labs/">Лабораторные работы</a>
+  
+<ul class="sub-menu">
+<li class="active"><a href="https://altmanea.ru/it/labs/lab_1/">1. Работа с текстом и кодировки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_2/">2. Язык разметки markdown</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_3/">3. Таблицы, код и формулы в markdown</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_4/">4. Математические формулы</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_5/">5. Основы HTML</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_6/">6. Стиль текста</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_7/">7. Активные элементы текста</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_8/">8. Формат DOCX</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_9/">9. Растровые рисунки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_10/">10. Векторные рисунки</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_11/">11. Диаграммы</a></li>
+<li class=""><a href="https://altmanea.ru/it/labs/lab_12/">12. Технические рисунки</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/it/self/">Самостоятельная работа</a>
+  
+</li>
+
+<li class=""><a href="https://altmanea.ru/it/exam/">Вопросы к экзамену</a>
+  
+</li>
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>
