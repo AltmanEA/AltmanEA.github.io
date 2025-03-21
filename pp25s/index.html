@@ -1,34 +1,36 @@
 <html>
-  <head>
-    <title>Прикладное программирование. Весна 2025. 22зм.</title>
-    <!-- Lightweight client-side loader that feature-detects and load polyfills only when necessary -->
-    <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
-    <!-- Load the element definition -->
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"
-    ></script>
-  </head>
-  <body>
-    <a href="https://altmanea.ru">Начальная страница</a>
 
-    <h3>Материалы</h3>
-    
-    <a href="https://github.com/AltmanEA/pp25s">Проект из лекций</a>
+<head>
+  <title>Прикладное программирование. Весна 2025. 22зм.</title>
+  <!-- Lightweight client-side loader that feature-detects and load polyfills only when necessary -->
+  <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+  <!-- Load the element definition -->
+  <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
+</head>
 
-    <a href="https://drive.google.com/drive/folders/1ktXcevCUQsH4roF2snX1Q80xx2NspFRF?usp=sharing">Записи лекций</a>
+<body>
+  <a href="https://altmanea.ru">Начальная страница</a>
 
-    <h3>Расписание занятий</h3>
-    <iframe
-      src="https://calendar.yandex.ru/embed/week?&layer_ids=21948444&tz_id=Asia/Omsk&layer_names=ПП"
-      width="800"
-      height="700"
-      frameborder="0"
-      style="border: 1px solid #eee"
-    ></iframe>
+  <h3>Материалы</h3>
 
-    <h3>Вопросы к экзамену</h3>    
-    <zero-md src="exam.md"></zero-md>
+  <p><a href="https://github.com/AltmanEA/pp25s">Проект из лекций</a></p>
 
-  </body>
+  <p><a href="https://drive.google.com/drive/folders/1ktXcevCUQsH4roF2snX1Q80xx2NspFRF?usp=sharing">Записи лекций</a>
+  </p>
+
+  <h3>Темы курсовых работ</h3>
+
+  <details>
+    <zero-md src="work.md"></zero-md>
+  </details>
+
+  <h3>Расписание занятий</h3>
+  <iframe src="https://calendar.yandex.ru/embed/week?&layer_ids=21948444&tz_id=Asia/Omsk&layer_names=ПП" width="800"
+    height="700" frameborder="0" style="border: 1px solid #eee"></iframe>
+
+  <h3>Вопросы к экзамену</h3>
+  <zero-md src="exam.md"></zero-md>
+
+</body>
+
 </html>
